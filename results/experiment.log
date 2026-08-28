@@ -1,0 +1,249 @@
+2026-08-23 22:49:38 | INFO     | kda_experiment | ==============================================================================
+2026-08-23 22:49:38 | INFO     | kda_experiment | KDA_tiny ensemble experiment on SciQ
+2026-08-23 22:49:38 | INFO     | kda_experiment | ==============================================================================
+2026-08-23 22:49:38 | INFO     | kda_experiment | Python        : 3.12.3
+2026-08-23 22:49:38 | INFO     | kda_experiment | Platform      : Linux-7.0.0-30-generic-x86_64-with-glibc2.39
+2026-08-23 22:49:39 | INFO     | kda_experiment | torch         : 2.13.0+cu130 (CUDA available: True)
+2026-08-23 22:49:39 | INFO     | kda_experiment | Ensemble |M|  : 2
+2026-08-23 22:49:39 | INFO     | kda_experiment |   - Riiid/kda-distilbert-base-uncased-race
+2026-08-23 22:49:39 | INFO     | kda_experiment |   - Riiid/kda-bert-base-uncased-race
+2026-08-23 22:49:39 | INFO     | kda_experiment | Data file     : sciq_50.json
+2026-08-23 22:49:39 | INFO     | kda_experiment | Results file  : results.json
+2026-08-23 22:49:39 | INFO     | kda_experiment | Log file      : experiment.log
+2026-08-23 22:49:39 | INFO     | kda_experiment | Loaded 50 questions from sciq_50.json
+2026-08-23 22:49:39 | INFO     | kda_tiny | Initialising KDA_tiny ensemble with 2 model(s) on device 'cuda'
+2026-08-23 22:49:39 | INFO     | kda_tiny | Loading simulated student 'Riiid/kda-distilbert-base-uncased-race' on device 'cuda'
+2026-08-23 22:49:40 | WARNING  | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-08-23 22:49:42 | INFO     | kda_tiny | Loaded 'Riiid/kda-distilbert-base-uncased-race' in 2.53s | 67.0M parameters (~268MB fp32) | token_type_ids=False
+2026-08-23 22:49:42 | INFO     | kda_tiny | Loading simulated student 'Riiid/kda-bert-base-uncased-race' on device 'cuda'
+2026-08-23 22:49:44 | INFO     | kda_tiny | Loaded 'Riiid/kda-bert-base-uncased-race' in 2.06s | 109.5M parameters (~438MB fp32) | token_type_ids=True
+2026-08-23 22:49:44 | INFO     | kda_tiny | Ensemble ready: 2 models, 176.4M parameters total (~706MB fp32)
+2026-08-23 22:49:44 | INFO     | kda_experiment | [ 1/50] KDA=0.5496 | mean P(R^q=1)=0.473 -> P(R^q+f=1)=0.667 | 0.146s
+2026-08-23 22:49:44 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=0 | with_fact=0 | P(R^q=1)=0.6741 P(R^q+f=1)=0.9760 weight=0.3259 | probs_wof=[0.6741, 0.0466, 0.0281, 0.2512] probs_wf=[0.976, 0.001, 0.0007, 0.0222]
+2026-08-23 22:49:44 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=2 | with_fact=0 | P(R^q=1)=0.2721 P(R^q+f=1)=0.3586 weight=0.7279 | probs_wof=[0.2721, 0.1949, 0.3125, 0.2205] probs_wf=[0.3586, 0.1726, 0.1983, 0.2704]
+2026-08-23 22:49:44 | INFO     | kda_experiment | [ 2/50] KDA=0.6439 | mean P(R^q=1)=0.257 -> P(R^q+f=1)=0.592 | 0.062s
+2026-08-23 22:49:44 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=0 | with_fact=3 | P(R^q=1)=0.1240 P(R^q+f=1)=0.8824 weight=0.8760 | probs_wof=[0.6638, 0.1624, 0.0499, 0.124] probs_wf=[0.1053, 0.0086, 0.0037, 0.8824]
+2026-08-23 22:49:44 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=3 | with_fact=3 | P(R^q=1)=0.3905 P(R^q+f=1)=0.3012 weight=0.6095 | probs_wof=[0.2159, 0.1931, 0.2005, 0.3905] probs_wf=[0.2715, 0.2232, 0.2041, 0.3012]
+2026-08-23 22:49:44 | DEBUG    | kda_tiny | Truncating passage for 'Riiid/kda-distilbert-base-uncased-race': 507 -> 429 tokens
+2026-08-23 22:49:44 | DEBUG    | kda_tiny | Truncating passage for 'Riiid/kda-bert-base-uncased-race': 507 -> 429 tokens
+2026-08-23 22:49:44 | INFO     | kda_experiment | [ 3/50] KDA=0.4652 | mean P(R^q=1)=0.391 -> P(R^q+f=1)=0.499 | 0.224s
+2026-08-23 22:49:44 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=3 | with_fact=3 | P(R^q=1)=0.4735 P(R^q+f=1)=0.7538 weight=0.5265 | probs_wof=[0.271, 0.149, 0.1065, 0.4735] probs_wf=[0.1604, 0.0459, 0.0399, 0.7538]
+2026-08-23 22:49:44 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=3 | with_fact=0 | P(R^q=1)=0.3093 P(R^q+f=1)=0.2452 weight=0.6907 | probs_wof=[0.2964, 0.2221, 0.1723, 0.3093] probs_wf=[0.2608, 0.2528, 0.2412, 0.2452]
+2026-08-23 22:49:44 | INFO     | kda_experiment | [ 4/50] KDA=0.3683 | mean P(R^q=1)=0.344 -> P(R^q+f=1)=0.382 | 0.107s
+2026-08-23 22:49:44 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=2 | with_fact=0 | P(R^q=1)=0.4155 P(R^q+f=1)=0.5094 weight=0.5845 | probs_wof=[0.4155, 0.0724, 0.4234, 0.0887] probs_wf=[0.5094, 0.0125, 0.4178, 0.0603]
+2026-08-23 22:49:44 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=0 | with_fact=0 | P(R^q=1)=0.2733 P(R^q+f=1)=0.2548 weight=0.7267 | probs_wof=[0.2733, 0.2414, 0.238, 0.2473] probs_wf=[0.2548, 0.2489, 0.252, 0.2444]
+2026-08-23 22:49:45 | INFO     | kda_experiment | [ 5/50] KDA=0.5624 | mean P(R^q=1)=0.324 -> P(R^q+f=1)=0.598 | 0.064s
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=1 | with_fact=1 | P(R^q=1)=0.3992 P(R^q+f=1)=0.9120 weight=0.6008 | probs_wof=[0.1511, 0.3992, 0.2986, 0.1511] probs_wf=[0.0133, 0.912, 0.0614, 0.0133]
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=2 | with_fact=1 | P(R^q=1)=0.2484 P(R^q+f=1)=0.2830 weight=0.7516 | probs_wof=[0.1647, 0.2484, 0.4222, 0.1647] probs_wf=[0.2391, 0.283, 0.2388, 0.2391]
+2026-08-23 22:49:45 | INFO     | kda_experiment | [ 6/50] KDA=0.6425 | mean P(R^q=1)=0.316 -> P(R^q+f=1)=0.645 | 0.081s
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=3 | with_fact=3 | P(R^q=1)=0.3210 P(R^q+f=1)=0.9962 weight=0.6790 | probs_wof=[0.192, 0.1697, 0.3174, 0.321] probs_wf=[0.001, 0.002, 0.0009, 0.9962]
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=3 | with_fact=3 | P(R^q=1)=0.3114 P(R^q+f=1)=0.2938 weight=0.6886 | probs_wof=[0.2968, 0.1895, 0.2023, 0.3114] probs_wf=[0.2435, 0.2582, 0.2045, 0.2938]
+2026-08-23 22:49:45 | INFO     | kda_experiment | [ 7/50] KDA=0.5915 | mean P(R^q=1)=0.345 -> P(R^q+f=1)=0.606 | 0.050s
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=2 | with_fact=2 | P(R^q=1)=0.3745 P(R^q+f=1)=0.9176 weight=0.6255 | probs_wof=[0.2672, 0.1192, 0.3745, 0.239] probs_wf=[0.0728, 0.0044, 0.9176, 0.0051]
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=2 | with_fact=2 | P(R^q=1)=0.3156 P(R^q+f=1)=0.2934 weight=0.6844 | probs_wof=[0.2954, 0.1753, 0.3156, 0.2138] probs_wf=[0.2623, 0.2309, 0.2934, 0.2134]
+2026-08-23 22:49:45 | INFO     | kda_experiment | [ 8/50] KDA=0.5970 | mean P(R^q=1)=0.223 -> P(R^q+f=1)=0.612 | 0.088s
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=1 | with_fact=3 | P(R^q=1)=0.2558 P(R^q+f=1)=0.9744 weight=0.7442 | probs_wof=[0.1252, 0.3279, 0.2912, 0.2558] probs_wf=[0.0031, 0.0063, 0.0162, 0.9744]
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=2 | with_fact=2 | P(R^q=1)=0.1897 P(R^q+f=1)=0.2504 weight=0.8103 | probs_wof=[0.2463, 0.2595, 0.3045, 0.1897] probs_wf=[0.2436, 0.2463, 0.2598, 0.2504]
+2026-08-23 22:49:45 | INFO     | kda_experiment | [ 9/50] KDA=0.3501 | mean P(R^q=1)=0.398 -> P(R^q+f=1)=0.375 | 0.035s
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=0 | with_fact=0 | P(R^q=1)=0.5664 P(R^q+f=1)=0.4630 weight=0.4336 | probs_wof=[0.5664, 0.0916, 0.2434, 0.0986] probs_wf=[0.463, 0.1003, 0.2886, 0.148]
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=1 | with_fact=1 | P(R^q=1)=0.2287 P(R^q+f=1)=0.2865 weight=0.7713 | probs_wof=[0.2287, 0.3449, 0.3058, 0.1206] probs_wf=[0.2865, 0.2875, 0.2835, 0.1425]
+2026-08-23 22:49:45 | INFO     | kda_experiment | [10/50] KDA=0.6071 | mean P(R^q=1)=0.273 -> P(R^q+f=1)=0.633 | 0.029s
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=2 | with_fact=0 | P(R^q=1)=0.3265 P(R^q+f=1)=0.9828 weight=0.6735 | probs_wof=[0.3265, 0.1696, 0.3566, 0.1473] probs_wf=[0.9828, 0.0039, 0.0109, 0.0024]
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=2 | with_fact=0 | P(R^q=1)=0.2204 P(R^q+f=1)=0.2826 weight=0.7796 | probs_wof=[0.2204, 0.202, 0.3208, 0.2569] probs_wf=[0.2826, 0.2205, 0.2504, 0.2465]
+2026-08-23 22:49:45 | INFO     | kda_experiment | [11/50] KDA=0.6206 | mean P(R^q=1)=0.190 -> P(R^q+f=1)=0.615 | 0.066s
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=3 | with_fact=0 | P(R^q=1)=0.1766 P(R^q+f=1)=0.9784 weight=0.8234 | probs_wof=[0.1766, 0.1919, 0.1894, 0.4422] probs_wf=[0.9784, 0.0069, 0.01, 0.0047]
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=2 | with_fact=1 | P(R^q=1)=0.2038 P(R^q+f=1)=0.2507 weight=0.7962 | probs_wof=[0.2038, 0.2907, 0.3667, 0.1388] probs_wf=[0.2507, 0.2944, 0.2355, 0.2194]
+2026-08-23 22:49:45 | INFO     | kda_experiment | [12/50] KDA=0.4937 | mean P(R^q=1)=0.283 -> P(R^q+f=1)=0.503 | 0.043s
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=2 | with_fact=3 | P(R^q=1)=0.3133 P(R^q+f=1)=0.7269 weight=0.6867 | probs_wof=[0.1894, 0.1385, 0.3588, 0.3133] probs_wf=[0.0356, 0.0372, 0.2003, 0.7269]
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=2 | with_fact=2 | P(R^q=1)=0.2534 P(R^q+f=1)=0.2793 weight=0.7466 | probs_wof=[0.2169, 0.2141, 0.3156, 0.2534] probs_wf=[0.1975, 0.2288, 0.2944, 0.2793]
+2026-08-23 22:49:45 | INFO     | kda_experiment | [13/50] KDA=0.2242 | mean P(R^q=1)=0.190 -> P(R^q+f=1)=0.224 | 0.103s
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=3 | with_fact=0 | P(R^q=1)=0.1751 P(R^q+f=1)=0.2377 weight=0.8249 | probs_wof=[0.2951, 0.1473, 0.1751, 0.3825] probs_wf=[0.478, 0.0107, 0.2377, 0.2737]
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=0 | with_fact=3 | P(R^q=1)=0.2059 P(R^q+f=1)=0.2102 weight=0.7941 | probs_wof=[0.3179, 0.2519, 0.2059, 0.2243] probs_wf=[0.2428, 0.2536, 0.2102, 0.2934]
+2026-08-23 22:49:45 | INFO     | kda_experiment | [14/50] KDA=0.3905 | mean P(R^q=1)=0.257 -> P(R^q+f=1)=0.392 | 0.035s
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=2 | with_fact=1 | P(R^q=1)=0.2623 P(R^q+f=1)=0.5562 weight=0.7377 | probs_wof=[0.2159, 0.2623, 0.3359, 0.1859] probs_wf=[0.4121, 0.5562, 0.0146, 0.017]
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=3 | with_fact=3 | P(R^q=1)=0.2513 P(R^q+f=1)=0.2272 weight=0.7487 | probs_wof=[0.2854, 0.2513, 0.1428, 0.3205] probs_wf=[0.2802, 0.2272, 0.1511, 0.3415]
+2026-08-23 22:49:45 | INFO     | kda_experiment | [15/50] KDA=0.5242 | mean P(R^q=1)=0.411 -> P(R^q+f=1)=0.609 | 0.045s
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=2 | with_fact=2 | P(R^q=1)=0.5400 P(R^q+f=1)=0.9963 weight=0.4600 | probs_wof=[0.146, 0.1144, 0.54, 0.1996] probs_wf=[0.0009, 0.0008, 0.9963, 0.002]
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=3 | with_fact=3 | P(R^q=1)=0.2826 P(R^q+f=1)=0.2215 weight=0.7174 | probs_wof=[0.1831, 0.2465, 0.2826, 0.2878] probs_wf=[0.2494, 0.2573, 0.2215, 0.2717]
+2026-08-23 22:49:45 | INFO     | kda_experiment | [16/50] KDA=0.5860 | mean P(R^q=1)=0.389 -> P(R^q+f=1)=0.605 | 0.056s
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=3 | with_fact=3 | P(R^q=1)=0.4217 P(R^q+f=1)=0.9485 weight=0.5783 | probs_wof=[0.228, 0.0659, 0.2844, 0.4217] probs_wf=[0.0338, 0.0094, 0.0083, 0.9485]
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=3 | with_fact=2 | P(R^q=1)=0.3561 P(R^q+f=1)=0.2605 weight=0.6439 | probs_wof=[0.2144, 0.1835, 0.246, 0.3561] probs_wf=[0.2466, 0.2171, 0.2758, 0.2605]
+2026-08-23 22:49:45 | INFO     | kda_experiment | [17/50] KDA=0.4914 | mean P(R^q=1)=0.269 -> P(R^q+f=1)=0.477 | 0.066s
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=3 | with_fact=2 | P(R^q=1)=0.2230 P(R^q+f=1)=0.7063 weight=0.7770 | probs_wof=[0.216, 0.2326, 0.223, 0.3285] probs_wf=[0.0399, 0.0411, 0.7063, 0.2127]
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=2 | with_fact=3 | P(R^q=1)=0.3144 P(R^q+f=1)=0.2478 weight=0.6856 | probs_wof=[0.167, 0.2379, 0.3144, 0.2807] probs_wf=[0.2498, 0.2289, 0.2478, 0.2735]
+2026-08-23 22:49:45 | INFO     | kda_experiment | [18/50] KDA=0.3059 | mean P(R^q=1)=0.172 -> P(R^q+f=1)=0.299 | 0.071s
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=0 | with_fact=1 | P(R^q=1)=0.1049 P(R^q+f=1)=0.3837 weight=0.8951 | probs_wof=[0.4575, 0.25, 0.1049, 0.1877] probs_wf=[0.0382, 0.4121, 0.3837, 0.1659]
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=1 | with_fact=0 | P(R^q=1)=0.2388 P(R^q+f=1)=0.2145 weight=0.7612 | probs_wof=[0.2677, 0.3058, 0.2388, 0.1878] probs_wf=[0.2646, 0.259, 0.2145, 0.2619]
+2026-08-23 22:49:45 | INFO     | kda_experiment | [19/50] KDA=0.4965 | mean P(R^q=1)=0.307 -> P(R^q+f=1)=0.512 | 0.089s
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=0 | with_fact=0 | P(R^q=1)=0.3560 P(R^q+f=1)=0.7239 weight=0.6440 | probs_wof=[0.356, 0.2262, 0.1999, 0.2179] probs_wf=[0.7239, 0.0715, 0.0677, 0.1369]
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=1 | with_fact=0 | P(R^q=1)=0.2570 P(R^q+f=1)=0.2995 weight=0.7430 | probs_wof=[0.257, 0.3102, 0.2057, 0.2271] probs_wf=[0.2995, 0.2926, 0.1593, 0.2487]
+2026-08-23 22:49:45 | INFO     | kda_experiment | [20/50] KDA=0.5113 | mean P(R^q=1)=0.292 -> P(R^q+f=1)=0.526 | 0.047s
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=2 | with_fact=1 | P(R^q=1)=0.3318 P(R^q+f=1)=0.7911 weight=0.6682 | probs_wof=[0.1217, 0.3318, 0.3696, 0.177] probs_wf=[0.0215, 0.7911, 0.1128, 0.0746]
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=3 | with_fact=1 | P(R^q=1)=0.2522 P(R^q+f=1)=0.2613 weight=0.7478 | probs_wof=[0.2487, 0.2522, 0.221, 0.278] probs_wf=[0.2573, 0.2613, 0.2383, 0.2431]
+2026-08-23 22:49:45 | INFO     | kda_experiment | [21/50] KDA=0.3956 | mean P(R^q=1)=0.280 -> P(R^q+f=1)=0.409 | 0.035s
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=0 | with_fact=0 | P(R^q=1)=0.3742 P(R^q+f=1)=0.5072 weight=0.6258 | probs_wof=[0.3742, 0.3117, 0.1443, 0.1698] probs_wf=[0.5072, 0.1463, 0.3094, 0.0371]
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=3 | with_fact=0 | P(R^q=1)=0.1864 P(R^q+f=1)=0.3098 weight=0.8136 | probs_wof=[0.1864, 0.2859, 0.2101, 0.3176] probs_wf=[0.3098, 0.2397, 0.2276, 0.223]
+2026-08-23 22:49:45 | INFO     | kda_experiment | [22/50] KDA=0.5036 | mean P(R^q=1)=0.290 -> P(R^q+f=1)=0.525 | 0.040s
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=0 | with_fact=0 | P(R^q=1)=0.3424 P(R^q+f=1)=0.8141 weight=0.6576 | probs_wof=[0.3424, 0.3308, 0.1296, 0.1973] probs_wf=[0.8141, 0.1322, 0.0036, 0.0502]
+2026-08-23 22:49:45 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=1 | with_fact=2 | P(R^q=1)=0.2380 P(R^q+f=1)=0.2358 weight=0.7620 | probs_wof=[0.238, 0.2603, 0.2548, 0.247] probs_wf=[0.2358, 0.2514, 0.2659, 0.2469]
+2026-08-23 22:49:46 | INFO     | kda_experiment | [23/50] KDA=0.5807 | mean P(R^q=1)=0.218 -> P(R^q+f=1)=0.597 | 0.033s
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=0 | with_fact=2 | P(R^q=1)=0.2556 P(R^q+f=1)=0.9470 weight=0.7444 | probs_wof=[0.4196, 0.2689, 0.2556, 0.0559] probs_wf=[0.0233, 0.025, 0.947, 0.0047]
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=3 | with_fact=3 | P(R^q=1)=0.1812 P(R^q+f=1)=0.2477 weight=0.8188 | probs_wof=[0.2535, 0.2713, 0.1812, 0.294] probs_wf=[0.2356, 0.2534, 0.2477, 0.2633]
+2026-08-23 22:49:46 | INFO     | kda_experiment | [24/50] KDA=0.2266 | mean P(R^q=1)=0.397 -> P(R^q+f=1)=0.227 | 0.058s
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=3 | with_fact=3 | P(R^q=1)=0.3900 P(R^q+f=1)=0.2090 weight=0.6100 | probs_wof=[0.0459, 0.1706, 0.39, 0.3935] probs_wf=[0.0004, 0.007, 0.209, 0.7836]
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=2 | with_fact=3 | P(R^q=1)=0.4035 P(R^q+f=1)=0.2446 weight=0.5965 | probs_wof=[0.1884, 0.1673, 0.4035, 0.2408] probs_wf=[0.2449, 0.2459, 0.2446, 0.2647]
+2026-08-23 22:49:46 | INFO     | kda_experiment | [25/50] KDA=0.5214 | mean P(R^q=1)=0.259 -> P(R^q+f=1)=0.511 | 0.032s
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=0 | with_fact=3 | P(R^q=1)=0.2281 P(R^q+f=1)=0.7601 weight=0.7719 | probs_wof=[0.351, 0.2813, 0.1396, 0.2281] probs_wf=[0.2008, 0.0315, 0.0075, 0.7601]
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=0 | with_fact=0 | P(R^q=1)=0.2908 P(R^q+f=1)=0.2616 weight=0.7092 | probs_wof=[0.3068, 0.2057, 0.1967, 0.2908] probs_wf=[0.3126, 0.2423, 0.1835, 0.2616]
+2026-08-23 22:49:46 | INFO     | kda_experiment | [26/50] KDA=0.2784 | mean P(R^q=1)=0.275 -> P(R^q+f=1)=0.278 | 0.030s
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=0 | with_fact=0 | P(R^q=1)=0.2598 P(R^q+f=1)=0.2858 weight=0.7402 | probs_wof=[0.3099, 0.2598, 0.2376, 0.1927] probs_wf=[0.3307, 0.2858, 0.2071, 0.1764]
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=3 | with_fact=1 | P(R^q=1)=0.2899 P(R^q+f=1)=0.2707 weight=0.7101 | probs_wof=[0.1832, 0.2899, 0.211, 0.316] probs_wf=[0.2271, 0.2707, 0.2481, 0.2541]
+2026-08-23 22:49:46 | INFO     | kda_experiment | [27/50] KDA=0.5938 | mean P(R^q=1)=0.200 -> P(R^q+f=1)=0.600 | 0.036s
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=3 | with_fact=0 | P(R^q=1)=0.2179 P(R^q+f=1)=0.8946 weight=0.7821 | probs_wof=[0.2179, 0.2079, 0.2349, 0.3393] probs_wf=[0.8946, 0.0149, 0.0281, 0.0624]
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=3 | with_fact=0 | P(R^q=1)=0.1817 P(R^q+f=1)=0.3063 weight=0.8183 | probs_wof=[0.1817, 0.2672, 0.2199, 0.3311] probs_wf=[0.3063, 0.1727, 0.2475, 0.2736]
+2026-08-23 22:49:46 | INFO     | kda_experiment | [28/50] KDA=0.4476 | mean P(R^q=1)=0.350 -> P(R^q+f=1)=0.466 | 0.096s
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=1 | with_fact=1 | P(R^q=1)=0.4052 P(R^q+f=1)=0.6772 weight=0.5948 | probs_wof=[0.1934, 0.4052, 0.2406, 0.1608] probs_wf=[0.0441, 0.6772, 0.2232, 0.0555]
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=1 | with_fact=2 | P(R^q=1)=0.2949 P(R^q+f=1)=0.2539 weight=0.7051 | probs_wof=[0.258, 0.2949, 0.2643, 0.1829] probs_wf=[0.2232, 0.2539, 0.3211, 0.2017]
+2026-08-23 22:49:46 | INFO     | kda_experiment | [29/50] KDA=0.2267 | mean P(R^q=1)=0.174 -> P(R^q+f=1)=0.227 | 0.056s
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=0 | with_fact=0 | P(R^q=1)=0.1963 P(R^q+f=1)=0.2288 weight=0.8037 | probs_wof=[0.4622, 0.1189, 0.2225, 0.1963] probs_wf=[0.595, 0.0395, 0.1367, 0.2288]
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=1 | with_fact=1 | P(R^q=1)=0.1526 P(R^q+f=1)=0.2247 weight=0.8474 | probs_wof=[0.1298, 0.4612, 0.2564, 0.1526] probs_wf=[0.2236, 0.2899, 0.2618, 0.2247]
+2026-08-23 22:49:46 | INFO     | kda_experiment | [30/50] KDA=0.6085 | mean P(R^q=1)=0.171 -> P(R^q+f=1)=0.594 | 0.051s
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=3 | with_fact=2 | P(R^q=1)=0.1372 P(R^q+f=1)=0.9528 weight=0.8628 | probs_wof=[0.1915, 0.2969, 0.1372, 0.3744] probs_wf=[0.0096, 0.0229, 0.9528, 0.0147]
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=3 | with_fact=3 | P(R^q=1)=0.2050 P(R^q+f=1)=0.2348 weight=0.7950 | probs_wof=[0.2473, 0.2026, 0.205, 0.3451] probs_wf=[0.2252, 0.2395, 0.2348, 0.3005]
+2026-08-23 22:49:46 | INFO     | kda_experiment | [31/50] KDA=0.4984 | mean P(R^q=1)=0.261 -> P(R^q+f=1)=0.518 | 0.049s
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=2 | with_fact=2 | P(R^q=1)=0.3133 P(R^q+f=1)=0.7940 weight=0.6867 | probs_wof=[0.1915, 0.2365, 0.3133, 0.2588] probs_wf=[0.0491, 0.072, 0.794, 0.085]
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=1 | with_fact=1 | P(R^q=1)=0.2086 P(R^q+f=1)=0.2419 weight=0.7914 | probs_wof=[0.1847, 0.4091, 0.2086, 0.1976] probs_wf=[0.2281, 0.3372, 0.2419, 0.1929]
+2026-08-23 22:49:46 | INFO     | kda_experiment | [32/50] KDA=0.5856 | mean P(R^q=1)=0.203 -> P(R^q+f=1)=0.576 | 0.025s
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=2 | with_fact=3 | P(R^q=1)=0.1803 P(R^q+f=1)=0.9132 weight=0.8197 | probs_wof=[0.0751, 0.2039, 0.5406, 0.1803] probs_wf=[0.0048, 0.0564, 0.0256, 0.9132]
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=2 | with_fact=2 | P(R^q=1)=0.2250 P(R^q+f=1)=0.2391 weight=0.7750 | probs_wof=[0.2411, 0.2349, 0.299, 0.225] probs_wf=[0.2504, 0.2383, 0.2723, 0.2391]
+2026-08-23 22:49:46 | INFO     | kda_experiment | [33/50] KDA=0.5624 | mean P(R^q=1)=0.222 -> P(R^q+f=1)=0.571 | 0.042s
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=3 | with_fact=1 | P(R^q=1)=0.2445 P(R^q+f=1)=0.8811 weight=0.7555 | probs_wof=[0.1689, 0.2445, 0.2503, 0.3362] probs_wf=[0.008, 0.8811, 0.0164, 0.0944]
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=0 | with_fact=1 | P(R^q=1)=0.1988 P(R^q+f=1)=0.2618 weight=0.8012 | probs_wof=[0.2859, 0.1988, 0.2808, 0.2345] probs_wf=[0.2524, 0.2618, 0.2348, 0.251]
+2026-08-23 22:49:46 | INFO     | kda_experiment | [34/50] KDA=0.6112 | mean P(R^q=1)=0.247 -> P(R^q+f=1)=0.602 | 0.040s
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=2 | with_fact=1 | P(R^q=1)=0.2253 P(R^q+f=1)=0.9261 weight=0.7747 | probs_wof=[0.1404, 0.2253, 0.5475, 0.0868] probs_wf=[0.0083, 0.9261, 0.0617, 0.0039]
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=2 | with_fact=2 | P(R^q=1)=0.2685 P(R^q+f=1)=0.2778 weight=0.7315 | probs_wof=[0.1578, 0.2685, 0.3848, 0.1889] probs_wf=[0.1961, 0.2778, 0.3155, 0.2106]
+2026-08-23 22:49:46 | INFO     | kda_experiment | [35/50] KDA=0.4506 | mean P(R^q=1)=0.153 -> P(R^q+f=1)=0.425 | 0.058s
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=0 | with_fact=1 | P(R^q=1)=0.0589 P(R^q+f=1)=0.6532 weight=0.9411 | probs_wof=[0.508, 0.0589, 0.2108, 0.2223] probs_wf=[0.1545, 0.6532, 0.0061, 0.1863]
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=2 | with_fact=2 | P(R^q=1)=0.2475 P(R^q+f=1)=0.1973 weight=0.7525 | probs_wof=[0.1694, 0.2475, 0.3358, 0.2473] probs_wf=[0.2722, 0.1973, 0.2793, 0.2512]
+2026-08-23 22:49:46 | INFO     | kda_experiment | [36/50] KDA=0.4947 | mean P(R^q=1)=0.503 -> P(R^q+f=1)=0.522 | 0.150s
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=3 | with_fact=3 | P(R^q=1)=0.5757 P(R^q+f=1)=0.7112 weight=0.4243 | probs_wof=[0.0649, 0.3007, 0.0587, 0.5757] probs_wf=[0.135, 0.1154, 0.0384, 0.7112]
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=3 | with_fact=1 | P(R^q=1)=0.4304 P(R^q+f=1)=0.3335 weight=0.5696 | probs_wof=[0.0999, 0.3432, 0.1265, 0.4304] probs_wf=[0.162, 0.3402, 0.1642, 0.3335]
+2026-08-23 22:49:46 | INFO     | kda_experiment | [37/50] KDA=0.5061 | mean P(R^q=1)=0.503 -> P(R^q+f=1)=0.632 | 0.060s
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=2 | with_fact=2 | P(R^q=1)=0.6826 P(R^q+f=1)=0.9794 weight=0.3174 | probs_wof=[0.1221, 0.1572, 0.6826, 0.0382] probs_wf=[0.008, 0.0065, 0.9794, 0.0061]
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=2 | with_fact=2 | P(R^q=1)=0.3226 P(R^q+f=1)=0.2843 weight=0.6774 | probs_wof=[0.1779, 0.2116, 0.3226, 0.2878] probs_wf=[0.2196, 0.2464, 0.2843, 0.2498]
+2026-08-23 22:49:46 | INFO     | kda_experiment | [38/50] KDA=0.2577 | mean P(R^q=1)=0.201 -> P(R^q+f=1)=0.257 | 0.126s
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=2 | with_fact=3 | P(R^q=1)=0.1776 P(R^q+f=1)=0.2685 weight=0.8224 | probs_wof=[0.297, 0.1776, 0.3188, 0.2067] probs_wf=[0.2999, 0.2685, 0.0575, 0.374]
+2026-08-23 22:49:46 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=0 | with_fact=2 | P(R^q=1)=0.2234 P(R^q+f=1)=0.2462 weight=0.7766 | probs_wof=[0.2805, 0.2234, 0.2657, 0.2304] probs_wf=[0.2508, 0.2462, 0.2602, 0.2428]
+2026-08-23 22:49:47 | INFO     | kda_experiment | [39/50] KDA=0.5041 | mean P(R^q=1)=0.283 -> P(R^q+f=1)=0.487 | 0.149s
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=1 | with_fact=3 | P(R^q=1)=0.2281 P(R^q+f=1)=0.7067 weight=0.7719 | probs_wof=[0.2463, 0.3075, 0.218, 0.2281] probs_wf=[0.1013, 0.162, 0.03, 0.7067]
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=3 | with_fact=3 | P(R^q=1)=0.3372 P(R^q+f=1)=0.2682 weight=0.6628 | probs_wof=[0.1985, 0.2413, 0.223, 0.3372] probs_wf=[0.2488, 0.2542, 0.2287, 0.2682]
+2026-08-23 22:49:47 | INFO     | kda_experiment | [40/50] KDA=0.5903 | mean P(R^q=1)=0.247 -> P(R^q+f=1)=0.599 | 0.069s
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=1 | with_fact=3 | P(R^q=1)=0.2661 P(R^q+f=1)=0.9280 weight=0.7339 | probs_wof=[0.1799, 0.3615, 0.1925, 0.2661] probs_wf=[0.0028, 0.0639, 0.0053, 0.928]
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=2 | with_fact=1 | P(R^q=1)=0.2275 P(R^q+f=1)=0.2695 weight=0.7725 | probs_wof=[0.1881, 0.2833, 0.3011, 0.2275] probs_wf=[0.2326, 0.2704, 0.2275, 0.2695]
+2026-08-23 22:49:47 | INFO     | kda_experiment | [41/50] KDA=0.6246 | mean P(R^q=1)=0.215 -> P(R^q+f=1)=0.612 | 0.057s
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=1 | with_fact=3 | P(R^q=1)=0.1840 P(R^q+f=1)=0.9377 weight=0.8160 | probs_wof=[0.1455, 0.4845, 0.186, 0.184] probs_wf=[0.0061, 0.0457, 0.0105, 0.9377]
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=0 | with_fact=3 | P(R^q=1)=0.2462 P(R^q+f=1)=0.2856 weight=0.7538 | probs_wof=[0.2895, 0.1774, 0.2868, 0.2462] probs_wf=[0.2089, 0.2599, 0.2456, 0.2856]
+2026-08-23 22:49:47 | INFO     | kda_experiment | [42/50] KDA=0.3972 | mean P(R^q=1)=0.275 -> P(R^q+f=1)=0.396 | 0.133s
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=2 | with_fact=0 | P(R^q=1)=0.2715 P(R^q+f=1)=0.5447 weight=0.7285 | probs_wof=[0.2715, 0.2346, 0.3549, 0.1389] probs_wf=[0.5447, 0.1625, 0.0599, 0.2329]
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=0 | with_fact=1 | P(R^q=1)=0.2789 P(R^q+f=1)=0.2482 weight=0.7211 | probs_wof=[0.2789, 0.2538, 0.2508, 0.2165] probs_wf=[0.2482, 0.2667, 0.2437, 0.2415]
+2026-08-23 22:49:47 | INFO     | kda_experiment | [43/50] KDA=0.6412 | mean P(R^q=1)=0.298 -> P(R^q+f=1)=0.615 | 0.061s
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=2 | with_fact=0 | P(R^q=1)=0.2407 P(R^q+f=1)=0.9377 weight=0.7593 | probs_wof=[0.2407, 0.2069, 0.3633, 0.1891] probs_wf=[0.9377, 0.0081, 0.0323, 0.0218]
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=0 | with_fact=0 | P(R^q=1)=0.3563 P(R^q+f=1)=0.2915 weight=0.6437 | probs_wof=[0.3563, 0.2507, 0.233, 0.1599] probs_wf=[0.2915, 0.2627, 0.2545, 0.1913]
+2026-08-23 22:49:47 | INFO     | kda_experiment | [44/50] KDA=0.2697 | mean P(R^q=1)=0.256 -> P(R^q+f=1)=0.270 | 0.060s
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=0 | with_fact=0 | P(R^q=1)=0.2592 P(R^q+f=1)=0.3000 weight=0.7408 | probs_wof=[0.3688, 0.2592, 0.1785, 0.1935] probs_wf=[0.5469, 0.3, 0.0519, 0.1012]
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=0 | with_fact=2 | P(R^q=1)=0.2530 P(R^q+f=1)=0.2396 weight=0.7470 | probs_wof=[0.2963, 0.253, 0.2109, 0.2398] probs_wf=[0.2398, 0.2396, 0.2715, 0.2491]
+2026-08-23 22:49:47 | INFO     | kda_experiment | [45/50] KDA=0.5182 | mean P(R^q=1)=0.319 -> P(R^q+f=1)=0.544 | 0.052s
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=0 | with_fact=0 | P(R^q=1)=0.3888 P(R^q+f=1)=0.8013 weight=0.6112 | probs_wof=[0.3888, 0.2249, 0.2558, 0.1304] probs_wf=[0.8013, 0.0829, 0.0799, 0.0359]
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=1 | with_fact=0 | P(R^q=1)=0.2496 P(R^q+f=1)=0.2876 weight=0.7504 | probs_wof=[0.2496, 0.2635, 0.2567, 0.2302] probs_wf=[0.2876, 0.2199, 0.2302, 0.2623]
+2026-08-23 22:49:47 | INFO     | kda_experiment | [46/50] KDA=0.7073 | mean P(R^q=1)=0.550 -> P(R^q+f=1)=0.764 | 0.046s
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=0 | with_fact=0 | P(R^q=1)=0.6658 P(R^q+f=1)=0.9837 weight=0.3342 | probs_wof=[0.6658, 0.071, 0.1546, 0.1087] probs_wf=[0.9837, 0.0044, 0.0039, 0.008]
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=0 | with_fact=0 | P(R^q=1)=0.4348 P(R^q+f=1)=0.5438 weight=0.5652 | probs_wof=[0.4348, 0.1347, 0.1504, 0.2801] probs_wf=[0.5438, 0.1271, 0.1484, 0.1808]
+2026-08-23 22:49:47 | INFO     | kda_experiment | [47/50] KDA=0.5086 | mean P(R^q=1)=0.348 -> P(R^q+f=1)=0.511 | 0.035s
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=3 | with_fact=3 | P(R^q=1)=0.3558 P(R^q+f=1)=0.7019 weight=0.6442 | probs_wof=[0.2805, 0.2632, 0.1006, 0.3558] probs_wf=[0.0893, 0.189, 0.0198, 0.7019]
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=3 | with_fact=3 | P(R^q=1)=0.3403 P(R^q+f=1)=0.3199 weight=0.6597 | probs_wof=[0.204, 0.2936, 0.1621, 0.3403] probs_wf=[0.2931, 0.3089, 0.0781, 0.3199]
+2026-08-23 22:49:47 | INFO     | kda_experiment | [48/50] KDA=0.6393 | mean P(R^q=1)=0.374 -> P(R^q+f=1)=0.685 | 0.036s
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=3 | with_fact=3 | P(R^q=1)=0.4689 P(R^q+f=1)=0.9895 weight=0.5311 | probs_wof=[0.1261, 0.1568, 0.2483, 0.4689] probs_wf=[0.0028, 0.0023, 0.0053, 0.9895]
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=0 | with_fact=3 | P(R^q=1)=0.2797 P(R^q+f=1)=0.3811 weight=0.7203 | probs_wof=[0.2889, 0.2217, 0.2097, 0.2797] probs_wf=[0.2763, 0.1654, 0.1772, 0.3811]
+2026-08-23 22:49:47 | INFO     | kda_experiment | [49/50] KDA=0.5213 | mean P(R^q=1)=0.315 -> P(R^q+f=1)=0.564 | 0.030s
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=1 | with_fact=1 | P(R^q=1)=0.4116 P(R^q+f=1)=0.8688 weight=0.5884 | probs_wof=[0.1562, 0.4116, 0.2378, 0.1943] probs_wf=[0.0148, 0.8688, 0.0573, 0.059]
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=0 | with_fact=0 | P(R^q=1)=0.2175 P(R^q+f=1)=0.2599 weight=0.7825 | probs_wof=[0.3057, 0.2175, 0.1841, 0.2927] probs_wf=[0.303, 0.2599, 0.1621, 0.275]
+2026-08-23 22:49:47 | INFO     | kda_experiment | [50/50] KDA=0.3894 | mean P(R^q=1)=0.244 -> P(R^q+f=1)=0.384 | 0.054s
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-distilbert-base-uncased-race | without_fact=1 | with_fact=3 | P(R^q=1)=0.2172 P(R^q+f=1)=0.5405 weight=0.7828 | probs_wof=[0.1338, 0.3369, 0.3121, 0.2172] probs_wf=[0.0066, 0.3839, 0.069, 0.5405]
+2026-08-23 22:49:47 | DEBUG    | kda_experiment |         Riiid/kda-bert-base-uncased-race | without_fact=2 | with_fact=2 | P(R^q=1)=0.2714 P(R^q+f=1)=0.2271 weight=0.7286 | probs_wof=[0.187, 0.2664, 0.2752, 0.2714] probs_wf=[0.2525, 0.2471, 0.2733, 0.2271]
+2026-08-23 22:49:47 | INFO     | kda_experiment | 
+2026-08-23 22:49:47 | INFO     | kda_experiment | ==============================================================================
+2026-08-23 22:49:47 | INFO     | kda_experiment | KDA_tiny RESULTS OVER 50 SciQ TEST QUESTIONS
+2026-08-23 22:49:47 | INFO     | kda_experiment | ==============================================================================
+2026-08-23 22:49:47 | INFO     | kda_experiment | Ensemble            : 2 models, 176.4M parameters (cuda)
+2026-08-23 22:49:47 | INFO     | kda_experiment | Mean KDA_tiny       : 0.4937
+2026-08-23 22:49:47 | INFO     | kda_experiment |   median / std      : 0.5100 / 0.1242
+2026-08-23 22:49:47 | INFO     | kda_experiment |   min / max         : 0.2242 / 0.7073
+2026-08-23 22:49:47 | INFO     | kda_experiment | Zero-denominator    : 0 question(s)
+2026-08-23 22:49:47 | INFO     | kda_experiment | 
+2026-08-23 22:49:47 | INFO     | kda_experiment | Accuracy per model:
+2026-08-23 22:49:47 | INFO     | kda_experiment |   model                                            Acc_wof     Acc_wf  delta_Acc
+2026-08-23 22:49:47 | INFO     | kda_experiment |   Riiid/kda-distilbert-base-uncased-race            40.00%     86.00%    +46.00%
+2026-08-23 22:49:47 | INFO     | kda_experiment |   Riiid/kda-bert-base-uncased-race                  32.00%     42.00%    +10.00%
+2026-08-23 22:49:47 | INFO     | kda_experiment |   ENSEMBLE AVERAGE                                  36.00%     64.00%    +28.00%
+2026-08-23 22:49:47 | INFO     | kda_experiment |   pooled probability vote                           44.00%     86.00%    +42.00%
+2026-08-23 22:49:47 | INFO     | kda_experiment | 
+2026-08-23 22:49:47 | INFO     | kda_experiment | Mean P(R^q=1) / P(R^q+f=1) : 0.2947 / 0.5068
+2026-08-23 22:49:47 | INFO     | kda_experiment | Scoring time        : 3.31s (0.066s per question)
+2026-08-23 22:49:47 | INFO     | kda_experiment | Total runtime       : 9.39s
+2026-08-23 22:49:47 | INFO     | kda_experiment | 
+2026-08-23 22:49:47 | INFO     | kda_experiment | TOP 3 QUESTIONS BY HIGHEST KDA
+2026-08-23 22:49:47 | INFO     | kda_experiment | ==============================================================================
+2026-08-23 22:49:47 | INFO     | kda_experiment | 
+2026-08-23 22:49:47 | INFO     | kda_experiment | [1] id=45 (SciQ #108)  KDA_tiny = 0.7073
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Question : What is the adaptation that certain animals use to become less visible to predators and prey?
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Options  : ['camouflage', 'skeletons', 'speed', 'insulation'] -> correct: 'camouflage' (idx 0)
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Passage  : Camouflage by the dead leaf mantis makes it less visible to both its predators and prey. If alarmed, it lies motionless on the rainforest floor of Madagascar...
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Model    : Riiid/kda-distilbert-base-uncased-race | P(R^q=1)=0.666 -> P(R^q+f=1)=0.984 | weight=0.334
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Model    : Riiid/kda-bert-base-uncased-race | P(R^q=1)=0.435 -> P(R^q+f=1)=0.544 | weight=0.565
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Reason   : background knowledge only helps partially (mean P(R^q=1)=0.550); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.764); probability gain from the fact = +0.213
+2026-08-23 22:49:47 | INFO     | kda_experiment | 
+2026-08-23 22:49:47 | INFO     | kda_experiment | [2] id=1 (SciQ #130)  KDA_tiny = 0.6439
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Question : The hypothalamus is actually part of the brain, but it also secretes what?
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Options  : ['electrolytes', 'enzymes', 'acids', 'hormones'] -> correct: 'hormones' (idx 3)
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Passage  : The hypothalamus is actually part of the brain, but it also secretes hormones. Some of its hormones go directly to the pituitary gland in the endocrine syste...
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Model    : Riiid/kda-distilbert-base-uncased-race | P(R^q=1)=0.124 -> P(R^q+f=1)=0.882 | weight=0.876
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Model    : Riiid/kda-bert-base-uncased-race | P(R^q=1)=0.390 -> P(R^q+f=1)=0.301 | weight=0.610
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Reason   : students cannot guess it without the fact (mean P(R^q=1)=0.257, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.592); probability gain from the fact = +0.335
+2026-08-23 22:49:47 | INFO     | kda_experiment | 
+2026-08-23 22:49:47 | INFO     | kda_experiment | [3] id=5 (SciQ #282)  KDA_tiny = 0.6425
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Question : What is the official name for the study of life?
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Options  : ['chemistry', 'botany', 'geology', 'biology'] -> correct: 'biology' (idx 3)
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Passage  : The study of biology is the study of life. Concept Biology Advanced is the CK-12 Foundation's most extensive material describing the study of life. Concept B...
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Model    : Riiid/kda-distilbert-base-uncased-race | P(R^q=1)=0.321 -> P(R^q+f=1)=0.996 | weight=0.679
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Model    : Riiid/kda-bert-base-uncased-race | P(R^q=1)=0.311 -> P(R^q+f=1)=0.294 | weight=0.689
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Reason   : students cannot guess it without the fact (mean P(R^q=1)=0.316, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.645); probability gain from the fact = +0.329
+2026-08-23 22:49:47 | INFO     | kda_experiment | 
+2026-08-23 22:49:47 | INFO     | kda_experiment | TOP 3 QUESTIONS BY LOWEST KDA
+2026-08-23 22:49:47 | INFO     | kda_experiment | ==============================================================================
+2026-08-23 22:49:47 | INFO     | kda_experiment | 
+2026-08-23 22:49:47 | INFO     | kda_experiment | [1] id=12 (SciQ #627)  KDA_tiny = 0.2242
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Question : What kind of a process is corrosion?
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Options  : ['oxidation', 'electromagnetic', 'galvanic', 'electrolysis'] -> correct: 'galvanic' (idx 2)
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Passage  : Note the Pattern Corrosion is a galvanic process. Under ambient conditions, the oxidation of most metals is thermodynamically spontaneous, with the notable e...
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Model    : Riiid/kda-distilbert-base-uncased-race | P(R^q=1)=0.175 -> P(R^q+f=1)=0.238 | weight=0.825
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Model    : Riiid/kda-bert-base-uncased-race | P(R^q=1)=0.206 -> P(R^q+f=1)=0.210 | weight=0.794
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Reason   : students cannot guess it without the fact (mean P(R^q=1)=0.190, close to the 0.25 chance level); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.224); the target fact does not match the question or a distractor competes with it; probability gain from the fact = +0.033
+2026-08-23 22:49:47 | INFO     | kda_experiment | 
+2026-08-23 22:49:47 | INFO     | kda_experiment | [2] id=23 (SciQ #27)  KDA_tiny = 0.2266
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Question : Most insects reproduce quickly and through what type of reproduction?
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Options  : ['spores', 'photosynthesis', 'sexual reproduction', 'asexual reproduction'] -> correct: 'sexual reproduction' (idx 2)
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Passage  : Most insects can reproduce very quickly within a short period of time. With a short generation time, they evolve faster and can quickly adjust to environment...
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Model    : Riiid/kda-distilbert-base-uncased-race | P(R^q=1)=0.390 -> P(R^q+f=1)=0.209 | weight=0.610
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Model    : Riiid/kda-bert-base-uncased-race | P(R^q=1)=0.404 -> P(R^q+f=1)=0.245 | weight=0.596
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Reason   : background knowledge only helps partially (mean P(R^q=1)=0.397); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.227); the target fact does not match the question or a distractor competes with it; probability gain from the fact = -0.170
+2026-08-23 22:49:47 | INFO     | kda_experiment | 
+2026-08-23 22:49:47 | INFO     | kda_experiment | [3] id=28 (SciQ #808)  KDA_tiny = 0.2267
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Question : Highly reactive nonmetals, which only accept electrons and do not give them up, make poor what?
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Options  : ['electromagnets', 'alloys', 'insulators', 'electricity conductors'] -> correct: 'electricity conductors' (idx 3)
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Passage  : Some nonmetals, such as bromine, have an outer energy level that is almost full. They "want" to gain electrons so they will have a full outer energy level. A...
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Model    : Riiid/kda-distilbert-base-uncased-race | P(R^q=1)=0.196 -> P(R^q+f=1)=0.229 | weight=0.804
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Model    : Riiid/kda-bert-base-uncased-race | P(R^q=1)=0.153 -> P(R^q+f=1)=0.225 | weight=0.847
+2026-08-23 22:49:47 | INFO     | kda_experiment |     Reason   : students cannot guess it without the fact (mean P(R^q=1)=0.174, close to the 0.25 chance level); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.227); the target fact does not match the question or a distractor competes with it; probability gain from the fact = +0.052
+2026-08-23 22:49:47 | INFO     | kda_experiment | 
+2026-08-23 22:49:47 | INFO     | kda_experiment | Results written to : results.json
+2026-08-23 22:49:47 | INFO     | kda_experiment | Execution log      : experiment.log

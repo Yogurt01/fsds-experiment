@@ -1,0 +1,76 @@
+2026-08-28 18:41:23 | INFO     | categorize_kda | ============================================================================================================
+2026-08-28 18:41:23 | INFO     | categorize_kda | KDA result categorisation
+2026-08-28 18:41:23 | INFO     | categorize_kda | ============================================================================================================
+2026-08-28 18:41:23 | INFO     | categorize_kda | Workspace   : /home/nghben/Downloads/research/fsds/experiment
+2026-08-28 18:41:23 | INFO     | categorize_kda | Results file: /home/nghben/Downloads/research/fsds/experiment/results/results_kda_small_test_full.json
+2026-08-28 18:41:23 | INFO     | categorize_kda | Samples     : 884
+2026-08-28 18:41:23 | INFO     | categorize_kda | Models      : 4
+2026-08-28 18:41:23 | INFO     | categorize_kda |   - google/t5-small-ssm-nq
+2026-08-28 18:41:23 | INFO     | categorize_kda |   - Riiid/kda-albert-xlarge-v2-race
+2026-08-28 18:41:23 | INFO     | categorize_kda |   - Riiid/kda-mpnet-base-race
+2026-08-28 18:41:23 | INFO     | categorize_kda |   - Riiid/kda-scibert-uncased-race
+2026-08-28 18:41:23 | INFO     | categorize_kda | Primary     : Riiid/kda-mpnet-base-race
+2026-08-28 18:41:23 | INFO     | categorize_kda | Output dir  : /home/nghben/Downloads/research/fsds/experiment/results/categorized_results
+2026-08-28 18:41:23 | INFO     | categorize_kda | Categorising google/t5-small-ssm-nq ...
+2026-08-28 18:41:23 | DEBUG    | categorize_kda |   both_correct     Case 2   n= 308 (34.84%)
+2026-08-28 18:41:23 | DEBUG    | categorize_kda |   wrong_to_correct Case 3   n= 249 (28.17%)
+2026-08-28 18:41:23 | DEBUG    | categorize_kda |   both_wrong       Case 1   n= 283 (32.01%)
+2026-08-28 18:41:23 | DEBUG    | categorize_kda |   correct_to_wrong Case 4   n=  44 (4.98%)
+2026-08-28 18:41:23 | INFO     | categorize_kda |   wrote /home/nghben/Downloads/research/fsds/experiment/results/categorized_results/categorized_t5_small_ssm_nq.json
+2026-08-28 18:41:23 | INFO     | categorize_kda | Categorising Riiid/kda-albert-xlarge-v2-race ...
+2026-08-28 18:41:23 | DEBUG    | categorize_kda |   both_correct     Case 2   n= 159 (17.99%)
+2026-08-28 18:41:23 | DEBUG    | categorize_kda |   wrong_to_correct Case 3   n= 393 (44.46%)
+2026-08-28 18:41:23 | DEBUG    | categorize_kda |   both_wrong       Case 1   n= 257 (29.07%)
+2026-08-28 18:41:23 | DEBUG    | categorize_kda |   correct_to_wrong Case 4   n=  75 (8.48%)
+2026-08-28 18:41:23 | INFO     | categorize_kda |   wrote /home/nghben/Downloads/research/fsds/experiment/results/categorized_results/categorized_kda_albert_xlarge_v2_race.json
+2026-08-28 18:41:23 | INFO     | categorize_kda | Categorising Riiid/kda-mpnet-base-race ...
+2026-08-28 18:41:23 | DEBUG    | categorize_kda |   both_correct     Case 2   n= 423 (47.85%)
+2026-08-28 18:41:23 | DEBUG    | categorize_kda |   wrong_to_correct Case 3   n= 370 (41.86%)
+2026-08-28 18:41:23 | DEBUG    | categorize_kda |   both_wrong       Case 1   n=  60 (6.79%)
+2026-08-28 18:41:23 | DEBUG    | categorize_kda |   correct_to_wrong Case 4   n=  31 (3.51%)
+2026-08-28 18:41:23 | INFO     | categorize_kda |   wrote /home/nghben/Downloads/research/fsds/experiment/results/categorized_results/categorized_kda_mpnet_base_race.json
+2026-08-28 18:41:23 | INFO     | categorize_kda | Categorising Riiid/kda-scibert-uncased-race ...
+2026-08-28 18:41:23 | DEBUG    | categorize_kda |   both_correct     Case 2   n= 257 (29.07%)
+2026-08-28 18:41:23 | DEBUG    | categorize_kda |   wrong_to_correct Case 3   n= 342 (38.69%)
+2026-08-28 18:41:23 | DEBUG    | categorize_kda |   both_wrong       Case 1   n= 223 (25.23%)
+2026-08-28 18:41:23 | DEBUG    | categorize_kda |   correct_to_wrong Case 4   n=  62 (7.01%)
+2026-08-28 18:41:23 | INFO     | categorize_kda |   wrote /home/nghben/Downloads/research/fsds/experiment/results/categorized_results/categorized_kda_scibert_uncased_race.json
+2026-08-28 18:41:23 | INFO     | categorize_kda | Categorising ENSEMBLE_pooled_probability_vote ...
+2026-08-28 18:41:23 | DEBUG    | categorize_kda |   both_correct     Case 2   n= 390 (44.12%)
+2026-08-28 18:41:23 | DEBUG    | categorize_kda |   wrong_to_correct Case 3   n= 393 (44.46%)
+2026-08-28 18:41:23 | DEBUG    | categorize_kda |   both_wrong       Case 1   n=  89 (10.07%)
+2026-08-28 18:41:23 | DEBUG    | categorize_kda |   correct_to_wrong Case 4   n=  12 (1.36%)
+2026-08-28 18:41:23 | INFO     | categorize_kda |   wrote /home/nghben/Downloads/research/fsds/experiment/results/categorized_results/categorized_ensemble_pooled.json
+2026-08-28 18:41:23 | INFO     | categorize_kda |   wrote /home/nghben/Downloads/research/fsds/experiment/results/categorized_results/categorized_mpnet_base.json (primary model: Riiid/kda-mpnet-base-race)
+2026-08-28 18:41:23 | INFO     | categorize_kda |   wrote /home/nghben/Downloads/research/fsds/experiment/results/categorized_results/categorized_summary.json
+2026-08-28 18:41:23 | INFO     | categorize_kda | 
+2026-08-28 18:41:23 | INFO     | categorize_kda | ============================================================================================================
+2026-08-28 18:41:23 | INFO     | categorize_kda | CATEGORY DISTRIBUTION (count and %% of all evaluated samples)
+2026-08-28 18:41:23 | INFO     | categorize_kda | ============================================================================================================
+2026-08-28 18:41:23 | INFO     | categorize_kda |   model                                       both_correct  wrong_to_correct    both_wrong  correct_to_wrong
+2026-08-28 18:41:23 | INFO     | categorize_kda |   --------------------------------------------------------------------------------------------------------
+2026-08-28 18:41:23 | INFO     | categorize_kda |   google/t5-small-ssm-nq                      308 ( 34.8%)      249 ( 28.2%)    283 ( 32.0%)       44 (  5.0%)
+2026-08-28 18:41:23 | INFO     | categorize_kda |   Riiid/kda-albert-xlarge-v2-race             159 ( 18.0%)      393 ( 44.5%)    257 ( 29.1%)       75 (  8.5%)
+2026-08-28 18:41:23 | INFO     | categorize_kda |   Riiid/kda-mpnet-base-race                   423 ( 47.9%)      370 ( 41.9%)     60 (  6.8%)       31 (  3.5%)
+2026-08-28 18:41:23 | INFO     | categorize_kda |   Riiid/kda-scibert-uncased-race              257 ( 29.1%)      342 ( 38.7%)    223 ( 25.2%)       62 (  7.0%)
+2026-08-28 18:41:23 | INFO     | categorize_kda |   ENSEMBLE_pooled_probability_vote            390 ( 44.1%)      393 ( 44.5%)     89 ( 10.1%)       12 (  1.4%)
+2026-08-28 18:41:23 | INFO     | categorize_kda |   --------------------------------------------------------------------------------------------------------
+2026-08-28 18:41:23 | INFO     | categorize_kda | 
+2026-08-28 18:41:23 | INFO     | categorize_kda | Accuracy view (derived from the same buckets):
+2026-08-28 18:41:23 | INFO     | categorize_kda |   model                                        Acc_wof      Acc_wf       delta   prior_share
+2026-08-28 18:41:23 | INFO     | categorize_kda |   google/t5-small-ssm-nq                        39.82%      63.01%     +23.19%        55.30%
+2026-08-28 18:41:23 | INFO     | categorize_kda |   Riiid/kda-albert-xlarge-v2-race               26.47%      62.44%     +35.97%        28.80%
+2026-08-28 18:41:23 | INFO     | categorize_kda |   Riiid/kda-mpnet-base-race                     51.36%      89.71%     +38.35%        53.34%
+2026-08-28 18:41:23 | INFO     | categorize_kda |   Riiid/kda-scibert-uncased-race                36.09%      67.76%     +31.67%        42.90%
+2026-08-28 18:41:23 | INFO     | categorize_kda |   ENSEMBLE_pooled_probability_vote              45.48%      88.57%     +43.10%        49.81%
+2026-08-28 18:41:23 | INFO     | categorize_kda | 
+2026-08-28 18:41:23 | INFO     | categorize_kda | prior_share = both_correct / (both_correct + wrong_to_correct): the fraction of with-fact correct answers that Pillar 3 has to test for prior reliance.
+2026-08-28 18:41:23 | INFO     | categorize_kda | 
+2026-08-28 18:41:23 | INFO     | categorize_kda | ============================================================================================================
+2026-08-28 18:41:23 | INFO     | categorize_kda | PILLAR 3 TARGET SET (primary model Riiid/kda-mpnet-base-race)
+2026-08-28 18:41:23 | INFO     | categorize_kda | ============================================================================================================
+2026-08-28 18:41:23 | INFO     | categorize_kda | both_correct (Case 2): 423 samples (47.85%) need counterfactual testing to tell context dependence from prior reliance.
+2026-08-28 18:41:23 | INFO     | categorize_kda | First 25 ids: [1, 2, 3, 5, 6, 7, 8, 10, 12, 15, 19, 20, 21, 23, 25, 26, 28, 29, 36, 40, 42, 43, 48, 58, 63] ...
+2026-08-28 18:41:23 | INFO     | categorize_kda | 
+2026-08-28 18:41:23 | INFO     | categorize_kda | Log file: /home/nghben/Downloads/research/fsds/experiment/results/categorize_kda_results.log
+2026-08-28 18:41:23 | INFO     | categorize_kda | Done.

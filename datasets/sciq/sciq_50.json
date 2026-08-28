@@ -1,0 +1,702 @@
+[
+  {
+    "passage": "Dissociation is the separation of ions that occurs when a solid ionic compound dissolves.",
+    "question": "What is the separation of ions that occurs when a solid ionic compound dissolves?",
+    "options": [
+      "dissociation",
+      "combustion",
+      "inflammation",
+      "decomposition"
+    ],
+    "answer_idx": 0,
+    "correct_answer": "dissociation",
+    "id": 0,
+    "sciq_index": 736
+  },
+  {
+    "passage": "The hypothalamus is actually part of the brain, but it also secretes hormones. Some of its hormones go directly to the pituitary gland in the endocrine system. These hypothalamus hormones tell the pituitary to either secrete or stop secreting its hormones. In this way, the hypothalamus provides a link between the nervous and endocrine systems.",
+    "question": "The hypothalamus is actually part of the brain, but it also secretes what?",
+    "options": [
+      "electrolytes",
+      "enzymes",
+      "acids",
+      "hormones"
+    ],
+    "answer_idx": 3,
+    "correct_answer": "hormones",
+    "id": 1,
+    "sciq_index": 130
+  },
+  {
+    "passage": "Immune System By the year 2050, 25 percent of the population of the United States will be 60 years of age or older. The CDC estimates that 80 percent of those 60 years and older have one or more chronic disease associated with deficiencies of the immune systems. This loss of immune function with age is called immunosenescence. To treat this growing population, medical professionals must better understand the aging process. One major cause of age-related immune deficiencies is thymic involution, the shrinking of the thymus gland that begins at birth, at a rate of about three percent tissue loss per year, and continues until 35–45 years of age, when the rate declines to about one percent loss per year for the rest of one’s life. At that pace, the total loss of thymic epithelial tissue and thymocytes would occur at about 120 years of age. Thus, this age is a theoretical limit to a healthy human lifespan. Thymic involution has been observed in all vertebrate species that have a thymus gland. Animal studies have shown that transplanted thymic grafts between inbred strains of mice involuted according to the age of the donor and not of the recipient, implying the process is genetically programmed. There is evidence that the thymic microenvironment, so vital to the development of naïve T cells, loses thymic epithelial cells according to the decreasing expression of the FOXN1 gene with age. It is also known that thymic involution can be altered by hormone levels. Sex hormones such as estrogen and testosterone enhance involution, and the hormonal changes in pregnant women cause a temporary thymic involution that reverses itself, when the size of the thymus and its hormone levels return to normal, usually after lactation ceases. What does all this tell us? Can we reverse immunosenescence, or at least slow it down? The potential is there for using thymic transplants from younger donors to keep thymic output of naïve T cells high. Gene therapies that target gene expression are also seen as future possibilities. The more we learn through immunosenescence research, the more opportunities there will be to develop therapies, even though these therapies will likely take decades to develop. The ultimate goal is for everyone to live and be healthy longer, but there may be limits to immortality imposed by our genes and hormones.",
+    "question": "By the year 2050, 25 percent of the population of the united states will be 60 years of age or older. the cdc estimates that 80 percent of those 60 years and older have one or more chronic disease associated with deficiencies of this?",
+    "options": [
+      "cardiovascular system",
+      "blood vessels",
+      "respiratory system",
+      "immune system"
+    ],
+    "answer_idx": 3,
+    "correct_answer": "immune system",
+    "id": 2,
+    "sciq_index": 25
+  },
+  {
+    "passage": "Blood Pressure Regulation Cardiac output is the volume of blood pumped by the heart in one minute. It is calculated by multiplying the number of heart contractions that occur per minute (heart rate) times the stroke volume (the volume of blood pumped into the aorta per contraction of the left ventricle). Therefore, cardiac output can be increased by increasing heart rate, as when exercising. However, cardiac output can also be increased by increasing stroke volume, such as if the heart contracts with greater strength. Stroke volume can also be increased by speeding blood circulation through the body so that more blood enters the heart between contractions. During heavy exertion, the blood vessels relax and increase in diameter, offsetting the increased heart rate and ensuring adequate oxygenated blood gets to the muscles. Stress triggers a decrease in the diameter of the blood vessels, consequently increasing blood pressure. These changes can also be caused by nerve signals or hormones, and even standing up or lying down can have a great effect on blood pressure.",
+    "question": "What term, calculated by multiplying heart contractions by stroke volume, means the volume of blood pumped by the heart in one minute?",
+    "options": [
+      "cardiac output",
+      "liver output",
+      "blood output",
+      "respiratory output"
+    ],
+    "answer_idx": 0,
+    "correct_answer": "cardiac output",
+    "id": 3,
+    "sciq_index": 855
+  },
+  {
+    "passage": "The components of a mixture keep their own identity when they combine, so they retain their physical properties. Examples of physical properties include boiling point, ability to dissolve, and particle size. When components of mixtures vary in physical properties such as these, processes such as boiling, dissolving, or filtering can be used to separate them.",
+    "question": "The components of a mixture keep their own identity when they combine, so they retain what type of properties, such as boiling point and ability to dissolve?",
+    "options": [
+      "thermal",
+      "physical",
+      "internal",
+      "thermal"
+    ],
+    "answer_idx": 1,
+    "correct_answer": "physical",
+    "id": 4,
+    "sciq_index": 318
+  },
+  {
+    "passage": "The study of biology is the study of life. Concept Biology Advanced is the CK-12 Foundation's most extensive material describing the study of life. Concept Biology Advanced presents biology as a set of 18 concepts, with each concept centered around a specific category, such as cell biology or plants. Each concept is comprised of a series of lessons, with each lesson focusing on one specific topic. The complete Concept Biology Advanced is comprised of over 550 lessons. This material has been developed to complement the most advanced secondary-level biology course.",
+    "question": "What is the official name for the study of life?",
+    "options": [
+      "chemistry",
+      "botany",
+      "geology",
+      "biology"
+    ],
+    "answer_idx": 3,
+    "correct_answer": "biology",
+    "id": 5,
+    "sciq_index": 282
+  },
+  {
+    "passage": "Cellular respiration, in many ways the opposite of photosynthesis, shows the interdependence of producers and consumers. Combined, the two equations demonstrate how energy flows and the carbon and oxygen cycle between organisms and environment.",
+    "question": "What process, which is in many ways the opposite of photosynthesis, shows the interdependence of producers and consumers?",
+    "options": [
+      "primarily respiration",
+      "osmosis",
+      "cellular respiration",
+      "decomposition"
+    ],
+    "answer_idx": 2,
+    "correct_answer": "cellular respiration",
+    "id": 6,
+    "sciq_index": 259
+  },
+  {
+    "passage": "Starches (a) and cellulose (b) differ in the connection between glucose units and the amount of branching in the molecule. Starches can be coiled or branched, whereas cellulose, the primary structural material of plants, has long, unbranched chains held together by hydrogen bonds. Cellulose is the primary structural material of plants and one of the most abundant organic substances on Earth. Because our enzymes are not able to hydrolyze the bonds between the glucose units in cellulose, we are unable to digest it. A recently marketed product containing a high percentage of cellulose was sold as a dietetic substance for rapid weight loss, but those who consumed it experienced severe intestinal discomfort because the cellulose could not be digested. The product was quickly removed from the market.",
+    "question": "Humans cannot digest what primary structural material of plants, which is one of the most abundant organic substances on earth?",
+    "options": [
+      "zinc",
+      "carbonate",
+      "sulfur",
+      "cellulose"
+    ],
+    "answer_idx": 3,
+    "correct_answer": "cellulose",
+    "id": 7,
+    "sciq_index": 159
+  },
+  {
+    "passage": "stresses that push toward each other, which causes a decrease in the space a rock takes up.",
+    "question": "What separates one river system's basin from another river system's basin?",
+    "options": [
+      "a divide",
+      "a bend",
+      "a divert",
+      "a sink"
+    ],
+    "answer_idx": 0,
+    "correct_answer": "a divide",
+    "id": 8,
+    "sciq_index": 850
+  },
+  {
+    "passage": "Courtesy of the US Geological Survey. Concentric circles on a topographic map indicate a hill . Public Domain.",
+    "question": "What do concentric circles on a topographic map indicate?",
+    "options": [
+      "a hill",
+      "a lake",
+      "a crater",
+      "a forest"
+    ],
+    "answer_idx": 0,
+    "correct_answer": "a hill",
+    "id": 9,
+    "sciq_index": 118
+  },
+  {
+    "passage": "Two plates may slide past each other in opposite directions. This is called a transform plate boundary . The plates meet at a transform fault . As you might imagine, plates do not slide past each other easily. These plate boundaries experience massive earthquakes. The world’s best known transform fault is the San Andreas Fault in California ( Figure below ). At this fault, the Pacific and North American plates grind past each other. Transform plate boundaries are common as offsets along mid-ocean ridges. They are very small compared to transform faults on land.",
+    "question": "What is it called when two plates slide past each other in opposite directions?",
+    "options": [
+      "transform plate boundary",
+      "tectonic movement",
+      "transformation",
+      "plate divergence"
+    ],
+    "answer_idx": 0,
+    "correct_answer": "transform plate boundary",
+    "id": 10,
+    "sciq_index": 782
+  },
+  {
+    "passage": "The branchial arches , a series of arches that support the gills of aquatic amphibians and fishes. They lie close to the body's surface.",
+    "question": "A series of arches that support the gills of aquatic amphibians and fish are known as what?",
+    "options": [
+      "cochlear arches",
+      "scythian arches",
+      "aquatic arches",
+      "branchial arches"
+    ],
+    "answer_idx": 3,
+    "correct_answer": "branchial arches",
+    "id": 11,
+    "sciq_index": 854
+  },
+  {
+    "passage": "Note the Pattern Corrosion is a galvanic process. Under ambient conditions, the oxidation of most metals is thermodynamically spontaneous, with the notable exception of gold and platinum. Hence it is actually somewhat surprising that any metals are useful at all in Earth’s moist, oxygen-rich atmosphere. Some metals, however, are resistant to corrosion for kinetic reasons. For example, aluminum in soft-drink cans and airplanes is protected by a thin coating of metal oxide that forms on the surface of the metal and acts as an impenetrable barrier that prevents further destruction. Aluminum cans also have a thin plastic layer to prevent reaction of the oxide with acid in the soft drink. Chromium, magnesium, and nickel also form protective oxide films. Stainless steels are remarkably resistant to corrosion because they usually contain a significant proportion of chromium, nickel, or both. In contrast to these metals, when iron corrodes, it forms a red-brown hydrated metal oxide (Fe2O3·xH2O), commonly known as rust, that does not provide a tight protective film (Figure 19.17 \"Rust, the Result of Corrosion of.",
+    "question": "What kind of a process is corrosion?",
+    "options": [
+      "oxidation",
+      "electromagnetic",
+      "galvanic",
+      "electrolysis"
+    ],
+    "answer_idx": 2,
+    "correct_answer": "galvanic",
+    "id": 12,
+    "sciq_index": 627
+  },
+  {
+    "passage": "Prefixes are used to indicate the number of atoms of an element that are in the compound.",
+    "question": "What are used to indicate the number of atoms of an element that are in the compound?",
+    "options": [
+      "suffixes",
+      "prefixes",
+      "indices",
+      "digits"
+    ],
+    "answer_idx": 1,
+    "correct_answer": "prefixes",
+    "id": 13,
+    "sciq_index": 103
+  },
+  {
+    "passage": "Chromosomes are coiled structures made of DNA and proteins. Chromosomes are the form of the genetic material of a cell during cell division. It is this coiled structure that ensures proper segregation of the chromosomes during cell division. During other phases of the cell cycle, DNA is not coiled into chromosomes. Instead, it exists as a grainy material called chromatin .",
+    "question": "What are chromosomes made of?",
+    "options": [
+      "amino acids",
+      "muscle tissue",
+      "dna and proteins",
+      "sperm and proteins"
+    ],
+    "answer_idx": 2,
+    "correct_answer": "dna and proteins",
+    "id": 14,
+    "sciq_index": 677
+  },
+  {
+    "passage": "Chelicerae are mostly used for feeding, but in spiders, these are often modified into fangs that inject venom into their prey before feeding (Figure 28.43). Members of this subphylum have an open circulatory system with a heart that pumps blood into the hemocoel. Aquatic species have gills, whereas terrestrial species have either trachea or book lungs for gaseous exchange.",
+    "question": "Chelicerae in spiders are often modified into fangs that perform what function?",
+    "options": [
+      "tearing flesh",
+      "chewing",
+      "courtship display",
+      "inject venom"
+    ],
+    "answer_idx": 3,
+    "correct_answer": "inject venom",
+    "id": 15,
+    "sciq_index": 483
+  },
+  {
+    "passage": "Take-Home Experiment: The Pupil Look at the central transparent area of someone’s eye, the pupil, in normal room light. Estimate the diameter of the pupil. Now turn off the lights and darken the room. After a few minutes turn on the lights and promptly estimate the diameter of the pupil. What happens to the pupil as the eye adjusts to the room light? Explain your observations. The eye can detect an impressive amount of detail, considering how small the image is on the retina. To get some idea of how small the image can be, consider the following example.",
+    "question": "What part of the eye allows light to enter?",
+    "options": [
+      "eyelid",
+      "iris",
+      "pupil",
+      "retina"
+    ],
+    "answer_idx": 2,
+    "correct_answer": "pupil",
+    "id": 16,
+    "sciq_index": 32
+  },
+  {
+    "passage": "Metals represent approximately 25% of the elemental makeup of the Earth's crust. The bulk of these metals, primarily aluminum, iron, calcium, sodium, potassium, and magnesium, are typically found in combined form. The most abundant metal is aluminum, which occurs almost exclusively as the ionic mineral bauxite. The other most common metals, including iron, sodium, potassium, magnesium, and calcium, are also found primarily as the cationic portion of an ionic compound. Very few metals actually occur naturally as pure substances. The ones that do are often referred to as precious or semi-precious metals.",
+    "question": "What is the most abundant metal of the earth's crust?",
+    "options": [
+      "magnetite",
+      "calcium",
+      "aluminum",
+      "copper"
+    ],
+    "answer_idx": 2,
+    "correct_answer": "aluminum",
+    "id": 17,
+    "sciq_index": 30
+  },
+  {
+    "passage": "Positive Feedback Loop A positive feedback loop maintains the direction of the stimulus, possibly accelerating it. Few examples of positive feedback loops exist in animal bodies, but one is found in the cascade of chemical reactions that result in blood clotting, or coagulation. As one clotting factor is activated, it activates the next factor in sequence until a fibrin clot is achieved. The direction is maintained, not changed, so this is positive feedback. Another example of positive feedback is uterine contractions during childbirth, as illustrated in Figure 33.21. The hormone oxytocin, made by the endocrine system, stimulates the contraction of the uterus. This produces pain sensed by the nervous system. Instead of lowering the oxytocin and causing the pain to subside, more oxytocin is produced until the contractions are powerful enough to produce childbirth.",
+    "question": "What is another term for blood clotting?",
+    "options": [
+      "coagulation",
+      "adulation",
+      "oxidation",
+      "differentiation"
+    ],
+    "answer_idx": 0,
+    "correct_answer": "coagulation",
+    "id": 18,
+    "sciq_index": 109
+  },
+  {
+    "passage": "Halogens (Cl, Br, I) have negative oxidation numbers when they form halide compounds. When combined with oxygen, they have positive numbers. In the chlorate ion (ClO 3 - ), the oxidation number of Cl +5, and the oxidation number of O is -2.",
+    "question": "What must be combined with a halogen to give it a positive oxidation number?",
+    "options": [
+      "calcium",
+      "oxygen",
+      "carbon",
+      "nitrogen"
+    ],
+    "answer_idx": 1,
+    "correct_answer": "oxygen",
+    "id": 19,
+    "sciq_index": 253
+  },
+  {
+    "passage": "Visible light consists of a very narrow range of wavelengths that falls between infrared light and ultraviolet light. It is the only light that people can see. Different wavelengths of visible light appear as different colors.",
+    "question": "What is the only light that people can see?",
+    "options": [
+      "visible light",
+      "UV light",
+      "infrared light",
+      "spectrum light"
+    ],
+    "answer_idx": 0,
+    "correct_answer": "visible light",
+    "id": 20,
+    "sciq_index": 270
+  },
+  {
+    "passage": "Bacteria that cause the skin disease impetigo, which causes blisters, can spread when people share towels or clothes. The bacteria can also spread through direct skin contact in sports like wrestling.",
+    "question": "The skin disease impetigo is caused by spread of what type of microorganism?",
+    "options": [
+      "bacteria",
+      "viruses",
+      "tumors",
+      "algae"
+    ],
+    "answer_idx": 0,
+    "correct_answer": "bacteria",
+    "id": 21,
+    "sciq_index": 576
+  },
+  {
+    "passage": "Almost all energy on Earth comes from the Sun. The Sun’s energy heats the planet and the air around it. Sunlight also powers photosynthesis and life on Earth.",
+    "question": "Where does most of the earth's energy come from?",
+    "options": [
+      "cover",
+      "heat",
+      "sun",
+      "fire"
+    ],
+    "answer_idx": 2,
+    "correct_answer": "sun",
+    "id": 22,
+    "sciq_index": 693
+  },
+  {
+    "passage": "Most insects can reproduce very quickly within a short period of time. With a short generation time, they evolve faster and can quickly adjust to environmental changes. Most insects reproduce by sexual reproduction . The female produces eggs, which are fertilized by the male, and then the eggs are usually placed near the required food. In some insects, there is asexual reproduction during which the offspring come from a single parent. In this type of reproduction, the offspring are almost identical to the mother. This is most often seen in aphids and scale insects.",
+    "question": "Most insects reproduce quickly and through what type of reproduction?",
+    "options": [
+      "spores",
+      "photosynthesis",
+      "sexual reproduction",
+      "asexual reproduction"
+    ],
+    "answer_idx": 2,
+    "correct_answer": "sexual reproduction",
+    "id": 23,
+    "sciq_index": 27
+  },
+  {
+    "passage": "Asteroids are small rocky bodies that orbit the Sun.",
+    "question": "The small, rocky bodies that orbit the sun are called what?",
+    "options": [
+      "comets",
+      "meteorites",
+      "fossils",
+      "asteroids"
+    ],
+    "answer_idx": 3,
+    "correct_answer": "asteroids",
+    "id": 24,
+    "sciq_index": 644
+  },
+  {
+    "passage": "The acceleration of the car is in the same direction as the velocity.",
+    "question": "What happens to the pressure when more gas is added to a rigid container?",
+    "options": [
+      "occurs",
+      "increases",
+      "changes",
+      "Higher"
+    ],
+    "answer_idx": 1,
+    "correct_answer": "increases",
+    "id": 25,
+    "sciq_index": 232
+  },
+  {
+    "passage": "The sex of developing crocodilians is determined by the temperature of the eggs during incubation.",
+    "question": "The sex of developing crocodilians is determined by what during incubation?",
+    "options": [
+      "the temperature of the eggs",
+      "the size of the eggs",
+      "the color of the eggs",
+      "the location of the eggs"
+    ],
+    "answer_idx": 0,
+    "correct_answer": "the temperature of the eggs",
+    "id": 26,
+    "sciq_index": 826
+  },
+  {
+    "passage": "Mineral Storage, Energy Storage, and Hematopoiesis On a metabolic level, bone tissue performs several critical functions. For one, the bone matrix acts as a reservoir for a number of minerals important to the functioning of the body, especially calcium, and phosphorus. These minerals, incorporated into bone tissue, can be released back into the bloodstream to maintain levels needed to support physiological processes. Calcium ions, for example, are essential for muscle contractions and controlling the flow of other ions involved in the transmission of nerve impulses. Bone also serves as a site for fat storage and blood cell production. The softer connective tissue that fills the interior of most bone is referred to as bone marrow (Figure 6.5). There are two types of bone marrow: yellow marrow and red marrow. Yellow marrow contains adipose tissue; the triglycerides stored in the adipocytes of the tissue can serve as a source of.",
+    "question": "The softer connective tissue that fills the interior of most bone is referred to as what?",
+    "options": [
+      "solid marrow",
+      "bone marrow",
+      "attached marrow",
+      "liquid marrow"
+    ],
+    "answer_idx": 1,
+    "correct_answer": "bone marrow",
+    "id": 27,
+    "sciq_index": 749
+  },
+  {
+    "passage": "Some nonmetals, such as bromine, have an outer energy level that is almost full. They \"want\" to gain electrons so they will have a full outer energy level. As a result, these nonmetals are very reactive. Because they only accept electrons and do not give them up, they do not conduct electricity.",
+    "question": "Highly reactive nonmetals, which only accept electrons and do not give them up, make poor what?",
+    "options": [
+      "electromagnets",
+      "alloys",
+      "insulators",
+      "electricity conductors"
+    ],
+    "answer_idx": 3,
+    "correct_answer": "electricity conductors",
+    "id": 28,
+    "sciq_index": 808
+  },
+  {
+    "passage": "Another structure that supports the fetus is the amniotic sac. This is a membrane that surrounds and protects the fetus. It contains amniotic fluid, which consists of water and dissolved substances. The fluid allows the fetus to move freely until it grows to fill most of the available space. The fluid also cushions the fetus and helps protect it from injury.",
+    "question": "What type of fluid cushions the fetus and helps protect it from injury?",
+    "options": [
+      "aqueous",
+      "plasmid",
+      "amniotic",
+      "epithelial"
+    ],
+    "answer_idx": 2,
+    "correct_answer": "amniotic",
+    "id": 29,
+    "sciq_index": 480
+  },
+  {
+    "passage": "The force that a magnet exerts on certain materials is called magnetic force . Like electric force, magnetic force is exerted over a distance and includes forces of attraction and repulsion. North and south poles of two magnets attract each other, while two north poles or two south poles repel each other.",
+    "question": "What is the term for the force that a magnet exerts on certain materials?",
+    "options": [
+      "gravitational force",
+      "positive force",
+      "magnetic force",
+      "potential force"
+    ],
+    "answer_idx": 2,
+    "correct_answer": "magnetic force",
+    "id": 30,
+    "sciq_index": 256
+  },
+  {
+    "passage": "Sonar works on the same principle as echolocation.",
+    "question": "What navigation technology works on the same principle as echolocation?",
+    "options": [
+      "topography",
+      "radar",
+      "GPS",
+      "sonar"
+    ],
+    "answer_idx": 3,
+    "correct_answer": "sonar",
+    "id": 31,
+    "sciq_index": 511
+  },
+  {
+    "passage": "When light is refracted, it changes direction as it passes into a new medium and changes speed. The straw in the Figure below looks bent where light travels from water to air. Light travels more quickly in air than in water and changes direction. For a detailed explanation of how this happens, watch the animation at this URL:.",
+    "question": "Light travels more quickly in air than what?",
+    "options": [
+      "metal",
+      "water",
+      "glass",
+      "earth"
+    ],
+    "answer_idx": 1,
+    "correct_answer": "water",
+    "id": 32,
+    "sciq_index": 676
+  },
+  {
+    "passage": "Communities are not usually static. The numbers and types of species that live in them generally change over time. This is called ecological succession . Important cases of succession are primary and secondary succession.",
+    "question": "Ecological succession refers to the change in the numbers and types of species that live in what groups?",
+    "options": [
+      "movements",
+      "communities",
+      "biomes",
+      "colonies"
+    ],
+    "answer_idx": 1,
+    "correct_answer": "communities",
+    "id": 33,
+    "sciq_index": 321
+  },
+  {
+    "passage": "Type 1 diabetes and other autoimmune diseases cannot be prevented. But choosing a healthy lifestyle can help prevent type 2 diabetes. Getting plenty of exercise, avoiding high-fat foods, and staying at a healthy weight can reduce the risk of developing this type of diabetes. This is especially important for people who have family members with the disease.",
+    "question": "What disease is unpreventable in the type one form but may be prevented by diet if it is of the second type?",
+    "options": [
+      "TB",
+      "diabetes",
+      "Cancer",
+      "Obesity"
+    ],
+    "answer_idx": 1,
+    "correct_answer": "diabetes",
+    "id": 34,
+    "sciq_index": 933
+  },
+  {
+    "passage": "Gametogenesis (Spermatogenesis and Oogenesis) Gametogenesis, the production of sperm and eggs, involves the process of meiosis. During meiosis, two nuclear divisions separate the paired chromosomes in the nucleus and then separate the chromatids that were made during an earlier stage of the cell’s life cycle. Meiosis and its associated cell divisions produces haploid cells with half of each pair of chromosomes normally found in diploid cells. The production of sperm is called spermatogenesis and the production of eggs is called oogenesis. Spermatogenesis Spermatogenesis occurs in the wall of the seminiferous tubules, with the most primitive cells at the periphery of the tube and the most mature sperm at the lumen of the tube (Figure 18.14). Immediately under the capsule of the tubule are diploid, undifferentiated cells. These stem cells, each called a spermatogonium (pl. spermatogonia), go through mitosis to produce one cell that remains as a stem cell and a second cell called a primary spermatocyte that will undergo meiosis to produce sperm. The diploid primary spermatocyte goes through meiosis I to produce two haploid cells called secondary spermatocytes. Each secondary spermatocyte divides after meiosis II to produce two cells called spermatids. The spermatids eventually reach the lumen of the tubule and grow a flagellum, becoming sperm cells. Four sperm result from each primary spermatocyte that goes through meiosis.",
+    "question": "Meiosis is part of the process of gametogenesis, which is the production of what?",
+    "options": [
+      "sperm only",
+      "chromosomes",
+      "egg only",
+      "sperm and eggs"
+    ],
+    "answer_idx": 3,
+    "correct_answer": "sperm and eggs",
+    "id": 35,
+    "sciq_index": 6
+  },
+  {
+    "passage": "Temperature and precipitation determine what types of plants can grow in an area. Animals and other living things depend on plants. So each climate is associated with certain types of living things. A major type of climate and its living things make up a biome . As you read about the major climate types below, find them on the map above ( Figure above ).",
+    "question": "Temperature and precipitation determine the types of what that can grow in an area, in turn affecting the animals that live there?",
+    "options": [
+      "roots",
+      "building",
+      "plants",
+      "birds"
+    ],
+    "answer_idx": 2,
+    "correct_answer": "plants",
+    "id": 36,
+    "sciq_index": 873
+  },
+  {
+    "passage": "Like proteins, nucleic acids have a primary structure that is defined as the sequence of their nucleotides. Unlike proteins, which have 20 different kinds of amino acids, there are only 4 different kinds of nucleotides in nucleic acids. For amino acid sequences in proteins, the convention is to write the amino acids in order starting with the Nterminal amino acid. In writing nucleotide sequences for nucleic acids, the convention is to write the nucleotides (usually using the one-letter abbreviations for the bases, shown in Figure 19.5 \"Structure of a Segment of DNA\") starting with the nucleotide having a free phosphate group, which is known as the 5′ end, and indicate the nucleotides in order. For DNA, a lowercase d is often written in front of the sequence to indicate that the monomers are deoxyribonucleotides. The final nucleotide has a free OH group on the 3′ carbon atom and is called the 3′ end. The sequence of nucleotides in the DNA segment shown in Figure 19.5 \"Structure of a Segment of DNA\" would be written 5′-dGdT-dA-dC-3′, which is often further abbreviated to dGTAC or just GTAC.",
+    "question": "What is defined by its sequence of nucleotides?",
+    "options": [
+      "amino acids",
+      "nucleic acids",
+      "structural acids",
+      "proteins acids"
+    ],
+    "answer_idx": 1,
+    "correct_answer": "nucleic acids",
+    "id": 37,
+    "sciq_index": 930
+  },
+  {
+    "passage": "In the jellyfish, a mouth opening is present on the underside of the animal, surrounded by tentacles bearing nematocysts. Scyphozoans live most of their life cycle as free-swimming, solitary carnivores. The mouth leads to the gastrovascular cavity, which may be sectioned into four interconnected sacs, called diverticuli. In some species, the digestive system may be further branched into radial canals. Like the septa in anthozoans, the branched gastrovascular cells serve two functions: to increase the surface area for nutrient absorption and diffusion; thus, more cells are in direct contact with the nutrients in the gastrovascular cavity. In scyphozoans, nerve cells are scattered all over the body. Neurons may even be present in clusters called rhopalia. These animals possess a ring of muscles lining the dome of the body, which provides the contractile force required to swim through water. Scyphozoans are dioecious animals, that is, the sexes are separate. The gonads are formed from the gastrodermis and gametes are expelled through the mouth. Planula larvae are formed by external fertilization; they settle on a substratum in a polypoid form known as scyphistoma. These forms may produce additional polyps by budding or may transform into the medusoid form. The life cycle (Figure 28.10) of these animals can be described as polymorphic, because they exhibit both a medusal and polypoid body plan at some point in their life cycle.",
+    "question": "Where on a jellyfish is the mouth opening located?",
+    "options": [
+      "left side",
+      "right side",
+      "top",
+      "underside"
+    ],
+    "answer_idx": 3,
+    "correct_answer": "underside",
+    "id": 38,
+    "sciq_index": 186
+  },
+  {
+    "passage": "Scientists discovered another way to tell the approximate age of seafloor rocks. The rocks at the mid-ocean ridge crest are nearly sediment free. The crust is also very thin there. With distance from the ridge crest, the sediments and crust get thicker. This also supports the idea that the youngest rocks are on the ridge axis, and that the rocks get older with distance away from the ridge ( Figure below ). This is because the crust is new at the ridge, and so it is thin and has no sediment. The crust gets older away from the ridge crest. It has cooled and has more sediment.",
+    "question": "The rocks athe mid-ocean ridge are nearly free of what?",
+    "options": [
+      "metals",
+      "minerals",
+      "scratches",
+      "sediment"
+    ],
+    "answer_idx": 3,
+    "correct_answer": "sediment",
+    "id": 39,
+    "sciq_index": 804
+  },
+  {
+    "passage": "Segmented bodies with an exoskeleton . The outer layer of the exoskeleton is called the cuticle . It is made up of two layers. The outer layer, or exocuticle , is thin, waxy, and water-resistant. The inner layer is much thicker. The exocuticle is extremely thin in many soft-bodied insects, such as caterpillars.",
+    "question": "What is the outer layer of the exoskeleton called?",
+    "options": [
+      "bristle",
+      "epithelium",
+      "epidermis",
+      "cuticle"
+    ],
+    "answer_idx": 3,
+    "correct_answer": "cuticle",
+    "id": 40,
+    "sciq_index": 394
+  },
+  {
+    "passage": "Digestive Processes The processes of digestion include six activities: ingestion, propulsion, mechanical or physical digestion, chemical digestion, absorption, and defecation. The first of these processes, ingestion, refers to the entry of food into the alimentary canal through the mouth. There, the food is chewed and mixed with saliva, which contains enzymes that begin breaking down the carbohydrates in the food plus some lipid digestion via lingual lipase. Chewing increases the surface area of the food and allows an appropriately sized bolus to be produced. Food leaves the mouth when the tongue and pharyngeal muscles propel it into the esophagus. This act of swallowing, the last voluntary act until defecation, is an example of propulsion, which refers to the movement of food through the digestive tract. It includes both the voluntary process of swallowing and the involuntary process of peristalsis. Peristalsis consists of sequential, alternating waves of contraction and relaxation of alimentary wall smooth muscles, which act to propel food along (Figure 23.5). These waves also play a role in mixing food with digestive juices. Peristalsis is so powerful that foods and liquids you swallow enter your stomach even if you are standing on your head.",
+    "question": "Ingestion and propulsion are the first two steps in which process that describes how humans process and consume food?",
+    "options": [
+      "digestion",
+      "respiration",
+      "regeneration",
+      "absorption"
+    ],
+    "answer_idx": 0,
+    "correct_answer": "digestion",
+    "id": 41,
+    "sciq_index": 181
+  },
+  {
+    "passage": "The stored chemical energy of trees and other plants is called biomass energy. When plant materials are burned, they produce thermal energy that can be used for heating, cooking, or generating electricity. Biomass—especially wood—is an important energy source in countries where most people can’t afford fossil fuels. Some plants can also be used to make ethanol, a fuel that is added to gasoline. Ethanol produces less pollution than gasoline, but large areas of land are needed to grow the plants needed to make it.",
+    "question": "The stored chemical energy of trees and other plants is called what?",
+    "options": [
+      "biomass energy",
+      "biocomposte energy",
+      "byproduct energy",
+      "decomposition energy"
+    ],
+    "answer_idx": 0,
+    "correct_answer": "biomass energy",
+    "id": 42,
+    "sciq_index": 250
+  },
+  {
+    "passage": "Like the animals pictured above, all animals have behaviors that help them achieve these basic ends. Behaviors that help animals reproduce or survive increase their fitness. Animals with greater fitness have a better chance of passing their genes to the next generation. If genes control behaviors that increase fitness, the behaviors become more common in the species. In other words, they evolve by natural selection.",
+    "question": "Animals with better fitness have a better chance of passing their genes onto the next generation, this process is known as?",
+    "options": [
+      "fitness selection",
+      "natural selection",
+      "natural evolution",
+      "survival selection"
+    ],
+    "answer_idx": 1,
+    "correct_answer": "natural selection",
+    "id": 43,
+    "sciq_index": 877
+  },
+  {
+    "passage": "Isotopes can be very useful in scans to locate cancer cells. This patient has multiple tumors that have spread (metastasized) from the main tumor. A radioisotope has been attached to antibodies that bind to specific cancer cells. The very dark spots in the armpits, neck, and groin represent areas where tumor cells exist.",
+    "question": "What term is used to describe a cancer that has spread?",
+    "options": [
+      "metastasized",
+      "ostracized",
+      "destabilized",
+      "galvanized"
+    ],
+    "answer_idx": 0,
+    "correct_answer": "metastasized",
+    "id": 44,
+    "sciq_index": 390
+  },
+  {
+    "passage": "Camouflage by the dead leaf mantis makes it less visible to both its predators and prey. If alarmed, it lies motionless on the rainforest floor of Madagascar, Africa, camouflaged among the actual dead leaves. It eats other animals up to the size of small lizards.",
+    "question": "What is the adaptation that certain animals use to become less visible to predators and prey?",
+    "options": [
+      "camouflage",
+      "skeletons",
+      "speed",
+      "insulation"
+    ],
+    "answer_idx": 0,
+    "correct_answer": "camouflage",
+    "id": 45,
+    "sciq_index": 108
+  },
+  {
+    "passage": "Comets are icy objects that have very elliptical orbits around the Sun.",
+    "question": "Icy objects that have very elliptical orbits around the sun are called?",
+    "options": [
+      "meteors",
+      "asteroids",
+      "craters",
+      "comets"
+    ],
+    "answer_idx": 3,
+    "correct_answer": "comets",
+    "id": 46,
+    "sciq_index": 438
+  },
+  {
+    "passage": "Implantation occurs when the developing embryo fixes itself to the side of the uterus.",
+    "question": "What is the term for when an embryo fixes itself to the side of the uterus?",
+    "options": [
+      "parasite",
+      "exploration",
+      "bacterial",
+      "implantation"
+    ],
+    "answer_idx": 3,
+    "correct_answer": "implantation",
+    "id": 47,
+    "sciq_index": 113
+  },
+  {
+    "passage": "Radio telescopes collect and focus radio waves from distant objects.",
+    "question": "What type of telescopes collect and focus radio waves from distant objects?",
+    "options": [
+      "space telescopes",
+      "radio telescopes",
+      "refracting telescopes",
+      "reflecting telescopes"
+    ],
+    "answer_idx": 1,
+    "correct_answer": "radio telescopes",
+    "id": 48,
+    "sciq_index": 414
+  },
+  {
+    "passage": "Freshwater biomes have water that contains little or no salt. They include standing and running freshwater biomes. Standing freshwater biomes include ponds and lakes. Lakes are generally bigger and deeper than ponds. Some of the water in lakes is in the aphotic zone where there is too little sunlight for photosynthesis. Plankton and plants (such as the duckweed in Figure below ) are the primary producers in standing freshwater biomes.",
+    "question": "What type of biomes have water containing little or no salt?",
+    "options": [
+      "coastal biomes",
+      "aquatic biomes",
+      "marine biomes",
+      "freshwater biomes"
+    ],
+    "answer_idx": 3,
+    "correct_answer": "freshwater biomes",
+    "id": 49,
+    "sciq_index": 980
+  }
+]

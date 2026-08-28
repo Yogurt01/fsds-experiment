@@ -1,0 +1,44 @@
+2026-08-23 23:07:24 | INFO     | ======================================================================
+2026-08-23 23:07:24 | INFO     | SciQ dataset preparation
+2026-08-23 23:07:24 | INFO     | ======================================================================
+2026-08-23 23:07:24 | INFO     | Mode                         : full export
+2026-08-23 23:07:24 | INFO     | Dataset                      : allenai/sciq
+2026-08-23 23:07:24 | INFO     | Splits                       : train, validation, test
+2026-08-23 23:07:24 | INFO     | Seed                         : 42
+2026-08-23 23:07:24 | INFO     | Keep empty 'support'         : False
+2026-08-23 23:07:24 | INFO     | Output directory             : .
+2026-08-23 23:07:24 | INFO     | ----------------------------------------------------------------------
+2026-08-23 23:07:24 | INFO     | Processing split 'train'
+2026-08-23 23:07:24 | WARNING  | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-08-23 23:07:28 | INFO     |   Raw samples                : 11679
+2026-08-23 23:07:28 | INFO     |   Removed (empty 'support')  : 1198 (10.26% of raw)
+2026-08-23 23:07:28 | INFO     |   Final processed samples    : 10481
+2026-08-23 23:07:28 | INFO     |   answer_idx distribution    : {0: '2587 (24.7%)', 1: '2573 (24.5%)', 2: '2686 (25.6%)', 3: '2635 (25.1%)'}
+2026-08-23 23:07:28 | INFO     |   Wrote                      : ./sciq_train_full.json
+2026-08-23 23:07:28 | INFO     | ----------------------------------------------------------------------
+2026-08-23 23:07:28 | INFO     | Processing split 'validation'
+2026-08-23 23:07:30 | INFO     |   Raw samples                : 1000
+2026-08-23 23:07:30 | INFO     |   Removed (empty 'support')  : 113 (11.30% of raw)
+2026-08-23 23:07:30 | INFO     |   Final processed samples    : 887
+2026-08-23 23:07:30 | INFO     |   answer_idx distribution    : {0: '237 (26.7%)', 1: '206 (23.2%)', 2: '222 (25.0%)', 3: '222 (25.0%)'}
+2026-08-23 23:07:30 | INFO     |   Wrote                      : ./sciq_val_full.json
+2026-08-23 23:07:30 | INFO     | ----------------------------------------------------------------------
+2026-08-23 23:07:30 | INFO     | Processing split 'test'
+2026-08-23 23:07:32 | INFO     |   Raw samples                : 1000
+2026-08-23 23:07:32 | INFO     |   Removed (empty 'support')  : 116 (11.60% of raw)
+2026-08-23 23:07:32 | INFO     |   Final processed samples    : 884
+2026-08-23 23:07:32 | INFO     |   answer_idx distribution    : {0: '236 (26.7%)', 1: '204 (23.1%)', 2: '222 (25.1%)', 3: '222 (25.1%)'}
+2026-08-23 23:07:32 | INFO     |   Wrote                      : ./sciq_test_full.json
+2026-08-23 23:07:32 | INFO     | ----------------------------------------------------------------------
+2026-08-23 23:07:32 | INFO     | Combined file                : ./sciq_all_combined.json (12252 samples)
+2026-08-23 23:07:32 | INFO     | ======================================================================
+2026-08-23 23:07:32 | INFO     | SUMMARY
+2026-08-23 23:07:32 | INFO     | ======================================================================
+2026-08-23 23:07:32 | INFO     |   split               raw      removed      final  answer_idx distribution
+2026-08-23 23:07:32 | INFO     |   train             11679         1198      10481  {0: 2587, 1: 2573, 2: 2686, 3: 2635}
+2026-08-23 23:07:32 | INFO     |   validation         1000          113        887  {0: 237, 1: 206, 2: 222, 3: 222}
+2026-08-23 23:07:32 | INFO     |   test               1000          116        884  {0: 236, 1: 204, 2: 222, 3: 222}
+2026-08-23 23:07:32 | INFO     |   TOTAL             13679         1427      12252
+2026-08-23 23:07:32 | INFO     |   combined answer_idx distribution: {0: 3060, 1: 2983, 2: 3130, 3: 3079}
+2026-08-23 23:07:32 | INFO     | Execution log                : dataset_prep.log
+2026-08-23 23:07:32 | INFO     | Done.

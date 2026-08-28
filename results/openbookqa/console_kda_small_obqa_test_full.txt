@@ -1,0 +1,171 @@
+2026-08-28 18:47:42 | INFO     | kda_experiment | ==============================================================================
+2026-08-28 18:47:42 | INFO     | kda_experiment | KDA_tiny ensemble experiment on allenai/openbookqa (test)
+2026-08-28 18:47:42 | INFO     | kda_experiment | ==============================================================================
+2026-08-28 18:47:42 | INFO     | kda_experiment | Python        : 3.12.3
+2026-08-28 18:47:42 | INFO     | kda_experiment | Platform      : Linux-7.0.0-30-generic-x86_64-with-glibc2.39
+2026-08-28 18:47:43 | INFO     | kda_experiment | torch         : 2.13.0+cu130 (CUDA available: True)
+2026-08-28 18:47:43 | INFO     | kda_experiment | Ensemble |M|  : 4
+2026-08-28 18:47:43 | INFO     | kda_experiment |   - google/t5-small-ssm-nq
+2026-08-28 18:47:43 | INFO     | kda_experiment |   - Riiid/kda-albert-xlarge-v2-race
+2026-08-28 18:47:43 | INFO     | kda_experiment |   - Riiid/kda-mpnet-base-race
+2026-08-28 18:47:43 | INFO     | kda_experiment |   - Riiid/kda-scibert-uncased-race
+2026-08-28 18:47:43 | INFO     | kda_experiment | Data file     : /home/nghben/Downloads/research/fsds/experiment/datasets/openbookqa/obqa_test_full.json
+2026-08-28 18:47:43 | INFO     | kda_experiment | Results file  : /home/nghben/Downloads/research/fsds/experiment/results/openbookqa/results_kda_small_obqa_test_full.json
+2026-08-28 18:47:43 | INFO     | kda_experiment | Log file      : /home/nghben/Downloads/research/fsds/experiment/results/openbookqa/experiment_kda_small_obqa_test_full.log
+2026-08-28 18:47:43 | INFO     | kda_experiment | Loaded 500 questions from /home/nghben/Downloads/research/fsds/experiment/datasets/openbookqa/obqa_test_full.json
+2026-08-28 18:47:43 | INFO     | kda_tiny | Initialising KDA_tiny ensemble with 4 model(s) on device 'cuda' (strategy=sequential)
+2026-08-28 18:47:43 | INFO     | kda_tiny | Sequential strategy: models are loaded one at a time and unloaded between passes, so peak VRAM is set by the largest single checkpoint.
+2026-08-28 18:47:43 | INFO     | kda_experiment | Console cadence: progress bar every 250 samples (per-sample records go to /home/nghben/Downloads/research/fsds/experiment/results/openbookqa/experiment_kda_small_obqa_test_full.log at DEBUG level)
+2026-08-28 18:47:43 | INFO     | kda_tiny | ======================================================================
+2026-08-28 18:47:43 | INFO     | kda_tiny | Sequential pass 1/4: google/t5-small-ssm-nq
+2026-08-28 18:47:43 | INFO     | kda_tiny |   VRAM before load        allocated=0MB reserved=0MB free=3857MB / 3951MB
+2026-08-28 18:47:43 | INFO     | kda_tiny | Loading simulated student 'google/t5-small-ssm-nq' on device 'cuda'
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-08-28 18:47:44 | WARNING  | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/192 [00:00<?, ?it/s]Loading weights: 100%|██████████| 192/192 [00:00<00:00, 58691.52it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie shared.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+2026-08-28 18:47:46 | INFO     | kda_tiny | Loaded 'google/t5-small-ssm-nq' in 2.64s | 77.0M parameters (~308MB fp32) | seq2seq scoring
+2026-08-28 18:47:46 | INFO     | kda_tiny |   VRAM after load         allocated=308MB reserved=340MB free=3518MB / 3951MB
+2026-08-28 18:47:53 | INFO     | kda_experiment | [###---------------------]  12.5%  model 1/4 (t5-small-ssm-nq)  250/500 samples  elapsed=9.9s  ETA=69.1s
+2026-08-28 18:48:00 | INFO     | kda_experiment | [######------------------]  25.0%  model 1/4 (t5-small-ssm-nq)  500/500 samples  elapsed=16.5s  ETA=49.6s
+2026-08-28 18:48:00 | INFO     | kda_tiny | Pass 1/4 complete: 500 samples in 13.81s (0.0276s per sample)
+2026-08-28 18:48:00 | INFO     | kda_tiny | Unloaded 'google/t5-small-ssm-nq' and cleared the CUDA cache
+2026-08-28 18:48:00 | INFO     | kda_tiny |   VRAM after unload       allocated=9MB reserved=21MB free=3816MB / 3951MB
+2026-08-28 18:48:00 | INFO     | kda_tiny | ======================================================================
+2026-08-28 18:48:00 | INFO     | kda_tiny | Sequential pass 2/4: Riiid/kda-albert-xlarge-v2-race
+2026-08-28 18:48:00 | INFO     | kda_tiny |   VRAM before load        allocated=9MB reserved=21MB free=3816MB / 3951MB
+2026-08-28 18:48:00 | INFO     | kda_tiny | Loading simulated student 'Riiid/kda-albert-xlarge-v2-race' on device 'cuda'
+Loading weights:   0%|          | 0/27 [00:00<?, ?it/s]Loading weights: 100%|██████████| 27/27 [00:00<00:00, 25997.75it/s]
+2026-08-28 18:48:02 | INFO     | kda_tiny | Loaded 'Riiid/kda-albert-xlarge-v2-race' in 2.17s | 58.7M parameters (~235MB fp32) | token_type_ids=True
+2026-08-28 18:48:02 | INFO     | kda_tiny |   VRAM after load         allocated=243MB reserved=258MB free=3579MB / 3951MB
+2026-08-28 18:48:58 | INFO     | kda_experiment | [#########---------------]  37.5%  model 2/4 (kda-albert-xlarge-v2-race)  250/500 samples  elapsed=74.2s  ETA=123.7s
+2026-08-28 18:49:52 | INFO     | kda_experiment | [############------------]  50.0%  model 2/4 (kda-albert-xlarge-v2-race)  500/500 samples  elapsed=128.5s  ETA=128.5s
+2026-08-28 18:49:52 | INFO     | kda_tiny | Pass 2/4 complete: 500 samples in 109.50s (0.2190s per sample)
+2026-08-28 18:49:52 | INFO     | kda_tiny | Unloaded 'Riiid/kda-albert-xlarge-v2-race' and cleared the CUDA cache
+2026-08-28 18:49:52 | INFO     | kda_tiny |   VRAM after unload       allocated=9MB reserved=21MB free=3816MB / 3951MB
+2026-08-28 18:49:52 | INFO     | kda_tiny | ======================================================================
+2026-08-28 18:49:52 | INFO     | kda_tiny | Sequential pass 3/4: Riiid/kda-mpnet-base-race
+2026-08-28 18:49:52 | INFO     | kda_tiny |   VRAM before load        allocated=9MB reserved=21MB free=3816MB / 3951MB
+2026-08-28 18:49:52 | INFO     | kda_tiny | Loading simulated student 'Riiid/kda-mpnet-base-race' on device 'cuda'
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 29901.93it/s]
+2026-08-28 18:49:54 | INFO     | kda_tiny | Loaded 'Riiid/kda-mpnet-base-race' in 2.21s | 109.5M parameters (~438MB fp32) | token_type_ids=False
+2026-08-28 18:49:54 | INFO     | kda_tiny |   VRAM after load         allocated=447MB reserved=495MB free=3342MB / 3951MB
+2026-08-28 18:49:59 | INFO     | kda_experiment | [###############---------]  62.5%  model 3/4 (kda-mpnet-base-race)  250/500 samples  elapsed=136.1s  ETA=81.7s
+2026-08-28 18:50:04 | INFO     | kda_experiment | [##################------]  75.0%  model 3/4 (kda-mpnet-base-race)  500/500 samples  elapsed=141.1s  ETA=47.0s
+2026-08-28 18:50:04 | INFO     | kda_tiny | Pass 3/4 complete: 500 samples in 10.02s (0.0200s per sample)
+2026-08-28 18:50:05 | INFO     | kda_tiny | Unloaded 'Riiid/kda-mpnet-base-race' and cleared the CUDA cache
+2026-08-28 18:50:05 | INFO     | kda_tiny |   VRAM after unload       allocated=9MB reserved=21MB free=3816MB / 3951MB
+2026-08-28 18:50:05 | INFO     | kda_tiny | ======================================================================
+2026-08-28 18:50:05 | INFO     | kda_tiny | Sequential pass 4/4: Riiid/kda-scibert-uncased-race
+2026-08-28 18:50:05 | INFO     | kda_tiny |   VRAM before load        allocated=9MB reserved=21MB free=3816MB / 3951MB
+2026-08-28 18:50:05 | INFO     | kda_tiny | Loading simulated student 'Riiid/kda-scibert-uncased-race' on device 'cuda'
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 28557.81it/s]
+2026-08-28 18:50:07 | INFO     | kda_tiny | Loaded 'Riiid/kda-scibert-uncased-race' in 2.19s | 109.9M parameters (~440MB fp32) | token_type_ids=True
+2026-08-28 18:50:07 | INFO     | kda_tiny |   VRAM after load         allocated=449MB reserved=497MB free=3339MB / 3951MB
+2026-08-28 18:50:12 | INFO     | kda_experiment | [#####################---]  87.5%  model 4/4 (kda-scibert-uncased-race)  250/500 samples  elapsed=148.5s  ETA=21.2s
+2026-08-28 18:50:17 | INFO     | kda_experiment | [########################] 100.0%  model 4/4 (kda-scibert-uncased-race)  500/500 samples  elapsed=153.2s  ETA=0.0s
+2026-08-28 18:50:17 | INFO     | kda_tiny | Pass 4/4 complete: 500 samples in 9.61s (0.0192s per sample)
+2026-08-28 18:50:17 | INFO     | kda_tiny | Unloaded 'Riiid/kda-scibert-uncased-race' and cleared the CUDA cache
+2026-08-28 18:50:17 | INFO     | kda_tiny |   VRAM after unload       allocated=9MB reserved=21MB free=3816MB / 3951MB
+2026-08-28 18:50:17 | INFO     | kda_tiny | ======================================================================
+2026-08-28 18:50:17 | INFO     | kda_tiny | All passes finished; aggregating KDA_cont across 4 models
+2026-08-28 18:50:17 | INFO     | kda_experiment | 
+2026-08-28 18:50:17 | INFO     | kda_experiment | ==============================================================================
+2026-08-28 18:50:17 | INFO     | kda_experiment | KDA_tiny RESULTS OVER 500 allenai/openbookqa TEST QUESTIONS
+2026-08-28 18:50:17 | INFO     | kda_experiment | ==============================================================================
+2026-08-28 18:50:17 | INFO     | kda_experiment | Ensemble            : 4 models, 355.1M parameters (cuda)
+2026-08-28 18:50:17 | INFO     | kda_experiment | Samples scored      : 500 (0 failed)
+2026-08-28 18:50:17 | INFO     | kda_experiment | 
+2026-08-28 18:50:17 | INFO     | kda_experiment | KDA_cont score distribution:
+2026-08-28 18:50:17 | INFO     | kda_experiment |   mean       median     std        min        max       
+2026-08-28 18:50:17 | INFO     | kda_experiment |   0.2712     0.2466     0.1130     0.0772     0.6719    
+2026-08-28 18:50:17 | INFO     | kda_experiment | 
+2026-08-28 18:50:17 | INFO     | kda_experiment | Zero-denominator safety check : 0 question(s) where sum(1 - P_m(R^q=1)) = 0
+2026-08-28 18:50:17 | INFO     | kda_experiment |   No sample triggered the guard; every KDA score is a true ratio.
+2026-08-28 18:50:17 | INFO     | kda_experiment | 
+2026-08-28 18:50:17 | INFO     | kda_experiment | Accuracy and KDA per model:
+2026-08-28 18:50:17 | INFO     | kda_experiment |   model                                            Acc_wof     Acc_wf  delta_Acc     mean_KDA
+2026-08-28 18:50:17 | INFO     | kda_experiment |   ------------------------------------------------------------------------------------------
+2026-08-28 18:50:17 | INFO     | kda_experiment |   google/t5-small-ssm-nq                            23.80%     29.40%     +5.60%       0.2888
+2026-08-28 18:50:17 | INFO     | kda_experiment |   Riiid/kda-albert-xlarge-v2-race                   30.00%     40.60%    +10.60%       0.2582
+2026-08-28 18:50:17 | INFO     | kda_experiment |   Riiid/kda-mpnet-base-race                         43.40%     52.80%     +9.40%       0.4355
+2026-08-28 18:50:17 | INFO     | kda_experiment |   Riiid/kda-scibert-uncased-race                    32.20%     35.40%     +3.20%       0.2773
+2026-08-28 18:50:17 | INFO     | kda_experiment |   ------------------------------------------------------------------------------------------
+2026-08-28 18:50:17 | INFO     | kda_experiment |   ENSEMBLE AVERAGE                                  32.35%     39.55%     +7.20%       0.2712
+2026-08-28 18:50:17 | INFO     | kda_experiment |   ENSEMBLE pooled prob. vote                        34.80%     40.60%     +5.80%       0.2712
+2026-08-28 18:50:17 | INFO     | kda_experiment | 
+2026-08-28 18:50:17 | INFO     | kda_experiment |   mean_KDA per model is the degenerate |M|=1 case (KDA_cont collapses to P(R^{q+f}=1));
+2026-08-28 18:50:17 | INFO     | kda_experiment |   the ensemble rows carry the true weighted KDA_cont over all 4 models.
+2026-08-28 18:50:17 | INFO     | kda_experiment | 
+2026-08-28 18:50:17 | INFO     | kda_experiment | Mean P(R^q=1) / P(R^q+f=1) : 0.2846 / 0.3149
+2026-08-28 18:50:17 | INFO     | kda_experiment | Scoring time        : 153.65s (0.307s per question)
+2026-08-28 18:50:17 | INFO     | kda_experiment | Total runtime       : 155.15s
+2026-08-28 18:50:17 | INFO     | kda_experiment | 
+2026-08-28 18:50:17 | INFO     | kda_experiment | TOP 3 QUESTIONS BY HIGHEST KDA
+2026-08-28 18:50:17 | INFO     | kda_experiment | ==============================================================================
+2026-08-28 18:50:17 | INFO     | kda_experiment | 
+2026-08-28 18:50:17 | INFO     | kda_experiment | [1] id=183 (dataset row #183)  KDA_tiny = 0.6719
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Question : What type of useful product can be made from the moving winds?
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Options  : ['wood', 'bananas', 'electricity', 'metal'] -> correct: 'electricity' (idx 2)
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Passage  : wind is used for producing electricity
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : google/t5-small-ssm-nq | P(R^q=1)=0.052 -> P(R^q+f=1)=0.942 | weight=0.948
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : Riiid/kda-albert-xlarge-v2-race | P(R^q=1)=0.253 -> P(R^q+f=1)=0.250 | weight=0.747
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : Riiid/kda-mpnet-base-race | P(R^q=1)=0.355 -> P(R^q+f=1)=0.898 | weight=0.645
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : Riiid/kda-scibert-uncased-race | P(R^q=1)=0.324 -> P(R^q+f=1)=0.543 | weight=0.676
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Reason   : students cannot guess it without the fact (mean P(R^q=1)=0.246, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.658); probability gain from the fact = +0.412
+2026-08-28 18:50:17 | INFO     | kda_experiment | 
+2026-08-28 18:50:17 | INFO     | kda_experiment | [2] id=352 (dataset row #352)  KDA_tiny = 0.6211
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Question : Cephalopod ink is by octopuses to
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Options  : ['mate', 'feed', 'hide', 'play'] -> correct: 'hide' (idx 2)
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Passage  : ink is used for hiding from predators by octopuses
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : google/t5-small-ssm-nq | P(R^q=1)=0.000 -> P(R^q+f=1)=0.940 | weight=1.000
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : Riiid/kda-albert-xlarge-v2-race | P(R^q=1)=0.247 -> P(R^q+f=1)=0.249 | weight=0.753
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : Riiid/kda-mpnet-base-race | P(R^q=1)=0.119 -> P(R^q+f=1)=0.901 | weight=0.881
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : Riiid/kda-scibert-uncased-race | P(R^q=1)=0.246 -> P(R^q+f=1)=0.243 | weight=0.754
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Reason   : students cannot guess it without the fact (mean P(R^q=1)=0.153, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.583); probability gain from the fact = +0.430
+2026-08-28 18:50:17 | INFO     | kda_experiment | 
+2026-08-28 18:50:17 | INFO     | kda_experiment | [3] id=375 (dataset row #375)  KDA_tiny = 0.6203
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Question : If you find something smooth and hard on the ground, it is probably made of what?
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Options  : ['minerals', 'mist', 'clouds', 'water'] -> correct: 'minerals' (idx 0)
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Passage  : rock is made of minerals
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : google/t5-small-ssm-nq | P(R^q=1)=0.145 -> P(R^q+f=1)=0.995 | weight=0.855
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : Riiid/kda-albert-xlarge-v2-race | P(R^q=1)=0.274 -> P(R^q+f=1)=0.298 | weight=0.726
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : Riiid/kda-mpnet-base-race | P(R^q=1)=0.906 -> P(R^q+f=1)=0.992 | weight=0.094
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : Riiid/kda-scibert-uncased-race | P(R^q=1)=0.411 -> P(R^q+f=1)=0.415 | weight=0.589
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Reason   : background knowledge only helps partially (mean P(R^q=1)=0.434); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.675); probability gain from the fact = +0.241
+2026-08-28 18:50:17 | INFO     | kda_experiment | 
+2026-08-28 18:50:17 | INFO     | kda_experiment | TOP 3 QUESTIONS BY LOWEST KDA
+2026-08-28 18:50:17 | INFO     | kda_experiment | ==============================================================================
+2026-08-28 18:50:17 | INFO     | kda_experiment | 
+2026-08-28 18:50:17 | INFO     | kda_experiment | [1] id=322 (dataset row #322)  KDA_tiny = 0.0772
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Question : What would cause a human to grow?
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Options  : ['light waves', 'eating wheat', 'photosynthesis', 'marching'] -> correct: 'eating wheat' (idx 1)
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Passage  : humans eat crops
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : google/t5-small-ssm-nq | P(R^q=1)=0.002 -> P(R^q+f=1)=0.001 | weight=0.998
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : Riiid/kda-albert-xlarge-v2-race | P(R^q=1)=0.241 -> P(R^q+f=1)=0.275 | weight=0.759
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : Riiid/kda-mpnet-base-race | P(R^q=1)=0.004 -> P(R^q+f=1)=0.026 | weight=0.996
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : Riiid/kda-scibert-uncased-race | P(R^q=1)=0.051 -> P(R^q+f=1)=0.053 | weight=0.949
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Reason   : students cannot guess it without the fact (mean P(R^q=1)=0.074, close to the 0.25 chance level); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.089); the target fact does not match the question or a distractor competes with it; probability gain from the fact = +0.014
+2026-08-28 18:50:17 | INFO     | kda_experiment | 
+2026-08-28 18:50:17 | INFO     | kda_experiment | [2] id=165 (dataset row #165)  KDA_tiny = 0.0934
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Question : why do tadpoles change into frogs?
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Options  : ['tadpoles change to different animals', 'tadpoles are really just fish', 'they are young frogs still growing', 'none of these'] -> correct: 'they are young frogs still growing' (idx 2)
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Passage  : tadpole changes into a frog
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : google/t5-small-ssm-nq | P(R^q=1)=0.014 -> P(R^q+f=1)=0.013 | weight=0.986
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : Riiid/kda-albert-xlarge-v2-race | P(R^q=1)=0.145 -> P(R^q+f=1)=0.152 | weight=0.855
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : Riiid/kda-mpnet-base-race | P(R^q=1)=0.048 -> P(R^q+f=1)=0.028 | weight=0.952
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : Riiid/kda-scibert-uncased-race | P(R^q=1)=0.182 -> P(R^q+f=1)=0.205 | weight=0.818
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Reason   : students cannot guess it without the fact (mean P(R^q=1)=0.097, close to the 0.25 chance level); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.100); the target fact does not match the question or a distractor competes with it; probability gain from the fact = +0.002
+2026-08-28 18:50:17 | INFO     | kda_experiment | 
+2026-08-28 18:50:17 | INFO     | kda_experiment | [3] id=405 (dataset row #405)  KDA_tiny = 0.0969
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Question : A renewable resource is
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Options  : ['fossil fuel', 'turbine produced electricity', 'copper', 'coal lumps'] -> correct: 'turbine produced electricity' (idx 1)
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Passage  : renewable resources can be used over again
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : google/t5-small-ssm-nq | P(R^q=1)=0.000 -> P(R^q+f=1)=0.003 | weight=1.000
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : Riiid/kda-albert-xlarge-v2-race | P(R^q=1)=0.467 -> P(R^q+f=1)=0.058 | weight=0.533
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : Riiid/kda-mpnet-base-race | P(R^q=1)=0.971 -> P(R^q+f=1)=0.642 | weight=0.029
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Model    : Riiid/kda-scibert-uncased-race | P(R^q=1)=0.257 -> P(R^q+f=1)=0.230 | weight=0.743
+2026-08-28 18:50:17 | INFO     | kda_experiment |     Reason   : background knowledge only helps partially (mean P(R^q=1)=0.424); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.233); the target fact does not match the question or a distractor competes with it; probability gain from the fact = -0.191
+2026-08-28 18:50:17 | INFO     | kda_experiment | 
+2026-08-28 18:50:17 | INFO     | kda_experiment | Results written to : /home/nghben/Downloads/research/fsds/experiment/results/openbookqa/results_kda_small_obqa_test_full.json
+2026-08-28 18:50:17 | INFO     | kda_experiment | Execution log      : /home/nghben/Downloads/research/fsds/experiment/results/openbookqa/experiment_kda_small_obqa_test_full.log

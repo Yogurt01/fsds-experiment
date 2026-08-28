@@ -1,0 +1,3612 @@
+{
+  "summary": {
+    "dataset": "allenai/sciq",
+    "split": "test",
+    "n_samples": 50,
+    "n_failed_samples": 0,
+    "models": [
+      "Riiid/kda-distilbert-base-uncased-race",
+      "Riiid/kda-bert-base-uncased-race"
+    ],
+    "ensemble_size": 2,
+    "total_parameters": 176437250,
+    "device": "cuda",
+    "mean_kda_tiny": 0.4936604339461057,
+    "median_kda_tiny": 0.5099728060788531,
+    "std_kda_tiny": 0.12421497530449169,
+    "min_kda_tiny": 0.22419288079137134,
+    "max_kda_tiny": 0.7072572315837132,
+    "accuracy_without_fact": 0.36,
+    "accuracy_with_fact": 0.64,
+    "accuracy_gain": 0.28,
+    "metrics": {
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "accuracy_without_fact": 0.4,
+          "accuracy_with_fact": 0.86,
+          "accuracy_gain": 0.45999999999999996,
+          "mean_p_correct_without_fact": 0.3211541146039963,
+          "mean_p_correct_with_fact": 0.7412088814377785,
+          "mean_weight": 0.6788458853960038
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "accuracy_without_fact": 0.32,
+          "accuracy_with_fact": 0.42,
+          "accuracy_gain": 0.09999999999999998,
+          "mean_p_correct_without_fact": 0.26831864535808564,
+          "mean_p_correct_with_fact": 0.27231851816177366,
+          "mean_weight": 0.7316813546419144
+        }
+      },
+      "ensemble_average": {
+        "accuracy_without_fact": 0.36,
+        "accuracy_with_fact": 0.64,
+        "accuracy_gain": 0.28,
+        "mean_p_correct_without_fact": 0.29473637998104096,
+        "mean_p_correct_with_fact": 0.5067636997997761
+      },
+      "pooled_probability_vote": {
+        "accuracy_without_fact": 0.44,
+        "accuracy_with_fact": 0.86,
+        "accuracy_gain": 0.42
+      }
+    },
+    "n_zero_denominator": 0,
+    "scoring_seconds": 3.31,
+    "total_runtime_seconds": 9.39,
+    "formula": "KDA_cont(q) = sum_m (1 - P_m(R^q=1)) * P_m(R^{q+f}=1) / sum_m (1 - P_m(R^q=1)); 0 if the denominator is 0",
+    "failures": []
+  },
+  "results": [
+    {
+      "passage": "Dissociation is the separation of ions that occurs when a solid ionic compound dissolves.",
+      "question": "What is the separation of ions that occurs when a solid ionic compound dissolves?",
+      "options": [
+        "dissociation",
+        "combustion",
+        "inflammation",
+        "decomposition"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "dissociation",
+      "id": 0,
+      "sciq_index": 736,
+      "kda_score": 0.5495678828976158,
+      "numerator": 0.579097972907352,
+      "denominator": 1.0537332892417908,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.4731333553791046,
+      "mean_p_correct_with_fact": 0.6673405170440674,
+      "mean_probability_gain": 0.19420716166496277,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.6741431951522827,
+          "p_correct_with_fact": 0.9760342240333557,
+          "weight": 0.3258568048477173,
+          "weighted_contribution": 0.31804739366553036,
+          "probability_gain": 0.301891028881073,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.6741431951522827,
+            0.046589434146881104,
+            0.02811344526708126,
+            0.2511538565158844
+          ],
+          "probabilities_with_fact": [
+            0.9760342240333557,
+            0.000982095254585147,
+            0.000736566202249378,
+            0.02224721759557724
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.2721235156059265,
+          "p_correct_with_fact": 0.35864681005477905,
+          "weight": 0.7278764843940735,
+          "weighted_contribution": 0.2610505792418216,
+          "probability_gain": 0.08652329444885254,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.2721235156059265,
+            0.194868803024292,
+            0.3125031292438507,
+            0.2205045372247696
+          ],
+          "probabilities_with_fact": [
+            0.35864681005477905,
+            0.17262689769268036,
+            0.19834545254707336,
+            0.2703808546066284
+          ]
+        }
+      },
+      "reason": "background knowledge only helps partially (mean P(R^q=1)=0.473); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.667); probability gain from the fact = +0.194",
+      "scoring_seconds": 0.1461
+    },
+    {
+      "passage": "The hypothalamus is actually part of the brain, but it also secretes hormones. Some of its hormones go directly to the pituitary gland in the endocrine system. These hypothalamus hormones tell the pituitary to either secrete or stop secreting its hormones. In this way, the hypothalamus provides a link between the nervous and endocrine systems.",
+      "question": "The hypothalamus is actually part of the brain, but it also secretes what?",
+      "options": [
+        "electrolytes",
+        "enzymes",
+        "acids",
+        "hormones"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "hormones",
+      "id": 1,
+      "sciq_index": 130,
+      "kda_score": 0.6439132236024416,
+      "numerator": 0.9565638940558032,
+      "denominator": 1.4855478331446648,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.2572260834276676,
+      "mean_p_correct_with_fact": 0.5917821228504181,
+      "mean_probability_gain": 0.3345560394227505,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.12397892028093338,
+          "p_correct_with_fact": 0.8823820948600769,
+          "weight": 0.8760210797190666,
+          "weighted_contribution": 0.7729853154640964,
+          "probability_gain": 0.7584031745791435,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.6637893915176392,
+            0.1623636931180954,
+            0.049868009984493256,
+            0.12397892028093338
+          ],
+          "probabilities_with_fact": [
+            0.10528827458620071,
+            0.008641405962407589,
+            0.003688265336677432,
+            0.8823820948600769
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.39047324657440186,
+          "p_correct_with_fact": 0.3011821508407593,
+          "weight": 0.6095267534255981,
+          "weighted_contribution": 0.1835785785917068,
+          "probability_gain": -0.08929109573364258,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.21590691804885864,
+            0.19314539432525635,
+            0.20047439634799957,
+            0.39047324657440186
+          ],
+          "probabilities_with_fact": [
+            0.2715429961681366,
+            0.22321870923042297,
+            0.20405617356300354,
+            0.3011821508407593
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.257, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.592); probability gain from the fact = +0.335",
+      "scoring_seconds": 0.0625
+    },
+    {
+      "passage": "Immune System By the year 2050, 25 percent of the population of the United States will be 60 years of age or older. The CDC estimates that 80 percent of those 60 years and older have one or more chronic disease associated with deficiencies of the immune systems. This loss of immune function with age is called immunosenescence. To treat this growing population, medical professionals must better understand the aging process. One major cause of age-related immune deficiencies is thymic involution, the shrinking of the thymus gland that begins at birth, at a rate of about three percent tissue loss per year, and continues until 35–45 years of age, when the rate declines to about one percent loss per year for the rest of one’s life. At that pace, the total loss of thymic epithelial tissue and thymocytes would occur at about 120 years of age. Thus, this age is a theoretical limit to a healthy human lifespan. Thymic involution has been observed in all vertebrate species that have a thymus gland. Animal studies have shown that transplanted thymic grafts between inbred strains of mice involuted according to the age of the donor and not of the recipient, implying the process is genetically programmed. There is evidence that the thymic microenvironment, so vital to the development of naïve T cells, loses thymic epithelial cells according to the decreasing expression of the FOXN1 gene with age. It is also known that thymic involution can be altered by hormone levels. Sex hormones such as estrogen and testosterone enhance involution, and the hormonal changes in pregnant women cause a temporary thymic involution that reverses itself, when the size of the thymus and its hormone levels return to normal, usually after lactation ceases. What does all this tell us? Can we reverse immunosenescence, or at least slow it down? The potential is there for using thymic transplants from younger donors to keep thymic output of naïve T cells high. Gene therapies that target gene expression are also seen as future possibilities. The more we learn through immunosenescence research, the more opportunities there will be to develop therapies, even though these therapies will likely take decades to develop. The ultimate goal is for everyone to live and be healthy longer, but there may be limits to immortality imposed by our genes and hormones.",
+      "question": "By the year 2050, 25 percent of the population of the united states will be 60 years of age or older. the cdc estimates that 80 percent of those 60 years and older have one or more chronic disease associated with deficiencies of this?",
+      "options": [
+        "cardiovascular system",
+        "blood vessels",
+        "respiratory system",
+        "immune system"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "immune system",
+      "id": 2,
+      "sciq_index": 25,
+      "kda_score": 0.46516436883282974,
+      "numerator": 0.5662115496821629,
+      "denominator": 1.2172289788722992,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.3913855105638504,
+      "mean_p_correct_with_fact": 0.49948152154684067,
+      "mean_probability_gain": 0.10809601098299026,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.47351333498954773,
+          "p_correct_with_fact": 0.7537913918495178,
+          "weight": 0.5264866650104523,
+          "weighted_contribution": 0.39686111600843965,
+          "probability_gain": 0.2802780568599701,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.2709953486919403,
+            0.14903469383716583,
+            0.10645657777786255,
+            0.47351333498954773
+          ],
+          "probabilities_with_fact": [
+            0.16042567789554596,
+            0.04587297886610031,
+            0.03990994393825531,
+            0.7537913918495178
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.3092576861381531,
+          "p_correct_with_fact": 0.2451716512441635,
+          "weight": 0.6907423138618469,
+          "weighted_contribution": 0.16935043367372327,
+          "probability_gain": -0.06408603489398956,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.2963718771934509,
+            0.22211915254592896,
+            0.17225126922130585,
+            0.3092576861381531
+          ],
+          "probabilities_with_fact": [
+            0.26082777976989746,
+            0.25281307101249695,
+            0.24118748307228088,
+            0.2451716512441635
+          ]
+        }
+      },
+      "reason": "background knowledge only helps partially (mean P(R^q=1)=0.391); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.499); the target fact does not match the question or a distractor competes with it; probability gain from the fact = +0.108",
+      "scoring_seconds": 0.2244
+    },
+    {
+      "passage": "Blood Pressure Regulation Cardiac output is the volume of blood pumped by the heart in one minute. It is calculated by multiplying the number of heart contractions that occur per minute (heart rate) times the stroke volume (the volume of blood pumped into the aorta per contraction of the left ventricle). Therefore, cardiac output can be increased by increasing heart rate, as when exercising. However, cardiac output can also be increased by increasing stroke volume, such as if the heart contracts with greater strength. Stroke volume can also be increased by speeding blood circulation through the body so that more blood enters the heart between contractions. During heavy exertion, the blood vessels relax and increase in diameter, offsetting the increased heart rate and ensuring adequate oxygenated blood gets to the muscles. Stress triggers a decrease in the diameter of the blood vessels, consequently increasing blood pressure. These changes can also be caused by nerve signals or hormones, and even standing up or lying down can have a great effect on blood pressure.",
+      "question": "What term, calculated by multiplying heart contractions by stroke volume, means the volume of blood pumped by the heart in one minute?",
+      "options": [
+        "cardiac output",
+        "liver output",
+        "blood output",
+        "respiratory output"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "cardiac output",
+      "id": 3,
+      "sciq_index": 855,
+      "kda_score": 0.36826633933429953,
+      "numerator": 0.4828566525455571,
+      "denominator": 1.3111615180969238,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.3444192409515381,
+      "mean_p_correct_with_fact": 0.38207462430000305,
+      "mean_probability_gain": 0.037655383348464966,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.41552484035491943,
+          "p_correct_with_fact": 0.5093845129013062,
+          "weight": 0.5844751596450806,
+          "weighted_contribution": 0.2977225944987225,
+          "probability_gain": 0.09385967254638672,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.41552484035491943,
+            0.07236793637275696,
+            0.4233872592449188,
+            0.08871996402740479
+          ],
+          "probabilities_with_fact": [
+            0.5093845129013062,
+            0.012482729740440845,
+            0.417788565158844,
+            0.06034422665834427
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.27331364154815674,
+          "p_correct_with_fact": 0.25476473569869995,
+          "weight": 0.7266863584518433,
+          "weighted_contribution": 0.18513405804683458,
+          "probability_gain": -0.018548905849456787,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.27331364154815674,
+            0.24140134453773499,
+            0.23802299797534943,
+            0.24726200103759766
+          ],
+          "probabilities_with_fact": [
+            0.25476473569869995,
+            0.24889200925827026,
+            0.25196993350982666,
+            0.24437332153320312
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.344, close to the 0.25 chance level); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.382); the target fact does not match the question or a distractor competes with it; probability gain from the fact = +0.038",
+      "scoring_seconds": 0.1069
+    },
+    {
+      "passage": "The components of a mixture keep their own identity when they combine, so they retain their physical properties. Examples of physical properties include boiling point, ability to dissolve, and particle size. When components of mixtures vary in physical properties such as these, processes such as boiling, dissolving, or filtering can be used to separate them.",
+      "question": "The components of a mixture keep their own identity when they combine, so they retain what type of properties, such as boiling point and ability to dissolve?",
+      "options": [
+        "thermal",
+        "physical",
+        "internal",
+        "thermal"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "physical",
+      "id": 4,
+      "sciq_index": 318,
+      "kda_score": 0.5624256263996366,
+      "numerator": 0.760623288471046,
+      "denominator": 1.3523979932069778,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.3238010033965111,
+      "mean_p_correct_with_fact": 0.5975000262260437,
+      "mean_probability_gain": 0.2736990228295326,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.39922285079956055,
+          "p_correct_with_fact": 0.9119616150856018,
+          "weight": 0.6007771492004395,
+          "weighted_contribution": 0.5478856992913563,
+          "probability_gain": 0.5127387642860413,
+          "predicted_idx_without_fact": 1,
+          "predicted_idx_with_fact": 1,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.15110071003437042,
+            0.39922285079956055,
+            0.29857566952705383,
+            0.15110071003437042
+          ],
+          "probabilities_with_fact": [
+            0.013316132128238678,
+            0.9119616150856018,
+            0.06140613555908203,
+            0.013316132128238678
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.2483791559934616,
+          "p_correct_with_fact": 0.2830384373664856,
+          "weight": 0.7516208440065384,
+          "weighted_contribution": 0.21273758917968966,
+          "probability_gain": 0.03465928137302399,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 1,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.16472244262695312,
+            0.2483791559934616,
+            0.42217597365379333,
+            0.16472244262695312
+          ],
+          "probabilities_with_fact": [
+            0.23907701671123505,
+            0.2830384373664856,
+            0.2388075441122055,
+            0.23907701671123505
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.324, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.598); probability gain from the fact = +0.274",
+      "scoring_seconds": 0.0635
+    },
+    {
+      "passage": "The study of biology is the study of life. Concept Biology Advanced is the CK-12 Foundation's most extensive material describing the study of life. Concept Biology Advanced presents biology as a set of 18 concepts, with each concept centered around a specific category, such as cell biology or plants. Each concept is comprised of a series of lessons, with each lesson focusing on one specific topic. The complete Concept Biology Advanced is comprised of over 550 lessons. This material has been developed to complement the most advanced secondary-level biology course.",
+      "question": "What is the official name for the study of life?",
+      "options": [
+        "chemistry",
+        "botany",
+        "geology",
+        "biology"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "biology",
+      "id": 5,
+      "sciq_index": 282,
+      "kda_score": 0.6425364671033356,
+      "numerator": 0.8787586048815221,
+      "denominator": 1.3676400482654572,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.3161799758672714,
+      "mean_p_correct_with_fact": 0.6449927389621735,
+      "mean_probability_gain": 0.32881276309490204,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.3209628164768219,
+          "p_correct_with_fact": 0.9961748123168945,
+          "weight": 0.6790371835231781,
+          "weighted_contribution": 0.6764397388523946,
+          "probability_gain": 0.6752119958400726,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.19197046756744385,
+            0.16969236731529236,
+            0.3173742890357971,
+            0.3209628164768219
+          ],
+          "probabilities_with_fact": [
+            0.0009503507753834128,
+            0.0019530090503394604,
+            0.0009218075429089367,
+            0.9961748123168945
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.31139713525772095,
+          "p_correct_with_fact": 0.2938106656074524,
+          "weight": 0.688602864742279,
+          "weighted_contribution": 0.20231886602912752,
+          "probability_gain": -0.017586469650268555,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.2968355417251587,
+            0.18948298692703247,
+            0.2022843211889267,
+            0.31139713525772095
+          ],
+          "probabilities_with_fact": [
+            0.24348098039627075,
+            0.25817885994911194,
+            0.2045295238494873,
+            0.2938106656074524
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.316, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.645); probability gain from the fact = +0.329",
+      "scoring_seconds": 0.0812
+    },
+    {
+      "passage": "Cellular respiration, in many ways the opposite of photosynthesis, shows the interdependence of producers and consumers. Combined, the two equations demonstrate how energy flows and the carbon and oxygen cycle between organisms and environment.",
+      "question": "What process, which is in many ways the opposite of photosynthesis, shows the interdependence of producers and consumers?",
+      "options": [
+        "primarily respiration",
+        "osmosis",
+        "cellular respiration",
+        "decomposition"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "cellular respiration",
+      "id": 6,
+      "sciq_index": 259,
+      "kda_score": 0.5914931977563039,
+      "numerator": 0.7748172210154998,
+      "denominator": 1.309934288263321,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.34503285586833954,
+      "mean_p_correct_with_fact": 0.6055392026901245,
+      "mean_probability_gain": 0.260506346821785,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.37450870871543884,
+          "p_correct_with_fact": 0.9176479578018188,
+          "weight": 0.6254912912845612,
+          "weighted_contribution": 0.5739808060701002,
+          "probability_gain": 0.54313924908638,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 2,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.2672435939311981,
+            0.1192353144288063,
+            0.37450870871543884,
+            0.23901239037513733
+          ],
+          "probabilities_with_fact": [
+            0.0728323683142662,
+            0.00441766856238246,
+            0.9176479578018188,
+            0.005101995542645454
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.31555700302124023,
+          "p_correct_with_fact": 0.2934304475784302,
+          "weight": 0.6844429969787598,
+          "weighted_contribution": 0.2008364149453996,
+          "probability_gain": -0.02212655544281006,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 2,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.29535096883773804,
+            0.1753125637769699,
+            0.31555700302124023,
+            0.21377941966056824
+          ],
+          "probabilities_with_fact": [
+            0.2622605860233307,
+            0.23089492321014404,
+            0.2934304475784302,
+            0.2134140282869339
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.345, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.606); probability gain from the fact = +0.261",
+      "scoring_seconds": 0.0501
+    },
+    {
+      "passage": "Starches (a) and cellulose (b) differ in the connection between glucose units and the amount of branching in the molecule. Starches can be coiled or branched, whereas cellulose, the primary structural material of plants, has long, unbranched chains held together by hydrogen bonds. Cellulose is the primary structural material of plants and one of the most abundant organic substances on Earth. Because our enzymes are not able to hydrolyze the bonds between the glucose units in cellulose, we are unable to digest it. A recently marketed product containing a high percentage of cellulose was sold as a dietetic substance for rapid weight loss, but those who consumed it experienced severe intestinal discomfort because the cellulose could not be digested. The product was quickly removed from the market.",
+      "question": "Humans cannot digest what primary structural material of plants, which is one of the most abundant organic substances on earth?",
+      "options": [
+        "zinc",
+        "carbonate",
+        "sulfur",
+        "cellulose"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "cellulose",
+      "id": 7,
+      "sciq_index": 159,
+      "kda_score": 0.5970017182766225,
+      "numerator": 0.9280597645617679,
+      "denominator": 1.5545344948768616,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.2227327525615692,
+      "mean_p_correct_with_fact": 0.612380787730217,
+      "mean_probability_gain": 0.38964803516864777,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.25575172901153564,
+          "p_correct_with_fact": 0.9744043350219727,
+          "weight": 0.7442482709884644,
+          "weighted_contribution": 0.7251987415837675,
+          "probability_gain": 0.718652606010437,
+          "predicted_idx_without_fact": 1,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.1251724809408188,
+            0.32788771390914917,
+            0.2911880612373352,
+            0.25575172901153564
+          ],
+          "probabilities_with_fact": [
+            0.0030773598700761795,
+            0.006311298348009586,
+            0.016206946223974228,
+            0.9744043350219727
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.18971377611160278,
+          "p_correct_with_fact": 0.2503572404384613,
+          "weight": 0.8102862238883972,
+          "weighted_contribution": 0.20286102297800035,
+          "probability_gain": 0.06064346432685852,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 2,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.24630528688430786,
+            0.25952211022377014,
+            0.3044588267803192,
+            0.18971377611160278
+          ],
+          "probabilities_with_fact": [
+            0.24357140064239502,
+            0.24629157781600952,
+            0.25977981090545654,
+            0.2503572404384613
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.223, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.612); probability gain from the fact = +0.390",
+      "scoring_seconds": 0.0878
+    },
+    {
+      "passage": "stresses that push toward each other, which causes a decrease in the space a rock takes up.",
+      "question": "What separates one river system's basin from another river system's basin?",
+      "options": [
+        "a divide",
+        "a bend",
+        "a divert",
+        "a sink"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "a divide",
+      "id": 8,
+      "sciq_index": 850,
+      "kda_score": 0.350051867633689,
+      "numerator": 0.4217992925066514,
+      "denominator": 1.2049622684717178,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.3975188657641411,
+      "mean_p_correct_with_fact": 0.374787837266922,
+      "mean_probability_gain": -0.022731028497219086,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.566379964351654,
+          "p_correct_with_fact": 0.46304354071617126,
+          "weight": 0.43362003564834595,
+          "weighted_contribution": 0.2007849566320825,
+          "probability_gain": -0.10333642363548279,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.566379964351654,
+            0.0915665328502655,
+            0.24341262876987457,
+            0.09864085912704468
+          ],
+          "probabilities_with_fact": [
+            0.46304354071617126,
+            0.10032021254301071,
+            0.2885919213294983,
+            0.1480444073677063
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.2286577671766281,
+          "p_correct_with_fact": 0.28653213381767273,
+          "weight": 0.7713422328233719,
+          "weighted_contribution": 0.22101433587456887,
+          "probability_gain": 0.05787436664104462,
+          "predicted_idx_without_fact": 1,
+          "predicted_idx_with_fact": 1,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.2286577671766281,
+            0.3449455499649048,
+            0.3058180809020996,
+            0.1205785870552063
+          ],
+          "probabilities_with_fact": [
+            0.28653213381767273,
+            0.28749313950538635,
+            0.28350895643234253,
+            0.14246578514575958
+          ]
+        }
+      },
+      "reason": "background knowledge only helps partially (mean P(R^q=1)=0.398); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.375); the target fact does not match the question or a distractor competes with it; probability gain from the fact = -0.023",
+      "scoring_seconds": 0.0346
+    },
+    {
+      "passage": "Courtesy of the US Geological Survey. Concentric circles on a topographic map indicate a hill . Public Domain.",
+      "question": "What do concentric circles on a topographic map indicate?",
+      "options": [
+        "a hill",
+        "a lake",
+        "a crater",
+        "a forest"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "a hill",
+      "id": 9,
+      "sciq_index": 118,
+      "kda_score": 0.6071174284880859,
+      "numerator": 0.8822434231771119,
+      "denominator": 1.4531676769256592,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.2734161615371704,
+      "mean_p_correct_with_fact": 0.6326863765716553,
+      "mean_probability_gain": 0.35927021503448486,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.32648059725761414,
+          "p_correct_with_fact": 0.9827887415885925,
+          "weight": 0.6735194027423859,
+          "weighted_contribution": 0.6619272862566898,
+          "probability_gain": 0.6563081443309784,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.32648059725761414,
+            0.16959965229034424,
+            0.3566489815711975,
+            0.14727072417736053
+          ],
+          "probabilities_with_fact": [
+            0.9827887415885925,
+            0.003943903371691704,
+            0.010892519727349281,
+            0.0023748583626002073
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.22035172581672668,
+          "p_correct_with_fact": 0.282584011554718,
+          "weight": 0.7796482741832733,
+          "weighted_contribution": 0.22031613692042207,
+          "probability_gain": 0.06223228573799133,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.22035172581672668,
+            0.20203156769275665,
+            0.3207501471042633,
+            0.25686657428741455
+          ],
+          "probabilities_with_fact": [
+            0.282584011554718,
+            0.2205139547586441,
+            0.2503702640533447,
+            0.24653173983097076
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.273, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.633); probability gain from the fact = +0.359",
+      "scoring_seconds": 0.0289
+    },
+    {
+      "passage": "Two plates may slide past each other in opposite directions. This is called a transform plate boundary . The plates meet at a transform fault . As you might imagine, plates do not slide past each other easily. These plate boundaries experience massive earthquakes. The world’s best known transform fault is the San Andreas Fault in California ( Figure below ). At this fault, the Pacific and North American plates grind past each other. Transform plate boundaries are common as offsets along mid-ocean ridges. They are very small compared to transform faults on land.",
+      "question": "What is it called when two plates slide past each other in opposite directions?",
+      "options": [
+        "transform plate boundary",
+        "tectonic movement",
+        "transformation",
+        "plate divergence"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "transform plate boundary",
+      "id": 10,
+      "sciq_index": 782,
+      "kda_score": 0.6206474691929802,
+      "numerator": 1.0052527729122902,
+      "denominator": 1.6196839958429337,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.19015800207853317,
+      "mean_p_correct_with_fact": 0.6145348846912384,
+      "mean_probability_gain": 0.42437688261270523,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.17655311524868011,
+          "p_correct_with_fact": 0.9783914685249329,
+          "weight": 0.8234468847513199,
+          "weighted_contribution": 0.805653406824125,
+          "probability_gain": 0.8018383532762527,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.17655311524868011,
+            0.19187405705451965,
+            0.18938779830932617,
+            0.44218501448631287
+          ],
+          "probabilities_with_fact": [
+            0.9783914685249329,
+            0.0068815359845757484,
+            0.010004048235714436,
+            0.004722979851067066
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.20376288890838623,
+          "p_correct_with_fact": 0.25067830085754395,
+          "weight": 0.7962371110916138,
+          "weighted_contribution": 0.1995993660881652,
+          "probability_gain": 0.046915411949157715,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 1,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.20376288890838623,
+            0.2907032072544098,
+            0.3667128086090088,
+            0.13882111012935638
+          ],
+          "probabilities_with_fact": [
+            0.25067830085754395,
+            0.2944352328777313,
+            0.23550373315811157,
+            0.21938274800777435
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.190, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.615); probability gain from the fact = +0.424",
+      "scoring_seconds": 0.0663
+    },
+    {
+      "passage": "The branchial arches , a series of arches that support the gills of aquatic amphibians and fishes. They lie close to the body's surface.",
+      "question": "A series of arches that support the gills of aquatic amphibians and fish are known as what?",
+      "options": [
+        "cochlear arches",
+        "scythian arches",
+        "aquatic arches",
+        "branchial arches"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "branchial arches",
+      "id": 11,
+      "sciq_index": 854,
+      "kda_score": 0.493746988938497,
+      "numerator": 0.7076663936791352,
+      "denominator": 1.433257132768631,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.2833714336156845,
+      "mean_p_correct_with_fact": 0.5031075328588486,
+      "mean_probability_gain": 0.21973609924316406,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.3133449852466583,
+          "p_correct_with_fact": 0.7269059419631958,
+          "weight": 0.6866550147533417,
+          "weighted_contribution": 0.49913361030302994,
+          "probability_gain": 0.4135609567165375,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.1894187480211258,
+            0.13846836984157562,
+            0.35876786708831787,
+            0.3133449852466583
+          ],
+          "probabilities_with_fact": [
+            0.035578299313783646,
+            0.037170350551605225,
+            0.20034541189670563,
+            0.7269059419631958
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.2533978819847107,
+          "p_correct_with_fact": 0.27930912375450134,
+          "weight": 0.7466021180152893,
+          "weighted_contribution": 0.20853278337610526,
+          "probability_gain": 0.02591124176979065,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 2,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.21693865954875946,
+            0.21405138075351715,
+            0.31561213731765747,
+            0.2533978819847107
+          ],
+          "probabilities_with_fact": [
+            0.19749706983566284,
+            0.22876399755477905,
+            0.2944297790527344,
+            0.27930912375450134
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.283, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.503); probability gain from the fact = +0.220",
+      "scoring_seconds": 0.0426
+    },
+    {
+      "passage": "Note the Pattern Corrosion is a galvanic process. Under ambient conditions, the oxidation of most metals is thermodynamically spontaneous, with the notable exception of gold and platinum. Hence it is actually somewhat surprising that any metals are useful at all in Earth’s moist, oxygen-rich atmosphere. Some metals, however, are resistant to corrosion for kinetic reasons. For example, aluminum in soft-drink cans and airplanes is protected by a thin coating of metal oxide that forms on the surface of the metal and acts as an impenetrable barrier that prevents further destruction. Aluminum cans also have a thin plastic layer to prevent reaction of the oxide with acid in the soft drink. Chromium, magnesium, and nickel also form protective oxide films. Stainless steels are remarkably resistant to corrosion because they usually contain a significant proportion of chromium, nickel, or both. In contrast to these metals, when iron corrodes, it forms a red-brown hydrated metal oxide (Fe2O3·xH2O), commonly known as rust, that does not provide a tight protective film (Figure 19.17 \"Rust, the Result of Corrosion of.",
+      "question": "What kind of a process is corrosion?",
+      "options": [
+        "oxidation",
+        "electromagnetic",
+        "galvanic",
+        "electrolysis"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "galvanic",
+      "id": 12,
+      "sciq_index": 627,
+      "kda_score": 0.22419288079137134,
+      "numerator": 0.36298330457933936,
+      "denominator": 1.6190670430660248,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.1904664784669876,
+      "mean_p_correct_with_fact": 0.22393210232257843,
+      "mean_probability_gain": 0.03346562385559082,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.17507845163345337,
+          "p_correct_with_fact": 0.23765113949775696,
+          "weight": 0.8249215483665466,
+          "weighted_contribution": 0.19604354596556384,
+          "probability_gain": 0.06257268786430359,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.295126348733902,
+            0.147332563996315,
+            0.17507845163345337,
+            0.38246268033981323
+          ],
+          "probabilities_with_fact": [
+            0.4779900014400482,
+            0.010695642791688442,
+            0.23765113949775696,
+            0.27366316318511963
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.20585450530052185,
+          "p_correct_with_fact": 0.2102130651473999,
+          "weight": 0.7941454946994781,
+          "weighted_contribution": 0.16693975861377552,
+          "probability_gain": 0.004358559846878052,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.3179287910461426,
+            0.251924991607666,
+            0.20585450530052185,
+            0.22429172694683075
+          ],
+          "probabilities_with_fact": [
+            0.24276937544345856,
+            0.2535940706729889,
+            0.2102130651473999,
+            0.29342350363731384
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.190, close to the 0.25 chance level); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.224); the target fact does not match the question or a distractor competes with it; probability gain from the fact = +0.033",
+      "scoring_seconds": 0.1032
+    },
+    {
+      "passage": "Prefixes are used to indicate the number of atoms of an element that are in the compound.",
+      "question": "What are used to indicate the number of atoms of an element that are in the compound?",
+      "options": [
+        "suffixes",
+        "prefixes",
+        "indices",
+        "digits"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "prefixes",
+      "id": 13,
+      "sciq_index": 103,
+      "kda_score": 0.3905157825032122,
+      "numerator": 0.5804585190889284,
+      "denominator": 1.486389398574829,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.25680530071258545,
+      "mean_p_correct_with_fact": 0.3917243257164955,
+      "mean_probability_gain": 0.13491902500391006,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.2622654438018799,
+          "p_correct_with_fact": 0.5562223792076111,
+          "weight": 0.7377345561981201,
+          "weighted_contribution": 0.41034447007218944,
+          "probability_gain": 0.2939569354057312,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 1,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.21594084799289703,
+            0.2622654438018799,
+            0.33585312962532043,
+            0.18594053387641907
+          ],
+          "probabilities_with_fact": [
+            0.4121188521385193,
+            0.5562223792076111,
+            0.014625268056988716,
+            0.01703348383307457
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.251345157623291,
+          "p_correct_with_fact": 0.22722627222537994,
+          "weight": 0.748654842376709,
+          "weighted_contribution": 0.170114049016739,
+          "probability_gain": -0.024118885397911072,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.2853665053844452,
+            0.251345157623291,
+            0.1427536904811859,
+            0.32053467631340027
+          ],
+          "probabilities_with_fact": [
+            0.2802029848098755,
+            0.22722627222537994,
+            0.15105266869068146,
+            0.34151798486709595
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.257, close to the 0.25 chance level); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.392); the target fact does not match the question or a distractor competes with it; probability gain from the fact = +0.135",
+      "scoring_seconds": 0.0354
+    },
+    {
+      "passage": "Chromosomes are coiled structures made of DNA and proteins. Chromosomes are the form of the genetic material of a cell during cell division. It is this coiled structure that ensures proper segregation of the chromosomes during cell division. During other phases of the cell cycle, DNA is not coiled into chromosomes. Instead, it exists as a grainy material called chromatin .",
+      "question": "What are chromosomes made of?",
+      "options": [
+        "amino acids",
+        "muscle tissue",
+        "dna and proteins",
+        "sperm and proteins"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "dna and proteins",
+      "id": 14,
+      "sciq_index": 677,
+      "kda_score": 0.5242405823293613,
+      "numerator": 0.617217594414115,
+      "denominator": 1.1773556172847748,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.4113221913576126,
+      "mean_p_correct_with_fact": 0.6089342460036278,
+      "mean_probability_gain": 0.19761205464601517,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.5400242805480957,
+          "p_correct_with_fact": 0.9963194131851196,
+          "weight": 0.4599757194519043,
+          "weighted_contribution": 0.4582827388837245,
+          "probability_gain": 0.4562951326370239,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 2,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.14598260819911957,
+            0.11436554044485092,
+            0.5400242805480957,
+            0.19962748885154724
+          ],
+          "probabilities_with_fact": [
+            0.0008869399316608906,
+            0.0007599860546179116,
+            0.9963194131851196,
+            0.0020336101297289133
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.2826201021671295,
+          "p_correct_with_fact": 0.22154907882213593,
+          "weight": 0.7173798978328705,
+          "weighted_contribution": 0.15893485553039044,
+          "probability_gain": -0.06107102334499359,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.1830950826406479,
+            0.24652434885501862,
+            0.2826201021671295,
+            0.287760466337204
+          ],
+          "probabilities_with_fact": [
+            0.24943557381629944,
+            0.2573419213294983,
+            0.22154907882213593,
+            0.27167338132858276
+          ]
+        }
+      },
+      "reason": "background knowledge only helps partially (mean P(R^q=1)=0.411); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.609); probability gain from the fact = +0.198",
+      "scoring_seconds": 0.0448
+    },
+    {
+      "passage": "Chelicerae are mostly used for feeding, but in spiders, these are often modified into fangs that inject venom into their prey before feeding (Figure 28.43). Members of this subphylum have an open circulatory system with a heart that pumps blood into the hemocoel. Aquatic species have gills, whereas terrestrial species have either trachea or book lungs for gaseous exchange.",
+      "question": "Chelicerae in spiders are often modified into fangs that perform what function?",
+      "options": [
+        "tearing flesh",
+        "chewing",
+        "courtship display",
+        "inject venom"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "inject venom",
+      "id": 15,
+      "sciq_index": 483,
+      "kda_score": 0.5860323953741413,
+      "numerator": 0.7162807584682351,
+      "denominator": 1.2222545444965363,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.3888727277517319,
+      "mean_p_correct_with_fact": 0.6045015603303909,
+      "mean_probability_gain": 0.21562883257865906,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.4216850697994232,
+          "p_correct_with_fact": 0.9484882950782776,
+          "weight": 0.5783149302005768,
+          "weighted_contribution": 0.5485249421642582,
+          "probability_gain": 0.5268032252788544,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.2279505878686905,
+            0.06593824923038483,
+            0.28442609310150146,
+            0.4216850697994232
+          ],
+          "probabilities_with_fact": [
+            0.03381618112325668,
+            0.009432158432900906,
+            0.008263363502919674,
+            0.9484882950782776
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.3560603857040405,
+          "p_correct_with_fact": 0.2605148255825043,
+          "weight": 0.6439396142959595,
+          "weighted_contribution": 0.16775581630397696,
+          "probability_gain": -0.09554556012153625,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 2,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.21441173553466797,
+            0.18348751962184906,
+            0.24604034423828125,
+            0.3560603857040405
+          ],
+          "probabilities_with_fact": [
+            0.24664819240570068,
+            0.21706241369247437,
+            0.2757745385169983,
+            0.2605148255825043
+          ]
+        }
+      },
+      "reason": "background knowledge only helps partially (mean P(R^q=1)=0.389); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.605); probability gain from the fact = +0.216",
+      "scoring_seconds": 0.056
+    },
+    {
+      "passage": "Take-Home Experiment: The Pupil Look at the central transparent area of someone’s eye, the pupil, in normal room light. Estimate the diameter of the pupil. Now turn off the lights and darken the room. After a few minutes turn on the lights and promptly estimate the diameter of the pupil. What happens to the pupil as the eye adjusts to the room light? Explain your observations. The eye can detect an impressive amount of detail, considering how small the image is on the retina. To get some idea of how small the image can be, consider the following example.",
+      "question": "What part of the eye allows light to enter?",
+      "options": [
+        "eyelid",
+        "iris",
+        "pupil",
+        "retina"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "pupil",
+      "id": 16,
+      "sciq_index": 32,
+      "kda_score": 0.491382133051635,
+      "numerator": 0.7187300794999869,
+      "denominator": 1.4626703560352325,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.26866482198238373,
+      "mean_p_correct_with_fact": 0.4770546108484268,
+      "mean_probability_gain": 0.2083897888660431,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.22295624017715454,
+          "p_correct_with_fact": 0.7062942981719971,
+          "weight": 0.7770437598228455,
+          "weighted_contribution": 0.5488215769930065,
+          "probability_gain": 0.48333805799484253,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 2,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.21601049602031708,
+            0.23257417976856232,
+            0.22295624017715454,
+            0.32845908403396606
+          ],
+          "probabilities_with_fact": [
+            0.03992856293916702,
+            0.04108891636133194,
+            0.7062942981719971,
+            0.21268820762634277
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.3143734037876129,
+          "p_correct_with_fact": 0.24781492352485657,
+          "weight": 0.6856265962123871,
+          "weighted_contribution": 0.16990850250698042,
+          "probability_gain": -0.06655848026275635,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.1669769436120987,
+            0.2379441261291504,
+            0.3143734037876129,
+            0.28070560097694397
+          ],
+          "probabilities_with_fact": [
+            0.249777153134346,
+            0.2289486974477768,
+            0.24781492352485657,
+            0.273459255695343
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.269, close to the 0.25 chance level); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.477); the target fact does not match the question or a distractor competes with it; probability gain from the fact = +0.208",
+      "scoring_seconds": 0.0655
+    },
+    {
+      "passage": "Metals represent approximately 25% of the elemental makeup of the Earth's crust. The bulk of these metals, primarily aluminum, iron, calcium, sodium, potassium, and magnesium, are typically found in combined form. The most abundant metal is aluminum, which occurs almost exclusively as the ionic mineral bauxite. The other most common metals, including iron, sodium, potassium, magnesium, and calcium, are also found primarily as the cationic portion of an ionic compound. Very few metals actually occur naturally as pure substances. The ones that do are often referred to as precious or semi-precious metals.",
+      "question": "What is the most abundant metal of the earth's crust?",
+      "options": [
+        "magnetite",
+        "calcium",
+        "aluminum",
+        "copper"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "aluminum",
+      "id": 17,
+      "sciq_index": 30,
+      "kda_score": 0.3059490445821429,
+      "numerator": 0.5067531111824011,
+      "denominator": 1.6563317328691483,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.17183413356542587,
+      "mean_p_correct_with_fact": 0.2991112545132637,
+      "mean_probability_gain": 0.12727712094783783,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.10489866137504578,
+          "p_correct_with_fact": 0.383712500333786,
+          "weight": 0.8951013386249542,
+          "weighted_contribution": 0.34346157269590005,
+          "probability_gain": 0.27881383895874023,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 1,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.45745396614074707,
+            0.24996057152748108,
+            0.10489866137504578,
+            0.18768678605556488
+          ],
+          "probabilities_with_fact": [
+            0.03823282569646835,
+            0.4121232032775879,
+            0.383712500333786,
+            0.16593152284622192
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.23876960575580597,
+          "p_correct_with_fact": 0.2145100086927414,
+          "weight": 0.761230394244194,
+          "weighted_contribution": 0.16329153848650102,
+          "probability_gain": -0.024259597063064575,
+          "predicted_idx_without_fact": 1,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.2676691710948944,
+            0.3057916760444641,
+            0.23876960575580597,
+            0.1877695769071579
+          ],
+          "probabilities_with_fact": [
+            0.2645984888076782,
+            0.2590060830116272,
+            0.2145100086927414,
+            0.26188546419143677
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.172, close to the 0.25 chance level); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.299); the target fact does not match the question or a distractor competes with it; probability gain from the fact = +0.127",
+      "scoring_seconds": 0.0708
+    },
+    {
+      "passage": "Positive Feedback Loop A positive feedback loop maintains the direction of the stimulus, possibly accelerating it. Few examples of positive feedback loops exist in animal bodies, but one is found in the cascade of chemical reactions that result in blood clotting, or coagulation. As one clotting factor is activated, it activates the next factor in sequence until a fibrin clot is achieved. The direction is maintained, not changed, so this is positive feedback. Another example of positive feedback is uterine contractions during childbirth, as illustrated in Figure 33.21. The hormone oxytocin, made by the endocrine system, stimulates the contraction of the uterus. This produces pain sensed by the nervous system. Instead of lowering the oxytocin and causing the pain to subside, more oxytocin is produced until the contractions are powerful enough to produce childbirth.",
+      "question": "What is another term for blood clotting?",
+      "options": [
+        "coagulation",
+        "adulation",
+        "oxidation",
+        "differentiation"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "coagulation",
+      "id": 18,
+      "sciq_index": 109,
+      "kda_score": 0.49654924201179373,
+      "numerator": 0.6887128044599873,
+      "denominator": 1.3869979977607727,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.30650100111961365,
+      "mean_p_correct_with_fact": 0.5116819590330124,
+      "mean_probability_gain": 0.20518095791339874,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.35595858097076416,
+          "p_correct_with_fact": 0.7238743901252747,
+          "weight": 0.6440414190292358,
+          "weighted_contribution": 0.46620508941520455,
+          "probability_gain": 0.3679158091545105,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.35595858097076416,
+            0.22622545063495636,
+            0.19987954199314117,
+            0.2179364264011383
+          ],
+          "probabilities_with_fact": [
+            0.7238743901252747,
+            0.07148614525794983,
+            0.06771622598171234,
+            0.13692329823970795
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.25704342126846313,
+          "p_correct_with_fact": 0.2994895279407501,
+          "weight": 0.7429565787315369,
+          "weighted_contribution": 0.22250771504478273,
+          "probability_gain": 0.04244610667228699,
+          "predicted_idx_without_fact": 1,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.25704342126846313,
+            0.31022700667381287,
+            0.20565153658390045,
+            0.22707800567150116
+          ],
+          "probabilities_with_fact": [
+            0.2994895279407501,
+            0.29256686568260193,
+            0.15927205979824066,
+            0.24867156147956848
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.307, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.512); probability gain from the fact = +0.205",
+      "scoring_seconds": 0.0886
+    },
+    {
+      "passage": "Halogens (Cl, Br, I) have negative oxidation numbers when they form halide compounds. When combined with oxygen, they have positive numbers. In the chlorate ion (ClO 3 - ), the oxidation number of Cl +5, and the oxidation number of O is -2.",
+      "question": "What must be combined with a halogen to give it a positive oxidation number?",
+      "options": [
+        "calcium",
+        "oxygen",
+        "carbon",
+        "nitrogen"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "oxygen",
+      "id": 19,
+      "sciq_index": 253,
+      "kda_score": 0.5113120708313964,
+      "numerator": 0.7240444874970056,
+      "denominator": 1.4160520136356354,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.2919739931821823,
+      "mean_p_correct_with_fact": 0.5261938571929932,
+      "mean_probability_gain": 0.23421986401081085,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.33175113797187805,
+          "p_correct_with_fact": 0.7910869717597961,
+          "weight": 0.668248862028122,
+          "weighted_contribution": 0.5286429686437568,
+          "probability_gain": 0.4593358337879181,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 1,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.12172168493270874,
+            0.33175113797187805,
+            0.36955806612968445,
+            0.17696911096572876
+          ],
+          "probabilities_with_fact": [
+            0.02148020826280117,
+            0.7910869717597961,
+            0.11280167102813721,
+            0.07463111728429794
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.2521968483924866,
+          "p_correct_with_fact": 0.2613007426261902,
+          "weight": 0.7478031516075134,
+          "weighted_contribution": 0.19540151885324875,
+          "probability_gain": 0.009103894233703613,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 1,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.24874338507652283,
+            0.2521968483924866,
+            0.22101232409477234,
+            0.2780474126338959
+          ],
+          "probabilities_with_fact": [
+            0.2572583854198456,
+            0.2613007426261902,
+            0.23830142617225647,
+            0.24313949048519135
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.292, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.526); probability gain from the fact = +0.234",
+      "scoring_seconds": 0.0473
+    },
+    {
+      "passage": "Visible light consists of a very narrow range of wavelengths that falls between infrared light and ultraviolet light. It is the only light that people can see. Different wavelengths of visible light appear as different colors.",
+      "question": "What is the only light that people can see?",
+      "options": [
+        "visible light",
+        "UV light",
+        "infrared light",
+        "spectrum light"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "visible light",
+      "id": 20,
+      "sciq_index": 270,
+      "kda_score": 0.395635246724428,
+      "numerator": 0.5694525317497741,
+      "denominator": 1.439337208867073,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.28033139556646347,
+      "mean_p_correct_with_fact": 0.40851113200187683,
+      "mean_probability_gain": 0.12817973643541336,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.37421393394470215,
+          "p_correct_with_fact": 0.5072128772735596,
+          "weight": 0.6257860660552979,
+          "weighted_contribution": 0.31740675112160943,
+          "probability_gain": 0.13299894332885742,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.37421393394470215,
+            0.31174594163894653,
+            0.14428937435150146,
+            0.16975076496601105
+          ],
+          "probabilities_with_fact": [
+            0.5072128772735596,
+            0.14631518721580505,
+            0.3093985915184021,
+            0.03707335889339447
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.1864488571882248,
+          "p_correct_with_fact": 0.3098093867301941,
+          "weight": 0.8135511428117752,
+          "weighted_contribution": 0.25204578062816463,
+          "probability_gain": 0.1233605295419693,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.1864488571882248,
+            0.2858521342277527,
+            0.21006333827972412,
+            0.3176356852054596
+          ],
+          "probabilities_with_fact": [
+            0.3098093867301941,
+            0.2396644651889801,
+            0.22756576538085938,
+            0.22296039760112762
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.280, close to the 0.25 chance level); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.409); the target fact does not match the question or a distractor competes with it; probability gain from the fact = +0.128",
+      "scoring_seconds": 0.0355
+    },
+    {
+      "passage": "Bacteria that cause the skin disease impetigo, which causes blisters, can spread when people share towels or clothes. The bacteria can also spread through direct skin contact in sports like wrestling.",
+      "question": "The skin disease impetigo is caused by spread of what type of microorganism?",
+      "options": [
+        "bacteria",
+        "viruses",
+        "tumors",
+        "algae"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "bacteria",
+      "id": 21,
+      "sciq_index": 576,
+      "kda_score": 0.5036485703053344,
+      "numerator": 0.7149903300315799,
+      "denominator": 1.4196214824914932,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.2901892587542534,
+      "mean_p_correct_with_fact": 0.5249151811003685,
+      "mean_probability_gain": 0.2347259223461151,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.3423924446105957,
+          "p_correct_with_fact": 0.8140789270401001,
+          "weight": 0.6576075553894043,
+          "weighted_contribution": 0.5353444531048694,
+          "probability_gain": 0.4716864824295044,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.3423924446105957,
+            0.33076030015945435,
+            0.1295909285545349,
+            0.19725634157657623
+          ],
+          "probabilities_with_fact": [
+            0.8140789270401001,
+            0.1321689486503601,
+            0.0035972713958472013,
+            0.05015480890870094
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.23798607289791107,
+          "p_correct_with_fact": 0.2357514351606369,
+          "weight": 0.7620139271020889,
+          "weighted_contribution": 0.1796458769267104,
+          "probability_gain": -0.00223463773727417,
+          "predicted_idx_without_fact": 1,
+          "predicted_idx_with_fact": 2,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.23798607289791107,
+            0.2602914869785309,
+            0.2547544538974762,
+            0.24696804583072662
+          ],
+          "probabilities_with_fact": [
+            0.2357514351606369,
+            0.2513764798641205,
+            0.26592427492141724,
+            0.24694783985614777
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.290, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.525); probability gain from the fact = +0.235",
+      "scoring_seconds": 0.0397
+    },
+    {
+      "passage": "Almost all energy on Earth comes from the Sun. The Sun’s energy heats the planet and the air around it. Sunlight also powers photosynthesis and life on Earth.",
+      "question": "Where does most of the earth's energy come from?",
+      "options": [
+        "cover",
+        "heat",
+        "sun",
+        "fire"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "sun",
+      "id": 22,
+      "sciq_index": 693,
+      "kda_score": 0.5807156525587137,
+      "numerator": 0.9077391757036115,
+      "denominator": 1.5631388127803802,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.21843059360980988,
+      "mean_p_correct_with_fact": 0.5973640158772469,
+      "mean_probability_gain": 0.378933422267437,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.2556474804878235,
+          "p_correct_with_fact": 0.9469862580299377,
+          "weight": 0.7443525195121765,
+          "weighted_contribution": 0.7048916071079923,
+          "probability_gain": 0.6913387775421143,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 2,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.41956213116645813,
+            0.26892712712287903,
+            0.2556474804878235,
+            0.055863235145807266
+          ],
+          "probabilities_with_fact": [
+            0.02326497621834278,
+            0.025031117722392082,
+            0.9469862580299377,
+            0.004717622883617878
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.18121370673179626,
+          "p_correct_with_fact": 0.24774177372455597,
+          "weight": 0.8187862932682037,
+          "weighted_contribution": 0.20284756859561925,
+          "probability_gain": 0.0665280669927597,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.25351035594940186,
+            0.2712878882884979,
+            0.18121370673179626,
+            0.29398807883262634
+          ],
+          "probabilities_with_fact": [
+            0.23559372127056122,
+            0.2533809244632721,
+            0.24774177372455597,
+            0.26328355073928833
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.218, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.597); probability gain from the fact = +0.379",
+      "scoring_seconds": 0.0329
+    },
+    {
+      "passage": "Most insects can reproduce very quickly within a short period of time. With a short generation time, they evolve faster and can quickly adjust to environmental changes. Most insects reproduce by sexual reproduction . The female produces eggs, which are fertilized by the male, and then the eggs are usually placed near the required food. In some insects, there is asexual reproduction during which the offspring come from a single parent. In this type of reproduction, the offspring are almost identical to the mother. This is most often seen in aphids and scale insects.",
+      "question": "Most insects reproduce quickly and through what type of reproduction?",
+      "options": [
+        "spores",
+        "photosynthesis",
+        "sexual reproduction",
+        "asexual reproduction"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "sexual reproduction",
+      "id": 23,
+      "sciq_index": 27,
+      "kda_score": 0.22657461905988077,
+      "numerator": 0.27335633433537554,
+      "denominator": 1.2064737677574158,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.3967631161212921,
+      "mean_p_correct_with_fact": 0.22677380591630936,
+      "mean_probability_gain": -0.16998931020498276,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.39000436663627625,
+          "p_correct_with_fact": 0.20899583399295807,
+          "weight": 0.6099956333637238,
+          "weighted_contribution": 0.12748654612691412,
+          "probability_gain": -0.18100853264331818,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.045889437198638916,
+            0.17059434950351715,
+            0.39000436663627625,
+            0.3935118615627289
+          ],
+          "probabilities_with_fact": [
+            0.00044118586811237037,
+            0.00695590628311038,
+            0.20899583399295807,
+            0.7836071252822876
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.403521865606308,
+          "p_correct_with_fact": 0.24455177783966064,
+          "weight": 0.596478134393692,
+          "weighted_contribution": 0.14586978820846142,
+          "probability_gain": -0.15897008776664734,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.18839551508426666,
+            0.1672661155462265,
+            0.403521865606308,
+            0.24081650376319885
+          ],
+          "probabilities_with_fact": [
+            0.24486275017261505,
+            0.245876744389534,
+            0.24455177783966064,
+            0.2647087574005127
+          ]
+        }
+      },
+      "reason": "background knowledge only helps partially (mean P(R^q=1)=0.397); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.227); the target fact does not match the question or a distractor competes with it; probability gain from the fact = -0.170",
+      "scoring_seconds": 0.0575
+    },
+    {
+      "passage": "Asteroids are small rocky bodies that orbit the Sun.",
+      "question": "The small, rocky bodies that orbit the sun are called what?",
+      "options": [
+        "comets",
+        "meteorites",
+        "fossils",
+        "asteroids"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "asteroids",
+      "id": 24,
+      "sciq_index": 644,
+      "kda_score": 0.5214415243302484,
+      "numerator": 0.7722846679580506,
+      "denominator": 1.4810570925474167,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.25947145372629166,
+      "mean_p_correct_with_fact": 0.5108863413333893,
+      "mean_probability_gain": 0.2514148876070976,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.2281130701303482,
+          "p_correct_with_fact": 0.7601470947265625,
+          "weight": 0.7718869298696518,
+          "weighted_contribution": 0.5867476071978217,
+          "probability_gain": 0.5320340245962143,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.3510150909423828,
+            0.28130558133125305,
+            0.13956627249717712,
+            0.2281130701303482
+          ],
+          "probabilities_with_fact": [
+            0.200823575258255,
+            0.0315387099981308,
+            0.007490596733987331,
+            0.7601470947265625
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.2908298373222351,
+          "p_correct_with_fact": 0.26162558794021606,
+          "weight": 0.7091701626777649,
+          "weighted_contribution": 0.1855370607602289,
+          "probability_gain": -0.029204249382019043,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.30681130290031433,
+            0.20567642152309418,
+            0.1966824233531952,
+            0.2908298373222351
+          ],
+          "probabilities_with_fact": [
+            0.31255510449409485,
+            0.24230152368545532,
+            0.18351776897907257,
+            0.26162558794021606
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.259, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.511); probability gain from the fact = +0.251",
+      "scoring_seconds": 0.0316
+    },
+    {
+      "passage": "The acceleration of the car is in the same direction as the velocity.",
+      "question": "What happens to the pressure when more gas is added to a rigid container?",
+      "options": [
+        "occurs",
+        "increases",
+        "changes",
+        "Higher"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "increases",
+      "id": 25,
+      "sciq_index": 232,
+      "kda_score": 0.2784166313648846,
+      "numerator": 0.4037957327377768,
+      "denominator": 1.450329065322876,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.274835467338562,
+      "mean_p_correct_with_fact": 0.2782607674598694,
+      "mean_probability_gain": 0.003425300121307373,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.25980842113494873,
+          "p_correct_with_fact": 0.2857823371887207,
+          "weight": 0.7401915788650513,
+          "weighted_contribution": 0.21153367937546363,
+          "probability_gain": 0.025973916053771973,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.30994537472724915,
+            0.25980842113494873,
+            0.23755118250846863,
+            0.1926950216293335
+          ],
+          "probabilities_with_fact": [
+            0.3307383358478546,
+            0.2857823371887207,
+            0.2071138471364975,
+            0.176365464925766
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.2898625135421753,
+          "p_correct_with_fact": 0.27073919773101807,
+          "weight": 0.7101374864578247,
+          "weighted_contribution": 0.19226205336231317,
+          "probability_gain": -0.019123315811157227,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 1,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.18315689265727997,
+            0.2898625135421753,
+            0.21102376282215118,
+            0.3159567713737488
+          ],
+          "probabilities_with_fact": [
+            0.2270718514919281,
+            0.27073919773101807,
+            0.24807405471801758,
+            0.25411489605903625
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.275, close to the 0.25 chance level); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.278); the target fact does not match the question or a distractor competes with it; probability gain from the fact = +0.003",
+      "scoring_seconds": 0.0301
+    },
+    {
+      "passage": "The sex of developing crocodilians is determined by the temperature of the eggs during incubation.",
+      "question": "The sex of developing crocodilians is determined by what during incubation?",
+      "options": [
+        "the temperature of the eggs",
+        "the size of the eggs",
+        "the color of the eggs",
+        "the location of the eggs"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "the temperature of the eggs",
+      "id": 26,
+      "sciq_index": 826,
+      "kda_score": 0.5937782502350147,
+      "numerator": 0.9502764035438434,
+      "denominator": 1.600389376282692,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.19980531185865402,
+      "mean_p_correct_with_fact": 0.6004233062267303,
+      "mean_probability_gain": 0.4006179943680763,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.21788276731967926,
+          "p_correct_with_fact": 0.8945652842521667,
+          "weight": 0.7821172326803207,
+          "weighted_contribution": 0.6996549245711892,
+          "probability_gain": 0.6766825169324875,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.21788276731967926,
+            0.207930788397789,
+            0.23493267595767975,
+            0.33925381302833557
+          ],
+          "probabilities_with_fact": [
+            0.8945652842521667,
+            0.014921304769814014,
+            0.028093017637729645,
+            0.062420304864645004
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.18172785639762878,
+          "p_correct_with_fact": 0.30628132820129395,
+          "weight": 0.8182721436023712,
+          "weighted_contribution": 0.2506214789726542,
+          "probability_gain": 0.12455347180366516,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.18172785639762878,
+            0.26721617579460144,
+            0.21992558240890503,
+            0.3311304450035095
+          ],
+          "probabilities_with_fact": [
+            0.30628132820129395,
+            0.17268872261047363,
+            0.2474689483642578,
+            0.2735610008239746
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.200, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.600); probability gain from the fact = +0.401",
+      "scoring_seconds": 0.0356
+    },
+    {
+      "passage": "Mineral Storage, Energy Storage, and Hematopoiesis On a metabolic level, bone tissue performs several critical functions. For one, the bone matrix acts as a reservoir for a number of minerals important to the functioning of the body, especially calcium, and phosphorus. These minerals, incorporated into bone tissue, can be released back into the bloodstream to maintain levels needed to support physiological processes. Calcium ions, for example, are essential for muscle contractions and controlling the flow of other ions involved in the transmission of nerve impulses. Bone also serves as a site for fat storage and blood cell production. The softer connective tissue that fills the interior of most bone is referred to as bone marrow (Figure 6.5). There are two types of bone marrow: yellow marrow and red marrow. Yellow marrow contains adipose tissue; the triglycerides stored in the adipocytes of the tissue can serve as a source of.",
+      "question": "The softer connective tissue that fills the interior of most bone is referred to as what?",
+      "options": [
+        "solid marrow",
+        "bone marrow",
+        "attached marrow",
+        "liquid marrow"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "bone marrow",
+      "id": 27,
+      "sciq_index": 749,
+      "kda_score": 0.4476075596783836,
+      "numerator": 0.5818660348130793,
+      "denominator": 1.2999468445777893,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.35002657771110535,
+      "mean_p_correct_with_fact": 0.4655732065439224,
+      "mean_probability_gain": 0.11554662883281708,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.405200332403183,
+          "p_correct_with_fact": 0.6772171854972839,
+          "weight": 0.594799667596817,
+          "weighted_contribution": 0.40280855682463645,
+          "probability_gain": 0.27201685309410095,
+          "predicted_idx_without_fact": 1,
+          "predicted_idx_with_fact": 1,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.19337044656276703,
+            0.405200332403183,
+            0.24061551690101624,
+            0.16081364452838898
+          ],
+          "probabilities_with_fact": [
+            0.04413481056690216,
+            0.6772171854972839,
+            0.2231501191854477,
+            0.05549792945384979
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.2948528230190277,
+          "p_correct_with_fact": 0.2539292275905609,
+          "weight": 0.7051471769809723,
+          "weighted_contribution": 0.17905747798844285,
+          "probability_gain": -0.0409235954284668,
+          "predicted_idx_without_fact": 1,
+          "predicted_idx_with_fact": 2,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.2579629719257355,
+            0.2948528230190277,
+            0.2643045485019684,
+            0.18287965655326843
+          ],
+          "probabilities_with_fact": [
+            0.22324861586093903,
+            0.2539292275905609,
+            0.32107555866241455,
+            0.2017465978860855
+          ]
+        }
+      },
+      "reason": "background knowledge only helps partially (mean P(R^q=1)=0.350); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.466); the target fact does not match the question or a distractor competes with it; probability gain from the fact = +0.116",
+      "scoring_seconds": 0.0957
+    },
+    {
+      "passage": "Some nonmetals, such as bromine, have an outer energy level that is almost full. They \"want\" to gain electrons so they will have a full outer energy level. As a result, these nonmetals are very reactive. Because they only accept electrons and do not give them up, they do not conduct electricity.",
+      "question": "Highly reactive nonmetals, which only accept electrons and do not give them up, make poor what?",
+      "options": [
+        "electromagnets",
+        "alloys",
+        "insulators",
+        "electricity conductors"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "electricity conductors",
+      "id": 28,
+      "sciq_index": 808,
+      "kda_score": 0.22667216944680574,
+      "numerator": 0.3742560534151078,
+      "denominator": 1.6510895639657974,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.1744552180171013,
+      "mean_p_correct_with_fact": 0.22672676295042038,
+      "mean_probability_gain": 0.05227154493331909,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.1963287740945816,
+          "p_correct_with_fact": 0.22878721356391907,
+          "weight": 0.8036712259054184,
+          "weighted_contribution": 0.1838697003963996,
+          "probability_gain": 0.03245843946933746,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.462232381105423,
+            0.11890049278736115,
+            0.22253842651844025,
+            0.1963287740945816
+          ],
+          "probabilities_with_fact": [
+            0.5950472354888916,
+            0.03950335457921028,
+            0.13666224479675293,
+            0.22878721356391907
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.15258166193962097,
+          "p_correct_with_fact": 0.2246663123369217,
+          "weight": 0.847418338060379,
+          "weighted_contribution": 0.1903863530187082,
+          "probability_gain": 0.07208465039730072,
+          "predicted_idx_without_fact": 1,
+          "predicted_idx_with_fact": 1,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.12978850305080414,
+            0.4612114131450653,
+            0.256418377161026,
+            0.15258166193962097
+          ],
+          "probabilities_with_fact": [
+            0.22360433638095856,
+            0.2899315059185028,
+            0.26179781556129456,
+            0.2246663123369217
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.174, close to the 0.25 chance level); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.227); the target fact does not match the question or a distractor competes with it; probability gain from the fact = +0.052",
+      "scoring_seconds": 0.0557
+    },
+    {
+      "passage": "Another structure that supports the fetus is the amniotic sac. This is a membrane that surrounds and protects the fetus. It contains amniotic fluid, which consists of water and dissolved substances. The fluid allows the fetus to move freely until it grows to fill most of the available space. The fluid also cushions the fetus and helps protect it from injury.",
+      "question": "What type of fluid cushions the fetus and helps protect it from injury?",
+      "options": [
+        "aqueous",
+        "plasmid",
+        "amniotic",
+        "epithelial"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "amniotic",
+      "id": 29,
+      "sciq_index": 480,
+      "kda_score": 0.6084779470154444,
+      "numerator": 1.00874951311545,
+      "denominator": 1.6578242778778076,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.1710878610610962,
+      "mean_p_correct_with_fact": 0.5938045829534531,
+      "mean_probability_gain": 0.4227167218923569,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.13720442354679108,
+          "p_correct_with_fact": 0.9527684450149536,
+          "weight": 0.8627955764532089,
+          "weighted_contribution": 0.8220443997431044,
+          "probability_gain": 0.8155640214681625,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 2,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.19147972762584686,
+            0.2969411015510559,
+            0.13720442354679108,
+            0.37437477707862854
+          ],
+          "probabilities_with_fact": [
+            0.009623785503208637,
+            0.02289273962378502,
+            0.9527684450149536,
+            0.014714992605149746
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.2049712985754013,
+          "p_correct_with_fact": 0.23484072089195251,
+          "weight": 0.7950287014245987,
+          "weighted_contribution": 0.18670511337234563,
+          "probability_gain": 0.02986942231655121,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.24731875956058502,
+            0.20259210467338562,
+            0.2049712985754013,
+            0.3451178967952728
+          ],
+          "probabilities_with_fact": [
+            0.225168377161026,
+            0.23950837552547455,
+            0.23484072089195251,
+            0.30048251152038574
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.171, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.594); probability gain from the fact = +0.423",
+      "scoring_seconds": 0.0514
+    },
+    {
+      "passage": "The force that a magnet exerts on certain materials is called magnetic force . Like electric force, magnetic force is exerted over a distance and includes forces of attraction and repulsion. North and south poles of two magnets attract each other, while two north poles or two south poles repel each other.",
+      "question": "What is the term for the force that a magnet exerts on certain materials?",
+      "options": [
+        "gravitational force",
+        "positive force",
+        "magnetic force",
+        "potential force"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "magnetic force",
+      "id": 30,
+      "sciq_index": 256,
+      "kda_score": 0.4983693509203109,
+      "numerator": 0.7366653665976404,
+      "denominator": 1.4781514257192612,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.2609242871403694,
+      "mean_p_correct_with_fact": 0.5179216638207436,
+      "mean_probability_gain": 0.25699737668037415,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.3132753372192383,
+          "p_correct_with_fact": 0.7939550876617432,
+          "weight": 0.6867246627807617,
+          "weighted_contribution": 0.5452285398375807,
+          "probability_gain": 0.4806797504425049,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 2,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.19150479137897491,
+            0.2364569753408432,
+            0.3132753372192383,
+            0.2587628960609436
+          ],
+          "probabilities_with_fact": [
+            0.04908263310790062,
+            0.07200770825147629,
+            0.7939550876617432,
+            0.08495458960533142
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.20857323706150055,
+          "p_correct_with_fact": 0.24188823997974396,
+          "weight": 0.7914267629384995,
+          "weighted_contribution": 0.1914368267600597,
+          "probability_gain": 0.03331500291824341,
+          "predicted_idx_without_fact": 1,
+          "predicted_idx_with_fact": 1,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.1846889704465866,
+            0.4091052711009979,
+            0.20857323706150055,
+            0.19763246178627014
+          ],
+          "probabilities_with_fact": [
+            0.22808873653411865,
+            0.33716776967048645,
+            0.24188823997974396,
+            0.19285525381565094
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.261, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.518); probability gain from the fact = +0.257",
+      "scoring_seconds": 0.0492
+    },
+    {
+      "passage": "Sonar works on the same principle as echolocation.",
+      "question": "What navigation technology works on the same principle as echolocation?",
+      "options": [
+        "topography",
+        "radar",
+        "GPS",
+        "sonar"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "sonar",
+      "id": 31,
+      "sciq_index": 511,
+      "kda_score": 0.5855830333862725,
+      "numerator": 0.9338187013699646,
+      "denominator": 1.5946819633245468,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.2026590183377266,
+      "mean_p_correct_with_fact": 0.5761396065354347,
+      "mean_probability_gain": 0.37348058819770813,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.18032130599021912,
+          "p_correct_with_fact": 0.9132211804389954,
+          "weight": 0.8196786940097809,
+          "weighted_contribution": 0.7485479445243062,
+          "probability_gain": 0.7328998744487762,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.0751354992389679,
+            0.20390336215496063,
+            0.5406398773193359,
+            0.18032130599021912
+          ],
+          "probabilities_with_fact": [
+            0.00481910677626729,
+            0.056403011083602905,
+            0.025556698441505432,
+            0.9132211804389954
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.22499673068523407,
+          "p_correct_with_fact": 0.23905803263187408,
+          "weight": 0.7750032693147659,
+          "weighted_contribution": 0.1852707568456584,
+          "probability_gain": 0.014061301946640015,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 2,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.2411443293094635,
+            0.23490099608898163,
+            0.2989579737186432,
+            0.22499673068523407
+          ],
+          "probabilities_with_fact": [
+            0.2504004240036011,
+            0.23825035989284515,
+            0.2722911834716797,
+            0.23905803263187408
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.203, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.576); probability gain from the fact = +0.373",
+      "scoring_seconds": 0.0252
+    },
+    {
+      "passage": "When light is refracted, it changes direction as it passes into a new medium and changes speed. The straw in the Figure below looks bent where light travels from water to air. Light travels more quickly in air than in water and changes direction. For a detailed explanation of how this happens, watch the animation at this URL:.",
+      "question": "Light travels more quickly in air than what?",
+      "options": [
+        "metal",
+        "water",
+        "glass",
+        "earth"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "water",
+      "id": 32,
+      "sciq_index": 676,
+      "kda_score": 0.5623724130487417,
+      "numerator": 0.8754204345930026,
+      "denominator": 1.556656077504158,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.221671961247921,
+      "mean_p_correct_with_fact": 0.5714687705039978,
+      "mean_probability_gain": 0.3497968092560768,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.24453426897525787,
+          "p_correct_with_fact": 0.8811466097831726,
+          "weight": 0.7554657310247421,
+          "weighted_contribution": 0.6656760676998177,
+          "probability_gain": 0.6366123408079147,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 1,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.1688898652791977,
+            0.24453426897525787,
+            0.25034546852111816,
+            0.3362303376197815
+          ],
+          "probabilities_with_fact": [
+            0.008001206442713737,
+            0.8811466097831726,
+            0.01642807386815548,
+            0.09442413598299026
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.1988096535205841,
+          "p_correct_with_fact": 0.261790931224823,
+          "weight": 0.8011903464794159,
+          "weighted_contribution": 0.20974436689318487,
+          "probability_gain": 0.06298127770423889,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 1,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.285869836807251,
+            0.1988096535205841,
+            0.28083571791648865,
+            0.23448479175567627
+          ],
+          "probabilities_with_fact": [
+            0.2524116039276123,
+            0.261790931224823,
+            0.2348344326019287,
+            0.250963032245636
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.222, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.571); probability gain from the fact = +0.350",
+      "scoring_seconds": 0.0415
+    },
+    {
+      "passage": "Communities are not usually static. The numbers and types of species that live in them generally change over time. This is called ecological succession . Important cases of succession are primary and secondary succession.",
+      "question": "Ecological succession refers to the change in the numbers and types of species that live in what groups?",
+      "options": [
+        "movements",
+        "communities",
+        "biomes",
+        "colonies"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "communities",
+      "id": 33,
+      "sciq_index": 321,
+      "kda_score": 0.6112448571915681,
+      "numerator": 0.9206244969220938,
+      "denominator": 1.5061468183994293,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.24692659080028534,
+      "mean_p_correct_with_fact": 0.6019483953714371,
+      "mean_probability_gain": 0.35502180457115173,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.2253274917602539,
+          "p_correct_with_fact": 0.9260784983634949,
+          "weight": 0.7746725082397461,
+          "weighted_contribution": 0.7174075531541462,
+          "probability_gain": 0.700751006603241,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 1,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.1404079645872116,
+            0.2253274917602539,
+            0.5475038886070251,
+            0.08676062524318695
+          ],
+          "probabilities_with_fact": [
+            0.008348938077688217,
+            0.9260784983634949,
+            0.06169942021369934,
+            0.0038731899112462997
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.2685256898403168,
+          "p_correct_with_fact": 0.2778182923793793,
+          "weight": 0.7314743101596832,
+          "weighted_contribution": 0.20321694376794763,
+          "probability_gain": 0.0092926025390625,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 2,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.15777526795864105,
+            0.2685256898403168,
+            0.38480281829833984,
+            0.1888962984085083
+          ],
+          "probabilities_with_fact": [
+            0.19613949954509735,
+            0.2778182923793793,
+            0.3154695928096771,
+            0.21057263016700745
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.247, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.602); probability gain from the fact = +0.355",
+      "scoring_seconds": 0.0403
+    },
+    {
+      "passage": "Type 1 diabetes and other autoimmune diseases cannot be prevented. But choosing a healthy lifestyle can help prevent type 2 diabetes. Getting plenty of exercise, avoiding high-fat foods, and staying at a healthy weight can reduce the risk of developing this type of diabetes. This is especially important for people who have family members with the disease.",
+      "question": "What disease is unpreventable in the type one form but may be prevented by diet if it is of the second type?",
+      "options": [
+        "TB",
+        "diabetes",
+        "Cancer",
+        "Obesity"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "diabetes",
+      "id": 34,
+      "sciq_index": 933,
+      "kda_score": 0.4506330230023778,
+      "numerator": 0.7631968448299349,
+      "denominator": 1.693610556423664,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.15319472178816795,
+      "mean_p_correct_with_fact": 0.4252470061182976,
+      "mean_probability_gain": 0.2720522843301296,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.058890171349048615,
+          "p_correct_with_fact": 0.653200089931488,
+          "weight": 0.9411098286509514,
+          "weighted_contribution": 0.6147330247102087,
+          "probability_gain": 0.5943099185824394,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 1,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.5080326199531555,
+            0.058890171349048615,
+            0.21075700223445892,
+            0.22232022881507874
+          ],
+          "probabilities_with_fact": [
+            0.1544831395149231,
+            0.653200089931488,
+            0.006052678916603327,
+            0.18626411259174347
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.2474992722272873,
+          "p_correct_with_fact": 0.19729392230510712,
+          "weight": 0.7525007277727127,
+          "weighted_contribution": 0.14846382011972614,
+          "probability_gain": -0.050205349922180176,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 2,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.16935795545578003,
+            0.2474992722272873,
+            0.33583366870880127,
+            0.24730916321277618
+          ],
+          "probabilities_with_fact": [
+            0.27216848731040955,
+            0.19729392230510712,
+            0.2793211340904236,
+            0.25121650099754333
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.153, close to the 0.25 chance level); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.425); the target fact does not match the question or a distractor competes with it; probability gain from the fact = +0.272",
+      "scoring_seconds": 0.0576
+    },
+    {
+      "passage": "Gametogenesis (Spermatogenesis and Oogenesis) Gametogenesis, the production of sperm and eggs, involves the process of meiosis. During meiosis, two nuclear divisions separate the paired chromosomes in the nucleus and then separate the chromatids that were made during an earlier stage of the cell’s life cycle. Meiosis and its associated cell divisions produces haploid cells with half of each pair of chromosomes normally found in diploid cells. The production of sperm is called spermatogenesis and the production of eggs is called oogenesis. Spermatogenesis Spermatogenesis occurs in the wall of the seminiferous tubules, with the most primitive cells at the periphery of the tube and the most mature sperm at the lumen of the tube (Figure 18.14). Immediately under the capsule of the tubule are diploid, undifferentiated cells. These stem cells, each called a spermatogonium (pl. spermatogonia), go through mitosis to produce one cell that remains as a stem cell and a second cell called a primary spermatocyte that will undergo meiosis to produce sperm. The diploid primary spermatocyte goes through meiosis I to produce two haploid cells called secondary spermatocytes. Each secondary spermatocyte divides after meiosis II to produce two cells called spermatids. The spermatids eventually reach the lumen of the tubule and grow a flagellum, becoming sperm cells. Four sperm result from each primary spermatocyte that goes through meiosis.",
+      "question": "Meiosis is part of the process of gametogenesis, which is the production of what?",
+      "options": [
+        "sperm only",
+        "chromosomes",
+        "egg only",
+        "sperm and eggs"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "sperm and eggs",
+      "id": 35,
+      "sciq_index": 6,
+      "kda_score": 0.49474317840840215,
+      "numerator": 0.4917188021944954,
+      "denominator": 0.9938869774341583,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.5030565112829208,
+      "mean_p_correct_with_fact": 0.522349938750267,
+      "mean_probability_gain": 0.01929342746734619,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.575695276260376,
+          "p_correct_with_fact": 0.7112160325050354,
+          "weight": 0.424304723739624,
+          "weighted_contribution": 0.3017723221912405,
+          "probability_gain": 0.13552075624465942,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.06492088735103607,
+            0.3006908893585205,
+            0.05869293212890625,
+            0.575695276260376
+          ],
+          "probabilities_with_fact": [
+            0.13498184084892273,
+            0.11541367322206497,
+            0.03838847950100899,
+            0.7112160325050354
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.4304177463054657,
+          "p_correct_with_fact": 0.33348384499549866,
+          "weight": 0.5695822536945343,
+          "weighted_contribution": 0.18994648000325487,
+          "probability_gain": -0.09693390130996704,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 1,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.09994359314441681,
+            0.3431611657142639,
+            0.12647747993469238,
+            0.4304177463054657
+          ],
+          "probabilities_with_fact": [
+            0.16204649209976196,
+            0.3402235209941864,
+            0.16424618661403656,
+            0.33348384499549866
+          ]
+        }
+      },
+      "reason": "background knowledge only helps partially (mean P(R^q=1)=0.503); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.522); probability gain from the fact = +0.019",
+      "scoring_seconds": 0.1502
+    },
+    {
+      "passage": "Temperature and precipitation determine what types of plants can grow in an area. Animals and other living things depend on plants. So each climate is associated with certain types of living things. A major type of climate and its living things make up a biome . As you read about the major climate types below, find them on the map above ( Figure above ).",
+      "question": "Temperature and precipitation determine the types of what that can grow in an area, in turn affecting the animals that live there?",
+      "options": [
+        "roots",
+        "building",
+        "plants",
+        "birds"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "plants",
+      "id": 36,
+      "sciq_index": 873,
+      "kda_score": 0.506075769420822,
+      "numerator": 0.5034363484406015,
+      "denominator": 0.9947845339775085,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.5026077330112457,
+      "mean_p_correct_with_fact": 0.6318329274654388,
+      "mean_probability_gain": 0.12922519445419312,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.6825894117355347,
+          "p_correct_with_fact": 0.9793718457221985,
+          "weight": 0.31741058826446533,
+          "weighted_contribution": 0.3108629936803382,
+          "probability_gain": 0.2967824339866638,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 2,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.12208090722560883,
+            0.15717869997024536,
+            0.6825894117355347,
+            0.03815102204680443
+          ],
+          "probabilities_with_fact": [
+            0.00795107800513506,
+            0.0065359980799257755,
+            0.9793718457221985,
+            0.006141141057014465
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.3226260542869568,
+          "p_correct_with_fact": 0.2842940092086792,
+          "weight": 0.6773739457130432,
+          "weighted_contribution": 0.19257335476026327,
+          "probability_gain": -0.03833204507827759,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 2,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.17792923748493195,
+            0.21160033345222473,
+            0.3226260542869568,
+            0.28784435987472534
+          ],
+          "probabilities_with_fact": [
+            0.21956677734851837,
+            0.24638809263706207,
+            0.2842940092086792,
+            0.24975113570690155
+          ]
+        }
+      },
+      "reason": "background knowledge only helps partially (mean P(R^q=1)=0.503); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.632); probability gain from the fact = +0.129",
+      "scoring_seconds": 0.0602
+    },
+    {
+      "passage": "Like proteins, nucleic acids have a primary structure that is defined as the sequence of their nucleotides. Unlike proteins, which have 20 different kinds of amino acids, there are only 4 different kinds of nucleotides in nucleic acids. For amino acid sequences in proteins, the convention is to write the amino acids in order starting with the Nterminal amino acid. In writing nucleotide sequences for nucleic acids, the convention is to write the nucleotides (usually using the one-letter abbreviations for the bases, shown in Figure 19.5 \"Structure of a Segment of DNA\") starting with the nucleotide having a free phosphate group, which is known as the 5′ end, and indicate the nucleotides in order. For DNA, a lowercase d is often written in front of the sequence to indicate that the monomers are deoxyribonucleotides. The final nucleotide has a free OH group on the 3′ carbon atom and is called the 3′ end. The sequence of nucleotides in the DNA segment shown in Figure 19.5 \"Structure of a Segment of DNA\" would be written 5′-dGdT-dA-dC-3′, which is often further abbreviated to dGTAC or just GTAC.",
+      "question": "What is defined by its sequence of nucleotides?",
+      "options": [
+        "amino acids",
+        "nucleic acids",
+        "structural acids",
+        "proteins acids"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "nucleic acids",
+      "id": 37,
+      "sciq_index": 930,
+      "kda_score": 0.25766328428683055,
+      "numerator": 0.41199954654199367,
+      "denominator": 1.5989843010902405,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.20050784945487976,
+      "mean_p_correct_with_fact": 0.2573425620794296,
+      "mean_probability_gain": 0.056834712624549866,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.17759335041046143,
+          "p_correct_with_fact": 0.2685326337814331,
+          "weight": 0.8224066495895386,
+          "weighted_contribution": 0.22084302365364294,
+          "probability_gain": 0.09093928337097168,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.2969719469547272,
+            0.17759335041046143,
+            0.3187609612941742,
+            0.2066737413406372
+          ],
+          "probabilities_with_fact": [
+            0.29989293217658997,
+            0.2685326337814331,
+            0.05752450227737427,
+            0.3740498721599579
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.2234223484992981,
+          "p_correct_with_fact": 0.24615249037742615,
+          "weight": 0.7765776515007019,
+          "weighted_contribution": 0.19115652288835072,
+          "probability_gain": 0.022730141878128052,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 2,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.28048402070999146,
+            0.2234223484992981,
+            0.2657015323638916,
+            0.23039209842681885
+          ],
+          "probabilities_with_fact": [
+            0.25079545378685,
+            0.24615249037742615,
+            0.260231077671051,
+            0.24282097816467285
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.201, close to the 0.25 chance level); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.257); the target fact does not match the question or a distractor competes with it; probability gain from the fact = +0.057",
+      "scoring_seconds": 0.1257
+    },
+    {
+      "passage": "In the jellyfish, a mouth opening is present on the underside of the animal, surrounded by tentacles bearing nematocysts. Scyphozoans live most of their life cycle as free-swimming, solitary carnivores. The mouth leads to the gastrovascular cavity, which may be sectioned into four interconnected sacs, called diverticuli. In some species, the digestive system may be further branched into radial canals. Like the septa in anthozoans, the branched gastrovascular cells serve two functions: to increase the surface area for nutrient absorption and diffusion; thus, more cells are in direct contact with the nutrients in the gastrovascular cavity. In scyphozoans, nerve cells are scattered all over the body. Neurons may even be present in clusters called rhopalia. These animals possess a ring of muscles lining the dome of the body, which provides the contractile force required to swim through water. Scyphozoans are dioecious animals, that is, the sexes are separate. The gonads are formed from the gastrodermis and gametes are expelled through the mouth. Planula larvae are formed by external fertilization; they settle on a substratum in a polypoid form known as scyphistoma. These forms may produce additional polyps by budding or may transform into the medusoid form. The life cycle (Figure 28.10) of these animals can be described as polymorphic, because they exhibit both a medusal and polypoid body plan at some point in their life cycle.",
+      "question": "Where on a jellyfish is the mouth opening located?",
+      "options": [
+        "left side",
+        "right side",
+        "top",
+        "underside"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "underside",
+      "id": 38,
+      "sciq_index": 186,
+      "kda_score": 0.504116961774233,
+      "numerator": 0.7232535613684519,
+      "denominator": 1.4346939623355865,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.2826530188322067,
+      "mean_p_correct_with_fact": 0.48745018243789673,
+      "mean_probability_gain": 0.20479716360569,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.22812128067016602,
+          "p_correct_with_fact": 0.7066961526870728,
+          "weight": 0.771878719329834,
+          "weighted_contribution": 0.5454837212914185,
+          "probability_gain": 0.47857487201690674,
+          "predicted_idx_without_fact": 1,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.2463473677635193,
+            0.30754128098487854,
+            0.21799005568027496,
+            0.22812128067016602
+          ],
+          "probabilities_with_fact": [
+            0.10133858025074005,
+            0.16198192536830902,
+            0.029983336105942726,
+            0.7066961526870728
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.33718475699424744,
+          "p_correct_with_fact": 0.2682042121887207,
+          "weight": 0.6628152430057526,
+          "weighted_contribution": 0.17776984007703334,
+          "probability_gain": -0.06898054480552673,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.19850751757621765,
+            0.24130170047283173,
+            0.2230059951543808,
+            0.33718475699424744
+          ],
+          "probabilities_with_fact": [
+            0.24883756041526794,
+            0.2542388141155243,
+            0.22871947288513184,
+            0.2682042121887207
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.283, close to the 0.25 chance level); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.487); the target fact does not match the question or a distractor competes with it; probability gain from the fact = +0.205",
+      "scoring_seconds": 0.1488
+    },
+    {
+      "passage": "Scientists discovered another way to tell the approximate age of seafloor rocks. The rocks at the mid-ocean ridge crest are nearly sediment free. The crust is also very thin there. With distance from the ridge crest, the sediments and crust get thicker. This also supports the idea that the youngest rocks are on the ridge axis, and that the rocks get older with distance away from the ridge ( Figure below ). This is because the crust is new at the ridge, and so it is thin and has no sediment. The crust gets older away from the ridge crest. It has cooled and has more sediment.",
+      "question": "The rocks athe mid-ocean ridge are nearly free of what?",
+      "options": [
+        "metals",
+        "minerals",
+        "scratches",
+        "sediment"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "sediment",
+      "id": 39,
+      "sciq_index": 804,
+      "kda_score": 0.590334370159438,
+      "numerator": 0.8892985840321508,
+      "denominator": 1.5064319968223572,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.2467840015888214,
+      "mean_p_correct_with_fact": 0.598760724067688,
+      "mean_probability_gain": 0.3519767224788666,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.2660589814186096,
+          "p_correct_with_fact": 0.9280406832695007,
+          "weight": 0.7339410185813904,
+          "weighted_contribution": 0.6811271243637869,
+          "probability_gain": 0.6619817018508911,
+          "predicted_idx_without_fact": 1,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.1799106001853943,
+            0.3615114986896515,
+            0.19251886010169983,
+            0.2660589814186096
+          ],
+          "probabilities_with_fact": [
+            0.0027684529777616262,
+            0.06392607092857361,
+            0.005264795385301113,
+            0.9280406832695007
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.2275090217590332,
+          "p_correct_with_fact": 0.26948076486587524,
+          "weight": 0.7724909782409668,
+          "weighted_contribution": 0.20817145966836392,
+          "probability_gain": 0.04197174310684204,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 1,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.18810060620307922,
+            0.2833031713962555,
+            0.3010871410369873,
+            0.2275090217590332
+          ],
+          "probabilities_with_fact": [
+            0.23263944685459137,
+            0.27037304639816284,
+            0.22750675678253174,
+            0.26948076486587524
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.247, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.599); probability gain from the fact = +0.352",
+      "scoring_seconds": 0.0689
+    },
+    {
+      "passage": "Segmented bodies with an exoskeleton . The outer layer of the exoskeleton is called the cuticle . It is made up of two layers. The outer layer, or exocuticle , is thin, waxy, and water-resistant. The inner layer is much thicker. The exocuticle is extremely thin in many soft-bodied insects, such as caterpillars.",
+      "question": "What is the outer layer of the exoskeleton called?",
+      "options": [
+        "bristle",
+        "epithelium",
+        "epidermis",
+        "cuticle"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "cuticle",
+      "id": 40,
+      "sciq_index": 394,
+      "kda_score": 0.6245632956153906,
+      "numerator": 0.9804812513474106,
+      "denominator": 1.5698669105768204,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.2150665447115898,
+      "mean_p_correct_with_fact": 0.6116418242454529,
+      "mean_probability_gain": 0.39657527953386307,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.18396006524562836,
+          "p_correct_with_fact": 0.9376991391181946,
+          "weight": 0.8160399347543716,
+          "weighted_contribution": 0.765199944305242,
+          "probability_gain": 0.7537390738725662,
+          "predicted_idx_without_fact": 1,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.1455078423023224,
+            0.4845310151576996,
+            0.1860010325908661,
+            0.18396006524562836
+          ],
+          "probabilities_with_fact": [
+            0.006062389817088842,
+            0.04574335366487503,
+            0.010495004244148731,
+            0.9376991391181946
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.24617302417755127,
+          "p_correct_with_fact": 0.2855845093727112,
+          "weight": 0.7538269758224487,
+          "weighted_contribution": 0.21528130704216863,
+          "probability_gain": 0.03941148519515991,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.28953278064727783,
+            0.17744511365890503,
+            0.28684911131858826,
+            0.24617302417755127
+          ],
+          "probabilities_with_fact": [
+            0.20888693630695343,
+            0.2599043846130371,
+            0.24562418460845947,
+            0.2855845093727112
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.215, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.612); probability gain from the fact = +0.397",
+      "scoring_seconds": 0.0568
+    },
+    {
+      "passage": "Digestive Processes The processes of digestion include six activities: ingestion, propulsion, mechanical or physical digestion, chemical digestion, absorption, and defecation. The first of these processes, ingestion, refers to the entry of food into the alimentary canal through the mouth. There, the food is chewed and mixed with saliva, which contains enzymes that begin breaking down the carbohydrates in the food plus some lipid digestion via lingual lipase. Chewing increases the surface area of the food and allows an appropriately sized bolus to be produced. Food leaves the mouth when the tongue and pharyngeal muscles propel it into the esophagus. This act of swallowing, the last voluntary act until defecation, is an example of propulsion, which refers to the movement of food through the digestive tract. It includes both the voluntary process of swallowing and the involuntary process of peristalsis. Peristalsis consists of sequential, alternating waves of contraction and relaxation of alimentary wall smooth muscles, which act to propel food along (Figure 23.5). These waves also play a role in mixing food with digestive juices. Peristalsis is so powerful that foods and liquids you swallow enter your stomach even if you are standing on your head.",
+      "question": "Ingestion and propulsion are the first two steps in which process that describes how humans process and consume food?",
+      "options": [
+        "digestion",
+        "respiration",
+        "regeneration",
+        "absorption"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "digestion",
+      "id": 41,
+      "sciq_index": 181,
+      "kda_score": 0.3971933570601803,
+      "numerator": 0.5757649132772076,
+      "denominator": 1.4495834410190582,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.2752082794904709,
+      "mean_p_correct_with_fact": 0.3964448496699333,
+      "mean_probability_gain": 0.12123657017946243,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.2715492248535156,
+          "p_correct_with_fact": 0.5447104573249817,
+          "weight": 0.7284507751464844,
+          "weighted_contribution": 0.3967947548687789,
+          "probability_gain": 0.27316123247146606,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.2715492248535156,
+            0.23463065922260284,
+            0.3549107611179352,
+            0.13890932500362396
+          ],
+          "probabilities_with_fact": [
+            0.5447104573249817,
+            0.16248561441898346,
+            0.05985809490084648,
+            0.23294582962989807
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.27886733412742615,
+          "p_correct_with_fact": 0.24817924201488495,
+          "weight": 0.7211326658725739,
+          "weighted_contribution": 0.17897015840842867,
+          "probability_gain": -0.0306880921125412,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 1,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.27886733412742615,
+            0.25377947092056274,
+            0.2508069574832916,
+            0.2165462076663971
+          ],
+          "probabilities_with_fact": [
+            0.24817924201488495,
+            0.2666562795639038,
+            0.24368049204349518,
+            0.24148397147655487
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.275, close to the 0.25 chance level); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.396); the target fact does not match the question or a distractor competes with it; probability gain from the fact = +0.121",
+      "scoring_seconds": 0.1329
+    },
+    {
+      "passage": "The stored chemical energy of trees and other plants is called biomass energy. When plant materials are burned, they produce thermal energy that can be used for heating, cooking, or generating electricity. Biomass—especially wood—is an important energy source in countries where most people can’t afford fossil fuels. Some plants can also be used to make ethanol, a fuel that is added to gasoline. Ethanol produces less pollution than gasoline, but large areas of land are needed to grow the plants needed to make it.",
+      "question": "The stored chemical energy of trees and other plants is called what?",
+      "options": [
+        "biomass energy",
+        "biocomposte energy",
+        "byproduct energy",
+        "decomposition energy"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "biomass energy",
+      "id": 42,
+      "sciq_index": 250,
+      "kda_score": 0.6412440765275207,
+      "numerator": 0.8996825223765494,
+      "denominator": 1.4030266404151917,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.2984866797924042,
+      "mean_p_correct_with_fact": 0.6146111190319061,
+      "mean_probability_gain": 0.31612443923950195,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.24065706133842468,
+          "p_correct_with_fact": 0.937687337398529,
+          "weight": 0.7593429386615753,
+          "weighted_contribution": 0.7120262583259471,
+          "probability_gain": 0.6970302760601044,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.24065706133842468,
+            0.20693455636501312,
+            0.36329543590545654,
+            0.18911302089691162
+          ],
+          "probabilities_with_fact": [
+            0.937687337398529,
+            0.008124283514916897,
+            0.03234993293881416,
+            0.021838529035449028
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.35631629824638367,
+          "p_correct_with_fact": 0.2915349006652832,
+          "weight": 0.6436837017536163,
+          "weighted_contribution": 0.18765626405060232,
+          "probability_gain": -0.06478139758110046,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.35631629824638367,
+            0.2507317066192627,
+            0.2330072671175003,
+            0.15994475781917572
+          ],
+          "probabilities_with_fact": [
+            0.2915349006652832,
+            0.26266634464263916,
+            0.25448179244995117,
+            0.19131693243980408
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.298, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.615); probability gain from the fact = +0.316",
+      "scoring_seconds": 0.0611
+    },
+    {
+      "passage": "Like the animals pictured above, all animals have behaviors that help them achieve these basic ends. Behaviors that help animals reproduce or survive increase their fitness. Animals with greater fitness have a better chance of passing their genes to the next generation. If genes control behaviors that increase fitness, the behaviors become more common in the species. In other words, they evolve by natural selection.",
+      "question": "Animals with better fitness have a better chance of passing their genes onto the next generation, this process is known as?",
+      "options": [
+        "fitness selection",
+        "natural selection",
+        "natural evolution",
+        "survival selection"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "natural selection",
+      "id": 43,
+      "sciq_index": 877,
+      "kda_score": 0.26969728295458256,
+      "numerator": 0.40126207234279043,
+      "denominator": 1.4878239333629608,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.2560880333185196,
+      "mean_p_correct_with_fact": 0.26982372999191284,
+      "mean_probability_gain": 0.01373569667339325,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.2592049241065979,
+          "p_correct_with_fact": 0.3000029921531677,
+          "weight": 0.7407950758934021,
+          "weighted_contribution": 0.2222407393403536,
+          "probability_gain": 0.040798068046569824,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.3687775135040283,
+            0.2592049241065979,
+            0.1785377562046051,
+            0.19347979128360748
+          ],
+          "probabilities_with_fact": [
+            0.546925961971283,
+            0.3000029921531677,
+            0.05188755691051483,
+            0.1011834666132927
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.2529711425304413,
+          "p_correct_with_fact": 0.23964446783065796,
+          "weight": 0.7470288574695587,
+          "weighted_contribution": 0.17902133300243683,
+          "probability_gain": -0.013326674699783325,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 2,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.2963448464870453,
+            0.2529711425304413,
+            0.2109324038028717,
+            0.23975159227848053
+          ],
+          "probabilities_with_fact": [
+            0.2398066520690918,
+            0.23964446783065796,
+            0.2714773714542389,
+            0.24907149374485016
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.256, close to the 0.25 chance level); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.270); the target fact does not match the question or a distractor competes with it; probability gain from the fact = +0.014",
+      "scoring_seconds": 0.0602
+    },
+    {
+      "passage": "Isotopes can be very useful in scans to locate cancer cells. This patient has multiple tumors that have spread (metastasized) from the main tumor. A radioisotope has been attached to antibodies that bind to specific cancer cells. The very dark spots in the armpits, neck, and groin represent areas where tumor cells exist.",
+      "question": "What term is used to describe a cancer that has spread?",
+      "options": [
+        "metastasized",
+        "ostracized",
+        "destabilized",
+        "galvanized"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "metastasized",
+      "id": 44,
+      "sciq_index": 390,
+      "kda_score": 0.5182315840966887,
+      "numerator": 0.7056013039328679,
+      "denominator": 1.361555963754654,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.31922201812267303,
+      "mean_p_correct_with_fact": 0.5444786697626114,
+      "mean_probability_gain": 0.22525665163993835,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.3887946903705597,
+          "p_correct_with_fact": 0.8013099431991577,
+          "weight": 0.6112053096294403,
+          "weighted_contribution": 0.4897648919421904,
+          "probability_gain": 0.412515252828598,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.3887946903705597,
+            0.2249174416065216,
+            0.25584524869918823,
+            0.13044261932373047
+          ],
+          "probabilities_with_fact": [
+            0.8013099431991577,
+            0.08288347721099854,
+            0.0798964723944664,
+            0.03591002896428108
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.24964934587478638,
+          "p_correct_with_fact": 0.28764739632606506,
+          "weight": 0.7503506541252136,
+          "weighted_contribution": 0.2158364119906775,
+          "probability_gain": 0.037998050451278687,
+          "predicted_idx_without_fact": 1,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.24964934587478638,
+            0.2635229527950287,
+            0.2566621005535126,
+            0.23016561567783356
+          ],
+          "probabilities_with_fact": [
+            0.28764739632606506,
+            0.21987351775169373,
+            0.2301834225654602,
+            0.2622956335544586
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.319, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.544); probability gain from the fact = +0.225",
+      "scoring_seconds": 0.0518
+    },
+    {
+      "passage": "Camouflage by the dead leaf mantis makes it less visible to both its predators and prey. If alarmed, it lies motionless on the rainforest floor of Madagascar, Africa, camouflaged among the actual dead leaves. It eats other animals up to the size of small lizards.",
+      "question": "What is the adaptation that certain animals use to become less visible to predators and prey?",
+      "options": [
+        "camouflage",
+        "skeletons",
+        "speed",
+        "insulation"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "camouflage",
+      "id": 45,
+      "sciq_index": 108,
+      "kda_score": 0.7072572315837132,
+      "numerator": 0.636094335750542,
+      "denominator": 0.8993818759918213,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.5503090620040894,
+      "mean_p_correct_with_fact": 0.7637436985969543,
+      "mean_probability_gain": 0.213434636592865,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.6657754182815552,
+          "p_correct_with_fact": 0.9837337732315063,
+          "weight": 0.3342245817184448,
+          "weighted_contribution": 0.32878800888060766,
+          "probability_gain": 0.31795835494995117,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.6657754182815552,
+            0.07097091525793076,
+            0.15455594658851624,
+            0.10869772732257843
+          ],
+          "probabilities_with_fact": [
+            0.9837337732315063,
+            0.004444255027920008,
+            0.0038551276084035635,
+            0.007966754026710987
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.43484270572662354,
+          "p_correct_with_fact": 0.5437536239624023,
+          "weight": 0.5651572942733765,
+          "weighted_contribution": 0.3073063268699343,
+          "probability_gain": 0.10891091823577881,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.43484270572662354,
+            0.13465085625648499,
+            0.15036337077617645,
+            0.2801431119441986
+          ],
+          "probabilities_with_fact": [
+            0.5437536239624023,
+            0.12709155678749084,
+            0.14838719367980957,
+            0.18076767027378082
+          ]
+        }
+      },
+      "reason": "background knowledge only helps partially (mean P(R^q=1)=0.550); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.764); probability gain from the fact = +0.213",
+      "scoring_seconds": 0.046
+    },
+    {
+      "passage": "Comets are icy objects that have very elliptical orbits around the Sun.",
+      "question": "Icy objects that have very elliptical orbits around the sun are called?",
+      "options": [
+        "meteors",
+        "asteroids",
+        "craters",
+        "comets"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "comets",
+      "id": 46,
+      "sciq_index": 438,
+      "kda_score": 0.5086335413263099,
+      "numerator": 0.6631874944903178,
+      "denominator": 1.3038611114025116,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.3480694442987442,
+      "mean_p_correct_with_fact": 0.5109000205993652,
+      "mean_probability_gain": 0.16283057630062103,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.3558051288127899,
+          "p_correct_with_fact": 0.7019092440605164,
+          "weight": 0.6441948711872101,
+          "weighted_contribution": 0.45216633506267634,
+          "probability_gain": 0.34610411524772644,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.2804511487483978,
+            0.2631527781486511,
+            0.10059098154306412,
+            0.3558051288127899
+          ],
+          "probabilities_with_fact": [
+            0.0892765000462532,
+            0.18896964192390442,
+            0.019844647496938705,
+            0.7019092440605164
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.3403337597846985,
+          "p_correct_with_fact": 0.3198907971382141,
+          "weight": 0.6596662402153015,
+          "weighted_contribution": 0.21102115942764144,
+          "probability_gain": -0.020442962646484375,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.2039688527584076,
+            0.2936321794986725,
+            0.16206519305706024,
+            0.3403337597846985
+          ],
+          "probabilities_with_fact": [
+            0.29310092329978943,
+            0.30888545513153076,
+            0.0781228169798851,
+            0.3198907971382141
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.348, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.511); probability gain from the fact = +0.163",
+      "scoring_seconds": 0.0351
+    },
+    {
+      "passage": "Implantation occurs when the developing embryo fixes itself to the side of the uterus.",
+      "question": "What is the term for when an embryo fixes itself to the side of the uterus?",
+      "options": [
+        "parasite",
+        "exploration",
+        "bacterial",
+        "implantation"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "implantation",
+      "id": 47,
+      "sciq_index": 113,
+      "kda_score": 0.6393128790971311,
+      "numerator": 0.8000500988553458,
+      "denominator": 1.2514218389987946,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.3742890805006027,
+      "mean_p_correct_with_fact": 0.6853217631578445,
+      "mean_probability_gain": 0.3110326826572418,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.4689231812953949,
+          "p_correct_with_fact": 0.9895277619361877,
+          "weight": 0.5310768187046051,
+          "weighted_contribution": 0.5255152558289584,
+          "probability_gain": 0.5206045806407928,
+          "predicted_idx_without_fact": 3,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.12605786323547363,
+            0.15675070881843567,
+            0.24826830625534058,
+            0.4689231812953949
+          ],
+          "probabilities_with_fact": [
+            0.0028423783369362354,
+            0.0023284137714654207,
+            0.0053013963624835014,
+            0.9895277619361877
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.27965497970581055,
+          "p_correct_with_fact": 0.38111576437950134,
+          "weight": 0.7203450202941895,
+          "weighted_contribution": 0.2745348430263874,
+          "probability_gain": 0.1014607846736908,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.28892648220062256,
+            0.22173000872135162,
+            0.20968852937221527,
+            0.27965497970581055
+          ],
+          "probabilities_with_fact": [
+            0.27631792426109314,
+            0.16535943746566772,
+            0.17720681428909302,
+            0.38111576437950134
+          ]
+        }
+      },
+      "reason": "background knowledge only helps partially (mean P(R^q=1)=0.374); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.685); probability gain from the fact = +0.311",
+      "scoring_seconds": 0.0357
+    },
+    {
+      "passage": "Radio telescopes collect and focus radio waves from distant objects.",
+      "question": "What type of telescopes collect and focus radio waves from distant objects?",
+      "options": [
+        "space telescopes",
+        "radio telescopes",
+        "refracting telescopes",
+        "reflecting telescopes"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "radio telescopes",
+      "id": 48,
+      "sciq_index": 414,
+      "kda_score": 0.5212576943627932,
+      "numerator": 0.7145797558769535,
+      "denominator": 1.3708761781454086,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.3145619109272957,
+      "mean_p_correct_with_fact": 0.5643740892410278,
+      "mean_probability_gain": 0.24981217831373215,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.4116273522377014,
+          "p_correct_with_fact": 0.8688451647758484,
+          "weight": 0.5883726477622986,
+          "weighted_contribution": 0.5112047300946365,
+          "probability_gain": 0.457217812538147,
+          "predicted_idx_without_fact": 1,
+          "predicted_idx_with_fact": 1,
+          "is_correct_without_fact": true,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.1562345176935196,
+            0.4116273522377014,
+            0.2378063052892685,
+            0.19433185458183289
+          ],
+          "probabilities_with_fact": [
+            0.01480607595294714,
+            0.8688451647758484,
+            0.05731914937496185,
+            0.05902966856956482
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.21749646961688995,
+          "p_correct_with_fact": 0.2599030137062073,
+          "weight": 0.78250353038311,
+          "weighted_contribution": 0.20337502578231703,
+          "probability_gain": 0.04240654408931732,
+          "predicted_idx_without_fact": 0,
+          "predicted_idx_with_fact": 0,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.3057056963443756,
+            0.21749646961688995,
+            0.18412311375141144,
+            0.292674720287323
+          ],
+          "probabilities_with_fact": [
+            0.3029981553554535,
+            0.2599030137062073,
+            0.16209180653095245,
+            0.2750069797039032
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.315, close to the 0.25 chance level); the passage points to the right option but students stay unsure (mean P(R^q+f=1)=0.564); probability gain from the fact = +0.250",
+      "scoring_seconds": 0.0304
+    },
+    {
+      "passage": "Freshwater biomes have water that contains little or no salt. They include standing and running freshwater biomes. Standing freshwater biomes include ponds and lakes. Lakes are generally bigger and deeper than ponds. Some of the water in lakes is in the aphotic zone where there is too little sunlight for photosynthesis. Plankton and plants (such as the duckweed in Figure below ) are the primary producers in standing freshwater biomes.",
+      "question": "What type of biomes have water containing little or no salt?",
+      "options": [
+        "coastal biomes",
+        "aquatic biomes",
+        "marine biomes",
+        "freshwater biomes"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "freshwater biomes",
+      "id": 49,
+      "sciq_index": 980,
+      "kda_score": 0.3894196324314481,
+      "numerator": 0.588553170399146,
+      "denominator": 1.5113597810268402,
+      "zero_denominator": false,
+      "mean_p_correct_without_fact": 0.2443201094865799,
+      "mean_p_correct_with_fact": 0.38380225747823715,
+      "mean_probability_gain": 0.13948214799165726,
+      "per_model": {
+        "Riiid/kda-distilbert-base-uncased-race": {
+          "p_correct_without_fact": 0.21722286939620972,
+          "p_correct_with_fact": 0.5404579639434814,
+          "weight": 0.7827771306037903,
+          "weighted_contribution": 0.42305813422764516,
+          "probability_gain": 0.32323509454727173,
+          "predicted_idx_without_fact": 1,
+          "predicted_idx_with_fact": 3,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": true,
+          "probabilities_without_fact": [
+            0.13381561636924744,
+            0.3369051516056061,
+            0.31205639243125916,
+            0.21722286939620972
+          ],
+          "probabilities_with_fact": [
+            0.006580202374607325,
+            0.3839225471019745,
+            0.06903929263353348,
+            0.5404579639434814
+          ]
+        },
+        "Riiid/kda-bert-base-uncased-race": {
+          "p_correct_without_fact": 0.2714173495769501,
+          "p_correct_with_fact": 0.22714655101299286,
+          "weight": 0.7285826504230499,
+          "weighted_contribution": 0.16549503617150085,
+          "probability_gain": -0.044270798563957214,
+          "predicted_idx_without_fact": 2,
+          "predicted_idx_with_fact": 2,
+          "is_correct_without_fact": false,
+          "is_correct_with_fact": false,
+          "probabilities_without_fact": [
+            0.18696556985378265,
+            0.26642927527427673,
+            0.27518779039382935,
+            0.2714173495769501
+          ],
+          "probabilities_with_fact": [
+            0.2524506449699402,
+            0.24709384143352509,
+            0.27330899238586426,
+            0.22714655101299286
+          ]
+        }
+      },
+      "reason": "students cannot guess it without the fact (mean P(R^q=1)=0.244, close to the 0.25 chance level); the passage is NOT enough to select the correct option (mean P(R^q+f=1)=0.384); the target fact does not match the question or a distractor competes with it; probability gain from the fact = +0.139",
+      "scoring_seconds": 0.0542
+    }
+  ]
+}

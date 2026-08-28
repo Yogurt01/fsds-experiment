@@ -1,0 +1,119 @@
+2026-08-28 19:01:51 | INFO     | ======================================================================
+2026-08-28 19:01:51 | INFO     | OpenBookQA -> KDA dataset preparation
+2026-08-28 19:01:51 | INFO     | ======================================================================
+2026-08-28 19:01:51 | INFO     | Dataset                      : allenai/openbookqa
+2026-08-28 19:01:51 | INFO     | Configs                      : main (+ additional for fact1)
+2026-08-28 19:01:51 | INFO     | Splits                       : train, validation, test
+2026-08-28 19:01:51 | INFO     | Shuffle options              : False (seed 42)
+2026-08-28 19:01:51 | INFO     | Output directory             : /home/nghben/Downloads/research/fsds/experiment/datasets/openbookqa
+2026-08-28 19:01:51 | INFO     | Execution log                : /home/nghben/Downloads/research/fsds/experiment/results/openbookqa_prep.log
+2026-08-28 19:01:51 | INFO     | ----------------------------------------------------------------------
+2026-08-28 19:01:51 | INFO     | Processing split 'train'
+2026-08-28 19:01:51 | WARNING  | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-08-28 19:01:58 | INFO     |   Raw samples (main      )   : 4957
+2026-08-28 19:01:58 | INFO     |   Raw samples (additional)   : 4957
+2026-08-28 19:01:58 | INFO     |   Dropped (no fact1)         : 0
+2026-08-28 19:01:58 | INFO     |   Dropped (config mismatch)  : 0
+2026-08-28 19:01:58 | INFO     |   Dropped (malformed row)    : 0
+2026-08-28 19:01:58 | INFO     |   Final processed samples    : 4957
+2026-08-28 19:01:58 | INFO     |   answer_idx distribution    : {0: '1378 (27.8%)', 1: '1212 (24.5%)', 2: '1146 (23.1%)', 3: '1221 (24.6%)'}
+2026-08-28 19:01:58 | INFO     |   Mean fact length (chars)   : 53.3
+2026-08-28 19:01:58 | INFO     |   Wrote                      : /home/nghben/Downloads/research/fsds/experiment/datasets/openbookqa/obqa_train_full.json
+2026-08-28 19:01:58 | DEBUG    | First sample:
+{
+  "passage": "the sun is the source of energy for physical cycles on Earth",
+  "question": "The sun is responsible for",
+  "options": [
+    "puppies learning new tricks",
+    "children growing up and getting old",
+    "flowers wilting in a vase",
+    "plants sprouting, blooming and wilting"
+  ],
+  "answer_idx": 3,
+  "correct_answer": "plants sprouting, blooming and wilting",
+  "answer_key": "D",
+  "id": 0,
+  "obqa_index": 0,
+  "obqa_id": "7-980"
+}
+2026-08-28 19:01:58 | INFO     | ----------------------------------------------------------------------
+2026-08-28 19:01:58 | INFO     | Processing split 'validation'
+2026-08-28 19:02:01 | INFO     |   Raw samples (main      )   : 500
+2026-08-28 19:02:01 | INFO     |   Raw samples (additional)   : 500
+2026-08-28 19:02:01 | INFO     |   Dropped (no fact1)         : 0
+2026-08-28 19:02:01 | INFO     |   Dropped (config mismatch)  : 0
+2026-08-28 19:02:01 | INFO     |   Dropped (malformed row)    : 0
+2026-08-28 19:02:01 | INFO     |   Final processed samples    : 500
+2026-08-28 19:02:01 | INFO     |   answer_idx distribution    : {0: '126 (25.2%)', 1: '138 (27.6%)', 2: '110 (22.0%)', 3: '126 (25.2%)'}
+2026-08-28 19:02:01 | INFO     |   Mean fact length (chars)   : 55.0
+2026-08-28 19:02:01 | INFO     |   Wrote                      : /home/nghben/Downloads/research/fsds/experiment/datasets/openbookqa/obqa_val_full.json
+2026-08-28 19:02:01 | DEBUG    | First sample:
+{
+  "passage": "deep sea animals live deep in the ocean",
+  "question": "Frilled sharks and angler fish live far beneath the surface of the ocean, which is why they are known as",
+  "options": [
+    "Deep sea animals",
+    "fish",
+    "Long Sea Fish",
+    "Far Sea Animals"
+  ],
+  "answer_idx": 0,
+  "correct_answer": "Deep sea animals",
+  "answer_key": "A",
+  "id": 0,
+  "obqa_index": 0,
+  "obqa_id": "8-376"
+}
+2026-08-28 19:02:01 | INFO     | ----------------------------------------------------------------------
+2026-08-28 19:02:01 | INFO     | Processing split 'test'
+2026-08-28 19:02:05 | INFO     |   Raw samples (main      )   : 500
+2026-08-28 19:02:05 | INFO     |   Raw samples (additional)   : 500
+2026-08-28 19:02:05 | INFO     |   Dropped (no fact1)         : 0
+2026-08-28 19:02:05 | INFO     |   Dropped (config mismatch)  : 0
+2026-08-28 19:02:05 | INFO     |   Dropped (malformed row)    : 0
+2026-08-28 19:02:05 | INFO     |   Final processed samples    : 500
+2026-08-28 19:02:05 | INFO     |   answer_idx distribution    : {0: '138 (27.6%)', 1: '126 (25.2%)', 2: '132 (26.4%)', 3: '104 (20.8%)'}
+2026-08-28 19:02:05 | INFO     |   Mean fact length (chars)   : 51.9
+2026-08-28 19:02:05 | INFO     |   Wrote                      : /home/nghben/Downloads/research/fsds/experiment/datasets/openbookqa/obqa_test_full.json
+2026-08-28 19:02:05 | DEBUG    | First sample:
+{
+  "passage": "using less resources usually causes money to be saved",
+  "question": "A person wants to start saving money so that they can afford a nice vacation at the end of the year. After looking over their budget and expenses, they decide the best way to save money is to",
+  "options": [
+    "make more phone calls",
+    "quit eating lunch out",
+    "buy less with monopoly money",
+    "have lunch with friends"
+  ],
+  "answer_idx": 1,
+  "correct_answer": "quit eating lunch out",
+  "answer_key": "B",
+  "id": 0,
+  "obqa_index": 0,
+  "obqa_id": "8-343"
+}
+2026-08-28 19:02:05 | INFO     | ----------------------------------------------------------------------
+2026-08-28 19:02:05 | INFO     | Combined file                : /home/nghben/Downloads/research/fsds/experiment/datasets/openbookqa/obqa_all_combined.json (5957 samples)
+2026-08-28 19:02:05 | INFO     |   answer_idx distribution    : {0: 1642, 1: 1476, 2: 1388, 3: 1451}
+2026-08-28 19:02:05 | INFO     |   Samples per split          : {'train': 4957, 'validation': 500, 'test': 500}
+2026-08-28 19:02:05 | INFO     | ----------------------------------------------------------------------
+2026-08-28 19:02:05 | INFO     | Debug file                   : /home/nghben/Downloads/research/fsds/experiment/datasets/openbookqa/obqa_50.json (first 50 samples of 'test')
+2026-08-28 19:02:05 | INFO     |   answer_idx distribution    : {0: 16, 1: 12, 2: 12, 3: 10}
+2026-08-28 19:02:05 | INFO     | ======================================================================
+2026-08-28 19:02:05 | INFO     | SUMMARY
+2026-08-28 19:02:05 | INFO     | ======================================================================
+2026-08-28 19:02:05 | INFO     |   split             raw   dropped    final  answer_idx distribution
+2026-08-28 19:02:05 | INFO     |   train            4957         0     4957  {0: 1378, 1: 1212, 2: 1146, 3: 1221}
+2026-08-28 19:02:05 | INFO     |   validation        500         0      500  {0: 126, 1: 138, 2: 110, 3: 126}
+2026-08-28 19:02:05 | INFO     |   test              500         0      500  {0: 138, 1: 126, 2: 132, 3: 104}
+2026-08-28 19:02:05 | INFO     |   TOTAL            5957         0     5957
+2026-08-28 19:02:05 | INFO     |   COMBINED            -         -     5957  {0: 1642, 1: 1476, 2: 1388, 3: 1451}
+2026-08-28 19:02:05 | INFO     | 
+2026-08-28 19:02:05 | INFO     | Files written:
+2026-08-28 19:02:05 | INFO     |   train          4957 samples -> /home/nghben/Downloads/research/fsds/experiment/datasets/openbookqa/obqa_train_full.json
+2026-08-28 19:02:05 | INFO     |   validation      500 samples -> /home/nghben/Downloads/research/fsds/experiment/datasets/openbookqa/obqa_val_full.json
+2026-08-28 19:02:05 | INFO     |   test            500 samples -> /home/nghben/Downloads/research/fsds/experiment/datasets/openbookqa/obqa_test_full.json
+2026-08-28 19:02:05 | INFO     |   combined       5957 samples -> /home/nghben/Downloads/research/fsds/experiment/datasets/openbookqa/obqa_all_combined.json
+2026-08-28 19:02:05 | INFO     |   debug (50)       50 samples -> /home/nghben/Downloads/research/fsds/experiment/datasets/openbookqa/obqa_50.json
+2026-08-28 19:02:05 | INFO     | 
+2026-08-28 19:02:05 | INFO     | Integrity: 0 rows dropped across 3 split(s) -- every upstream row joined cleanly between the 'main' and 'additional' configs.
