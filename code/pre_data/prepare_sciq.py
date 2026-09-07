@@ -13,7 +13,7 @@ Two modes are available:
   sample            Draw a fixed-size random subset from a single split, e.g. the
                     50-question set used by the KDA_tiny experiment (sciq_50.json).
 
-Summary statistics are written to stdout and to results/dataset_prep.log.
+Summary statistics are written to stdout and to results/ex1_reproduce_KDA_pipeline/prep_sciq.log.
 """
 
 import argparse
@@ -26,7 +26,17 @@ from typing import Dict, List, Optional, Sequence, Tuple
 
 from datasets import load_dataset
 
-from paths import ensure_parent, resolve
+# --------------------------------------------------------------------------------------
+# Cross-stage imports. This script lives in `code/<stage>/`, so `code/` itself is put on
+# `sys.path`; `utils.paths` and `ex1_reproduce_KDA.kda_tiny` then resolve no matter which
+# directory the script is launched from. The *project root* is deliberately NOT added --
+# it contains a `datasets/` folder that would shadow the HuggingFace `datasets` package.
+# --------------------------------------------------------------------------------------
+_CODE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _CODE_DIR not in sys.path:
+    sys.path.insert(0, _CODE_DIR)
+
+from utils.paths import ensure_parent, resolve
 
 LOG_FORMAT = "%(asctime)s | %(levelname)-8s | %(message)s"
 DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
@@ -306,11 +316,11 @@ def main() -> None:
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=(
             "Examples:\n"
-            "  python code/prepare_sciq.py\n"
+            "  python code/pre_data/prepare_sciq.py\n"
             "      Export all three splits in full plus the combined file.\n"
-            "  python code/prepare_sciq.py --splits test --no-combined\n"
+            "  python code/pre_data/prepare_sciq.py --splits test --no-combined\n"
             "      Export only sciq_test_full.json.\n"
-            "  python code/prepare_sciq.py --mode sample --n 50 --split test --out datasets/sciq/sciq_50.json\n"
+            "  python code/pre_data/prepare_sciq.py --mode sample --n 50 --split test --out datasets/sciq/sciq_50.json\n"
             "      Regenerate the 50-question subset used by the KDA_tiny experiment.\n"
         ),
     )
@@ -349,7 +359,7 @@ def main() -> None:
         ),
     )
     parser.add_argument(
-        "--log-file", default="results/dataset_prep.log", help="Execution log path."
+        "--log-file", default="results/ex1_reproduce_KDA_pipeline/prep_sciq.log", help="Execution log path."
     )
     parser.add_argument("--append-log", action="store_true", help="Append to the log file.")
 

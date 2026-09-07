@@ -28,7 +28,7 @@ Output files (mirroring the SciQ layout produced by prepare_sciq.py):
     obqa_all_combined.json    all splits merged, each sample tagged with `split`
     obqa_50.json              the first 50 samples of the test split, for smoke tests
 
-Summary statistics are written to stdout and to results/openbookqa_prep.log.
+Summary statistics are written to stdout and to results/ex1_reproduce_KDA_pipeline/prep_openbookqa.log.
 """
 
 import argparse
@@ -41,7 +41,17 @@ from typing import Dict, List, Optional, Sequence, Tuple
 
 from datasets import load_dataset
 
-from paths import ensure_parent, resolve
+# --------------------------------------------------------------------------------------
+# Cross-stage imports. This script lives in `code/<stage>/`, so `code/` itself is put on
+# `sys.path`; `utils.paths` and `ex1_reproduce_KDA.kda_tiny` then resolve no matter which
+# directory the script is launched from. The *project root* is deliberately NOT added --
+# it contains a `datasets/` folder that would shadow the HuggingFace `datasets` package.
+# --------------------------------------------------------------------------------------
+_CODE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _CODE_DIR not in sys.path:
+    sys.path.insert(0, _CODE_DIR)
+
+from utils.paths import ensure_parent, resolve
 
 LOG_FORMAT = "%(asctime)s | %(levelname)-8s | %(message)s"
 DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
@@ -285,9 +295,9 @@ def main() -> None:
         ),
         epilog=(
             "Examples:\n"
-            "  python code/prepare_openbookqa.py\n"
+            "  python code/pre_data/prepare_openbookqa.py\n"
             "      Export all three splits plus the combined and 50-question files.\n"
-            "  python code/prepare_openbookqa.py --splits test --no-combined --no-debug-set\n"
+            "  python code/pre_data/prepare_openbookqa.py --splits test --no-combined --no-debug-set\n"
             "      Export only datasets/openbookqa/obqa_test_full.json.\n"
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -330,7 +340,7 @@ def main() -> None:
     )
     parser.add_argument("--seed", type=int, default=42, help="Seed for --shuffle-options.")
     parser.add_argument(
-        "--log-file", default="results/openbookqa_prep.log", help="Execution log path."
+        "--log-file", default="results/ex1_reproduce_KDA_pipeline/prep_openbookqa.log", help="Execution log path."
     )
     parser.add_argument("--append-log", action="store_true", help="Append to the log file.")
     args = parser.parse_args()

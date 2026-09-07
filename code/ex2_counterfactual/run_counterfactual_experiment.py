@@ -35,11 +35,11 @@ Design notes
 * Scoring reuses `kda_tiny.make_student`, so Setting A/B numbers are produced by exactly
   the same code path as the baseline run and are directly comparable.
 * Nothing in this script writes to an existing raw data or results file; all output goes
-  to `--out` (default results/results_counterfactual_experiment.json) and `--log-file`.
+  to `--out` (default results/ex2_counterfactual/results_counterfactual_sciq_test_full.json) and `--log-file`.
 
 Usage:
-    python run_counterfactual_experiment.py                       # full KDA_small suite
-    python run_counterfactual_experiment.py --limit 20 --models Riiid/kda-mpnet-base-race \
+    python code/ex2_counterfactual/run_counterfactual_experiment.py                       # full KDA_small suite
+    python code/ex2_counterfactual/run_counterfactual_experiment.py --limit 20 --models Riiid/kda-mpnet-base-race \
         Riiid/kda-scibert-uncased-race                            # quick smoke test
 """
 
@@ -57,13 +57,23 @@ from typing import Dict, List, Optional, Sequence
 
 import torch
 
-from counterfactual_passage import TIERS, build_counterfactual, tier_at_least
-from kda_tiny import DEFAULT_MODELS, KDA_SMALL, MODEL_PRESETS, make_student
-from paths import PROJECT_ROOT, ensure_parent
-from paths import resolve as resolve_path
+# --------------------------------------------------------------------------------------
+# Cross-stage imports. This script lives in `code/<stage>/`, so `code/` itself is put on
+# `sys.path`; `utils.paths` and `ex1_reproduce_KDA.kda_tiny` then resolve no matter which
+# directory the script is launched from. The *project root* is deliberately NOT added --
+# it contains a `datasets/` folder that would shadow the HuggingFace `datasets` package.
+# --------------------------------------------------------------------------------------
+_CODE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _CODE_DIR not in sys.path:
+    sys.path.insert(0, _CODE_DIR)
 
-# The scripts live in code/, but every data and result path is relative to the
-# project root one level up.
+from ex1_reproduce_KDA.kda_tiny import DEFAULT_MODELS, KDA_SMALL, MODEL_PRESETS, make_student
+from ex2_counterfactual.counterfactual_passage import TIERS, build_counterfactual, tier_at_least
+from utils.paths import PROJECT_ROOT, ensure_parent
+from utils.paths import resolve as resolve_path
+
+# The scripts live in code/<stage>/, but every data and result path is relative to the
+# project root two levels up.
 WORKSPACE = PROJECT_ROOT
 
 LOG_FORMAT = "%(asctime)s | %(levelname)-8s | %(name)s | %(message)s"
@@ -344,7 +354,11 @@ def build_record(
 
     return {
         "id": sample["id"],
-        "sciq_index": sample["sciq_index"],
+        "sciq_index": sample.get("sciq_index"),
+        "obqa_index": sample.get("obqa_index"),
+        "source_index": sample.get(
+            "sciq_index", sample.get("obqa_index", sample["id"])
+        ),
         "question": sample["question"],
         "passage": sample["passage"],
         "counterfactual_passage": sample["counterfactual_passage"],
@@ -781,7 +795,7 @@ def log_examples(records: Sequence[Dict], primary_model: str, n_each: int = 3) -
         logger.info("-" * 100)
         for record in chosen:
             stats = record["per_model"][primary_model]
-            logger.info("  id=%s (SciQ #%s)", record["id"], record["sciq_index"])
+            logger.info("  id=%s (source #%s)", record["id"], record["source_index"])
             logger.info("    Q         : %s", shorten(record["question"]))
             logger.info(
                 "    options   : %s | gold='%s' | cf target='%s'",
@@ -816,11 +830,11 @@ def main() -> None:
     )
     parser.add_argument(
         "--out",
-        default="results/results_counterfactual_experiment.json",
+        default="results/ex2_counterfactual/results_counterfactual_sciq_test_full.json",
         help="Structured output path (never an existing raw data file).",
     )
     parser.add_argument(
-        "--log-file", default="results/counterfactual_experiment.log", help="Execution log path."
+        "--log-file", default="results/ex2_counterfactual/counterfactual_sciq_test_full.log", help="Execution log path."
     )
     parser.add_argument(
         "--models",
@@ -955,7 +969,13 @@ def main() -> None:
         sys.exit(1)
 
     if args.dry_run:
-        preview_path = ensure_parent(resolve("results/counterfactual_passages_preview.json"))
+        preview_stem = os.path.splitext(os.path.basename(resolve(args.out)))[0]
+        preview_path = ensure_parent(
+            os.path.join(
+                os.path.dirname(resolve(args.out)),
+                f"counterfactual_passages_preview_{preview_stem}.json",
+            )
+        )
         with open(preview_path, "w", encoding="utf-8") as handle:
             json.dump(
                 {"generation": generation_stats, "samples": samples},
@@ -1002,9 +1022,13 @@ def main() -> None:
         )
         primary_model = model_names[0]
 
+    base = os.path.basename(data_path).lower()
+    dataset_name = (
+        "allenai/openbookqa" if "obqa" in base or "openbookqa" in base else "allenai/sciq"
+    )
     summary = {
         "experiment": "pillar_3_counterfactual_context_perturbation",
-        "dataset": "allenai/sciq",
+        "dataset": dataset_name,
         "split": "test",
         "data_file": os.path.basename(data_path),
         "n_samples": len(records),

@@ -17,9 +17,9 @@ This script is read-only with respect to the raw data: it never rewrites the inp
 results file or any dataset file, it only emits new files under --out-dir.
 
 Usage:
-    python code/categorize_kda_results.py                  # auto-detect the results file
-    python code/categorize_kda_results.py --results results/results.json \
-        --out-dir results/categorized_results
+    python code/ex1_reproduce_KDA/categorize_kda_results.py                  # auto-detect the results file
+    python code/ex1_reproduce_KDA/categorize_kda_results.py --results results/ex1_reproduce_KDA_pipeline/sciq/results_kda_tiny2_sciq_test_sample50.json \
+        --out-dir results/ex1_category_questions/basic_category
 """
 
 from __future__ import annotations
@@ -31,19 +31,29 @@ import os
 import sys
 from typing import Dict, List, Optional, Sequence
 
-from paths import PROJECT_ROOT, ensure_parent, resolve
+# --------------------------------------------------------------------------------------
+# Cross-stage imports. This script lives in `code/<stage>/`, so `code/` itself is put on
+# `sys.path`; `utils.paths` and `ex1_reproduce_KDA.kda_tiny` then resolve no matter which
+# directory the script is launched from. The *project root* is deliberately NOT added --
+# it contains a `datasets/` folder that would shadow the HuggingFace `datasets` package.
+# --------------------------------------------------------------------------------------
+_CODE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _CODE_DIR not in sys.path:
+    sys.path.insert(0, _CODE_DIR)
+
+from utils.paths import PROJECT_ROOT, ensure_parent, resolve
 
 # --------------------------------------------------------------------------------------
-# Paths are resolved relative to the project root (this file lives in code/), so the
+# Paths are resolved relative to the project root (not to this file's directory), so the
 # script runs identically from any working directory.
 # --------------------------------------------------------------------------------------
 WORKSPACE = PROJECT_ROOT
 
 # Preference order used when --results is not given: richest / most recent run first.
 RESULTS_CANDIDATES = (
-    "results/results_kda_small_test_full.json",
-    "results/results_test_full.json",
-    "results/results.json",
+    "results/ex1_reproduce_KDA_pipeline/sciq/results_kda_small_sciq_test_full.json",
+    "results/ex1_reproduce_KDA_pipeline/sciq/results_kda_tiny2_sciq_test_full.json",
+    "results/ex1_reproduce_KDA_pipeline/sciq/results_kda_tiny2_sciq_test_sample50.json",
 )
 
 # Bucket names in the order they are reported everywhere (files, console, summary).
@@ -289,7 +299,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--out-dir",
-        default="results/categorized_results",
+        default="results/ex1_category_questions/basic_category",
         help="Output directory for the categorised JSON files (created if missing).",
     )
     parser.add_argument(
@@ -299,7 +309,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--log-file",
-        default="results/categorize_kda_results.log",
+        default="results/ex1_category_questions/basic_category/categorize_kda_results.log",
         help="Execution log path.",
     )
     parser.add_argument("--verbose", action="store_true", help="Stream DEBUG to console.")

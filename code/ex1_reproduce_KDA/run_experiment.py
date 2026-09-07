@@ -4,13 +4,14 @@ Defaults reproduce the original run on the 50 sampled SciQ questions
 (datasets/sciq/sciq_50.json), but any file in the same KDA input format works --
 for example datasets/openbookqa/obqa_test_full.json.
 
-Writes structured results to results/results.json and a full execution log to
-results/experiment.log while streaming progress to the console.
+Writes structured results to results/ex1_reproduce_KDA_pipeline/sciq/results_kda_tiny2_sciq_test_sample50.json and a full execution log to
+results/ex1_reproduce_KDA_pipeline/sciq/experiment_kda_tiny2_sciq_test_sample50.log while streaming progress to the console.
 """
 
 import argparse
 import json
 import logging
+import os
 import platform
 import statistics
 import sys
@@ -19,8 +20,18 @@ from typing import Dict, List
 
 import torch
 
-from kda_tiny import DEFAULT_MODELS, KDA_SMALL, MODEL_PRESETS, KDATiny
-from paths import ensure_parent, resolve
+# --------------------------------------------------------------------------------------
+# Cross-stage imports. This script lives in `code/<stage>/`, so `code/` itself is put on
+# `sys.path`; `utils.paths` and `ex1_reproduce_KDA.kda_tiny` then resolve no matter which
+# directory the script is launched from. The *project root* is deliberately NOT added --
+# it contains a `datasets/` folder that would shadow the HuggingFace `datasets` package.
+# --------------------------------------------------------------------------------------
+_CODE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _CODE_DIR not in sys.path:
+    sys.path.insert(0, _CODE_DIR)
+
+from ex1_reproduce_KDA.kda_tiny import DEFAULT_MODELS, KDA_SMALL, MODEL_PRESETS, KDATiny
+from utils.paths import ensure_parent, resolve
 
 LOG_FORMAT = "%(asctime)s | %(levelname)-8s | %(name)s | %(message)s"
 DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
@@ -260,10 +271,10 @@ def main() -> None:
         help="Formatted samples in the KDA input format (relative to the project root).",
     )
     parser.add_argument(
-        "--out", default="results/results.json", help="Structured output path."
+        "--out", default="results/ex1_reproduce_KDA_pipeline/sciq/results_kda_tiny2_sciq_test_sample50.json", help="Structured output path."
     )
     parser.add_argument(
-        "--log-file", default="results/experiment.log", help="Execution log path."
+        "--log-file", default="results/ex1_reproduce_KDA_pipeline/sciq/experiment_kda_tiny2_sciq_test_sample50.log", help="Execution log path."
     )
     parser.add_argument(
         "--dataset-name",
