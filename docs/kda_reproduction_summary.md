@@ -4,7 +4,7 @@ Reproduction summary for the **KDA_cont** (Knowledge Dependent Answerability) me
 evaluated with the official **`KDA_small`** four-model suite on two datasets:
 `allenai/sciq` (`test`, 884 questions) and `allenai/openbookqa` (`test`, 500 questions).
 
-Both runs use the same code path (`code/run_experiment.py`), the same ensemble, the same
+Both runs use the same code path (`code/ex1_reproduce_KDA/run_experiment.py`), the same ensemble, the same
 device and the same metric implementation. The only difference is the input file, so the
 numbers below are directly comparable.
 
@@ -226,7 +226,7 @@ exactly to the file on disk.
 ### 3.2. Artefact locations
 
 All paths are relative to the project root (`experiment/`). No absolute path is hardcoded
-anywhere: `code/paths.py` derives `PROJECT_ROOT` from its own file location, and every
+anywhere: `code/utils/paths.py` derives `PROJECT_ROOT` from its own file location, and every
 script resolves `--data`, `--out` and `--log-file` against it, so commands run identically
 from any working directory.
 
@@ -234,11 +234,11 @@ from any working directory.
 
 | Path | Role |
 |---|---|
-| `code/paths.py` | `PROJECT_ROOT` / `DATASETS_DIR` / `RESULTS_DIR` + `resolve()`, `ensure_parent()` |
-| `code/kda_tiny.py` | `KDATiny` ensemble, the `KDA_SMALL` preset, the KDA_cont implementation |
-| `code/prepare_sciq.py` | SciQ → KDA input format |
-| `code/prepare_openbookqa.py` | OpenBookQA → KDA input format (joins `fact1` from the `additional` config) |
-| `code/run_experiment.py` | Baseline runner used for both datasets |
+| `code/utils/paths.py` | `PROJECT_ROOT` / `DATASETS_DIR` / `RESULTS_DIR` + `resolve()`, `ensure_parent()` |
+| `code/ex1_reproduce_KDA/kda_tiny.py` | `KDATiny` ensemble, the `KDA_SMALL` preset, the KDA_cont implementation |
+| `code/pre_data/prepare_sciq.py` | SciQ → KDA input format |
+| `code/pre_data/prepare_openbookqa.py` | OpenBookQA → KDA input format (joins `fact1` from the `additional` config) |
+| `code/ex1_reproduce_KDA/run_experiment.py` | Baseline runner used for both datasets |
 
 **Datasets**
 
@@ -259,13 +259,13 @@ every row.
 
 | Path | Content |
 |---|---|
-| `results/results_kda_small_test_full.json` | SciQ baseline, full per-sample records (4.1MB) |
-| `results/experiment_kda_small_test_full.log` | SciQ execution log (1.0MB, DEBUG per sample per model) |
-| `results/openbookqa/results_kda_small_obqa_test_full.json` | OpenBookQA baseline, full per-sample records (2.1MB) |
-| `results/openbookqa/experiment_kda_small_obqa_test_full.log` | OpenBookQA execution log (567KB) |
-| `results/openbookqa/console_kda_small_obqa_test_full.txt` | OpenBookQA console transcript |
-| `results/openbookqa_prep.log` | OpenBookQA preparation log (per-split counts, drop reasons) |
-| `results/dataset_prep.log` | SciQ preparation log |
+| `results/ex1_reproduce_KDA_pipeline/sciq/results_kda_small_sciq_test_full.json` | SciQ baseline, full per-sample records (4.1MB) |
+| `results/ex1_reproduce_KDA_pipeline/sciq/experiment_kda_small_sciq_test_full.log` | SciQ execution log (1.0MB, DEBUG per sample per model) |
+| `results/ex1_reproduce_KDA_pipeline/openbookqa/results_kda_small_obqa_test_full.json` | OpenBookQA baseline, full per-sample records (2.1MB) |
+| `results/ex1_reproduce_KDA_pipeline/openbookqa/experiment_kda_small_obqa_test_full.log` | OpenBookQA execution log (567KB) |
+| `results/ex1_reproduce_KDA_pipeline/openbookqa/console_kda_small_obqa_test_full.txt` | OpenBookQA console transcript |
+| `results/ex1_reproduce_KDA_pipeline/prep_openbookqa.log` | OpenBookQA preparation log (per-split counts, drop reasons) |
+| `results/ex1_reproduce_KDA_pipeline/prep_sciq.log` | SciQ preparation log |
 
 Each log records the Python/torch/platform versions, the resolved absolute input and
 output paths, the ensemble membership, per-model VRAM before and after load, and a DEBUG
@@ -275,15 +275,15 @@ recompute every number in this document without re-running any model.
 ### 3.3. Commands
 
 ```bash
-python code/prepare_openbookqa.py
+python code/pre_data/prepare_openbookqa.py
 ```
 
 ```bash
-python code/run_experiment.py --data datasets/openbookqa/obqa_test_full.json --out results/openbookqa/results_kda_small_obqa_test_full.json --log-file results/openbookqa/experiment_kda_small_obqa_test_full.log --models KDA_SMALL --dataset-name allenai/openbookqa --split test --progress-every 250
+python code/ex1_reproduce_KDA/run_experiment.py --data datasets/openbookqa/obqa_test_full.json --out results/ex1_reproduce_KDA_pipeline/openbookqa/results_kda_small_obqa_test_full.json --log-file results/ex1_reproduce_KDA_pipeline/openbookqa/experiment_kda_small_obqa_test_full.log --models KDA_SMALL --dataset-name allenai/openbookqa --split test --progress-every 250
 ```
 
 ```bash
-python code/run_experiment.py --data datasets/sciq/sciq_test_full.json --out results/results_kda_small_test_full.json --log-file results/experiment_kda_small_test_full.log --models KDA_SMALL --progress-every 250
+python code/ex1_reproduce_KDA/run_experiment.py --data datasets/sciq/sciq_test_full.json --out results/ex1_reproduce_KDA_pipeline/sciq/results_kda_small_sciq_test_full.json --log-file results/ex1_reproduce_KDA_pipeline/sciq/experiment_kda_small_sciq_test_full.log --models KDA_SMALL --progress-every 250
 ```
 
 ### 3.4. Checksums (MD5)
@@ -295,8 +295,8 @@ f853c4deb8c4b7f496c24767fd8e02a5  datasets/openbookqa/obqa_test_full.json
 7a83b5f213e55200022c851dd52a282f  datasets/openbookqa/obqa_train_full.json
 db0ed83284cfcfade93756c523cf56a5  datasets/openbookqa/obqa_val_full.json
 99a9c7c645e79bc603cb1b958d6af97b  datasets/sciq/sciq_test_full.json
-8afde75a727651fe2a28df92559d69f6  results/openbookqa/results_kda_small_obqa_test_full.json
-9ec4d58239c6d4b867a17867469bdd66  results/results_kda_small_test_full.json
+8afde75a727651fe2a28df92559d69f6  results/ex1_reproduce_KDA_pipeline/openbookqa/results_kda_small_obqa_test_full.json
+9ec4d58239c6d4b867a17867469bdd66  results/ex1_reproduce_KDA_pipeline/sciq/results_kda_small_sciq_test_full.json
 ```
 
 ### 3.5. Known naming caveat

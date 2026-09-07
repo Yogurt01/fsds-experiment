@@ -14,20 +14,28 @@ Verified environment: Ubuntu (Linux 7.0.0-30-generic), Python 3.12.3, NVIDIA RTX
 
 ```
 experiment/
-├── code/                     all Python scripts
-│   ├── paths.py              project-root anchored path helpers (no absolute paths)
-│   ├── kda_tiny.py           the KDA_cont ensemble implementation
-│   ├── prepare_sciq.py       SciQ      -> KDA input format
-│   ├── prepare_openbookqa.py OpenBookQA -> KDA input format
-│   ├── run_experiment.py     baseline KDA runner (any prepared dataset)
-│   ├── counterfactual_passage.py / run_counterfactual_experiment.py
-│   └── categorize_kda_results.py
+├── code/                                all Python scripts
+│   ├── utils/                           shared, stage-agnostic helpers
+│   │   └── paths.py                     project-root anchored path helpers (no absolute paths)
+│   ├── pre_data/                        stage 0 — dataset preparation
+│   │   ├── prepare_sciq.py              SciQ       -> KDA input format
+│   │   └── prepare_openbookqa.py        OpenBookQA -> KDA input format
+│   ├── ex1_reproduce_KDA/               experiment 1 — KDA baseline reproduction
+│   │   ├── kda_tiny.py                  the KDA_cont ensemble implementation
+│   │   ├── run_experiment.py            baseline KDA runner (any prepared dataset)
+│   │   └── categorize_kda_results.py    four-bucket contingency analysis
+│   └── ex2_counterfactual/              experiment 2 — counterfactual perturbation
+│       ├── counterfactual_passage.py    minimal lexical answer -> distractor rewriting
+│       └── run_counterfactual_experiment.py   Setting A/B/C sweep + adjusted KDA
 ├── datasets/
 │   ├── sciq/                 sciq_{train,val,test}_full.json, sciq_all_combined.json, sciq_50.json
 │   └── openbookqa/           obqa_{train,val,test}_full.json, obqa_all_combined.json, obqa_50.json
-├── results/                  every results JSON and execution log
-│   ├── categorized_results/
-│   └── openbookqa/           OpenBookQA baseline outputs
+├── results/                  outputs and logs, grouped by workflow stage
+│   ├── reproduce_KDA_pipeline/       baseline KDA runs, dataset prep logs
+│   │   └── openbookqa/               OpenBookQA baseline outputs
+│   ├── reproduce_KDA_w_modernLLM/    Qwen evaluations + model download reports
+│   ├── category_questions/           basic_category/ and complicated_category/
+│   └── counterfact_results/          counterfactual perturbation experiment
 ├── docs/
 │   └── kda_reproduction_summary.md   SciQ vs OpenBookQA baseline comparison
 ├── question-score/           the reference implementation (untouched, do not move)
@@ -137,19 +145,19 @@ python -c "import question_score, torch, transformers; print('question_score OK 
 ```
 
 > The unpatched original is preserved at `question-score/src/question_score/kda.py.orig`.
-> `code/kda_tiny.py` does **not** import `question_score` (it reimplements the scoring logic),
+> `code/ex1_reproduce_KDA/kda_tiny.py` does **not** import `question_score` (it reimplements the scoring logic),
 > so this patch is only needed to run the reference `KDA_small` for comparison.
 
 ---
 
 ## 5. Download and format the SciQ data
 
-`code/prepare_sciq.py` has two modes.
+`code/pre_data/prepare_sciq.py` has two modes.
 
 ### 5.1. Full export (default) — all three splits
 
 ```bash
-python code/prepare_sciq.py
+python code/pre_data/prepare_sciq.py
 ```
 
 This downloads `train`, `validation` and `test`, formats every sample, and writes:
@@ -175,29 +183,29 @@ Useful flags:
 | `--out-dir DIR` | Write the JSON files somewhere other than the working directory |
 | `--seed N` | Seed for option shuffling (default `42`) |
 | `--allow-empty-support` | Keep samples whose `support` field is empty |
-| `--log-file PATH` | Log somewhere other than `results/dataset_prep.log` |
+| `--log-file PATH` | Log somewhere other than `results/ex1_reproduce_KDA_pipeline/prep_sciq.log` |
 | `--append-log` | Append to the log instead of overwriting it |
 
 Examples:
 
 ```bash
-python code/prepare_sciq.py --splits test --no-combined --out-dir datasets/sciq_alt
+python code/pre_data/prepare_sciq.py --splits test --no-combined --out-dir datasets/sciq_alt
 ```
 
 ```bash
-python code/prepare_sciq.py --allow-empty-support --seed 7 --log-file results/dataset_prep_seed7.log
+python code/pre_data/prepare_sciq.py --allow-empty-support --seed 7 --log-file results/ex1_reproduce_KDA_pipeline/dataset_prep_seed7.log
 ```
 
 ### 5.2. Fixed-size sample — the 50-question experiment set
 
 ```bash
-python code/prepare_sciq.py --mode sample --n 50 --split test --out datasets/sciq/sciq_50.json
+python code/pre_data/prepare_sciq.py --mode sample --n 50 --split test --out datasets/sciq/sciq_50.json
 ```
 
 This regenerates `datasets/sciq/sciq_50.json`, the subset the reported KDA_tiny results were produced
 on. The RNG call order in this mode is deliberately unchanged from the original
 single-split script, so the file comes out **byte-identical** (verified: md5
-`845a9d4e588f434c7e7dbf48fe30a2dd`) and stays consistent with the existing `results/results.json`.
+`845a9d4e588f434c7e7dbf48fe30a2dd`) and stays consistent with the existing `results/ex1_reproduce_KDA_pipeline/sciq/results_kda_tiny2_sciq_test_sample50.json`.
 
 ### 5.3. Empty-support filtering
 
@@ -230,7 +238,7 @@ benchmark by favouring one slot.
 
 ### 5.5. Dataset preparation log
 
-`code/prepare_sciq.py` writes `results/dataset_prep.log` (overwritten each run unless `--append-log`)
+`code/pre_data/prepare_sciq.py` writes `results/ex1_reproduce_KDA_pipeline/prep_sciq.log` (overwritten each run unless `--append-log`)
 and mirrors the same records to stdout: raw sample count per split, number removed for
 empty `support`, final saved count, per-split and combined `answer_idx` distributions,
 and the output paths. Failures at any stage are logged with a full traceback.
@@ -261,16 +269,16 @@ python -c "import json; d=json.load(open('datasets/sciq/sciq_train_full.json'));
 ## 6. Run the experiment
 
 ```bash
-python code/run_experiment.py
+python code/ex1_reproduce_KDA/run_experiment.py
 ```
 
-This loads the two-model ensemble, scores all 50 questions, writes `results/results.json`, and
-streams the full run to both the console and `results/experiment.log`.
+This loads the two-model ensemble, scores all 50 questions, writes `results/ex1_reproduce_KDA_pipeline/sciq/results_kda_tiny2_sciq_test_sample50.json`, and
+streams the full run to both the console and `results/ex1_reproduce_KDA_pipeline/sciq/experiment_kda_tiny2_sciq_test_sample50.log`.
 
 Useful flags:
 
 ```bash
-python code/run_experiment.py --models Riiid/kda-distilbert-base-uncased-race Riiid/kda-scibert-uncased-race Riiid/kda-distilroberta-base-race --out results/results_3models.json --log-file results/experiment_3models.log
+python code/ex1_reproduce_KDA/run_experiment.py --models Riiid/kda-distilbert-base-uncased-race Riiid/kda-scibert-uncased-race Riiid/kda-distilroberta-base-race --out results/ex1_reproduce_KDA_pipeline/results_3models.json --log-file results/ex1_reproduce_KDA_pipeline/experiment_3models.log
 ```
 
 | Flag | Effect |
@@ -278,7 +286,7 @@ python code/run_experiment.py --models Riiid/kda-distilbert-base-uncased-race Ri
 | `--models A B [C ...]` | Choose the ensemble members (at least two) |
 | `--device cpu` \| `cuda` | Force a device (auto-detected when omitted) |
 | `--verbose` | Stream the DEBUG-level per-model probability records to the console too |
-| `--log-file PATH` | Write the execution log somewhere other than `results/experiment.log` |
+| `--log-file PATH` | Write the execution log somewhere other than `results/ex1_reproduce_KDA_pipeline/sciq/experiment_kda_tiny2_sciq_test_sample50.log` |
 | `--append-log` | Append to the log file instead of overwriting it |
 | `--allow-single-model` | Deliberately reproduce the degenerate \|M\| = 1 baseline |
 | `--models KDA_SMALL` | Preset expanding to the paper's official four-model `KDA_small` suite |
@@ -291,25 +299,25 @@ checkpoints.
 
 ### 6.1. Running on the full dataset files
 
-`code/run_experiment.py` reads whatever JSON file `--data` points at, as long as it holds a
+`code/ex1_reproduce_KDA/run_experiment.py` reads whatever JSON file `--data` points at, as long as it holds a
 list of samples with `passage` / `question` / `options` / `answer_idx`. The full-export
 files from step 5.1 are directly usable — always pair `--data` with a matching `--out`
 and `--log-file` so runs do not overwrite each other:
 
 ```bash
-python code/run_experiment.py --data datasets/sciq/sciq_test_full.json --out results/results_test_full.json --log-file results/experiment_test_full.log
+python code/ex1_reproduce_KDA/run_experiment.py --data datasets/sciq/sciq_test_full.json --out results/ex1_reproduce_KDA_pipeline/sciq/results_kda_tiny2_sciq_test_full.json --log-file results/ex1_reproduce_KDA_pipeline/sciq/experiment_kda_tiny2_sciq_test_full.log
 ```
 
 ```bash
-python code/run_experiment.py --data datasets/sciq/sciq_val_full.json --out results/results_val_full.json --log-file results/experiment_val_full.log
+python code/ex1_reproduce_KDA/run_experiment.py --data datasets/sciq/sciq_val_full.json --out results/ex1_reproduce_KDA_pipeline/results_val_full.json --log-file results/ex1_reproduce_KDA_pipeline/experiment_val_full.log
 ```
 
 ```bash
-python code/run_experiment.py --data datasets/sciq/sciq_train_full.json --out results/results_train_full.json --log-file results/experiment_train_full.log
+python code/ex1_reproduce_KDA/run_experiment.py --data datasets/sciq/sciq_train_full.json --out results/ex1_reproduce_KDA_pipeline/results_train_full.json --log-file results/ex1_reproduce_KDA_pipeline/experiment_train_full.log
 ```
 
 ```bash
-python code/run_experiment.py --data datasets/sciq/sciq_all_combined.json --out results/results_all_combined.json --log-file results/experiment_all_combined.log
+python code/ex1_reproduce_KDA/run_experiment.py --data datasets/sciq/sciq_all_combined.json --out results/ex1_reproduce_KDA_pipeline/results_all_combined.json --log-file results/ex1_reproduce_KDA_pipeline/experiment_all_combined.log
 ```
 
 **Budget the runtime before launching a large run.** At the measured 0.067s/question for
@@ -323,28 +331,28 @@ the two-model ensemble on an RTX 3050:
 | `datasets/sciq/sciq_train_full.json` | 10,481 | ~12 minutes |
 | `datasets/sciq/sciq_all_combined.json` | 12,252 | ~14 minutes |
 
-CPU-only is roughly an order of magnitude slower. `results/results.json` stores the complete
+CPU-only is roughly an order of magnitude slower. `results/ex1_reproduce_KDA_pipeline/sciq/results_kda_tiny2_sciq_test_sample50.json` stores the complete
 per-model probability vectors for every sample, so output size scales with the input:
 expect roughly 3.2KB per sample (~40MB for the full training split).
 
 Two things to know before a full-split run:
 
 - The console prints one `INFO` line per sample, so redirect it for long runs
-  (`... | tee run.out`) or rely on the log file. The `results/experiment.log` `DEBUG` records
+  (`... | tee run.out`) or rely on the log file. The `results/ex1_reproduce_KDA_pipeline/sciq/experiment_kda_tiny2_sciq_test_sample50.log` `DEBUG` records
   add two lines per sample per model.
 - `datasets/sciq/sciq_all_combined.json` mixes all three splits. Per-split metrics are not broken out
-  by `code/run_experiment.py`, but each result record keeps its `split` attribute, so the
-  breakdown can be recovered from `results/results.json` afterwards.
+  by `code/ex1_reproduce_KDA/run_experiment.py`, but each result record keeps its `split` attribute, so the
+  breakdown can be recovered from `results/ex1_reproduce_KDA_pipeline/sciq/results_kda_tiny2_sciq_test_sample50.json` afterwards.
 
 ---
 
 ## 7. Where to find the execution log
 
-`code/run_experiment.py` configures Python's `logging` module with two handlers:
+`code/ex1_reproduce_KDA/run_experiment.py` configures Python's `logging` module with two handlers:
 
 | Handler | Destination | Level | Contents |
 |---|---|---|---|
-| `FileHandler` | **`results/experiment.log`** (project root, next to `code/run_experiment.py`) | `DEBUG` | Everything below, plus a per-sample `DEBUG` line per model with its full 4-way probability vectors for both passes |
+| `FileHandler` | **`results/ex1_reproduce_KDA_pipeline/sciq/experiment_kda_tiny2_sciq_test_sample50.log`** (project root, next to `code/ex1_reproduce_KDA/run_experiment.py`) | `DEBUG` | Everything below, plus a per-sample `DEBUG` line per model with its full 4-way probability vectors for both passes |
 | `StreamHandler` | stdout / console | `INFO` | Environment banner, model loading and timing, per-sample KDA progress, accuracy tables, top/bottom-3 breakdown, errors |
 
 The log file is **overwritten on each run** unless `--append-log` is passed. Every record
@@ -357,12 +365,12 @@ The last run produced 249 lines, 102 of them `DEBUG` per-model probability recor
 (2 models x 50 questions + 2 loading records). Inspect it with:
 
 ```bash
-grep DEBUG results/experiment.log | head -20
+grep DEBUG results/ex1_reproduce_KDA_pipeline/sciq/experiment_kda_tiny2_sciq_test_sample50.log | head -20
 ```
 
 Errors are captured too: dataset/JSON read failures, ensemble initialisation failures and
 per-sample scoring failures are all logged with `logger.exception` (full traceback). A
-sample that fails to score is recorded in the `failures` list of `results/results.json` and
+sample that fails to score is recorded in the `failures` list of `results/ex1_reproduce_KDA_pipeline/sciq/results_kda_tiny2_sciq_test_sample50.json` and
 skipped, so one bad sample cannot abort the run.
 
 ---
@@ -371,40 +379,40 @@ skipped, so one bad sample cannot abort the run.
 
 | File | Role |
 |---|---|
-| `code/prepare_sciq.py` | Downloads SciQ, formats and shuffles options; full-split export or fixed-size sampling |
-| `code/kda_tiny.py` | `SimulatedStudent` + `KDATiny` — the ensemble KDA_cont implementation |
-| `code/run_experiment.py` | Scores a dataset file, computes metrics, logs the run |
+| `code/pre_data/prepare_sciq.py` | Downloads SciQ, formats and shuffles options; full-split export or fixed-size sampling |
+| `code/ex1_reproduce_KDA/kda_tiny.py` | `SimulatedStudent` + `KDATiny` — the ensemble KDA_cont implementation |
+| `code/ex1_reproduce_KDA/run_experiment.py` | Scores a dataset file, computes metrics, logs the run |
 | `datasets/sciq/sciq_train_full.json` | Full `train` split, 10,481 samples |
 | `datasets/sciq/sciq_val_full.json` | Full `validation` split, 887 samples |
 | `datasets/sciq/sciq_test_full.json` | Full `test` split, 884 samples |
 | `datasets/sciq/sciq_all_combined.json` | All three splits merged, 12,252 samples, each tagged with `split` |
 | `datasets/sciq/sciq_50.json` | The 50-question subset the reported results were produced on |
-| `results/dataset_prep.log` | Timestamped log of the dataset preparation run |
-| `results/results_kda_small_test_full.json` | **Official `KDA_small` baseline:** 4-model, 884 questions (4.1MB) |
-| `results/experiment_kda_small_test_full.log` | Execution log of the `KDA_small` run (1.0MB, 4,455 DEBUG lines) |
-| `results/results_test_full.json` | 2-model run on the same 884 questions (2.7MB) |
-| `results/experiment_test_full.log` | Execution log of the 2-model test-split run (579KB) |
-| `results/results.json` | Earlier 50-question run (see the note below) |
-| `results/experiment.log` | Execution log of the 50-question run |
-| `code/prepare_openbookqa.py` | Downloads OpenBookQA, joins `fact1`, exports the KDA format |
-| `code/paths.py` | Project-root anchored path helpers used by every script |
+| `results/ex1_reproduce_KDA_pipeline/prep_sciq.log` | Timestamped log of the dataset preparation run |
+| `results/ex1_reproduce_KDA_pipeline/sciq/results_kda_small_sciq_test_full.json` | **Official `KDA_small` baseline:** 4-model, 884 questions (4.1MB) |
+| `results/ex1_reproduce_KDA_pipeline/sciq/experiment_kda_small_sciq_test_full.log` | Execution log of the `KDA_small` run (1.0MB, 4,455 DEBUG lines) |
+| `results/ex1_reproduce_KDA_pipeline/sciq/results_kda_tiny2_sciq_test_full.json` | 2-model run on the same 884 questions (2.7MB) |
+| `results/ex1_reproduce_KDA_pipeline/sciq/experiment_kda_tiny2_sciq_test_full.log` | Execution log of the 2-model test-split run (579KB) |
+| `results/ex1_reproduce_KDA_pipeline/sciq/results_kda_tiny2_sciq_test_sample50.json` | Earlier 50-question run (see the note below) |
+| `results/ex1_reproduce_KDA_pipeline/sciq/experiment_kda_tiny2_sciq_test_sample50.log` | Execution log of the 50-question run |
+| `code/pre_data/prepare_openbookqa.py` | Downloads OpenBookQA, joins `fact1`, exports the KDA format |
+| `code/utils/paths.py` | Project-root anchored path helpers used by every script |
 | `datasets/openbookqa/obqa_train_full.json` | Full OpenBookQA `train` split, 4,957 samples |
 | `datasets/openbookqa/obqa_val_full.json` | Full OpenBookQA `validation` split, 500 samples |
 | `datasets/openbookqa/obqa_test_full.json` | Full OpenBookQA `test` split, 500 samples |
 | `datasets/openbookqa/obqa_all_combined.json` | All three OpenBookQA splits merged, 5,957 samples |
 | `datasets/openbookqa/obqa_50.json` | First 50 test samples, for smoke tests |
 | `docs/kda_reproduction_summary.md` | Cross-dataset baseline summary and integrity verification |
-| `results/openbookqa_prep.log` | Log of the OpenBookQA preparation run |
-| `results/openbookqa/results_kda_small_obqa_test_full.json` | **OpenBookQA `KDA_small` baseline:** 4-model, 500 questions (2.1MB) |
-| `results/openbookqa/experiment_kda_small_obqa_test_full.log` | Execution log of the OpenBookQA run |
-| `results/openbookqa/console_kda_small_obqa_test_full.txt` | Console transcript of the OpenBookQA run |
+| `results/ex1_reproduce_KDA_pipeline/prep_openbookqa.log` | Log of the OpenBookQA preparation run |
+| `results/ex1_reproduce_KDA_pipeline/openbookqa/results_kda_small_obqa_test_full.json` | **OpenBookQA `KDA_small` baseline:** 4-model, 500 questions (2.1MB) |
+| `results/ex1_reproduce_KDA_pipeline/openbookqa/experiment_kda_small_obqa_test_full.log` | Execution log of the OpenBookQA run |
+| `results/ex1_reproduce_KDA_pipeline/openbookqa/console_kda_small_obqa_test_full.txt` | Console transcript of the OpenBookQA run |
 
-> `results/results.json` / `results/experiment.log` were produced with an earlier pairing
+> `results/ex1_reproduce_KDA_pipeline/sciq/results_kda_tiny2_sciq_test_sample50.json` / `results/ex1_reproduce_KDA_pipeline/sciq/experiment_kda_tiny2_sciq_test_sample50.log` were produced with an earlier pairing
 > (`kda-distilbert-base-uncased-race` + `kda-bert-base-uncased-race`) on the 50-question
 > subset. The current default ensemble swaps in `kda-scibert-uncased-race`, so those two
-> files are **not** comparable to `results/results_test_full.json` sample-for-sample.
+> files are **not** comparable to `results/ex1_reproduce_KDA_pipeline/sciq/results_kda_tiny2_sciq_test_full.json` sample-for-sample.
 
-`results/results.json` layout (all keys in English):
+`results/ex1_reproduce_KDA_pipeline/sciq/results_kda_tiny2_sciq_test_sample50.json` layout (all keys in English):
 
 ```
 summary
@@ -437,11 +445,11 @@ differs, because the target fact has to be joined in from a second config.
 ### 9.1. Prepare the data
 
 ```bash
-python code/prepare_openbookqa.py
+python code/pre_data/prepare_openbookqa.py
 ```
 
 Exports all three splits plus the two derived files, and logs to
-`results/openbookqa_prep.log`:
+`results/ex1_reproduce_KDA_pipeline/prep_openbookqa.log`:
 
 | File | Samples |
 |---|---:|
@@ -452,7 +460,7 @@ Exports all three splits plus the two derived files, and logs to
 | `datasets/openbookqa/obqa_50.json` | 50 (first 50 of the test split, for smoke tests) |
 
 `--splits`, `--no-combined` and `--no-debug-set` narrow the export; the layout mirrors the
-SciQ one produced by `code/prepare_sciq.py`. `obqa_50.json` is a strict prefix of
+SciQ one produced by `code/pre_data/prepare_sciq.py`. `obqa_50.json` is a strict prefix of
 `obqa_test_full.json`, so ids and `obqa_index` values line up between the two.
 
 Field mapping:
@@ -482,7 +490,7 @@ index 0, OpenBookQA already distributes the key across the four positions.
 ### 9.2. Run the `KDA_small` baseline
 
 ```bash
-python code/run_experiment.py --data datasets/openbookqa/obqa_test_full.json --out results/openbookqa/results_kda_small_obqa_test_full.json --log-file results/openbookqa/experiment_kda_small_obqa_test_full.log --models KDA_SMALL --dataset-name allenai/openbookqa --split test --progress-every 250
+python code/ex1_reproduce_KDA/run_experiment.py --data datasets/openbookqa/obqa_test_full.json --out results/ex1_reproduce_KDA_pipeline/openbookqa/results_kda_small_obqa_test_full.json --log-file results/ex1_reproduce_KDA_pipeline/openbookqa/experiment_kda_small_obqa_test_full.log --models KDA_SMALL --dataset-name allenai/openbookqa --split test --progress-every 250
 ```
 
 500 questions x 4 models in **155s** on the RTX 3050 (0.31s per question), sequential
@@ -631,7 +639,7 @@ The reference ensemble from the paper (`question_score/kda.py:14-19`), run on th
 clean test split:
 
 ```bash
-python code/run_experiment.py --data datasets/sciq/sciq_test_full.json --models KDA_SMALL --out results/results_kda_small_test_full.json --log-file results/experiment_kda_small_test_full.log
+python code/ex1_reproduce_KDA/run_experiment.py --data datasets/sciq/sciq_test_full.json --models KDA_SMALL --out results/ex1_reproduce_KDA_pipeline/sciq/results_kda_small_sciq_test_full.json --log-file results/ex1_reproduce_KDA_pipeline/sciq/experiment_kda_small_sciq_test_full.log
 ```
 
 `--models KDA_SMALL` expands to `google/t5-small-ssm-nq`,
@@ -651,8 +659,8 @@ python code/run_experiment.py --data datasets/sciq/sciq_test_full.json --models 
 | Zero-denominator samples | **0** |
 | Scoring time | **583.51s** (0.660s/question) on an RTX 3050 |
 | Total runtime | 585.01s |
-| `results/results_kda_small_test_full.json` | 4.1MB |
-| `results/experiment_kda_small_test_full.log` | 1.0MB (4,690 lines, 4,455 at DEBUG) |
+| `results/ex1_reproduce_KDA_pipeline/sciq/results_kda_small_sciq_test_full.json` | 4.1MB |
+| `results/ex1_reproduce_KDA_pipeline/sciq/experiment_kda_small_sciq_test_full.log` | 1.0MB (4,690 lines, 4,455 at DEBUG) |
 
 > **Do not compare 0.4715 against the 0.740 in the project README.** That table reports
 > the *correlation* between `KDA_small` and human-annotated KDA, not a mean score. The
@@ -770,7 +778,7 @@ sequential strategy keeps headroom for activations and makes the run safe on 4GB
 Command:
 
 ```bash
-python code/run_experiment.py --data datasets/sciq/sciq_test_full.json --out results/results_test_full.json --log-file results/experiment_test_full.log
+python code/ex1_reproduce_KDA/run_experiment.py --data datasets/sciq/sciq_test_full.json --out results/ex1_reproduce_KDA_pipeline/sciq/results_kda_tiny2_sciq_test_full.json --log-file results/ex1_reproduce_KDA_pipeline/sciq/experiment_kda_tiny2_sciq_test_full.log
 ```
 
 ### Headline numbers
@@ -786,8 +794,8 @@ python code/run_experiment.py --data datasets/sciq/sciq_test_full.json --out res
 | Zero-denominator samples | **0** |
 | Scoring time | **55.64s** (0.063s/question) on an RTX 3050 |
 | Total runtime | 61.43s including model loading |
-| `results/results_test_full.json` size | **2.7MB** (~3.1KB per sample) |
-| `results/experiment_test_full.log` size | 579KB (2,797 lines, 2,675 at DEBUG) |
+| `results/ex1_reproduce_KDA_pipeline/sciq/results_kda_tiny2_sciq_test_full.json` size | **2.7MB** (~3.1KB per sample) |
+| `results/ex1_reproduce_KDA_pipeline/sciq/experiment_kda_tiny2_sciq_test_full.log` size | 579KB (2,797 lines, 2,675 at DEBUG) |
 
 ### Accuracy per model
 
@@ -869,7 +877,7 @@ Mean `P(R^q = 1)` = 0.2943 -> mean `P(R^{q+f} = 1)` = 0.5971.
 ## Earlier run — 50-question subset (`datasets/sciq/sciq_50.json`)
 
 > Produced with a different pairing (`kda-distilbert-base-uncased-race` +
-> `kda-bert-base-uncased-race`) and kept for reference in `results/results.json`. Not
+> `kda-bert-base-uncased-race`) and kept for reference in `results/ex1_reproduce_KDA_pipeline/sciq/results_kda_tiny2_sciq_test_sample50.json`. Not
 > sample-for-sample comparable with the full test-split run above.
 
 | Metric | Value |
@@ -895,10 +903,10 @@ SciBERT — consistent with SciBERT being the stronger of the two second student
 
 22 of the 1,768 passage encodings in the full test run (884 questions x 2 students, 1.2%)
 exceeded the 512-token limit and had their passage tail-truncated; each event is recorded
-at `DEBUG` level in `results/experiment_test_full.log`:
+at `DEBUG` level in `results/ex1_reproduce_KDA_pipeline/sciq/experiment_kda_tiny2_sciq_test_full.log`:
 
 ```bash
-grep "Truncating passage" experiment_test_full.log
+grep "Truncating passage" experiment_kda_tiny2_sciq_test_full.log
 ```
 
 The `transformers` console warning *"Token indices sequence length is longer than the
@@ -959,5 +967,5 @@ therefore set by the largest single checkpoint rather than the sum, and the log 
 allocated / reserved / free memory before each load and after each unload:
 
 ```bash
-grep VRAM experiment_kda_small_test_full.log
+grep VRAM experiment_kda_small_sciq_test_full.log
 ```
