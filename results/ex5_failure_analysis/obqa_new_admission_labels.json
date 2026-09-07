@@ -1,0 +1,33 @@
+{
+  "_provenance": {
+    "what": "failure_category labels for the 20 OpenBookQA items newly admitted to the RQ1 flagged pool by criterion C3_prior_dependent, which could not be applied when the original artefact was built.",
+    "annotator": "second annotator (Claude, this session) - NOT the annotator who labelled the original 408 items",
+    "rubric": "the reconstructed operational definitions in docs/failure_taxonomy_methodology.md section 4.1",
+    "passes": 1,
+    "inter_annotator_agreement": "not measured",
+    "known_risk": "these 20 labels come from a different annotator than the other 80 OBQA labels, using a rubric reconstructed after the fact. Mixing them into a single distribution introduces an annotator effect that did not exist before. Reported separately in docs/failure_taxonomy_methodology.md section 6.1 for this reason.",
+    "note_on_category_availability": "option_leakage and parametric_knowledge received zero items here, consistent with the original OBQA pool (which also had zero parametric_knowledge)."
+  },
+  "labels": {
+    "27":  {"failure_category": "common_knowledge",       "rationale": "Which body system supplies oxygen is elementary-curriculum biology; 'the school system' is a joke distractor."},
+    "74":  {"failure_category": "reasoning_shortcut",     "rationale": "Three distractors are absurd for a FALLEN leaf (turns into a tree, becomes bright green, continues to grow); the gold is the only physically sensible option and also the longest."},
+    "171": {"failure_category": "common_knowledge",       "rationale": "Two distractors are jokes (wishing, magic); friction vs metal for starting a fire is elementary."},
+    "191": {"failure_category": "common_knowledge",       "rationale": "Conservation increases availability; the gold is the only option with that polarity. Primary model already at P(R^q)=0.951."},
+    "202": {"failure_category": "common_knowledge",       "rationale": "Only one option names a mechanism at all; elementary inheritance."},
+    "226": {"failure_category": "reasoning_shortcut",     "rationale": "Odd-one-out: the gold is the only option describing actual bone movement (resting, hair growth, invisible smiles are not)."},
+    "251": {"failure_category": "common_knowledge",       "rationale": "Distractors (Walking, Water, Chips) are absurd as pollution sources."},
+    "253": {"failure_category": "material_not_necessary", "rationale": "The stem already states the action ('putting one kind of soda into the same cup as another'); the fact merely restates that pouring one substance into another is combining."},
+    "329": {"failure_category": "common_knowledge",       "rationale": "Xylem transports water; school-level botany. The only water-related option."},
+    "389": {"failure_category": "common_knowledge",       "rationale": "Distractors (fun, taste, soil) are absurd; food and water supply energy is elementary."},
+    "394": {"failure_category": "reasoning_shortcut",     "rationale": "Polarity odd-one-out: renewed/retrieved/restored are all restorative, the gold is the only removal, and 'tears down' echoes 'is removed'."},
+    "399": {"failure_category": "common_knowledge",       "rationale": "The Moon is the nearest body; common knowledge."},
+    "403": {"failure_category": "common_knowledge",       "rationale": "The gold is the only coherent purpose; the distractors are circular ('use heat energy', 'burn energy')."},
+    "408": {"failure_category": "common_knowledge",       "rationale": "Global warming reduces ice; elementary and widely known."},
+    "422": {"failure_category": "common_knowledge",       "rationale": "One full moon per month is common knowledge."},
+    "426": {"failure_category": "common_knowledge",       "rationale": "Octopus concealment (ink/camouflage) is common elementary knowledge; the other options are ordinary visible animals."},
+    "442": {"failure_category": "common_knowledge",       "rationale": "A classroom clock counting down measures seconds; days/weeks/years are absurd for a clock."},
+    "447": {"failure_category": "material_not_necessary", "rationale": "The stem is logically self-sufficient: 'less than a minute' eliminates day, minute and hour by arithmetic alone. The fact adds nothing."},
+    "483": {"failure_category": "common_knowledge",       "rationale": "Steam is water vapor; elementary states of matter."},
+    "491": {"failure_category": "common_knowledge",       "rationale": "Sharks are predators; common knowledge."}
+  }
+}

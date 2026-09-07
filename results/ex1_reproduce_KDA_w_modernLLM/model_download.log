@@ -1,0 +1,54 @@
+2026-08-30 02:35:06 | INFO     | Models root : /home/nghben/Downloads/research/fsds/experiment/models
+2026-08-30 02:35:06 | INFO     | Token       : none (public repos)
+2026-08-30 02:35:06 | INFO     | Requested   : Qwen/Qwen3-4B-Instruct-2507, Qwen/Qwen2.5-7B-Instruct
+2026-08-30 02:35:06 | INFO     | 
+2026-08-30 02:35:06 | INFO     | ========================================================================================
+2026-08-30 02:35:06 | INFO     | Qwen/Qwen3-4B-Instruct-2507  ->  /home/nghben/Downloads/research/fsds/experiment/models/Qwen3-4B-Instruct-2507
+2026-08-30 02:35:06 | INFO     | ========================================================================================
+2026-08-30 02:35:06 | INFO     | Hub lists 13 files; 12 selected (7.5GB)
+2026-08-30 02:35:06 | INFO     | --verify-only: skipping transfer
+2026-08-30 02:35:06 | INFO     | Verifying /home/nghben/Downloads/research/fsds/experiment/models/Qwen3-4B-Instruct-2507
+2026-08-30 02:35:06 | INFO     |   OK        LICENSE                                            11.1KB  git-sha1:6634c8cc3133b384
+2026-08-30 02:35:06 | INFO     |   OK        README.md                                           8.0KB  git-sha1:b85879f8e465b5b0
+2026-08-30 02:35:06 | INFO     |   OK        config.json                                        727.0B  git-sha1:6988f134db143052
+2026-08-30 02:35:06 | INFO     |   OK        generation_config.json                             238.0B  git-sha1:432531a002c181a1
+2026-08-30 02:35:06 | INFO     |   OK        merges.txt                                          1.6MB  git-sha1:20024bfe7c83998e
+2026-08-30 02:35:11 | INFO     |   OK        model-00001-of-00003.safetensors                    3.7GB  sha256:75311d91bb08cf0b
+2026-08-30 02:35:16 | INFO     |   OK        model-00002-of-00003.safetensors                    3.7GB  sha256:0b48adbb1f60e901
+2026-08-30 02:35:16 | INFO     |   OK        model-00003-of-00003.safetensors                   95.0MB  sha256:7dd39ccca5e4de12
+2026-08-30 02:35:16 | INFO     |   OK        model.safetensors.index.json                       32.0KB  git-sha1:4747b0297d3109f1
+2026-08-30 02:35:16 | INFO     |   OK        tokenizer.json                                     10.9MB  sha256:aeb13307a71acd8f
+2026-08-30 02:35:16 | INFO     |   OK        tokenizer_config.json                               9.2KB  git-sha1:51c1be0d9192e7f6
+2026-08-30 02:35:16 | INFO     |   OK        vocab.json                                          2.6MB  git-sha1:4783fe10ac3adce1
+2026-08-30 02:35:16 | INFO     |   12/12 files verified (7.5GB) in 10.2s -- 0 failed, 1 skipped
+2026-08-30 02:35:16 | INFO     | 
+2026-08-30 02:35:16 | INFO     | ========================================================================================
+2026-08-30 02:35:16 | INFO     | Qwen/Qwen2.5-7B-Instruct  ->  /home/nghben/Downloads/research/fsds/experiment/models/Qwen2.5-7B-Instruct
+2026-08-30 02:35:16 | INFO     | ========================================================================================
+2026-08-30 02:35:17 | INFO     | Hub lists 14 files; 13 selected (14.2GB)
+2026-08-30 02:35:17 | INFO     | --verify-only: skipping transfer
+2026-08-30 02:35:17 | INFO     | Verifying /home/nghben/Downloads/research/fsds/experiment/models/Qwen2.5-7B-Instruct
+2026-08-30 02:35:17 | INFO     |   OK        LICENSE                                            11.1KB  git-sha1:6634c8cc3133b384
+2026-08-30 02:35:17 | INFO     |   OK        README.md                                           6.1KB  git-sha1:4e9536cebaeb5cac
+2026-08-30 02:35:17 | INFO     |   OK        config.json                                        663.0B  git-sha1:0178295f88afc3c7
+2026-08-30 02:35:17 | INFO     |   OK        generation_config.json                             243.0B  git-sha1:0eb3c536657dcd12
+2026-08-30 02:35:17 | INFO     |   OK        merges.txt                                          1.6MB  git-sha1:20024bfe7c83998e
+2026-08-30 02:35:22 | INFO     |   OK        model-00001-of-00004.safetensors                    3.7GB  sha256:a1333e6293854747
+2026-08-30 02:35:26 | INFO     |   OK        model-00002-of-00004.safetensors                    3.6GB  sha256:f5d25a2772cb8251
+2026-08-30 02:35:31 | INFO     |   OK        model-00003-of-00004.safetensors                    3.6GB  sha256:8efdec4c1bc12317
+2026-08-30 02:35:35 | INFO     |   OK        model-00004-of-00004.safetensors                    3.3GB  sha256:1a72d403cdf0c1ec
+2026-08-30 02:35:35 | INFO     |   OK        model.safetensors.index.json                       27.1KB  git-sha1:14d037fdda5a1311
+2026-08-30 02:35:35 | INFO     |   OK        tokenizer.json                                      6.7MB  git-sha1:443909a61d429dff
+2026-08-30 02:35:35 | INFO     |   OK        tokenizer_config.json                               7.1KB  git-sha1:07bfe0640cb5a003
+2026-08-30 02:35:35 | INFO     |   OK        vocab.json                                          2.6MB  git-sha1:4783fe10ac3adce1
+2026-08-30 02:35:35 | INFO     |   13/13 files verified (14.2GB) in 18.1s -- 0 failed, 1 skipped
+2026-08-30 02:35:35 | INFO     | 
+2026-08-30 02:35:35 | INFO     | ========================================================================================
+2026-08-30 02:35:35 | INFO     | SUMMARY
+2026-08-30 02:35:35 | INFO     | ========================================================================================
+2026-08-30 02:35:35 | INFO     |   OK       Qwen/Qwen3-4B-Instruct-2507        12 files       7.5GB  
+2026-08-30 02:35:35 | INFO     |   OK       Qwen/Qwen2.5-7B-Instruct           13 files      14.2GB  
+2026-08-30 02:35:35 | INFO     | 
+2026-08-30 02:35:35 | INFO     | Report : /home/nghben/Downloads/research/fsds/experiment/results/model_download_report.json
+2026-08-30 02:35:35 | INFO     | Log    : /home/nghben/Downloads/research/fsds/experiment/results/model_download.log
+2026-08-30 02:35:35 | INFO     | All files present and checksum-verified.

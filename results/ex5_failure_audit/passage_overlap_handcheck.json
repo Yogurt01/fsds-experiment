@@ -1,0 +1,94 @@
+{
+  "_provenance": {
+    "what": "Hand-check of the low-overlap tail identified by code/rq1_audit/passage_overlap_audit.py, across BOTH test splits and independent of any model's performance on the item.",
+    "annotator": "second annotator (Claude, this session), single pass, no second rater, no kappa",
+    "metric": "share of question content words present in the passage, with singular/plural stemming",
+    "sciq_coverage": "census: every one of the 21 items with stemmed overlap < 0.40, plus a seeded 20-item sample of the 863 items >= 0.40",
+    "obqa_coverage": "seeded random sample of 25 of the 123 items at exactly 0.000 overlap"
+  },
+  "categories": {
+    "topic_mismatch": "the passage is about an unrelated subject; it cannot answer the question",
+    "orthographic_defect": "passage is on topic but a spelling/typo prevents lexical matching",
+    "legitimate_low_overlap": "passage is on topic and correct; low overlap is a property of the phrasing (paraphrase) or of the benchmark's design (deductive rule)",
+    "other": "anything else"
+  },
+  "sciq": {
+    "n_split": 884,
+    "n_examined": 41,
+    "confirmed_topic_mismatches": 13,
+    "mismatch_rate_of_split": 0.0147,
+    "tail_below_0_10": {
+      "n": 12,
+      "topic_mismatch": [23, 153, 203, 306, 412, 598, 610, 655, 739, 746, 754],
+      "legitimate_low_overlap": [127],
+      "detail": {
+        "23":  "osteoporosis / bone fractures -- passage is about fungi and the plant kingdom",
+        "153": "hydrometer, specific gravity -- passage is about Mendel's pea-plant crosses",
+        "203": "gas pressure in a rigid container -- passage is one sentence about car acceleration",
+        "306": "reptile skin -- passage is about the cell cycle and mitosis",
+        "412": "isotopes -- passage is about stoneworts and the first plants",
+        "598": "simple diffusion through lipids -- passage is about blood disorders",
+        "610": "definition of pollution -- passage is about bread mould plus image credits",
+        "655": "what moving charged particles generate -- passage is about paint toxicity",
+        "739": "sickle-cell disease -- passage is about metalloids",
+        "746": "what kPa/atm/mmHg measure -- passage is about lymph organs plus image credits",
+        "754": "what separates river basins -- passage is about compressive stress on rock",
+        "127": "LEGITIMATE. Gold 'bar graph'; the passage is genuinely about bar graphs, but the question is a definitional paraphrase ('height or length of lines or rectangles of equal width') that shares almost no vocabulary with it."
+      }
+    },
+    "band_0_10_to_0_40": {
+      "n": 9,
+      "topic_mismatch": [584, 602],
+      "legitimate_low_overlap": [201, 251, 321, 525, 566, 619, 828],
+      "detail": {
+        "584": "MISSED BY THE 0.10 THRESHOLD. Question is about the heart's atrium; the passage is about bronchi and respiratory bronchioles. Scores 0.286 only because 'respiratory'/'parts' coincide.",
+        "602": "MISSED BY THE 0.10 THRESHOLD. Question asks how the water cycle ends; the passage is about home hot-water and warm-air heating systems. Scores 0.333 on the incidental words 'water' and 'heat'.",
+        "201": "LEGITIMATE, and a detector artifact at the unstemmed metric: passage says 'nebulas ... collapse', question says 'collapsing nebula'. Rescued from 0.000 to 0.250 by stemming.",
+        "251": "LEGITIMATE, same artifact: 'snails'/'snail', 'invertebrates'/'invertebrate'. Rescued 0.000 -> 0.250.",
+        "546": "LEGITIMATE, same artifact: 'adaptations'/'adaptation'. Rescued 0.000 -> 1.000, so it no longer appears in the tail at all."
+      }
+    },
+    "sample_above_0_40": {
+      "n": 20,
+      "topic_mismatch": 0,
+      "note": "0/20 mismatched. A passage sharing >= 40% of a question's content words is structurally unlikely to be off-topic; both misses found above sit at 0.286 and 0.333, below that line."
+    },
+    "detector_performance": {
+      "threshold_0_10": {"precision": 0.917, "recall_within_examined_region": 0.846},
+      "threshold_0_40": {"precision": 0.619, "recall_within_examined_region": 1.0},
+      "recommended_operating_point": "< 0.40 with a full census of the resulting ~21 items; the pool is small enough that precision does not matter."
+    }
+  },
+  "obqa": {
+    "n_split": 500,
+    "n_zero_overlap": 123,
+    "pct_zero_overlap": 24.6,
+    "n_sampled": 25,
+    "confirmed_topic_mismatches": 0,
+    "legitimate_low_overlap": 25,
+    "wilson_95ci_on_defect_rate_within_zero_overlap": [0.0, 0.133],
+    "implied_upper_bound_on_defective_items_in_split": 16,
+    "point_estimate": 0,
+    "interpretation": "OpenBookQA's zero-overlap mass is entirely by design, not defect. `fact1` is a deductive one-clause rule and the question asks for an instance of it, so sharing no vocabulary is the intended relationship. Every sampled pair was a valid rule/instance link.",
+    "examples": {
+      "245": "fact 'a thermal insulator slows the transfer of heat' / question about a duck-feather jacket -- valid, zero shared vocabulary",
+      "430": "fact 'adding salt to a solid decreases the freezing point of that solid' / question about ice on a sidewalk -- valid",
+      "480": "fact 'a complete revolution of the Earth around the sun takes one solar year' / question 'what would occur once between January 1st and December 31st' -- valid",
+      "255": "fact 'alloys are made of two or more metals' / gold 'iron and carbon' -- on topic, though the fact is imprecise since carbon is not a metal. Counted as legitimate, flagged as a minor factual wobble rather than a pairing defect."
+    }
+  },
+  "screen_relationships": {
+    "mismatches_that_are_setting_c_ineligible": "12 of 13 (92.3%)",
+    "setting_c_ineligible_items_that_are_mismatches": "12 of 24 (50.0%)",
+    "overlap_lt_0_40_items_that_are_mismatches": "13 of 21 (61.9%)",
+    "union_of_both_screens": "33 unique items, capturing 13 of 13 mismatches (100% recall within the examined region)",
+    "h3_screen_enrichment": {
+      "pool": "both_wrong AND Setting-C-ineligible",
+      "n": 7,
+      "mismatches": 5,
+      "rate": 0.714,
+      "corpus_base_rate": 0.0147,
+      "enrichment": "48.6x"
+    }
+  }
+}

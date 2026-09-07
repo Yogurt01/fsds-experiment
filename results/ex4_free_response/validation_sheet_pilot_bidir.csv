@@ -1,0 +1,83 @@
+# HUMAN VALIDATION SHEET -- free-response judge
+# Fill ONLY the `human_verdict` column with CORRECT or INCORRECT.
+# CORRECT means: the model_answer means the same thing as the gold_answer, in the context of
+# the question. Ignore spelling, capitalisation and phrasing. A more specific or more general
+# answer counts as CORRECT only if it identifies the same thing.
+# Please do NOT read the judge_forward / judge_reverse columns before deciding -- they are
+# included so the sheet is self-contained for scoring, not as a prompt. Hide them if you can.
+# When done, run: uv run --active python code/ex4_free_response/compute_kappa.py --sheet <this file>
+row_id,dataset,cell,item_id,question,gold_answer,model_answer,human_verdict,judge_forward,judge_reverse,judge_agree,stratum
+1,obqa,B_prime,10,It's easier for human's to survive in:,a town,large groups,,INCORRECT,INCORRECT,True,obqa/B_prime/agree
+2,sciq,A_prime,24,Where is energy stored in a chemical substance?,between atoms,Chemical bonds,,CORRECT,CORRECT,True,sciq/A_prime/agree
+3,obqa,B_prime,24,Shining a light through a diamond can,summon a brilliant wave of color,refract light,,INCORRECT,INCORRECT,True,obqa/B_prime/agree
+4,obqa,B_prime,12,A red-tailed hawk is searching for prey. It is most likely to swoop down on,a gecko,a lizard,,CORRECT,CORRECT,True,obqa/B_prime/agree
+5,obqa,A_prime,23,Overpopulation can cause,Lower Life Expectancy in Countries,resource depletion,,INCORRECT,INCORRECT,True,obqa/A_prime/agree
+6,sciq,A_prime,6,"Meiosis is part of the process of gametogenesis, which is the production of what?",sperm and eggs,gametes,,CORRECT,CORRECT,True,sciq/A_prime/agree
+7,obqa,B_prime,14,A positive effect of burning biofuel is,powering the lights in a home,renewable energy,,INCORRECT,INCORRECT,True,obqa/B_prime/agree
+8,obqa,A_prime,8,The summer solstice in the northern hemisphere is four months before,October,winter solstice,,INCORRECT,INCORRECT,True,obqa/A_prime/agree
+9,sciq,A_prime,13,"Penis, testes, and epididymis are organs in what system?",male reproductive system,reproductive system,,CORRECT,CORRECT,True,sciq/A_prime/agree
+10,obqa,A_prime,5,As the rain forest is deforested the atmosphere will increase with,carbon,carbon dioxide,,INCORRECT,CORRECT,False,obqa/A_prime/flip
+11,obqa,A_prime,10,It's easier for human's to survive in:,a town,oxygen-rich environments,,INCORRECT,INCORRECT,True,obqa/A_prime/agree
+12,sciq,A_prime,4,"Ice cores, varves and what else indicate the environmental conditions at the time of their creation?",tree rings,fossil records,,INCORRECT,CORRECT,False,sciq/A_prime/flip
+13,sciq,A_prime,23,What are people with osteoporosis at increased risk of?,bone fractures,Fractures,,CORRECT,CORRECT,True,sciq/A_prime/agree
+14,obqa,B_prime,19,An animal that only eats plants is a,moth,herbivore,,CORRECT,INCORRECT,False,obqa/B_prime/flip
+15,obqa,A_prime,18,Which requires energy to move?,weasel,Active transport,,CORRECT,INCORRECT,False,obqa/A_prime/flip
+16,sciq,A_prime,17,What do most living things use to make atp from glucose?,oxygen,cellular respiration,,INCORRECT,INCORRECT,True,sciq/A_prime/agree
+17,obqa,A_prime,7,The middle of the day usually involves the bright star nearest to the earth to be straight overhead why?,human planet rotation,noon,,INCORRECT,INCORRECT,True,obqa/A_prime/agree
+18,sciq,A_prime,0,"Compounds that are capable of accepting electrons, such as o 2 or f2, are called what?",oxidants,oxidizing agents,,CORRECT,CORRECT,True,sciq/A_prime/agree
+19,obqa,A_prime,15,"As gasoline costs rise, alternative fuels are being used, which means that",gasoline will be needed less,demand for gasoline increases,,INCORRECT,INCORRECT,True,obqa/A_prime/agree
+20,sciq,A_prime,15,How does a neon light produce visible light?,electroluminescence,Gas discharge,,CORRECT,INCORRECT,False,sciq/A_prime/flip
+21,obqa,B_prime,17,A Mola Mola might live where?,Bay of Bengal,ocean,,INCORRECT,CORRECT,False,obqa/B_prime/flip
+22,obqa,B_prime,5,As the rain forest is deforested the atmosphere will increase with,carbon,carbon dioxide,,INCORRECT,CORRECT,False,obqa/B_prime/flip
+23,obqa,A_prime,12,A red-tailed hawk is searching for prey. It is most likely to swoop down on,a gecko,small mammals,,CORRECT,INCORRECT,False,obqa/A_prime/flip
+24,obqa,A_prime,20,There was a lot more water vapor in the air when we went on a trip to,Hanoi,the coast,,INCORRECT,INCORRECT,True,obqa/A_prime/agree
+25,obqa,A_prime,17,A Mola Mola might live where?,Bay of Bengal,"Warm, shallow oceans",,INCORRECT,INCORRECT,True,obqa/A_prime/agree
+26,obqa,B_prime,21,An example of conservation is avoiding the use of,gasoline,fossil fuels,,INCORRECT,CORRECT,False,obqa/B_prime/flip
+27,sciq,A_prime,7,Which type of tree is dominant in temperate forests?,deciduous,Oak,,INCORRECT,INCORRECT,True,sciq/A_prime/agree
+28,obqa,B_prime,0,"A person wants to start saving money so that they can afford a nice vacation at the end of the year. After looking over their budget and expenses, they decide the best way to save money is to",quit eating lunch out,use fewer resources,,INCORRECT,CORRECT,False,obqa/B_prime/flip
+29,obqa,B_prime,15,"As gasoline costs rise, alternative fuels are being used, which means that",gasoline will be needed less,gasoline use will decrease,,CORRECT,CORRECT,True,obqa/B_prime/agree
+30,sciq,A_prime,18,What are the two most common silicates?,feldspar and quartz,"quartz, feldspar",,CORRECT,CORRECT,True,sciq/A_prime/agree
+31,obqa,A_prime,9,The main component in dirt is,broken stones,silt,,INCORRECT,INCORRECT,True,obqa/A_prime/agree
+32,sciq,B_prime,24,Where is energy stored in a chemical substance?,between atoms,in atomic bonds,,CORRECT,CORRECT,True,sciq/B_prime/agree
+33,obqa,A_prime,6,an electric car contains a motor that runs on,ions,electricity,,INCORRECT,INCORRECT,True,obqa/A_prime/agree
+34,obqa,B_prime,2,Predators eat,bunnies,prey,,INCORRECT,INCORRECT,True,obqa/B_prime/agree
+35,obqa,B_prime,7,The middle of the day usually involves the bright star nearest to the earth to be straight overhead why?,human planet rotation,Sun is directly overhead at noon due to Earth's axial tilt and rotation,,CORRECT,INCORRECT,False,obqa/B_prime/flip
+36,obqa,A_prime,13,The chance of wildfires is increased by,parched foliage,climate change,,INCORRECT,INCORRECT,True,obqa/A_prime/agree
+37,sciq,A_prime,2,Vertebrata are characterized by the presence of what?,backbone,Vertebrae,,CORRECT,CORRECT,True,sciq/A_prime/agree
+38,obqa,B_prime,9,The main component in dirt is,broken stones,rocks,,CORRECT,CORRECT,True,obqa/B_prime/agree
+39,sciq,A_prime,11,What are by far the most common type of invertebrate?,insects,arthropods,,INCORRECT,INCORRECT,True,sciq/A_prime/agree
+40,sciq,A_prime,22,What happens when mammals raise their hair with tiny muscles in the skin?,goosebumps,Piloerection,,CORRECT,CORRECT,True,sciq/A_prime/agree
+41,obqa,A_prime,14,A positive effect of burning biofuel is,powering the lights in a home,reduces net greenhouse gas emissions,,INCORRECT,INCORRECT,True,obqa/A_prime/agree
+42,sciq,B_prime,23,What are people with osteoporosis at increased risk of?,bone fractures,fractures,,CORRECT,CORRECT,True,sciq/B_prime/agree
+43,obqa,B_prime,13,The chance of wildfires is increased by,parched foliage,drought,,CORRECT,INCORRECT,False,obqa/B_prime/flip
+44,sciq,A_prime,10,About how tall can mid-ocean ridges be?,about 2 km,A few kilometers,,INCORRECT,CORRECT,False,sciq/A_prime/flip
+45,obqa,A_prime,4,An electric car runs on electricity via,electrical conductors,electric batteries,,INCORRECT,INCORRECT,True,obqa/A_prime/agree
+46,obqa,A_prime,24,Shining a light through a diamond can,summon a brilliant wave of color,refract and reflect light,,INCORRECT,INCORRECT,True,obqa/A_prime/agree
+47,sciq,A_prime,9,Ionic compounds have strong electrostatic attractions between oppositely charged ions in this?,regular array,lattice structure,,CORRECT,CORRECT,True,sciq/A_prime/agree
+48,obqa,A_prime,22,What can feathers on Spheniscidae be used for?,keeping warm,Insulation and waterproofing,,CORRECT,INCORRECT,False,obqa/A_prime/flip
+49,obqa,A_prime,11,A cactus stem is used to store,liquid,water,,CORRECT,INCORRECT,False,obqa/A_prime/flip
+50,obqa,B_prime,16,"A person wants to be able to have more natural power in their home. They choose to cease using a traditional electric company to source this electricity, and so decide to install",panels collecting sunlight,solar panels,,CORRECT,CORRECT,True,obqa/B_prime/agree
+51,sciq,A_prime,16,The bird ancestor that lived in trees developed what feature commonly associated with birds?,wings,feathers,,INCORRECT,INCORRECT,True,sciq/A_prime/agree
+52,obqa,A_prime,21,An example of conservation is avoiding the use of,gasoline,plastics,,INCORRECT,INCORRECT,True,obqa/A_prime/agree
+53,obqa,B_prime,18,Which requires energy to move?,weasel,an animal,,INCORRECT,CORRECT,False,obqa/B_prime/flip
+54,obqa,B_prime,23,Overpopulation can cause,Lower Life Expectancy in Countries,ecosystem imbalance,,INCORRECT,INCORRECT,True,obqa/B_prime/agree
+55,sciq,B_prime,8,What kind of viscosity is found in long-chain hydrocarbons?,highly viscous,high viscosity,,CORRECT,CORRECT,True,sciq/B_prime/agree
+56,obqa,A_prime,3,"Oak tree seeds are planted and a sidewalk is paved right next to that spot, until eventually, the tree is tall and the roots must extend past the sidewalk, which means",parts may break the concrete,root pressure,,INCORRECT,INCORRECT,True,obqa/A_prime/agree
+57,obqa,B_prime,11,A cactus stem is used to store,liquid,water,,CORRECT,INCORRECT,False,obqa/B_prime/flip
+58,obqa,B_prime,3,"Oak tree seeds are planted and a sidewalk is paved right next to that spot, until eventually, the tree is tall and the roots must extend past the sidewalk, which means",parts may break the concrete,sidewalk cracks,,CORRECT,CORRECT,True,obqa/B_prime/agree
+59,sciq,B_prime,13,"Penis, testes, and epididymis are organs in what system?",male reproductive system,reproductive system,,CORRECT,CORRECT,True,sciq/B_prime/agree
+60,obqa,A_prime,0,"A person wants to start saving money so that they can afford a nice vacation at the end of the year. After looking over their budget and expenses, they decide the best way to save money is to",quit eating lunch out,cut back on expenses,,CORRECT,CORRECT,True,obqa/A_prime/agree
+61,obqa,B_prime,20,There was a lot more water vapor in the air when we went on a trip to,Hanoi,humidity,,INCORRECT,INCORRECT,True,obqa/B_prime/agree
+62,obqa,B_prime,6,an electric car contains a motor that runs on,ions,electricity,,INCORRECT,INCORRECT,True,obqa/B_prime/agree
+63,sciq,A_prime,21,"Presence of a cell wall, large central vacuole, and organelles called plastids distinguish what type of cell?",plant,plant cell,,CORRECT,CORRECT,True,sciq/A_prime/agree
+64,obqa,A_prime,2,Predators eat,bunnies,prey,,INCORRECT,INCORRECT,True,obqa/A_prime/agree
+65,obqa,A_prime,16,"A person wants to be able to have more natural power in their home. They choose to cease using a traditional electric company to source this electricity, and so decide to install",panels collecting sunlight,solar panels,,CORRECT,CORRECT,True,obqa/A_prime/agree
+66,sciq,B_prime,21,"Presence of a cell wall, large central vacuole, and organelles called plastids distinguish what type of cell?",plant,plant cells,,CORRECT,CORRECT,True,sciq/B_prime/agree
+67,obqa,A_prime,19,An animal that only eats plants is a,moth,herbivore,,CORRECT,INCORRECT,False,obqa/A_prime/flip
+68,sciq,A_prime,5,What chemical signals in plants control different processes?,plant hormones,Pheromones,,INCORRECT,INCORRECT,True,sciq/A_prime/agree
+69,sciq,B_prime,10,About how tall can mid-ocean ridges be?,about 2 km,2 km,,CORRECT,CORRECT,True,sciq/B_prime/agree
+70,sciq,A_prime,8,What kind of viscosity is found in long-chain hydrocarbons?,highly viscous,High viscosity,,CORRECT,CORRECT,True,sciq/A_prime/agree
+71,obqa,B_prime,8,The summer solstice in the northern hemisphere is four months before,October,December 21st,,INCORRECT,INCORRECT,True,obqa/B_prime/agree
+72,obqa,B_prime,1,There is most likely going to be fog around:,a marsh,dew point,,INCORRECT,INCORRECT,True,obqa/B_prime/agree
+73,sciq,B_prime,7,Which type of tree is dominant in temperate forests?,deciduous,Deciduous trees,,CORRECT,CORRECT,True,sciq/B_prime/agree
+74,obqa,A_prime,1,There is most likely going to be fog around:,a marsh,dew point,,INCORRECT,INCORRECT,True,obqa/A_prime/agree

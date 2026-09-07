@@ -1,0 +1,1179 @@
+{
+  "summary": {
+    "experiment": "option_free_free_response",
+    "model": "Qwen3-4B-Instruct-2507",
+    "cells": {
+      "A_prime": "options removed, no fact (open-ended parametric recall)",
+      "B_prime": "options removed, fact present (open-ended reading comprehension)"
+    },
+    "prompts": {
+      "system_no_fact": "You are a student taking a short-answer science exam. Answer with the answer only - a word or short phrase. Do not explain, do not write a sentence.",
+      "system_with_fact": "You are a student taking a short-answer science exam. Answer using the reference text. Answer with the answer only - a word or short phrase. Do not explain, do not write a sentence."
+    },
+    "decoding": {
+      "greedy": true,
+      "max_new_tokens": 24
+    },
+    "matching": "3-stage cascade: normalised exact -> morphological -> LLM judge (residual only)",
+    "judge_system_prompt": "You are grading a short-answer science exam. Decide whether the student's answer means the same thing as the reference answer, in the context of the question. Ignore spelling, capitalisation, and phrasing. A more specific or more general answer counts as correct only if it identifies the same thing. Reply with exactly one word: CORRECT or INCORRECT.",
+    "memory": {
+      "load_seconds": 6.94,
+      "allocated_after_load_gb": 2.657,
+      "device_total_gb": 3.68,
+      "peak_reserved_gb": 2.861
+    },
+    "limit": 25,
+    "metrics": {
+      "A_prime": {
+        "n": 25,
+        "acc_strict": 0.2,
+        "acc_normalised": 0.24,
+        "acc_judged": 0.72,
+        "acc_band_low": 0.68,
+        "acc_band_high": 0.8,
+        "band_width": 0.12,
+        "n_sent_to_judge": 19,
+        "n_judge_forward_correct": 12,
+        "n_judge_both_directions_correct": 11,
+        "n_judge_either_direction_correct": 14,
+        "n_judge_order_flips": 3,
+        "judge_order_flip_rate": 0.15789473684210525
+      },
+      "B_prime": {
+        "n": 25,
+        "acc_strict": 0.72,
+        "acc_normalised": 0.72,
+        "acc_judged": 1.0,
+        "acc_band_low": 1.0,
+        "acc_band_high": 1.0,
+        "band_width": 0.0,
+        "n_sent_to_judge": 7,
+        "n_judge_forward_correct": 7,
+        "n_judge_both_directions_correct": 7,
+        "n_judge_either_direction_correct": 7,
+        "n_judge_order_flips": 0,
+        "judge_order_flip_rate": 0.0
+      },
+      "seconds_per_item": 0.865250654220581
+    },
+    "total_runtime_seconds": 30.54
+  },
+  "results": {
+    "A_prime": [
+      {
+        "id": 0,
+        "question": "Compounds that are capable of accepting electrons, such as o 2 or f2, are called what?",
+        "gold_answer": "oxidants",
+        "options": [
+          "Oxygen",
+          "antioxidants",
+          "residues",
+          "oxidants"
+        ],
+        "raw_generation": "oxidizing agents",
+        "prediction": "oxidizing agents",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "forward": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          },
+          "reverse": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          }
+        },
+        "judge_forward_correct": true,
+        "judge_reverse_correct": true,
+        "judge_agree": true
+      },
+      {
+        "id": 1,
+        "question": "What term in biotechnology means a genetically exact copy of an organism?",
+        "gold_answer": "clone",
+        "options": [
+          "phenotype",
+          "male",
+          "clone",
+          "adult"
+        ],
+        "raw_generation": "Clone",
+        "prediction": "Clone",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 2,
+        "question": "Vertebrata are characterized by the presence of what?",
+        "gold_answer": "backbone",
+        "options": [
+          "Bones",
+          "Thumbs",
+          "Muscles",
+          "backbone"
+        ],
+        "raw_generation": "Vertebrae",
+        "prediction": "Vertebrae",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "forward": {
+            "verdict": "CORRECT",
+            "p_correct": 0.917302668094635
+          },
+          "reverse": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          }
+        },
+        "judge_forward_correct": true,
+        "judge_reverse_correct": true,
+        "judge_agree": true
+      },
+      {
+        "id": 3,
+        "question": "What is the height above or below sea level called?",
+        "gold_answer": "elevation",
+        "options": [
+          "depth",
+          "latitude",
+          "elevation",
+          "variation"
+        ],
+        "raw_generation": "elevation",
+        "prediction": "elevation",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 4,
+        "question": "Ice cores, varves and what else indicate the environmental conditions at the time of their creation?",
+        "gold_answer": "tree rings",
+        "options": [
+          "mountain ranges",
+          "fossils",
+          "magma",
+          "tree rings"
+        ],
+        "raw_generation": "fossil records",
+        "prediction": "fossil records",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "forward": {
+            "verdict": "INCORRECT",
+            "p_correct": 0.00013135180051904172
+          },
+          "reverse": {
+            "verdict": "CORRECT",
+            "p_correct": 0.9999992847442627
+          }
+        },
+        "judge_forward_correct": false,
+        "judge_reverse_correct": true,
+        "judge_agree": false
+      },
+      {
+        "id": 5,
+        "question": "What chemical signals in plants control different processes?",
+        "gold_answer": "plant hormones",
+        "options": [
+          "produce hormones",
+          "Human Hormones",
+          "nitrogen hormones",
+          "plant hormones"
+        ],
+        "raw_generation": "Pheromones",
+        "prediction": "Pheromones",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "forward": {
+            "verdict": "INCORRECT",
+            "p_correct": 6.70922381686978e-05
+          },
+          "reverse": {
+            "verdict": "INCORRECT",
+            "p_correct": 0.055005282163619995
+          }
+        },
+        "judge_forward_correct": false,
+        "judge_reverse_correct": false,
+        "judge_agree": true
+      },
+      {
+        "id": 6,
+        "question": "Meiosis is part of the process of gametogenesis, which is the production of what?",
+        "gold_answer": "sperm and eggs",
+        "options": [
+          "egg only",
+          "chromosomes",
+          "sperm and eggs",
+          "sperm only"
+        ],
+        "raw_generation": "gametes",
+        "prediction": "gametes",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "forward": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          },
+          "reverse": {
+            "verdict": "CORRECT",
+            "p_correct": 0.9999933242797852
+          }
+        },
+        "judge_forward_correct": true,
+        "judge_reverse_correct": true,
+        "judge_agree": true
+      },
+      {
+        "id": 7,
+        "question": "Which type of tree is dominant in temperate forests?",
+        "gold_answer": "deciduous",
+        "options": [
+          "vines",
+          "shrubs",
+          "deciduous",
+          "fungus"
+        ],
+        "raw_generation": "Oak",
+        "prediction": "Oak",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "forward": {
+            "verdict": "INCORRECT",
+            "p_correct": 0.17328819632530212
+          },
+          "reverse": {
+            "verdict": "INCORRECT",
+            "p_correct": 0.0002959571429528296
+          }
+        },
+        "judge_forward_correct": false,
+        "judge_reverse_correct": false,
+        "judge_agree": true
+      },
+      {
+        "id": 8,
+        "question": "What kind of viscosity is found in long-chain hydrocarbons?",
+        "gold_answer": "highly viscous",
+        "options": [
+          "highly viscous",
+          "low viscosity",
+          "increased viscosity",
+          "intense viscosity"
+        ],
+        "raw_generation": "High viscosity",
+        "prediction": "High viscosity",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "forward": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          },
+          "reverse": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          }
+        },
+        "judge_forward_correct": true,
+        "judge_reverse_correct": true,
+        "judge_agree": true
+      },
+      {
+        "id": 9,
+        "question": "Ionic compounds have strong electrostatic attractions between oppositely charged ions in this?",
+        "gold_answer": "regular array",
+        "options": [
+          "normal array",
+          "occasional array",
+          "regular array",
+          "incorrect array"
+        ],
+        "raw_generation": "lattice structure",
+        "prediction": "lattice structure",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "forward": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          },
+          "reverse": {
+            "verdict": "CORRECT",
+            "p_correct": 0.9511421918869019
+          }
+        },
+        "judge_forward_correct": true,
+        "judge_reverse_correct": true,
+        "judge_agree": true
+      },
+      {
+        "id": 10,
+        "question": "About how tall can mid-ocean ridges be?",
+        "gold_answer": "about 2 km",
+        "options": [
+          "about 2 feet",
+          "about 2 meters",
+          "2 inches",
+          "about 2 km"
+        ],
+        "raw_generation": "A few kilometers",
+        "prediction": "A few kilometers",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "forward": {
+            "verdict": "INCORRECT",
+            "p_correct": 2.5071594791370444e-05
+          },
+          "reverse": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          }
+        },
+        "judge_forward_correct": false,
+        "judge_reverse_correct": true,
+        "judge_agree": false
+      },
+      {
+        "id": 11,
+        "question": "What are by far the most common type of invertebrate?",
+        "gold_answer": "insects",
+        "options": [
+          "corals",
+          "crustaceans",
+          "spiders",
+          "insects"
+        ],
+        "raw_generation": "arthropods",
+        "prediction": "arthropods",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "forward": {
+            "verdict": "INCORRECT",
+            "p_correct": 0.005384937860071659
+          },
+          "reverse": {
+            "verdict": "INCORRECT",
+            "p_correct": 0.0020507434383034706
+          }
+        },
+        "judge_forward_correct": false,
+        "judge_reverse_correct": false,
+        "judge_agree": true
+      },
+      {
+        "id": 12,
+        "question": "What do waves deposit to form sandbars and barrier islands?",
+        "gold_answer": "sediments",
+        "options": [
+          "glaciers",
+          "magma",
+          "sediments",
+          "organisms"
+        ],
+        "raw_generation": "sediment",
+        "prediction": "sediment",
+        "match_stage": "normalised",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 13,
+        "question": "Penis, testes, and epididymis are organs in what system?",
+        "gold_answer": "male reproductive system",
+        "options": [
+          "plant reproductive system​",
+          "female reproductive system​",
+          "virus reproductive system​",
+          "male reproductive system"
+        ],
+        "raw_generation": "reproductive system",
+        "prediction": "reproductive system",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "forward": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          },
+          "reverse": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          }
+        },
+        "judge_forward_correct": true,
+        "judge_reverse_correct": true,
+        "judge_agree": true
+      },
+      {
+        "id": 14,
+        "question": "Only about one percent of plants have lost what ability, turning them into consumers and even predators, instead of producers?",
+        "gold_answer": "photosynthesis",
+        "options": [
+          "photosynthesis",
+          "flowering",
+          "growth",
+          "rooting"
+        ],
+        "raw_generation": "photosynthesis",
+        "prediction": "photosynthesis",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 15,
+        "question": "How does a neon light produce visible light?",
+        "gold_answer": "electroluminescence",
+        "options": [
+          "mitosis",
+          "electroluminescence",
+          "radiation",
+          "luminescence"
+        ],
+        "raw_generation": "Gas discharge",
+        "prediction": "Gas discharge",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "forward": {
+            "verdict": "CORRECT",
+            "p_correct": 0.9930961728096008
+          },
+          "reverse": {
+            "verdict": "INCORRECT",
+            "p_correct": 0.0015487611526623368
+          }
+        },
+        "judge_forward_correct": true,
+        "judge_reverse_correct": false,
+        "judge_agree": false
+      },
+      {
+        "id": 16,
+        "question": "The bird ancestor that lived in trees developed what feature commonly associated with birds?",
+        "gold_answer": "wings",
+        "options": [
+          "tails",
+          "beaks",
+          "webbed feet",
+          "wings"
+        ],
+        "raw_generation": "feathers",
+        "prediction": "feathers",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "forward": {
+            "verdict": "INCORRECT",
+            "p_correct": 0.018264278769493103
+          },
+          "reverse": {
+            "verdict": "INCORRECT",
+            "p_correct": 0.0001881420612335205
+          }
+        },
+        "judge_forward_correct": false,
+        "judge_reverse_correct": false,
+        "judge_agree": true
+      },
+      {
+        "id": 17,
+        "question": "What do most living things use to make atp from glucose?",
+        "gold_answer": "oxygen",
+        "options": [
+          "enzymes",
+          "nitrogen",
+          "oxygen",
+          "carbon"
+        ],
+        "raw_generation": "cellular respiration",
+        "prediction": "cellular respiration",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "forward": {
+            "verdict": "INCORRECT",
+            "p_correct": 0.0015731120947748423
+          },
+          "reverse": {
+            "verdict": "INCORRECT",
+            "p_correct": 5.562206206377596e-05
+          }
+        },
+        "judge_forward_correct": false,
+        "judge_reverse_correct": false,
+        "judge_agree": true
+      },
+      {
+        "id": 18,
+        "question": "What are the two most common silicates?",
+        "gold_answer": "feldspar and quartz",
+        "options": [
+          "Micas\t and quartz",
+          "Micas\t and feldspar",
+          "Olivine and quartz",
+          "feldspar and quartz"
+        ],
+        "raw_generation": "quartz, feldspar",
+        "prediction": "quartz, feldspar",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "forward": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          },
+          "reverse": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          }
+        },
+        "judge_forward_correct": true,
+        "judge_reverse_correct": true,
+        "judge_agree": true
+      },
+      {
+        "id": 19,
+        "question": "What term means the amount of water vapor in the air?",
+        "gold_answer": "humidity",
+        "options": [
+          "humidity",
+          "temperature",
+          "pressure",
+          "ambient"
+        ],
+        "raw_generation": "Humidity",
+        "prediction": "Humidity",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 20,
+        "question": "Paracrine signals move by what method through the extracellular matrix?",
+        "gold_answer": "diffusion",
+        "options": [
+          "diffusion",
+          "deposition",
+          "transfusion",
+          "osmosis"
+        ],
+        "raw_generation": "diffusion",
+        "prediction": "diffusion",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 21,
+        "question": "Presence of a cell wall, large central vacuole, and organelles called plastids distinguish what type of cell?",
+        "gold_answer": "plant",
+        "options": [
+          "plant",
+          "heterotroph",
+          "reproductive",
+          "animal"
+        ],
+        "raw_generation": "plant cell",
+        "prediction": "plant cell",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "forward": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          },
+          "reverse": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          }
+        },
+        "judge_forward_correct": true,
+        "judge_reverse_correct": true,
+        "judge_agree": true
+      },
+      {
+        "id": 22,
+        "question": "What happens when mammals raise their hair with tiny muscles in the skin?",
+        "gold_answer": "goosebumps",
+        "options": [
+          "bleeding",
+          "bruising",
+          "balding",
+          "goosebumps"
+        ],
+        "raw_generation": "Piloerection",
+        "prediction": "Piloerection",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "forward": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          },
+          "reverse": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          }
+        },
+        "judge_forward_correct": true,
+        "judge_reverse_correct": true,
+        "judge_agree": true
+      },
+      {
+        "id": 23,
+        "question": "What are people with osteoporosis at increased risk of?",
+        "gold_answer": "bone fractures",
+        "options": [
+          "senility",
+          "growth spurt",
+          "bone fractures",
+          "epilepsy"
+        ],
+        "raw_generation": "Fractures",
+        "prediction": "Fractures",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "forward": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          },
+          "reverse": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          }
+        },
+        "judge_forward_correct": true,
+        "judge_reverse_correct": true,
+        "judge_agree": true
+      },
+      {
+        "id": 24,
+        "question": "Where is energy stored in a chemical substance?",
+        "gold_answer": "between atoms",
+        "options": [
+          "in molecules",
+          "between atoms",
+          "on the surface",
+          "inside atoms"
+        ],
+        "raw_generation": "Chemical bonds",
+        "prediction": "Chemical bonds",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "forward": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          },
+          "reverse": {
+            "verdict": "CORRECT",
+            "p_correct": 0.9626730680465698
+          }
+        },
+        "judge_forward_correct": true,
+        "judge_reverse_correct": true,
+        "judge_agree": true
+      }
+    ],
+    "B_prime": [
+      {
+        "id": 0,
+        "question": "Compounds that are capable of accepting electrons, such as o 2 or f2, are called what?",
+        "gold_answer": "oxidants",
+        "options": [
+          "Oxygen",
+          "antioxidants",
+          "residues",
+          "oxidants"
+        ],
+        "raw_generation": "oxidants",
+        "prediction": "oxidants",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 1,
+        "question": "What term in biotechnology means a genetically exact copy of an organism?",
+        "gold_answer": "clone",
+        "options": [
+          "phenotype",
+          "male",
+          "clone",
+          "adult"
+        ],
+        "raw_generation": "clone",
+        "prediction": "clone",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 2,
+        "question": "Vertebrata are characterized by the presence of what?",
+        "gold_answer": "backbone",
+        "options": [
+          "Bones",
+          "Thumbs",
+          "Muscles",
+          "backbone"
+        ],
+        "raw_generation": "backbone",
+        "prediction": "backbone",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 3,
+        "question": "What is the height above or below sea level called?",
+        "gold_answer": "elevation",
+        "options": [
+          "depth",
+          "latitude",
+          "elevation",
+          "variation"
+        ],
+        "raw_generation": "Elevation",
+        "prediction": "Elevation",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 4,
+        "question": "Ice cores, varves and what else indicate the environmental conditions at the time of their creation?",
+        "gold_answer": "tree rings",
+        "options": [
+          "mountain ranges",
+          "fossils",
+          "magma",
+          "tree rings"
+        ],
+        "raw_generation": "Tree rings",
+        "prediction": "Tree rings",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 5,
+        "question": "What chemical signals in plants control different processes?",
+        "gold_answer": "plant hormones",
+        "options": [
+          "produce hormones",
+          "Human Hormones",
+          "nitrogen hormones",
+          "plant hormones"
+        ],
+        "raw_generation": "Plant hormones",
+        "prediction": "Plant hormones",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 6,
+        "question": "Meiosis is part of the process of gametogenesis, which is the production of what?",
+        "gold_answer": "sperm and eggs",
+        "options": [
+          "egg only",
+          "chromosomes",
+          "sperm and eggs",
+          "sperm only"
+        ],
+        "raw_generation": "sperm and eggs",
+        "prediction": "sperm and eggs",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 7,
+        "question": "Which type of tree is dominant in temperate forests?",
+        "gold_answer": "deciduous",
+        "options": [
+          "vines",
+          "shrubs",
+          "deciduous",
+          "fungus"
+        ],
+        "raw_generation": "Deciduous trees",
+        "prediction": "Deciduous trees",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "forward": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          },
+          "reverse": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          }
+        },
+        "judge_forward_correct": true,
+        "judge_reverse_correct": true,
+        "judge_agree": true
+      },
+      {
+        "id": 8,
+        "question": "What kind of viscosity is found in long-chain hydrocarbons?",
+        "gold_answer": "highly viscous",
+        "options": [
+          "highly viscous",
+          "low viscosity",
+          "increased viscosity",
+          "intense viscosity"
+        ],
+        "raw_generation": "high viscosity",
+        "prediction": "high viscosity",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "forward": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          },
+          "reverse": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          }
+        },
+        "judge_forward_correct": true,
+        "judge_reverse_correct": true,
+        "judge_agree": true
+      },
+      {
+        "id": 9,
+        "question": "Ionic compounds have strong electrostatic attractions between oppositely charged ions in this?",
+        "gold_answer": "regular array",
+        "options": [
+          "normal array",
+          "occasional array",
+          "regular array",
+          "incorrect array"
+        ],
+        "raw_generation": "regular array",
+        "prediction": "regular array",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 10,
+        "question": "About how tall can mid-ocean ridges be?",
+        "gold_answer": "about 2 km",
+        "options": [
+          "about 2 feet",
+          "about 2 meters",
+          "2 inches",
+          "about 2 km"
+        ],
+        "raw_generation": "2 km",
+        "prediction": "2 km",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "forward": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          },
+          "reverse": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          }
+        },
+        "judge_forward_correct": true,
+        "judge_reverse_correct": true,
+        "judge_agree": true
+      },
+      {
+        "id": 11,
+        "question": "What are by far the most common type of invertebrate?",
+        "gold_answer": "insects",
+        "options": [
+          "corals",
+          "crustaceans",
+          "spiders",
+          "insects"
+        ],
+        "raw_generation": "insects",
+        "prediction": "insects",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 12,
+        "question": "What do waves deposit to form sandbars and barrier islands?",
+        "gold_answer": "sediments",
+        "options": [
+          "glaciers",
+          "magma",
+          "sediments",
+          "organisms"
+        ],
+        "raw_generation": "sediments",
+        "prediction": "sediments",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 13,
+        "question": "Penis, testes, and epididymis are organs in what system?",
+        "gold_answer": "male reproductive system",
+        "options": [
+          "plant reproductive system​",
+          "female reproductive system​",
+          "virus reproductive system​",
+          "male reproductive system"
+        ],
+        "raw_generation": "reproductive system",
+        "prediction": "reproductive system",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "forward": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          },
+          "reverse": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          }
+        },
+        "judge_forward_correct": true,
+        "judge_reverse_correct": true,
+        "judge_agree": true
+      },
+      {
+        "id": 14,
+        "question": "Only about one percent of plants have lost what ability, turning them into consumers and even predators, instead of producers?",
+        "gold_answer": "photosynthesis",
+        "options": [
+          "photosynthesis",
+          "flowering",
+          "growth",
+          "rooting"
+        ],
+        "raw_generation": "photosynthesis",
+        "prediction": "photosynthesis",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 15,
+        "question": "How does a neon light produce visible light?",
+        "gold_answer": "electroluminescence",
+        "options": [
+          "mitosis",
+          "electroluminescence",
+          "radiation",
+          "luminescence"
+        ],
+        "raw_generation": "Electroluminescence",
+        "prediction": "Electroluminescence",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 16,
+        "question": "The bird ancestor that lived in trees developed what feature commonly associated with birds?",
+        "gold_answer": "wings",
+        "options": [
+          "tails",
+          "beaks",
+          "webbed feet",
+          "wings"
+        ],
+        "raw_generation": "wings",
+        "prediction": "wings",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 17,
+        "question": "What do most living things use to make atp from glucose?",
+        "gold_answer": "oxygen",
+        "options": [
+          "enzymes",
+          "nitrogen",
+          "oxygen",
+          "carbon"
+        ],
+        "raw_generation": "oxygen",
+        "prediction": "oxygen",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 18,
+        "question": "What are the two most common silicates?",
+        "gold_answer": "feldspar and quartz",
+        "options": [
+          "Micas\t and quartz",
+          "Micas\t and feldspar",
+          "Olivine and quartz",
+          "feldspar and quartz"
+        ],
+        "raw_generation": "Feldspar and quartz",
+        "prediction": "Feldspar and quartz",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 19,
+        "question": "What term means the amount of water vapor in the air?",
+        "gold_answer": "humidity",
+        "options": [
+          "humidity",
+          "temperature",
+          "pressure",
+          "ambient"
+        ],
+        "raw_generation": "Humidity",
+        "prediction": "Humidity",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 20,
+        "question": "Paracrine signals move by what method through the extracellular matrix?",
+        "gold_answer": "diffusion",
+        "options": [
+          "diffusion",
+          "deposition",
+          "transfusion",
+          "osmosis"
+        ],
+        "raw_generation": "diffusion",
+        "prediction": "diffusion",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 21,
+        "question": "Presence of a cell wall, large central vacuole, and organelles called plastids distinguish what type of cell?",
+        "gold_answer": "plant",
+        "options": [
+          "plant",
+          "heterotroph",
+          "reproductive",
+          "animal"
+        ],
+        "raw_generation": "plant cells",
+        "prediction": "plant cells",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "forward": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          },
+          "reverse": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          }
+        },
+        "judge_forward_correct": true,
+        "judge_reverse_correct": true,
+        "judge_agree": true
+      },
+      {
+        "id": 22,
+        "question": "What happens when mammals raise their hair with tiny muscles in the skin?",
+        "gold_answer": "goosebumps",
+        "options": [
+          "bleeding",
+          "bruising",
+          "balding",
+          "goosebumps"
+        ],
+        "raw_generation": "Goosebumps",
+        "prediction": "Goosebumps",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 23,
+        "question": "What are people with osteoporosis at increased risk of?",
+        "gold_answer": "bone fractures",
+        "options": [
+          "senility",
+          "growth spurt",
+          "bone fractures",
+          "epilepsy"
+        ],
+        "raw_generation": "fractures",
+        "prediction": "fractures",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "forward": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          },
+          "reverse": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          }
+        },
+        "judge_forward_correct": true,
+        "judge_reverse_correct": true,
+        "judge_agree": true
+      },
+      {
+        "id": 24,
+        "question": "Where is energy stored in a chemical substance?",
+        "gold_answer": "between atoms",
+        "options": [
+          "in molecules",
+          "between atoms",
+          "on the surface",
+          "inside atoms"
+        ],
+        "raw_generation": "in atomic bonds",
+        "prediction": "in atomic bonds",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "forward": {
+            "verdict": "CORRECT",
+            "p_correct": 1.0
+          },
+          "reverse": {
+            "verdict": "CORRECT",
+            "p_correct": 0.8354835510253906
+          }
+        },
+        "judge_forward_correct": true,
+        "judge_reverse_correct": true,
+        "judge_agree": true
+      }
+    ]
+  }
+}

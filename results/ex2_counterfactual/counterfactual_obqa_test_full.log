@@ -1,0 +1,693 @@
+2026-09-01 03:12:51 | INFO     | counterfactual_experiment | ====================================================================================================
+2026-09-01 03:12:51 | INFO     | counterfactual_experiment | PILLAR 3 -- COUNTERFACTUAL CONTEXT PERTURBATION ON SciQ
+2026-09-01 03:12:51 | INFO     | counterfactual_experiment | ====================================================================================================
+2026-09-01 03:12:51 | INFO     | counterfactual_experiment | Workspace     : /home/nghben/Downloads/research/fsds/experiment/.claude/worktrees/test-splits-failure-analysis-588cac
+2026-09-01 03:12:51 | INFO     | counterfactual_experiment | Python        : 3.12.3
+2026-09-01 03:12:53 | INFO     | counterfactual_experiment | torch         : 2.13.0+cu130 (CUDA available: True)
+2026-09-01 03:12:53 | INFO     | counterfactual_experiment | Ensemble |M|  : 4
+2026-09-01 03:12:53 | INFO     | counterfactual_experiment |   - google/t5-small-ssm-nq
+2026-09-01 03:12:53 | INFO     | counterfactual_experiment |   - Riiid/kda-albert-xlarge-v2-race
+2026-09-01 03:12:53 | INFO     | counterfactual_experiment |   - Riiid/kda-mpnet-base-race
+2026-09-01 03:12:53 | INFO     | counterfactual_experiment |   - Riiid/kda-scibert-uncased-race
+2026-09-01 03:12:53 | INFO     | counterfactual_experiment | Primary model : Riiid/kda-mpnet-base-race
+2026-09-01 03:12:53 | INFO     | counterfactual_experiment | Data file     : /home/nghben/Downloads/research/fsds/experiment/.claude/worktrees/test-splits-failure-analysis-588cac/datasets/openbookqa/obqa_test_full.json
+2026-09-01 03:12:53 | INFO     | counterfactual_experiment | Results file  : /home/nghben/Downloads/research/fsds/experiment/.claude/worktrees/test-splits-failure-analysis-588cac/results/counterfact_results/results_counterfactual_obqa_test_full.json
+2026-09-01 03:12:53 | INFO     | counterfactual_experiment | Log file      : /home/nghben/Downloads/research/fsds/experiment/.claude/worktrees/test-splits-failure-analysis-588cac/results/counterfact_results/counterfactual_obqa_experiment.log
+2026-09-01 03:12:53 | INFO     | counterfactual_experiment | Loaded 500 questions
+2026-09-01 03:12:53 | INFO     | counterfactual_experiment | 
+2026-09-01 03:12:53 | INFO     | counterfactual_experiment | Generating counterfactual passages ...
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=0 tier=none matched=None gold='quit eating lunch out' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=1 tier=none matched=None gold='a marsh' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=2 tier=none matched=None gold='bunnies' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=3 tier=none matched=None gold='parts may break the concrete' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=4 tier=morphological matched='electrical conductor' gold='electrical conductors' -> cf='gasoline' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=5 tier=exact matched='carbon' gold='carbon' -> cf='oxygen' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=6 tier=none matched=None gold='ions' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=7 tier=none matched=None gold='human planet rotation' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=8 tier=none matched=None gold='October' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=9 tier=none matched=None gold='broken stones' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=10 tier=none matched=None gold='a town' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=11 tier=none matched=None gold='liquid' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=12 tier=none matched=None gold='a gecko' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=13 tier=none matched=None gold='parched foliage' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=14 tier=none matched=None gold='powering the lights in a home' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=15 tier=partial matched='gasoline will' gold='gasoline will be needed less' -> cf='wind power will be expensive' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=16 tier=partial matched='panel' gold='panels collecting sunlight' -> cf='sun grafts' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=17 tier=none matched=None gold='Bay of Bengal' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=18 tier=none matched=None gold='weasel' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=19 tier=none matched=None gold='moth' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=20 tier=none matched=None gold='Hanoi' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=21 tier=none matched=None gold='gasoline' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=22 tier=exact matched='keeping warm' gold='keeping warm' -> cf='flying' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=23 tier=none matched=None gold='Lower Life Expectancy in Countries' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=24 tier=none matched=None gold='summon a brilliant wave of color' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=25 tier=partial matched='gills' gold='its gills' -> cf='its snout' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=26 tier=partial matched='brakes' gold='a wheel with dry brake pads' -> cf='a wheel with wet brake pads' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=27 tier=exact matched='the circulatory system' gold='the circulatory system' -> cf='the digestive system' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=28 tier=none matched=None gold='moving upwards' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=29 tier=none matched=None gold='ground' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=30 tier=partial matched='sunlight' gold='shafts of sunlight' -> cf='acid rain' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=31 tier=none matched=None gold='The genealogy records of their family.' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=32 tier=none matched=None gold='robins' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=33 tier=none matched=None gold='The ice caps will completely melt if global warming continues' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=34 tier=partial matched='many' gold='many collisions that have occured' -> cf='remains of ancient ponds' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=35 tier=none matched=None gold='Water animals' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=36 tier=none matched=None gold='the apple sitting on a sunny sidewalk' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=37 tier=none matched=None gold='cornea' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=38 tier=none matched=None gold='a microscope' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=39 tier=none matched=None gold='refrigerator' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=40 tier=none matched=None gold='used more times' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=41 tier=none matched=None gold='the hard shell' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=42 tier=none matched=None gold='plastic bags floating in the ocean' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=43 tier=none matched=None gold='a womb' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=44 tier=none matched=None gold='can help you monitor a fever' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=45 tier=none matched=None gold='someone would turn up the room heater' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=46 tier=none matched=None gold='they get bigger' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=47 tier=exact matched='expand' gold='expand' -> cf='melt' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=48 tier=exact matched='arctic' gold='arctic' -> cf='desert' (n=2)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=49 tier=exact matched='born' gold='born' -> cf='killed' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=50 tier=partial matched='bears' gold='a bear or person' -> cf='a bear or shark' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=51 tier=none matched=None gold='biannually' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=52 tier=partial matched='of an' gold='strain the resources of an ecosystem' -> cf='lead to extinction of the organism' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=53 tier=none matched=None gold='a spa trip' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=54 tier=partial matched='number of' gold='number of toenails' -> cf='date of birth' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=55 tier=none matched=None gold='commercial plane' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=56 tier=none matched=None gold='peas' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=57 tier=partial matched='environment' gold='the wildlife environment is destroyed' -> cf='the trail is expanded' (n=2)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=58 tier=none matched=None gold='2am' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=59 tier=partial matched='plants' gold='the plants that were under the tree will have access to more light' -> cf='Plants under the tree will get cooled off by the shade' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=60 tier=none matched=None gold='reproduce' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=61 tier=none matched=None gold='the UFO is approaching' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=62 tier=none matched=None gold='bears take a long winter sleep' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=63 tier=none matched=None gold='Clearing for farming' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=64 tier=none matched=None gold='blood' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=65 tier=none matched=None gold='high peaks' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=66 tier=none matched=None gold='four boxes' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=67 tier=none matched=None gold='asks for milk' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=68 tier=exact matched='roots' gold='roots' -> cf='tensile strength' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=69 tier=partial matched='surface' gold='surfaces to reflect sound off' -> cf='rainy sky to fly in' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=70 tier=none matched=None gold='kittens look like their parents' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=71 tier=none matched=None gold='enables gas powered motors to operate' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=72 tier=none matched=None gold='bloated' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=73 tier=none matched=None gold='inverse' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=74 tier=partial matched='that' gold='will begin to recycle the nutrients that made up its structure' -> cf='is likely to continue to grow' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=75 tier=none matched=None gold='The size of a statue' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=76 tier=partial matched='the number of' gold='an uptick in the number of leaves' -> cf='a rapid decline of the leaves' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=77 tier=none matched=None gold='electrical transformer' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=78 tier=none matched=None gold='Juice' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=79 tier=none matched=None gold='it will become blackened' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=80 tier=partial matched='kilometers' gold='set to kilometers' -> cf='set to calories' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=81 tier=partial matched='harm' gold='they could harm living things' -> cf='they are very safe' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=82 tier=none matched=None gold='the mountain pass' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=83 tier=partial matched='light' gold='they let in less light' -> cf='they are easier to make' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=84 tier=partial matched='amounts of' gold='copious amounts of the combination of Na and Cl' -> cf='scant amounts of sodium chloride' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=85 tier=exact matched='water' gold='water' -> cf='blood' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=86 tier=none matched=None gold='to chew up certain worms' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=87 tier=none matched=None gold='using sound to 'see'' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=88 tier=partial matched='Season' gold='A Season' -> cf='A session' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=89 tier=none matched=None gold='life sustaining elements' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=90 tier=none matched=None gold='ecru' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=91 tier=none matched=None gold='six legged winged organisms' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=92 tier=none matched=None gold='a written message' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=93 tier=none matched=None gold='malleable and nutritious' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=94 tier=exact matched='feeders' gold='feeders' -> cf='gold' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=95 tier=none matched=None gold='stockpiling pecans for the frigid months' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=96 tier=none matched=None gold='Rainfall' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=97 tier=partial matched='quality' gold='dirt quality' -> cf='government mentality' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=98 tier=none matched=None gold='rubbing it' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=99 tier=none matched=None gold='hairless' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=100 tier=none matched=None gold='falling water molecules' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=101 tier=none matched=None gold='snake' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=102 tier=none matched=None gold='enable plants to continue flourishing' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=103 tier=none matched=None gold='contain their necessary nutrition' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=104 tier=exact matched='skills' gold='skills' -> cf='genetics' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=105 tier=exact matched='electricity' gold='electricity' -> cf='steam' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=106 tier=none matched=None gold='discharge of liquid petroleum in the surrounding sea' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=107 tier=exact matched='1000' gold='1000' -> cf='250' (n=1)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=108 tier=none matched=None gold='turning on the hose' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=109 tier=none matched=None gold='will break your vases' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=110 tier=none matched=None gold='how stable the ground will be' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=111 tier=none matched=None gold='the moon is brighter than stars' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=112 tier=none matched=None gold='persist' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=113 tier=none matched=None gold='reverberations to strike the eardrum' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=114 tier=none matched=None gold='Mt. McKinley' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=115 tier=none matched=None gold='in an egg' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=116 tier=none matched=None gold='stones to weather down to pebbles' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=117 tier=none matched=None gold='include spots on a ladybug' -> cf='None' (n=0)
+2026-09-01 03:12:53 | DEBUG    | counterfactual_experiment | id=118 tier=partial matched='altitude' gold='Measure the altitude of the bird using a reference point, such as a tall building.' -> cf='Ask the bird how high it was when it returns back to earth' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=119 tier=none matched=None gold='confined to enclosures to be viewed by the public' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=120 tier=none matched=None gold='reservoir' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=121 tier=none matched=None gold='a small oven works' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=122 tier=none matched=None gold='mimicking other things' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=123 tier=partial matched='string' gold='pluck the strings of a fingerboard with your fingers' -> cf='hit a toy baseball with a bat' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=124 tier=none matched=None gold='water level fluctuations' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=125 tier=none matched=None gold='baby oil' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=126 tier=partial matched='cells' gold='a cabbage cell' -> cf='a bee cell' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=127 tier=none matched=None gold='direct' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=128 tier=none matched=None gold='release waste' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=129 tier=partial matched='sensing' gold='sensing views' -> cf='reproductive purposes' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=130 tier=none matched=None gold='given a large breakfast' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=131 tier=partial matched='money' gold='the woman makes less money' -> cf='the woman makes more money' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=132 tier=none matched=None gold='arid, parched, and sun-baked' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=133 tier=none matched=None gold='Our Planet' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=134 tier=none matched=None gold='a steak knife' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=135 tier=none matched=None gold='large, bowl-shaped cavities in the ground' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=136 tier=none matched=None gold='H2O' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=137 tier=none matched=None gold='Soaring the skies' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=138 tier=none matched=None gold='a parched creek bed' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=139 tier=none matched=None gold='Australia' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=140 tier=none matched=None gold='stomach' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=141 tier=none matched=None gold='Brazil' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=142 tier=none matched=None gold='bees' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=143 tier=none matched=None gold='the environment' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=144 tier=partial matched='humans' gold='humans throwing a spear through an animal' -> cf='humans chewing on boiled animal muscles' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=145 tier=none matched=None gold='orange juice' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=146 tier=exact matched='Sweet' gold='Sweet' -> cf='Salty' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=147 tier=none matched=None gold='stone' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=148 tier=partial matched='freezing point' gold='the freezing point' -> cf='the prime point' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=149 tier=none matched=None gold='children' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=150 tier=partial matched='become' gold='it may become magnetized' -> cf='it loses its magnetization' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=151 tier=none matched=None gold='inheritance' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=152 tier=none matched=None gold='A school notebook' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=153 tier=partial matched='habitat' gold='it is an unsustainable habitat' -> cf='it is an ideal habitat' (n=2)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=154 tier=none matched=None gold='water and soda' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=155 tier=none matched=None gold='vomiting' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=156 tier=none matched=None gold='damage to local foliage' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=157 tier=none matched=None gold='3 a.m.' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=158 tier=partial matched='in the' gold='a mile up in the sky' -> cf='inside a disc golf driver' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=159 tier=exact matched='light' gold='light' -> cf='oxygen' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=160 tier=partial matched='prey will' gold='prey will experience a drop in population' -> cf='prey will experience an increase in population' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=161 tier=partial matched='dead' gold='It's dead' -> cf='For water' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=162 tier=none matched=None gold='snow fox' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=163 tier=none matched=None gold='a group of fat-soluble secosteroids' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=164 tier=none matched=None gold='magnetized' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=165 tier=partial matched='frog' gold='they are young frogs still growing' -> cf='tadpoles change to different animals' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=166 tier=none matched=None gold='Chickpeas' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=167 tier=none matched=None gold='Ship Anchor' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=168 tier=partial matched='from' gold='from a daisy's leaves into it's underground support system' -> cf='from roots to leaves of a daffodil' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=169 tier=none matched=None gold='is like nature's disappearing water trick' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=170 tier=exact matched='Runoff' gold='Runoff' -> cf='air' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=171 tier=exact matched='friction' gold='friction' -> cf='metal' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=172 tier=none matched=None gold='the Appalachian mountains' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=173 tier=none matched=None gold='Atlantic menhaden' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=174 tier=none matched=None gold='grass turning brown' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=175 tier=none matched=None gold='yes it is standard' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=176 tier=none matched=None gold='cut back their caloric intake' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=177 tier=none matched=None gold='to detect when a traffic light changes' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=178 tier=none matched=None gold='may end up fueling a car' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=179 tier=none matched=None gold='north of equator' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=180 tier=none matched=None gold='fossilization' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=181 tier=none matched=None gold='significant supplies accumulated prior' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=182 tier=none matched=None gold='natural waters weathered it' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=183 tier=exact matched='electricity' gold='electricity' -> cf='wood' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=184 tier=none matched=None gold='stone' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=185 tier=partial matched='landfill' gold='a man who lives next to a landfill' -> cf='a man who lives in a great suburb' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=186 tier=partial matched='to measure' gold='to measure minutes and hours' -> cf='to rewind 5 minutes' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=187 tier=morphological matched='decreases' gold='decrease' -> cf='increase' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=188 tier=none matched=None gold='exposed topsoil' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=189 tier=exact matched='friction' gold='friction' -> cf='gearing' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=190 tier=none matched=None gold='cell walls' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=191 tier=partial matched='resource' gold='leads to longer availability of resources' -> cf='leads to longer drought of resources' (n=2)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=192 tier=none matched=None gold='lion' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=193 tier=none matched=None gold='a change in the direction of a stream' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=194 tier=partial matched='towards the' gold='it's angled towards the largest star in the solar system' -> cf='it spins counter clockwise on Earth's axis' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=195 tier=none matched=None gold='Feb 29th' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=196 tier=none matched=None gold='Eucerin pH5 range' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=197 tier=partial matched='is made' gold='It is made from rock' -> cf='It has a loving family' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=198 tier=partial matched='to grow' gold='fails to grow' -> cf='produces fruit' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=199 tier=none matched=None gold='lithium-ion' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=200 tier=none matched=None gold='the sun's rays' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=201 tier=exact matched='Rain' gold='Rain' -> cf='River' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=202 tier=partial matched='inherited characteristic' gold='passed down inherited characteristics' -> cf='spread out some fur' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=203 tier=partial matched='convert' gold='convert sunlight to sand' -> cf='make their own food' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=204 tier=none matched=None gold='genetic contributors had long ears' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=205 tier=none matched=None gold='whitetails' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=206 tier=none matched=None gold='pigment squirting' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=207 tier=partial matched='organisms' gold='induces organisms to be more economical with resources' -> cf='induces organisms to use more of their resources' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=208 tier=exact matched='weathering' gold='weathering' -> cf='insects' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=209 tier=none matched=None gold='millions of years' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=210 tier=none matched=None gold='alter the way the moon's facade looks' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=211 tier=none matched=None gold='organs would remain uneffected' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=212 tier=none matched=None gold='eat alfalfa hay' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=213 tier=none matched=None gold='tons of sun' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=214 tier=none matched=None gold='a community' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=215 tier=exact matched='the heart' gold='the heart' -> cf='the lungs' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=216 tier=none matched=None gold='cat and catfish' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=217 tier=none matched=None gold='skunk' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=218 tier=none matched=None gold='a reproductive companion' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=219 tier=none matched=None gold='a quarry' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=220 tier=exact matched='Heat' gold='Heat' -> cf='Kinetic' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=221 tier=partial matched='water' gold='institute rules about water usage' -> cf='liberally use water for everything' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=222 tier=none matched=None gold='blood moves in a body' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=223 tier=none matched=None gold='Nebraska' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=224 tier=partial matched='light' gold='light is more easily seen' -> cf='light is far away' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=225 tier=none matched=None gold='earplugs' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=226 tier=partial matched='to' gold='toes are wiggled' -> cf='arms are resting' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=227 tier=partial matched='energy' gold='energy is accessed underwater from tides' -> cf='decaying organic material from sealife' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=228 tier=exact matched='insects' gold='insects' -> cf='invertebrates' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=229 tier=none matched=None gold='be successfully fertilized' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=230 tier=none matched=None gold='the chassis of a car' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=231 tier=none matched=None gold='mud' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=232 tier=none matched=None gold='A rusty fence' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=233 tier=none matched=None gold='direct' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=234 tier=none matched=None gold='spineless marine organisms, cartilaginous and gelatinous organisms' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=235 tier=none matched=None gold='blizzards' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=236 tier=none matched=None gold='horseshoe' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=237 tier=none matched=None gold='warm' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=238 tier=partial matched='may cause' gold='may cause pieces to flake off the object' -> cf='may cause the object to grow in size' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=239 tier=none matched=None gold='yanking string up a wheel' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=240 tier=none matched=None gold='emus' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=241 tier=none matched=None gold='castles' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=242 tier=none matched=None gold='nailing up a picture frame' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=243 tier=none matched=None gold='rubber' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=244 tier=none matched=None gold='get bigger yields' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=245 tier=partial matched='slows' gold='feathers slows heat transfer' -> cf='the natural duck wax' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=246 tier=none matched=None gold='a charge for appliances' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=247 tier=none matched=None gold='hotness' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=248 tier=none matched=None gold='music' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=249 tier=exact matched='trees' gold='trees' -> cf='chips' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=250 tier=none matched=None gold='direct sunshine' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=251 tier=morphological matched='Landfill' gold='Landfills' -> cf='Walking' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=252 tier=none matched=None gold='metal' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=253 tier=exact matched='combining' gold='combining' -> cf='drinking' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=254 tier=none matched=None gold='transformation' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=255 tier=none matched=None gold='iron and carbon' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=256 tier=none matched=None gold='a blender' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=257 tier=none matched=None gold='reprocessable' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=258 tier=none matched=None gold='sit under a lamp' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=259 tier=partial matched='variable' gold='it is a variable substance' -> cf='it is a solid mass' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=260 tier=none matched=None gold='dirt' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=261 tier=exact matched='decomposition' gold='decomposition' -> cf='regurgitation' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=262 tier=none matched=None gold='wooden fence' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=263 tier=none matched=None gold='oxygen' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=264 tier=partial matched='lizards' gold='a prickly horned male lizard' -> cf='a hammer head shark' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=265 tier=none matched=None gold='It will pass out' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=266 tier=none matched=None gold='solar-rechargeable battery' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=267 tier=none matched=None gold='The Indian' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=268 tier=none matched=None gold='the antelope' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=269 tier=partial matched='parents' gold='she watched her parents speak' -> cf='media is mainly in English' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=270 tier=none matched=None gold='plant reproduction parts' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=271 tier=none matched=None gold='our celestial fireball' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=272 tier=partial matched='sand' gold='sandstorms create ripples in sand' -> cf='sand is always moving' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=273 tier=none matched=None gold='an organism that absorbs water through it's roots' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=274 tier=none matched=None gold='under the ground' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=275 tier=none matched=None gold='leads to less habitats for animals' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=276 tier=none matched=None gold='resistance' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=277 tier=none matched=None gold='because it's blanketed in crystalline ice water' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=278 tier=none matched=None gold='An insulated room' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=279 tier=none matched=None gold='crawlies' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=280 tier=none matched=None gold='nutrient making process' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=281 tier=none matched=None gold='needs required for creating chlorophyll' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=282 tier=partial matched='number of' gold='number of nails' -> cf='length of hair' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=283 tier=partial matched='living' gold='living organisms in ecosystem' -> cf='lakes, ponds and shellfish' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=284 tier=partial matched='under' gold='under a mountain' -> cf='in a tree' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=285 tier=none matched=None gold='Seeing a solar eclipse' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=286 tier=none matched=None gold='tepid seas' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=287 tier=none matched=None gold='certain features may be predicted' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=288 tier=partial matched='food' gold='food for itself' -> cf='longer antlers' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=289 tier=partial matched='communities' gold='community concerns over environmental impact' -> cf='better air and soil quality' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=290 tier=partial matched='causes' gold='causes puddles to become dried out mud' -> cf='causes fields of crops to grow faster' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=291 tier=none matched=None gold='robins' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=292 tier=none matched=None gold='mammal' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=293 tier=none matched=None gold='Warm breath fogging up a mirror' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=294 tier=none matched=None gold='water' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=295 tier=none matched=None gold='is nutritionally self sustaining' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=296 tier=glued matched='O' gold='O' -> cf='water' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=297 tier=none matched=None gold='loop endlessly' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=298 tier=none matched=None gold='daughter' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=299 tier=none matched=None gold='richer' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=300 tier=none matched=None gold='a high temperature' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=301 tier=none matched=None gold='combusted items' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=302 tier=none matched=None gold='fewer clouds allow for more sunlight' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=303 tier=none matched=None gold='a wick' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=304 tier=none matched=None gold='to the upper pole' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=305 tier=none matched=None gold='iron saw' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=306 tier=partial matched='the sun' gold='the sun that shines all day' -> cf='the single moon close to us' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=307 tier=none matched=None gold='large bowl shaped cavities' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=308 tier=none matched=None gold='a plant's treasure' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=309 tier=partial matched='building' gold='building a new subdivision' -> cf='swimming in a lake' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=310 tier=partial matched='motion' gold='using calories to produce motion' -> cf='using heat to produce motion' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=311 tier=none matched=None gold='H2O' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=312 tier=none matched=None gold='Conventional corn' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=313 tier=partial matched='direction' gold='it shows direction' -> cf='to test heat' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=314 tier=none matched=None gold='a hive' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=315 tier=partial matched='stars' gold='the nearest star sulfur burning heavenly body' -> cf='the cloud in the sky' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=316 tier=none matched=None gold='making an adjustment to the rudder' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=317 tier=none matched=None gold='pig' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=318 tier=none matched=None gold='quick' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=319 tier=morphological matched='predators' gold='predator' -> cf='prey' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=320 tier=none matched=None gold='the Sahara' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=321 tier=none matched=None gold='it looks bigger' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=322 tier=none matched=None gold='eating wheat' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=323 tier=none matched=None gold='less water' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=324 tier=partial matched='feeders' gold='a feeder at another house' -> cf='a feeder at this house' (n=1)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=325 tier=none matched=None gold='sea life' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=326 tier=none matched=None gold='sitting on the table' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=327 tier=none matched=None gold='in spiked plants' -> cf='None' (n=0)
+2026-09-01 03:12:54 | DEBUG    | counterfactual_experiment | id=328 tier=none matched=None gold='blend in' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=329 tier=partial matched='plant' gold='allows plants to move rain thru their systems' -> cf='discourages pests from landing on leaves' (n=2)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=330 tier=none matched=None gold='ramen' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=331 tier=none matched=None gold='contaminates may be destroyed' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=332 tier=partial matched='the skeletal system' gold='something protected by the skeletal system' -> cf='a part of the nervous system' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=333 tier=none matched=None gold='the fastest mammal with four legs' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=334 tier=none matched=None gold='a cardinal' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=335 tier=none matched=None gold='electron flow' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=336 tier=partial matched='distance' gold='distance traveled' -> cf='home location' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=337 tier=none matched=None gold='weaken' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=338 tier=none matched=None gold='a diving suit' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=339 tier=none matched=None gold='B and D' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=340 tier=none matched=None gold='chill' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=341 tier=partial matched='aquatic' gold='aquatic speed' -> cf='catching prey' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=342 tier=none matched=None gold='a lit candle in a window signalling to someone' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=343 tier=partial matched='oxygen' gold='directing oxygen from lungs to other organs' -> cf='moving air in a room' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=344 tier=none matched=None gold='in polar areas' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=345 tier=none matched=None gold='its appearance' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=346 tier=none matched=None gold='a simple alcohol' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=347 tier=exact matched='heat energy' gold='heat energy' -> cf='light energy' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=348 tier=partial matched='reproduction' gold='reproduction ?' -> cf='pet store sale' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=349 tier=none matched=None gold='alfalfa' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=350 tier=exact matched='windmill' gold='windmill' -> cf='coal' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=351 tier=none matched=None gold='turf' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=352 tier=none matched=None gold='hide' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=353 tier=partial matched='together' gold='reverberate when touched together' -> cf='shake around when near' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=354 tier=none matched=None gold='March' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=355 tier=none matched=None gold='Scorpion' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=356 tier=none matched=None gold='January' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=357 tier=partial matched='will' gold='the further it will roll across the floor' -> cf='determines how long the child with play with it' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=358 tier=none matched=None gold='come from expired life' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=359 tier=none matched=None gold='night on Earth to be dimly lit' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=360 tier=none matched=None gold='weather' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=361 tier=partial matched='all animals' gold='commonality among all animals' -> cf='happens for some species' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=362 tier=exact matched='closed' gold='closed' -> cf='magical' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=363 tier=partial matched='environments' gold='frosty environments' -> cf='tepid environments' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=364 tier=none matched=None gold='a car engine' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=365 tier=partial matched='insects' gold='it chomps on insects' -> cf='it eats all plants' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=366 tier=none matched=None gold='a baby drinking formula then needing a diaper change' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=367 tier=none matched=None gold='rotavirus' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=368 tier=none matched=None gold='run a continuous current' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=369 tier=none matched=None gold='there has been excess condensed water vapor' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=370 tier=none matched=None gold='egg depositing' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=371 tier=none matched=None gold='frozen water' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=372 tier=none matched=None gold='a green and lush tree and plant packed area' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=373 tier=none matched=None gold='attractive to various objects that contain iron' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=374 tier=none matched=None gold='all of these' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=375 tier=exact matched='minerals' gold='minerals' -> cf='mist' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=376 tier=none matched=None gold='grow in size visually' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=377 tier=none matched=None gold='creek beds may be spilling over' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=378 tier=none matched=None gold='Pine Needles' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=379 tier=none matched=None gold='an octopus mimicking the color and texture of a rocky outcrop' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=380 tier=none matched=None gold='a full bag swung in circles' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=381 tier=none matched=None gold='clumps of flaming gas' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=382 tier=none matched=None gold='air' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=383 tier=partial matched='each other' gold='shove each other away' -> cf='have very little reaction' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=384 tier=none matched=None gold='people' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=385 tier=none matched=None gold='sweltering' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=386 tier=partial matched='desert' gold='deserts get surplus sun' -> cf='they get low sunlight' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=387 tier=none matched=None gold='The Gobi Desert' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=388 tier=exact matched='ferromagnetic' gold='ferromagnetic' -> cf='large' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=389 tier=exact matched='energy' gold='energy' -> cf='fun' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=390 tier=partial matched='their' gold='their mother teaches them to keep their distance' -> cf='they are much bigger than the cub' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=391 tier=partial matched='sleet' gold='a sleet covered highway' -> cf='a dry cobblestone road' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=392 tier=none matched=None gold='swallow' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=393 tier=none matched=None gold='silicon' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=394 tier=exact matched='is removed' gold='is removed' -> cf='is renewed' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=395 tier=none matched=None gold='aid in feeding what grows from them' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=396 tier=none matched=None gold='consumption' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=397 tier=none matched=None gold='Bees' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=398 tier=none matched=None gold='skateboards that are ridden all day' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=399 tier=partial matched='to the' gold='a trip to the moon' -> cf='a trip to mars' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=400 tier=none matched=None gold='bush' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=401 tier=none matched=None gold='Kitchen foil' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=402 tier=none matched=None gold='this is sure' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=403 tier=partial matched='produce' gold='produce energy' -> cf='burn energy' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=404 tier=none matched=None gold='butterfly' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=405 tier=none matched=None gold='turbine produced electricity' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=406 tier=none matched=None gold='would cease existing' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=407 tier=none matched=None gold='substance' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=408 tier=exact matched='ice' gold='ice' -> cf='hurricanes' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=409 tier=none matched=None gold='temperature' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=410 tier=none matched=None gold='sand' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=411 tier=none matched=None gold='A boiling hot mug of tea' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=412 tier=none matched=None gold='poodle' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=413 tier=none matched=None gold='hexagons' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=414 tier=none matched=None gold='nutrients' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=415 tier=none matched=None gold='negative' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=416 tier=none matched=None gold='a cup of salt' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=417 tier=none matched=None gold='moisture is pulled upwards' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=418 tier=none matched=None gold='rip off a corner portion' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=419 tier=none matched=None gold='a sudden fog moving into the area' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=420 tier=none matched=None gold='elbow size' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=421 tier=exact matched='gas' gold='gas' -> cf='food' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=422 tier=exact matched='once' gold='once' -> cf='twice' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=423 tier=partial matched='that' gold='item that reflects' -> cf='any object' (n=2)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=424 tier=none matched=None gold='the season has been quite dry' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=425 tier=none matched=None gold='the body of the pot is of high temperature' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=426 tier=partial matched='octopus' gold='an octopus' -> cf='a fish' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=427 tier=exact matched='mechanical energy' gold='mechanical energy' -> cf='electrical energy' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=428 tier=none matched=None gold='concrete configuration' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=429 tier=none matched=None gold='travels to the seaside' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=430 tier=exact matched='adding salt' gold='adding salt' -> cf='adding litter' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=431 tier=none matched=None gold='used soda can' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=432 tier=none matched=None gold='12' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=433 tier=none matched=None gold='is turned off' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=434 tier=none matched=None gold='cello' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=435 tier=none matched=None gold='kilograms' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=436 tier=none matched=None gold='igloo' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=437 tier=none matched=None gold='reconfigure appearance to blend in' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=438 tier=exact matched='xylem' gold='xylem' -> cf='luck' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=439 tier=none matched=None gold='humongous' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=440 tier=none matched=None gold='when boiling eggs on a stove top' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=441 tier=none matched=None gold='heat' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=442 tier=exact matched='seconds' gold='seconds' -> cf='days' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=443 tier=none matched=None gold='meals' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=444 tier=none matched=None gold='toast' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=445 tier=none matched=None gold='dry out clothes after coming in from the rain' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=446 tier=partial matched='environment' gold='a frigid environment' -> cf='a tropical environment' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=447 tier=morphological matched='seconds' gold='second' -> cf='day' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=448 tier=none matched=None gold='H2O' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=449 tier=partial matched='phase of the' gold='after the first phase of the lunar month' -> cf='when you cannot see the moon in the sky at night' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=450 tier=none matched=None gold='shrink' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=451 tier=none matched=None gold='conserving' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=452 tier=none matched=None gold='liver' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=453 tier=none matched=None gold='Jupiter' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=454 tier=none matched=None gold='huge rain storm' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=455 tier=none matched=None gold='CO2, H20, and sun rays' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=456 tier=none matched=None gold='atomic 26' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=457 tier=none matched=None gold='changed' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=458 tier=none matched=None gold='dunes at the beach to be depleted' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=459 tier=none matched=None gold='beaches shrink' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=460 tier=partial matched='from' gold='a steak is removed from the freezer to defrost' -> cf='an ice tray is placed in a freezer' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=461 tier=partial matched='make' gold='makes deep noises' -> cf='is a frog' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=462 tier=exact matched='dead' gold='dead' -> cf='inedible' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=463 tier=none matched=None gold='on a sunny day' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=464 tier=none matched=None gold='require prey to survive' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=465 tier=none matched=None gold='a star outside the window' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=466 tier=none matched=None gold='earth' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=467 tier=none matched=None gold='a worm burrowing through the earth' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=468 tier=none matched=None gold='frogs returning to the ponds were they hatched to lay eggs' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=469 tier=none matched=None gold='seeds' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=470 tier=none matched=None gold='things you give a loved one in a bouquet' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=471 tier=partial matched='soil' gold='soil with worms burrowing around' -> cf='a sticky clay soil' (n=2)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=472 tier=none matched=None gold='I am an Ant' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=473 tier=partial matched='mother' gold='a calf emerging from a mother giraffe' -> cf='owlets pecking out of their encasement' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=474 tier=none matched=None gold='turning on a stove top' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=475 tier=none matched=None gold='an energy source' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=476 tier=none matched=None gold='terrestrial body' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=477 tier=partial matched='will' gold='they will shrink' -> cf='they will increase' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=478 tier=none matched=None gold='The Andes' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=479 tier=partial matched='water' gold='lightening hitting water and organisms inside dying' -> cf='grabbing a fence and being shocked' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=480 tier=partial matched='Solar Year' gold='A Solar Year on earth' -> cf='The moons orbit around the year' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=481 tier=none matched=None gold='impair its well being in some way' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=482 tier=none matched=None gold='transfer them to the stomach' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=483 tier=exact matched='water vapor' gold='water vapor' -> cf='cold air' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=484 tier=partial matched='soil' gold='placed in good soil' -> cf='planted in zinc pills' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=485 tier=none matched=None gold='A 6'' Man' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=486 tier=partial matched='plants' gold='from a live plant' -> cf='from a live cow' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=487 tier=none matched=None gold='Sand' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=488 tier=none matched=None gold='5 am' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=489 tier=none matched=None gold='providing nourishment which enables some growth to vegetation' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=490 tier=none matched=None gold='a thicket' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=491 tier=partial matched='is a' gold='it is a predator' -> cf='it is a vegetarian' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=492 tier=none matched=None gold='bugs' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=493 tier=partial matched='flowing over' gold='a river named after the 38th state to join the union flowing over time' -> cf='a river named after the 20th state to join the union flowing over time' (n=1)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=494 tier=none matched=None gold='UV rays are harmful' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=495 tier=none matched=None gold='scalds' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=496 tier=none matched=None gold='water is bubbling from applied warmth' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=497 tier=none matched=None gold='leads to less sick people' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=498 tier=none matched=None gold='tiny lifeforms in dirt' -> cf='None' (n=0)
+2026-09-01 03:12:55 | DEBUG    | counterfactual_experiment | id=499 tier=none matched=None gold='heat' -> cf='None' (n=0)
+2026-09-01 03:12:55 | INFO     | counterfactual_experiment | Generated 145 usable counterfactual passages out of 500 samples (tiers: {'exact': 42, 'glued': 1, 'morphological': 5, 'partial': 97, 'none': 355})
+2026-09-01 03:12:55 | INFO     | counterfactual_experiment | Device        : cuda
+2026-09-01 03:12:55 | INFO     | counterfactual_experiment | 
+2026-09-01 03:12:55 | INFO     | counterfactual_experiment | Scoring 500 samples x 3 settings x 4 models ...
+2026-09-01 03:12:55 | INFO     | counterfactual_experiment | ==============================================================================
+2026-09-01 03:12:55 | INFO     | counterfactual_experiment | Sequential pass 1/4: google/t5-small-ssm-nq
+2026-09-01 03:12:55 | INFO     | kda_tiny | Loading simulated student 'google/t5-small-ssm-nq' on device 'cuda'
+2026-09-01 03:12:56 | WARNING  | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-09-01 03:12:59 | INFO     | kda_tiny | Loaded 'google/t5-small-ssm-nq' in 3.39s | 77.0M parameters (~308MB fp32) | seq2seq scoring
+2026-09-01 03:13:03 | INFO     | counterfactual_experiment | [#-----------------------]   5.0%  model 1/4 (t5-small-ssm-nq)  100/500 samples  elapsed=7.9s  ETA=149.3s
+2026-09-01 03:13:08 | INFO     | counterfactual_experiment | [##----------------------]  10.0%  model 1/4 (t5-small-ssm-nq)  200/500 samples  elapsed=12.0s  ETA=108.2s
+2026-09-01 03:13:12 | INFO     | counterfactual_experiment | [####--------------------]  15.0%  model 1/4 (t5-small-ssm-nq)  300/500 samples  elapsed=16.2s  ETA=91.9s
+2026-09-01 03:13:16 | INFO     | counterfactual_experiment | [#####-------------------]  20.0%  model 1/4 (t5-small-ssm-nq)  400/500 samples  elapsed=20.4s  ETA=81.7s
+2026-09-01 03:13:20 | INFO     | counterfactual_experiment | [######------------------]  25.0%  model 1/4 (t5-small-ssm-nq)  500/500 samples  elapsed=24.7s  ETA=74.0s
+2026-09-01 03:13:20 | INFO     | counterfactual_experiment | Pass 1/4 done: 500 samples x 3 settings in 21.28s (0.0426s per sample)
+2026-09-01 03:13:20 | INFO     | counterfactual_experiment | Unloaded 'google/t5-small-ssm-nq' and cleared the CUDA cache
+2026-09-01 03:13:20 | INFO     | counterfactual_experiment | ==============================================================================
+2026-09-01 03:13:20 | INFO     | counterfactual_experiment | Sequential pass 2/4: Riiid/kda-albert-xlarge-v2-race
+2026-09-01 03:13:20 | INFO     | kda_tiny | Loading simulated student 'Riiid/kda-albert-xlarge-v2-race' on device 'cuda'
+2026-09-01 03:13:23 | INFO     | kda_tiny | Loaded 'Riiid/kda-albert-xlarge-v2-race' in 2.54s | 58.7M parameters (~235MB fp32) | token_type_ids=True
+2026-09-01 03:13:58 | INFO     | counterfactual_experiment | [#######-----------------]  30.0%  model 2/4 (kda-albert-xlarge-v2-race)  100/500 samples  elapsed=62.1s  ETA=144.9s
+2026-09-01 03:14:33 | INFO     | counterfactual_experiment | [########----------------]  35.0%  model 2/4 (kda-albert-xlarge-v2-race)  200/500 samples  elapsed=98.0s  ETA=181.9s
+2026-09-01 03:15:08 | INFO     | counterfactual_experiment | [##########--------------]  40.0%  model 2/4 (kda-albert-xlarge-v2-race)  300/500 samples  elapsed=132.2s  ETA=198.3s
+2026-09-01 03:15:41 | INFO     | counterfactual_experiment | [###########-------------]  45.0%  model 2/4 (kda-albert-xlarge-v2-race)  400/500 samples  elapsed=165.1s  ETA=201.8s
+2026-09-01 03:16:17 | INFO     | counterfactual_experiment | [############------------]  50.0%  model 2/4 (kda-albert-xlarge-v2-race)  500/500 samples  elapsed=201.1s  ETA=201.1s
+2026-09-01 03:16:17 | INFO     | counterfactual_experiment | Pass 2/4 done: 500 samples x 3 settings in 173.60s (0.3472s per sample)
+2026-09-01 03:16:17 | INFO     | counterfactual_experiment | Unloaded 'Riiid/kda-albert-xlarge-v2-race' and cleared the CUDA cache
+2026-09-01 03:16:17 | INFO     | counterfactual_experiment | ==============================================================================
+2026-09-01 03:16:17 | INFO     | counterfactual_experiment | Sequential pass 3/4: Riiid/kda-mpnet-base-race
+2026-09-01 03:16:17 | INFO     | kda_tiny | Loading simulated student 'Riiid/kda-mpnet-base-race' on device 'cuda'
+2026-09-01 03:16:19 | INFO     | kda_tiny | Loaded 'Riiid/kda-mpnet-base-race' in 2.38s | 109.5M parameters (~438MB fp32) | token_type_ids=False
+2026-09-01 03:16:22 | INFO     | counterfactual_experiment | [#############-----------]  55.0%  model 3/4 (kda-mpnet-base-race)  100/500 samples  elapsed=206.9s  ETA=169.3s
+2026-09-01 03:16:26 | INFO     | counterfactual_experiment | [##############----------]  60.0%  model 3/4 (kda-mpnet-base-race)  200/500 samples  elapsed=210.1s  ETA=140.1s
+2026-09-01 03:16:29 | INFO     | counterfactual_experiment | [################--------]  65.0%  model 3/4 (kda-mpnet-base-race)  300/500 samples  elapsed=213.3s  ETA=114.9s
+2026-09-01 03:16:32 | INFO     | counterfactual_experiment | [#################-------]  70.0%  model 3/4 (kda-mpnet-base-race)  400/500 samples  elapsed=216.3s  ETA=92.7s
+2026-09-01 03:16:35 | INFO     | counterfactual_experiment | [##################------]  75.0%  model 3/4 (kda-mpnet-base-race)  500/500 samples  elapsed=219.7s  ETA=73.2s
+2026-09-01 03:16:35 | INFO     | counterfactual_experiment | Pass 3/4 done: 500 samples x 3 settings in 15.99s (0.0320s per sample)
+2026-09-01 03:16:35 | INFO     | counterfactual_experiment | Unloaded 'Riiid/kda-mpnet-base-race' and cleared the CUDA cache
+2026-09-01 03:16:35 | INFO     | counterfactual_experiment | ==============================================================================
+2026-09-01 03:16:35 | INFO     | counterfactual_experiment | Sequential pass 4/4: Riiid/kda-scibert-uncased-race
+2026-09-01 03:16:35 | INFO     | kda_tiny | Loading simulated student 'Riiid/kda-scibert-uncased-race' on device 'cuda'
+2026-09-01 03:16:39 | INFO     | kda_tiny | Loaded 'Riiid/kda-scibert-uncased-race' in 3.18s | 109.9M parameters (~440MB fp32) | token_type_ids=True
+2026-09-01 03:16:42 | INFO     | counterfactual_experiment | [###################-----]  80.0%  model 4/4 (kda-scibert-uncased-race)  100/500 samples  elapsed=226.3s  ETA=56.6s
+2026-09-01 03:16:45 | INFO     | counterfactual_experiment | [####################----]  85.0%  model 4/4 (kda-scibert-uncased-race)  200/500 samples  elapsed=229.4s  ETA=40.5s
+2026-09-01 03:16:48 | INFO     | counterfactual_experiment | [######################--]  90.0%  model 4/4 (kda-scibert-uncased-race)  300/500 samples  elapsed=232.5s  ETA=25.8s
+2026-09-01 03:16:51 | INFO     | counterfactual_experiment | [#######################-]  95.0%  model 4/4 (kda-scibert-uncased-race)  400/500 samples  elapsed=235.4s  ETA=12.4s
+2026-09-01 03:16:54 | INFO     | counterfactual_experiment | [########################] 100.0%  model 4/4 (kda-scibert-uncased-race)  500/500 samples  elapsed=238.6s  ETA=0.0s
+2026-09-01 03:16:54 | INFO     | counterfactual_experiment | Pass 4/4 done: 500 samples x 3 settings in 15.46s (0.0309s per sample)
+2026-09-01 03:16:54 | INFO     | counterfactual_experiment | Unloaded 'Riiid/kda-scibert-uncased-race' and cleared the CUDA cache
+2026-09-01 03:16:54 | INFO     | counterfactual_experiment | 
+2026-09-01 03:16:54 | INFO     | counterfactual_experiment | Aggregating 500 records ...
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | Wrote /home/nghben/Downloads/research/fsds/experiment/.claude/worktrees/test-splits-failure-analysis-588cac/results/counterfact_results/results_counterfactual_obqa_test_full.json
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | 
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | ====================================================================================================
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | COUNTERFACTUAL PASSAGE GENERATION
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | ====================================================================================================
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   substitution tier           count      share
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   exact                          42      8.40%
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   glued                           1      0.20%
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   morphological                   5      1.00%
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   partial                        97     19.40%
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   none                          355     71.00%
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   ELIGIBLE (usable CF)          145     29.00%
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   mean substitutions per eligible passage : 1.05
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   passages with the answer still fused inside a longer word : 20 (left intact on purpose)
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | 
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | ====================================================================================================
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | ACCURACY UNDER THE THREE SETTINGS
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | ====================================================================================================
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   model                                         A:none    B:orig    C:gold  C:cf-tgt
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   ------------------------------------------------------------------------------------------------
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   google/t5-small-ssm-nq                        23.80%    29.40%    11.72%    67.59%
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   Riiid/kda-albert-xlarge-v2-race               30.00%    40.60%    33.10%    27.59%
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   Riiid/kda-mpnet-base-race                     43.40%    52.80%    31.03%    31.72%
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   Riiid/kda-scibert-uncased-race                32.20%    35.40%    36.55%    25.52%
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   ENSEMBLE_pooled_probability_vote              34.80%    40.60%    17.93%    66.21%
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   ------------------------------------------------------------------------------------------------
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   A/B over all samples; C over the 145 counterfactual-eligible samples.
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   'C:gold' = still answers the gold option despite the perturbed context (lower is better); 'C:cf-tgt' = follows the perturbed context (higher is better).
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | 
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | ====================================================================================================
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | CONTEXT DEPENDENCE vs PRIOR RELIANCE on the both_correct (Case 2) bucket
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | ====================================================================================================
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   model                                       n_case2  context-dep    prior-dep     unstable
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   ------------------------------------------------------------------------------------------------
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   google/t5-small-ssm-nq                           29    17( 58.6%)    11( 37.9%)     1(  3.4%)
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   Riiid/kda-albert-xlarge-v2-race                  31     7( 22.6%)    15( 48.4%)     9( 29.0%)
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   Riiid/kda-mpnet-base-race                        52    19( 36.5%)    24( 46.2%)     9( 17.3%)
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   Riiid/kda-scibert-uncased-race                   38    11( 28.9%)    25( 65.8%)     2(  5.3%)
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   ENSEMBLE_pooled_probability_vote                 41    22( 53.7%)    17( 41.5%)     2(  4.9%)
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   ------------------------------------------------------------------------------------------------
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | 
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | ====================================================================================================
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | ACCURACY_WITH_FACT BEFORE AND AFTER REMOVING PRIOR-DRIVEN CORRECT ANSWERS
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | ====================================================================================================
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   model                                        Acc_wf raw   Acc_wf ctx    inflation
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   ------------------------------------------------------------------------------------------------
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   google/t5-small-ssm-nq                           40.00%       31.72%        7.59%
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   Riiid/kda-albert-xlarge-v2-race                  44.14%       27.59%       10.34%
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   Riiid/kda-mpnet-base-race                        57.93%       35.17%       16.55%
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   Riiid/kda-scibert-uncased-race                   42.07%       23.45%       17.24%
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   ENSEMBLE_pooled_probability_vote                 51.03%       37.93%       11.72%
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   ------------------------------------------------------------------------------------------------
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   Acc_wf ctx keeps a with-fact correct answer only when the fact demonstrably drove it (wrong->correct, or both_correct that flips under the counterfactual).
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | 
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | ====================================================================================================
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | COUNTERFACTUAL-ADJUSTED KDA (ensemble)
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | ====================================================================================================
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   metric                                      mean    median       std   min/max       n
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   ------------------------------------------------------------------------------------------------
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   KDA_cont (all samples)                    0.2712    0.2466    0.1130 0.08/0.67     500
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   KDA_cont (CF-eligible)                    0.3047    0.2669    0.1377 0.09/0.67     145
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   KDA_adj hard-gated                        0.1275    0.0782    0.1330 0.00/0.57     145
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   KDA_adj soft-gated                        0.1145    0.0678    0.0967 0.02/0.44     145
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   KDA_adj sample-exclusion                  0.2617         -         -         -     145
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   ------------------------------------------------------------------------------------------------
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   retention vs unadjusted : hard 41.8% | soft 37.6% | sample-exclusion 85.9%
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   17 of 145 eligible questions dropped as ensemble prior-dependent.
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | 
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | ====================================================================================================
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | HEADLINE (primary model: Riiid/kda-mpnet-base-race)
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | ====================================================================================================
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   Acc: 43.40% (no passage) -> 52.80% (original passage) -> 31.03% (counterfactual, vs gold)
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   Of 52 both_correct samples: 19 (36.5%) are context-dependent, 24 (46.2%) are prior-dependent, 9 (17.3%) unstable.
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   Accuracy_with_fact drops from 57.93% to 35.17% once prior-driven correct answers are removed.
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | 
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | ----------------------------------------------------------------------------------------------------
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | EXAMPLES: PRIOR_DEPENDENT (Riiid/kda-mpnet-base-race)
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | ----------------------------------------------------------------------------------------------------
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   id=16 (source #16)
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     Q         : A person wants to be able to have more natural power in their home. They choose to cease using a traditional electric company to source this electr...
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     options   : ['sun grafts', 'sunlight shields', 'panels collecting sunlight', 'solar bees'] | gold='panels collecting sunlight' | cf target='sun grafts'
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     passage   : a solar panel converts sunlight into electricity
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     cf passage: a solar sun grafts converts sunlight into electricity
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     preds     : A='panels collecting sunlight' B='panels collecting sunlight' C='panels collecting sunlight' | P_C(gold)=0.381 P_C(cf)=0.346
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   id=30 (source #30)
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     Q         : To grow plants require
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     options   : ['acid rain', 'pesticides', 'shafts of sunlight', 'moonbeam rays'] | gold='shafts of sunlight' | cf target='acid rain'
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     passage   : a plant requires sunlight to grow
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     cf passage: a plant requires acid rain to grow
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     preds     : A='shafts of sunlight' B='shafts of sunlight' C='shafts of sunlight' | P_C(gold)=0.607 P_C(cf)=0.270
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   id=52 (source #52)
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     Q         : Overpopulation of an organism can
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     options   : ['strain the resources of an ecosystem', 'cause boundless growth of resources', 'lead to extinction of the organism', 'cause the ecosystem to flourish'] | gold='strain the resources of an ecosystem' | cf target='lead to extinction of the organism'
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     passage   : if the population of an organism increases then the ecosystem may become overpopulated with that organism
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     cf passage: if the population lead to extinction of the organism organism increases then the ecosystem may become overpopulated with that organism
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     preds     : A='strain the resources of an ecosystem' B='strain the resources of an ecosystem' C='strain the resources of an ecosystem' | P_C(gold)=0.719 P_C(cf)=0.175
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | 
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | ----------------------------------------------------------------------------------------------------
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | EXAMPLES: CONTEXT_DEPENDENT (Riiid/kda-mpnet-base-race)
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | ----------------------------------------------------------------------------------------------------
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   id=4 (source #4)
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     Q         : An electric car runs on electricity via
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     options   : ['gasoline', 'a power station', 'electrical conductors', 'fuel'] | gold='electrical conductors' | cf target='gasoline'
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     passage   : An electrical conductor is a vehicle for the flow of electricity
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     cf passage: An gasoline is a vehicle for the flow of electricity
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     preds     : A='electrical conductors' B='electrical conductors' C='gasoline' | P_C(gold)=0.292 P_C(cf)=0.416
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   id=15 (source #15)
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     Q         : As gasoline costs rise, alternative fuels are being used, which means that
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     options   : ['wind power will be expensive', 'gas costs will rise', 'oil costs will be maintained', 'gasoline will be needed less'] | gold='gasoline will be needed less' | cf target='wind power will be expensive'
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     passage   : as the use of alternative fuels increases , the use of gasoline will decrease
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     cf passage: as the use of alternative fuels increases , the use of wind power will be expensive decrease
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     preds     : A='gasoline will be needed less' B='gasoline will be needed less' C='wind power will be expensive' | P_C(gold)=0.177 P_C(cf)=0.719
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |   id=48 (source #48)
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     Q         : Seals are most likely to be found in what type of environment?
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     options   : ['desert', 'arctic', 'Mediterranean', 'tropical'] | gold='arctic' | cf target='desert'
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     passage   : arctic animals live in an arctic environment
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     cf passage: desert animals live in an desert environment
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment |     preds     : A='arctic' B='arctic' C='desert' | P_C(gold)=0.100 P_C(cf)=0.854
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | 
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | Scoring time  : 238.93s (0.478s per question)
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | Total runtime : 243.20s
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | Results       : /home/nghben/Downloads/research/fsds/experiment/.claude/worktrees/test-splits-failure-analysis-588cac/results/counterfact_results/results_counterfactual_obqa_test_full.json
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | Log           : /home/nghben/Downloads/research/fsds/experiment/.claude/worktrees/test-splits-failure-analysis-588cac/results/counterfact_results/counterfactual_obqa_experiment.log
+2026-09-01 03:16:55 | INFO     | counterfactual_experiment | Done.

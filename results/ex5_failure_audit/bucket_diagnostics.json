@@ -1,0 +1,1236 @@
+{
+  "thresholds": {
+    "near_chance": 0.4,
+    "confident": 0.7
+  },
+  "primary_model": "Riiid/kda-mpnet-base-race",
+  "confidence_gate": [
+    {
+      "label": "KDA_small ensemble / sciq",
+      "n_correct_to_wrong": 12,
+      "mean_p_rq_gold": 0.3915568484662799,
+      "median_p_rq_gold": 0.3613926097750664,
+      "n_near_chance_lt_0_40": 7,
+      "n_confident_gte_0_70": 0,
+      "verdict": "predominantly H6 (lucky guesses undone)",
+      "confident_flips": [],
+      "all_flips": [
+        {
+          "id": 47,
+          "question": "A bee will sometimes do a dance to tell other bees in the hive where to find what?",
+          "gold_answer": "food",
+          "p_rq_gold_ensemble": 0.33136890456080437,
+          "predicted_with_fact": "honey"
+        },
+        {
+          "id": 50,
+          "question": "Although magma once filled our moon's craters, what is thought to have ended there over a billion years ago?",
+          "gold_answer": "volcanic activity",
+          "p_rq_gold_ensemble": 0.2888539293780923,
+          "predicted_with_fact": "oceanic activity"
+        },
+        {
+          "id": 91,
+          "question": "Anything moving has what type of energy?",
+          "gold_answer": "kinetic",
+          "p_rq_gold_ensemble": 0.34975756431231275,
+          "predicted_with_fact": "thermal"
+        },
+        {
+          "id": 203,
+          "question": "What happens to the pressure when more gas is added to a rigid container?",
+          "gold_answer": "increases",
+          "p_rq_gold_ensemble": 0.42800983414053917,
+          "predicted_with_fact": "changes"
+        },
+        {
+          "id": 460,
+          "question": "A reaction producing heat is what type of reaction?",
+          "gold_answer": "chemical",
+          "p_rq_gold_ensemble": 0.5409029200673103,
+          "predicted_with_fact": "chemistry"
+        },
+        {
+          "id": 496,
+          "question": "About what percentage of the earth's water is fresh water?",
+          "gold_answer": "three percent",
+          "p_rq_gold_ensemble": 0.3607102297246456,
+          "predicted_with_fact": "two percent"
+        },
+        {
+          "id": 534,
+          "question": "Lymph vessels make up a circulatory system that is similar to the blood vessels of what system?",
+          "gold_answer": "cardiovascular",
+          "p_rq_gold_ensemble": 0.47733045369386673,
+          "predicted_with_fact": "cardiac"
+        },
+        {
+          "id": 537,
+          "question": "Most hydrogen atoms have how many protons?",
+          "gold_answer": "one",
+          "p_rq_gold_ensemble": 0.34735799580812454,
+          "predicted_with_fact": "two"
+        },
+        {
+          "id": 598,
+          "question": "What kind of diffusion do small hydrophobic molecules squeeze through lipid molecules?",
+          "gold_answer": "simple",
+          "p_rq_gold_ensemble": 0.401191970333457,
+          "predicted_with_fact": "complex"
+        },
+        {
+          "id": 600,
+          "question": "Parasites infect the host's what?",
+          "gold_answer": "red blood cells",
+          "p_rq_gold_ensemble": 0.34785936027765274,
+          "predicted_with_fact": "white blood cells"
+        },
+        {
+          "id": 602,
+          "question": "How does the water cycle end?",
+          "gold_answer": "it repeats itself",
+          "p_rq_gold_ensemble": 0.46326402947306633,
+          "predicted_with_fact": "ocean evaporation"
+        },
+        {
+          "id": 763,
+          "question": "Melting ice is drastically impacting the number of what at glacier national park?",
+          "gold_answer": "active glaciers",
+          "p_rq_gold_ensemble": 0.36207498982548714,
+          "predicted_with_fact": "icebergs"
+        }
+      ]
+    },
+    {
+      "label": "Qwen3-4B / sciq",
+      "n_correct_to_wrong": 0,
+      "mean_p_rq_gold": null,
+      "median_p_rq_gold": null,
+      "n_near_chance_lt_0_40": 0,
+      "n_confident_gte_0_70": 0,
+      "verdict": "no data",
+      "confident_flips": [],
+      "all_flips": []
+    },
+    {
+      "label": "KDA_small ensemble / obqa",
+      "n_correct_to_wrong": 57,
+      "mean_p_rq_gold": 0.3718770538852748,
+      "median_p_rq_gold": 0.36468372493982315,
+      "n_near_chance_lt_0_40": 45,
+      "n_confident_gte_0_70": 0,
+      "verdict": "predominantly H6 (lucky guesses undone)",
+      "confident_flips": [],
+      "all_flips": [
+        {
+          "id": 5,
+          "question": "As the rain forest is deforested the atmosphere will increase with",
+          "gold_answer": "carbon",
+          "p_rq_gold_ensemble": 0.38292823007594023,
+          "predicted_with_fact": "nitrogen"
+        },
+        {
+          "id": 8,
+          "question": "The summer solstice in the northern hemisphere is four months before",
+          "gold_answer": "October",
+          "p_rq_gold_ensemble": 0.29625727981328964,
+          "predicted_with_fact": "July"
+        },
+        {
+          "id": 23,
+          "question": "Overpopulation can cause",
+          "gold_answer": "Lower Life Expectancy in Countries",
+          "p_rq_gold_ensemble": 0.36434151214780286,
+          "predicted_with_fact": "More food for more people"
+        },
+        {
+          "id": 24,
+          "question": "Shining a light through a diamond can",
+          "gold_answer": "summon a brilliant wave of color",
+          "p_rq_gold_ensemble": 0.3713610473364497,
+          "predicted_with_fact": "make a lot of money"
+        },
+        {
+          "id": 29,
+          "question": "When it's flying, a plane has no friction with the",
+          "gold_answer": "ground",
+          "p_rq_gold_ensemble": 0.38978710398077965,
+          "predicted_with_fact": "air"
+        },
+        {
+          "id": 53,
+          "question": "To improve health, what is a good strategy?",
+          "gold_answer": "a spa trip",
+          "p_rq_gold_ensemble": 0.39148105308413506,
+          "predicted_with_fact": "high risk lifestyle"
+        },
+        {
+          "id": 63,
+          "question": "What likely explains deforestation?",
+          "gold_answer": "Clearing for farming",
+          "p_rq_gold_ensemble": 0.45623159036040306,
+          "predicted_with_fact": "More carbon dioxide"
+        },
+        {
+          "id": 70,
+          "question": "How can we see that the coloration of fur is an inherited characteristic?",
+          "gold_answer": "kittens look like their parents",
+          "p_rq_gold_ensemble": 0.3359807953238487,
+          "predicted_with_fact": "all mammals are born with fur"
+        },
+        {
+          "id": 82,
+          "question": "The lowest temperature on the trip was at",
+          "gold_answer": "the mountain pass",
+          "p_rq_gold_ensemble": 0.30148885305970907,
+          "predicted_with_fact": "the large hill"
+        },
+        {
+          "id": 90,
+          "question": "What is a more comfortable color to have for your automobile upholstery if living in a desert?",
+          "gold_answer": "ecru",
+          "p_rq_gold_ensemble": 0.4095276797306724,
+          "predicted_with_fact": "black"
+        },
+        {
+          "id": 95,
+          "question": "Squirrels spend their fall",
+          "gold_answer": "stockpiling pecans for the frigid months",
+          "p_rq_gold_ensemble": 0.3329128883779049,
+          "predicted_with_fact": "collecting twigs to keep warm"
+        },
+        {
+          "id": 97,
+          "question": "Crop rotation has a positive impact on what?",
+          "gold_answer": "dirt quality",
+          "p_rq_gold_ensemble": 0.32476416626013815,
+          "predicted_with_fact": "crop watering"
+        },
+        {
+          "id": 102,
+          "question": "Pollinators",
+          "gold_answer": "enable plants to continue flourishing",
+          "p_rq_gold_ensemble": 0.3573225916843512,
+          "predicted_with_fact": "play an unimportant role in the reproduction process"
+        },
+        {
+          "id": 105,
+          "question": "A spinning object is used to make",
+          "gold_answer": "electricity",
+          "p_rq_gold_ensemble": 0.5042568817734718,
+          "predicted_with_fact": "heat"
+        },
+        {
+          "id": 123,
+          "question": "What does someone do when creating music?",
+          "gold_answer": "pluck the strings of a fingerboard with your fingers",
+          "p_rq_gold_ensemble": 0.4009980285773054,
+          "predicted_with_fact": "bang the wall with your fist"
+        },
+        {
+          "id": 127,
+          "question": "The force exerted on an object and distance traveled have what kind of relationship?",
+          "gold_answer": "direct",
+          "p_rq_gold_ensemble": 0.5003743320703506,
+          "predicted_with_fact": "equal"
+        },
+        {
+          "id": 132,
+          "question": "A desert environment is",
+          "gold_answer": "arid, parched, and sun-baked",
+          "p_rq_gold_ensemble": 0.37588536366820335,
+          "predicted_with_fact": "lush, green, and tropical"
+        },
+        {
+          "id": 135,
+          "question": "Asteroids crashing on planets can leave behind",
+          "gold_answer": "large, bowl-shaped cavities in the ground",
+          "p_rq_gold_ensemble": 0.2944588562240824,
+          "predicted_with_fact": "aliens and foreign foods"
+        },
+        {
+          "id": 147,
+          "question": "Earth's four layers are comprised mainly of",
+          "gold_answer": "stone",
+          "p_rq_gold_ensemble": 0.3443029373884201,
+          "predicted_with_fact": "water"
+        },
+        {
+          "id": 155,
+          "question": "Medicine is used to cure but can cause people to have allergic reactions such as",
+          "gold_answer": "vomiting",
+          "p_rq_gold_ensemble": 0.30751776695251465,
+          "predicted_with_fact": "dance fever"
+        },
+        {
+          "id": 159,
+          "question": "Green parts of a life form absorb",
+          "gold_answer": "light",
+          "p_rq_gold_ensemble": 0.3297013472765684,
+          "predicted_with_fact": "carbon dioxide"
+        },
+        {
+          "id": 160,
+          "question": "If a new species of predator joins a community",
+          "gold_answer": "prey will experience a drop in population",
+          "p_rq_gold_ensemble": 0.3653583077248186,
+          "predicted_with_fact": "the new species will become herbivores"
+        },
+        {
+          "id": 163,
+          "question": "Dairy is a source of",
+          "gold_answer": "a group of fat-soluble secosteroids",
+          "p_rq_gold_ensemble": 0.29584829322993755,
+          "predicted_with_fact": "a vitamin that treats amino acid deficiency"
+        },
+        {
+          "id": 168,
+          "question": "Glucose travels",
+          "gold_answer": "from a daisy's leaves into it's underground support system",
+          "p_rq_gold_ensemble": 0.3515994072658941,
+          "predicted_with_fact": "from a rose's leaves to the atmosphere"
+        },
+        {
+          "id": 176,
+          "question": "If your dog is overweight",
+          "gold_answer": "cut back their caloric intake",
+          "p_rq_gold_ensemble": 0.3956781541928649,
+          "predicted_with_fact": "add more fat to their diet"
+        },
+        {
+          "id": 184,
+          "question": "The sides of the canyon are",
+          "gold_answer": "stone",
+          "p_rq_gold_ensemble": 0.3264661431312561,
+          "predicted_with_fact": "rivers"
+        },
+        {
+          "id": 191,
+          "question": "Conservation",
+          "gold_answer": "leads to longer availability of resources",
+          "p_rq_gold_ensemble": 0.4731767103075981,
+          "predicted_with_fact": "leads to more consumption"
+        },
+        {
+          "id": 215,
+          "question": "A person is considering various organs, and is looking at which ones will be most muscular. A contender for most muscular is",
+          "gold_answer": "the heart",
+          "p_rq_gold_ensemble": 0.38944136723876,
+          "predicted_with_fact": "the lungs"
+        },
+        {
+          "id": 217,
+          "question": "Which of the following is warm blooded?",
+          "gold_answer": "skunk",
+          "p_rq_gold_ensemble": 0.44165895879268646,
+          "predicted_with_fact": "toad"
+        },
+        {
+          "id": 219,
+          "question": "Vast quantities of metal can be obtained from",
+          "gold_answer": "a quarry",
+          "p_rq_gold_ensemble": 0.36769866198301315,
+          "predicted_with_fact": "salt"
+        },
+        {
+          "id": 222,
+          "question": "Phloem moves things around a plant similar to how",
+          "gold_answer": "blood moves in a body",
+          "p_rq_gold_ensemble": 0.38008760660886765,
+          "predicted_with_fact": "water moves in a system"
+        },
+        {
+          "id": 241,
+          "question": "Dunes can be made out of the same thing as",
+          "gold_answer": "castles",
+          "p_rq_gold_ensemble": 0.33327043801546097,
+          "predicted_with_fact": "forests"
+        },
+        {
+          "id": 244,
+          "question": "Bill planted rapeseed in his field one year and soybeans the next in order to",
+          "gold_answer": "get bigger yields",
+          "p_rq_gold_ensemble": 0.3669380368664861,
+          "predicted_with_fact": "make things boring"
+        },
+        {
+          "id": 266,
+          "question": "Which of the following can be used to turn on an electrical device?",
+          "gold_answer": "solar-rechargeable battery",
+          "p_rq_gold_ensemble": 0.3552170460752677,
+          "predicted_with_fact": "a magnet"
+        },
+        {
+          "id": 286,
+          "question": "Coral grows in",
+          "gold_answer": "tepid seas",
+          "p_rq_gold_ensemble": 0.39670711010694504,
+          "predicted_with_fact": "frigid waters"
+        },
+        {
+          "id": 289,
+          "question": "Building new areas to dispose of refuse may lead to",
+          "gold_answer": "community concerns over environmental impact",
+          "p_rq_gold_ensemble": 0.30383942904882133,
+          "predicted_with_fact": "better air and soil quality"
+        },
+        {
+          "id": 291,
+          "question": "A field begins to bloom and blossom and plants need to be pollinated. In order to spread seeds, plants will most rely on",
+          "gold_answer": "robins",
+          "p_rq_gold_ensemble": 0.3839511163532734,
+          "predicted_with_fact": "pythons"
+        },
+        {
+          "id": 298,
+          "question": "A Punnett square can be used to calculate the chance of a trait being passed to someone's",
+          "gold_answer": "daughter",
+          "p_rq_gold_ensemble": 0.3966183140873909,
+          "predicted_with_fact": "father"
+        },
+        {
+          "id": 301,
+          "question": "exposure to fire could result in",
+          "gold_answer": "combusted items",
+          "p_rq_gold_ensemble": 0.3218439407646656,
+          "predicted_with_fact": "wet items"
+        },
+        {
+          "id": 305,
+          "question": "Which of these saws will last longer?",
+          "gold_answer": "iron saw",
+          "p_rq_gold_ensemble": 0.3451177626848221,
+          "predicted_with_fact": "aluminium saw"
+        },
+        {
+          "id": 312,
+          "question": "Which of these foods might have a negative impact on humans?",
+          "gold_answer": "Conventional corn",
+          "p_rq_gold_ensemble": 0.32207104191184044,
+          "predicted_with_fact": "Organic corn"
+        },
+        {
+          "id": 324,
+          "question": "There are less hummingbirds by this house than before because of",
+          "gold_answer": "a feeder at another house",
+          "p_rq_gold_ensemble": 0.32702223025262356,
+          "predicted_with_fact": "the size of the feeder"
+        },
+        {
+          "id": 325,
+          "question": "the  oceans are full of",
+          "gold_answer": "sea life",
+          "p_rq_gold_ensemble": 0.4245243929326534,
+          "predicted_with_fact": "fresh water"
+        },
+        {
+          "id": 326,
+          "question": "A light was off because the cord was",
+          "gold_answer": "sitting on the table",
+          "p_rq_gold_ensemble": 0.3774054143577814,
+          "predicted_with_fact": "attached to the wall"
+        },
+        {
+          "id": 349,
+          "question": "What would a Jersey most likely be fed?",
+          "gold_answer": "alfalfa",
+          "p_rq_gold_ensemble": 0.32016122713685036,
+          "predicted_with_fact": "moles"
+        },
+        {
+          "id": 353,
+          "question": "Tapping a drumstick to a drum will",
+          "gold_answer": "reverberate when touched together",
+          "p_rq_gold_ensemble": 0.3505333159118891,
+          "predicted_with_fact": "put each other down"
+        },
+        {
+          "id": 354,
+          "question": "Snow is more likely to fall two months before",
+          "gold_answer": "March",
+          "p_rq_gold_ensemble": 0.36468372493982315,
+          "predicted_with_fact": "June"
+        },
+        {
+          "id": 364,
+          "question": "What would be more likely to attract a magnet?",
+          "gold_answer": "a car engine",
+          "p_rq_gold_ensemble": 0.360690176486969,
+          "predicted_with_fact": "flowing water"
+        },
+        {
+          "id": 371,
+          "question": "A place that is snowy has a large amount of",
+          "gold_answer": "frozen water",
+          "p_rq_gold_ensemble": 0.4361535832285881,
+          "predicted_with_fact": "rain"
+        },
+        {
+          "id": 376,
+          "question": "as you get closer to something it begins to",
+          "gold_answer": "grow in size visually",
+          "p_rq_gold_ensemble": 0.34513673186302185,
+          "predicted_with_fact": "show a large shadow"
+        },
+        {
+          "id": 385,
+          "question": "Desert environments are generally",
+          "gold_answer": "sweltering",
+          "p_rq_gold_ensemble": 0.48870863020420074,
+          "predicted_with_fact": "frigid"
+        },
+        {
+          "id": 405,
+          "question": "A renewable resource is",
+          "gold_answer": "turbine produced electricity",
+          "p_rq_gold_ensemble": 0.42392192044917465,
+          "predicted_with_fact": "fossil fuel"
+        },
+        {
+          "id": 409,
+          "question": "Echolocation can't detect an object's",
+          "gold_answer": "temperature",
+          "p_rq_gold_ensemble": 0.3612970635294914,
+          "predicted_with_fact": "distance"
+        },
+        {
+          "id": 425,
+          "question": "if a pot on the stove is described as hot, what does this mean?",
+          "gold_answer": "the body of the pot is of high temperature",
+          "p_rq_gold_ensemble": 0.36390215530991554,
+          "predicted_with_fact": "all of these"
+        },
+        {
+          "id": 432,
+          "question": "How many times would someone change the page of a calendar in a year?",
+          "gold_answer": "12",
+          "p_rq_gold_ensemble": 0.44847384840250015,
+          "predicted_with_fact": "14"
+        },
+        {
+          "id": 445,
+          "question": "Hand dryers can also be used to",
+          "gold_answer": "dry out clothes after coming in from the rain",
+          "p_rq_gold_ensemble": 0.35353923961520195,
+          "predicted_with_fact": "make a damp rag damper"
+        },
+        {
+          "id": 496,
+          "question": "Pasta may be cooked in water when",
+          "gold_answer": "water is bubbling from applied warmth",
+          "p_rq_gold_ensemble": 0.366370265282967,
+          "predicted_with_fact": "the water is on the stove"
+        }
+      ]
+    },
+    {
+      "label": "Qwen3-4B / obqa",
+      "n_correct_to_wrong": 4,
+      "mean_p_rq_gold": 0.9395792633295059,
+      "median_p_rq_gold": 0.9800651371479034,
+      "n_near_chance_lt_0_40": 0,
+      "n_confident_gte_0_70": 4,
+      "verdict": "contains H4/H5 (genuine adversarial context / distractor activation)",
+      "confident_flips": [
+        {
+          "id": 322,
+          "question": "What would cause a human to grow?",
+          "gold_answer": "eating wheat",
+          "p_rq_gold": 1.0,
+          "p_rqf_gold": 3.210762224625796e-05,
+          "predicted_with_fact": "photosynthesis",
+          "fact": "humans eat crops"
+        },
+        {
+          "id": 40,
+          "question": "A recyclable material can be",
+          "gold_answer": "used more times",
+          "p_rq_gold": 0.9997695088386536,
+          "p_rqf_gold": 0.00912563782185316,
+          "predicted_with_fact": "transformed",
+          "fact": "recyclable means a material can be recycled"
+        },
+        {
+          "id": 162,
+          "question": "I'm an animal with a white fur and a large fluffy tail that lives in arctic regions; what am I?",
+          "gold_answer": "snow fox",
+          "p_rq_gold": 0.9603607654571533,
+          "p_rqf_gold": 1.8738753624347737e-06,
+          "predicted_with_fact": "polar bear",
+          "fact": "arctic animals live in an arctic environment"
+        },
+        {
+          "id": 398,
+          "question": "Kinetic energy can be found in objects that move, such as",
+          "gold_answer": "skateboards that are ridden all day",
+          "p_rq_gold": 0.7981867790222168,
+          "p_rqf_gold": 0.0005033356137573719,
+          "predicted_with_fact": "flower pots on a wagon",
+          "fact": "motion is a source of kinetic energy in an object"
+        }
+      ],
+      "all_flips": [
+        {
+          "id": 40,
+          "question": "A recyclable material can be",
+          "gold_answer": "used more times",
+          "p_rq_gold": 0.9997695088386536,
+          "p_rqf_gold": 0.00912563782185316,
+          "predicted_with_fact": "transformed",
+          "fact": "recyclable means a material can be recycled"
+        },
+        {
+          "id": 162,
+          "question": "I'm an animal with a white fur and a large fluffy tail that lives in arctic regions; what am I?",
+          "gold_answer": "snow fox",
+          "p_rq_gold": 0.9603607654571533,
+          "p_rqf_gold": 1.8738753624347737e-06,
+          "predicted_with_fact": "polar bear",
+          "fact": "arctic animals live in an arctic environment"
+        },
+        {
+          "id": 322,
+          "question": "What would cause a human to grow?",
+          "gold_answer": "eating wheat",
+          "p_rq_gold": 1.0,
+          "p_rqf_gold": 3.210762224625796e-05,
+          "predicted_with_fact": "photosynthesis",
+          "fact": "humans eat crops"
+        },
+        {
+          "id": 398,
+          "question": "Kinetic energy can be found in objects that move, such as",
+          "gold_answer": "skateboards that are ridden all day",
+          "p_rq_gold": 0.7981867790222168,
+          "p_rqf_gold": 0.0005033356137573719,
+          "predicted_with_fact": "flower pots on a wagon",
+          "fact": "motion is a source of kinetic energy in an object"
+        }
+      ]
+    }
+  ],
+  "ineligibility_join": [
+    {
+      "dataset": "sciq",
+      "counterfactual_results_available": true,
+      "n_both_wrong_primary": 60,
+      "split_ineligibility_base_rate": {
+        "n_ineligible": 24,
+        "n_split": 884,
+        "rate": 0.027149321266968326
+      },
+      "enrichment": {
+        "bucket_rate": 0.11666666666666667,
+        "base_rate": 0.027149321266968326,
+        "risk_ratio": 4.2972222222222225,
+        "interpretation": "ineligibility is strongly enriched in both_wrong -> usable H3 screen"
+      },
+      "setting_c_ineligible": {
+        "count": 7,
+        "percentage_of_both_wrong": 11.67,
+        "also_failed_by_all_four_models": 2,
+        "interpretation": "passage never lexically states the gold answer -> H3 (broken/ill-posed) prior",
+        "ids": [
+          33,
+          306,
+          598,
+          655,
+          739,
+          746,
+          760
+        ]
+      },
+      "setting_c_eligible": {
+        "count": 53,
+        "percentage_of_both_wrong": 88.33,
+        "also_failed_by_all_four_models": 4,
+        "interpretation": "passage does state the answer, yet the model still failed -> H1 (hard) or H2 (mis-key)",
+        "ids": [
+          32,
+          41,
+          46,
+          49,
+          57,
+          65,
+          70,
+          73,
+          97,
+          107,
+          125,
+          143,
+          144,
+          154,
+          202,
+          287,
+          291,
+          295,
+          327,
+          331,
+          339,
+          408,
+          410,
+          420,
+          438,
+          479,
+          503,
+          504,
+          522,
+          539,
+          570,
+          590,
+          619,
+          620,
+          631,
+          652,
+          671,
+          718,
+          726,
+          735,
+          736,
+          738,
+          761,
+          763,
+          768,
+          776,
+          807,
+          828,
+          850,
+          851,
+          864,
+          867,
+          877
+        ]
+      },
+      "examples_ineligible": [
+        {
+          "id": 33,
+          "question": "The body cannot sustain for very long the bursts of energy mediated by epinephrine and norepinephrine, hormones associated with what stress response?",
+          "gold_answer": "fight-or-flight",
+          "options": [
+            "do-or-die",
+            "sink-or-swim",
+            "fight-or-flight",
+            "fainting"
+          ],
+          "passage": "Watch this Discovery Channel animation (http://openstaxcollege. org/l/adrenaline) describing the flight-or-flight response. Long-term Stress Response Long-term stress response differs from short-term stress response. The body cannot sustain the bursts of energy mediated by epinephrine and norepinephrine for long times. Instead, other hormones come into play. In a long-term stress response, the hypothalamus triggers the release of ACTH from the anterior pituitary gland. The adrenal cortex is stimulated by ACTH to release steroid hormones called corticosteroids. Corticosteroids turn on transcription of certain genes in the nuclei of target cells. They change enzyme concentrations in the cytoplasm and affect cellular metabolism. There are two main corticosteroids: glucocorticoids such as cortisol, and mineralocorticoids such as aldosterone. These hormones target the breakdown of fat into fatty acids in the adipose tissue. The fatty acids are released into the bloodstream for other tissues to use for ATP production. The glucocorticoids primarily affect glucose metabolism by stimulating glucose synthesis. Glucocorticoids also have anti-inflammatory properties through inhibition of the immune system. For example, cortisone is used as an anti-inflammatory medication; however, it cannot be used long term as it increases susceptibility to disease due to its immune-suppressing effects. Mineralocorticoids function to regulate ion and water balance of the body. The hormone aldosterone stimulates the reabsorption of water and sodium ions in the kidney, which results in increased blood pressure and volume. Hypersecretion of glucocorticoids can cause a condition known as Cushing’s disease, characterized by a shifting of fat storage areas of the body. This can cause the accumulation of adipose tissue in the face and neck, and excessive glucose in the blood. Hyposecretion of the corticosteroids can cause Addison’s disease, which may result in bronzing of the skin, hypoglycemia, and low electrolyte levels in the blood.",
+          "substitution_tier": "none",
+          "all_four_models_both_wrong": false,
+          "primary_pred_with_fact": "fainting"
+        },
+        {
+          "id": 306,
+          "question": "What is a reptiles skin covered in to protect them from drying out?",
+          "gold_answer": "scales",
+          "options": [
+            "oil",
+            "bacteria",
+            "scales",
+            "dye"
+          ],
+          "passage": "The cell cycle is a repeating series of events that cells go through. It includes growth, DNA synthesis, and cell division. In eukaryotic cells, there are two growth phases, and cell division includes mitosis.",
+          "substitution_tier": "none",
+          "all_four_models_both_wrong": true,
+          "primary_pred_with_fact": "dye"
+        },
+        {
+          "id": 598,
+          "question": "What kind of diffusion do small hydrophobic molecules squeeze through lipid molecules?",
+          "gold_answer": "simple",
+          "options": [
+            "slippery",
+            "complex",
+            "simple",
+            "difficult"
+          ],
+          "passage": "Problems can occur with red blood cells, white blood cells, platelets, and other parts of the blood. Many blood disorders are genetic, meaning they are inherited from a parent. Some blood diseases are caused by not getting enough of a certain nutrient, while others are cancers of the blood.",
+          "substitution_tier": "none",
+          "all_four_models_both_wrong": false,
+          "primary_pred_with_fact": "difficult"
+        },
+        {
+          "id": 655,
+          "question": "What do charged particles in motion generate?",
+          "gold_answer": "magnetic fields",
+          "options": [
+            "magnetic fields",
+            "fission",
+            "electricity",
+            "gravitational fields"
+          ],
+          "passage": "Paints can be both toxic and flammable. Paints may spill on the ground or be thrown improperly in the trash.",
+          "substitution_tier": "none",
+          "all_four_models_both_wrong": false,
+          "primary_pred_with_fact": "electricity"
+        },
+        {
+          "id": 739,
+          "question": "What causes symptoms associated with sickle-cell disease?",
+          "gold_answer": "pleiotropic effects",
+          "options": [
+            "genetic drift",
+            "transgene effects",
+            "pleiotropic effects",
+            "spontaneous mutation"
+          ],
+          "passage": "Metalloids are the smallest class of elements, containing just six members: boron (B), silicon (Si), germanium (Ge), arsenic (As), antimony (Sb), and tellurium (Te). Metalloids have some properties of metals (elements that can conduct electricity) and some properties of nonmetals (elements that cannot conduct electricity). For example, most metalloids can conduct electricity, but not as well as metals. Metalloids also tend to be shiny like metals, but brittle like nonmetals. Chemically, metalloids may behave like metals or nonmetals, depending on their number of valence electrons. You can learn more about specific metalloids by clicking on the element symbols in the periodic table at this URL: http://www. chemicool. com/ .",
+          "substitution_tier": "none",
+          "all_four_models_both_wrong": false,
+          "primary_pred_with_fact": "spontaneous mutation"
+        }
+      ],
+      "examples_eligible": [
+        {
+          "id": 32,
+          "question": "What part of the eye allows light to enter?",
+          "gold_answer": "pupil",
+          "options": [
+            "pupil",
+            "eyelid",
+            "retina",
+            "iris"
+          ],
+          "passage": "Take-Home Experiment: The Pupil Look at the central transparent area of someone’s eye, the pupil, in normal room light. Estimate the diameter of the pupil. Now turn off the lights and darken the room. After a few minutes turn on the lights and promptly estimate the diameter of the pupil. What happens to the pupil as the eye adjusts to the room light? Explain your observations. The eye can detect an impressive amount of detail, considering how small the image is on the retina. To get some idea of how small the image can be, consider the following example.",
+          "substitution_tier": "exact",
+          "all_four_models_both_wrong": false,
+          "primary_pred_with_fact": "retina"
+        },
+        {
+          "id": 41,
+          "question": "Organisms that live deep in the ocean must be able to withstand what?",
+          "gold_answer": "extreme water pressure",
+          "options": [
+            "significant water pressure",
+            "the sun",
+            "extreme water pressure",
+            "tsunamis"
+          ],
+          "passage": "Organisms that live deep in the ocean must be able to withstand extreme water pressure, very cold water, and complete darkness. However, even here, thriving communities of living things can be found. Organisms cluster around hydrothermal vents in the ocean floor. The vents release hot water containing chemicals that would be toxic to most other living things. The producers among them are single-celled chemoautotrophs. They make food using energy stored in the chemicals. The tube worms in this chapter's opening photo depend on these chemoautotrophs for food.",
+          "substitution_tier": "exact",
+          "all_four_models_both_wrong": false,
+          "primary_pred_with_fact": "significant water pressure"
+        },
+        {
+          "id": 46,
+          "question": "Collateral ganglia controls organs in which cavity in the body?",
+          "gold_answer": "abdominal",
+          "options": [
+            "cardiac",
+            "cranial",
+            "pelvic",
+            "abdominal"
+          ],
+          "passage": "To continue with the analogy of the circuit diagram, there are three different types of “junctions” that operate within the sympathetic system (Figure 15.3). The first type is most direct: the sympathetic nerve projects to the chain ganglion at the same level as the target effector (the organ, tissue, or gland to be innervated). An example of this type is spinal nerve T1 that synapses with the T1 chain ganglion to innervate the trachea. The fibers of this branch are called white rami communicantes (singular = ramus communicans); they are myelinated and therefore referred to as white (see Figure 15.3a). The axon from the central neuron (the preganglionic fiber shown as a solid line) synapses with the ganglionic neuron (with the postganglionic fiber shown as a dashed line). This neuron then projects to a target effector—in this case, the trachea—via gray rami communicantes, which are unmyelinated axons. In some cases, the target effectors are located superior or inferior to the spinal segment at which the preganglionic fiber emerges. With respect to the “wiring” involved, the synapse with the ganglionic neuron occurs at chain ganglia superior or inferior to the location of the central neuron. An example of this is spinal nerve T1 that innervates the eye. The spinal nerve tracks up through the chain until it reaches the superior cervical ganglion, where it synapses with the postganglionic neuron (see Figure 15.3b). The cervical ganglia are referred to as paravertebral ganglia, given their location adjacent to prevertebral ganglia in the sympathetic chain. Not all axons from the central neurons terminate in the chain ganglia. Additional branches from the ventral nerve root continue through the chain and on to one of the collateral ganglia as the greater splanchnic nerve or lesser splanchnic nerve. For example, the greater splanchnic nerve at the level of T5 synapses with a collateral ganglion outside the chain before making the connection to the postganglionic nerves that innervate the stomach (see Figure 15.3c). Collateral ganglia, also called prevertebral ganglia, are situated anterior to the vertebral column and receive inputs from splanchnic nerves as well as central sympathetic neurons. They are associated with controlling organs in the abdominal cavity, and are also considered part of the enteric nervous system. The three collateral ganglia are the celiac ganglion, the superior mesenteric ganglion, and the inferior mesenteric ganglion (see Figure 15.2). The word celiac is derived from the Latin word “coelom,” which refers to a body cavity (in this case, the abdominal cavity), and the word mesenteric refers to the digestive system.",
+          "substitution_tier": "exact",
+          "all_four_models_both_wrong": false,
+          "primary_pred_with_fact": "pelvic"
+        },
+        {
+          "id": 49,
+          "question": "Temperature, water, soil, and air are examples of nonliving factors of an ecosystem, also termed what?",
+          "gold_answer": "abiotic factors",
+          "options": [
+            "nucleic factors",
+            "conditional factors",
+            "diverse factors",
+            "abiotic factors"
+          ],
+          "passage": "Ecology is the study of ecosystems. That is, ecology is the study of how living organisms interact with each other and with the nonliving part of their environment. An ecosystem consists of all the nonliving factors and living organisms interacting in the same habitat . Recall that living organisms are biotic factors . The biotic factors of an ecosystem include all the populations in a habitat, such as all the species of plants, animals, and fungi, as well as all the micro-organisms. Also recall that the nonliving factors are called abiotic factors . Abiotic factors include temperature, water, soil, and air.",
+          "substitution_tier": "exact",
+          "all_four_models_both_wrong": false,
+          "primary_pred_with_fact": "nucleic factors"
+        },
+        {
+          "id": 57,
+          "question": "The temperature at which a substance melts is called its what point?",
+          "gold_answer": "melting",
+          "options": [
+            "boiling",
+            "change",
+            "freezing",
+            "melting"
+          ],
+          "passage": "The temperature at which a substance melts is called its melting point. Melting point is a physical property of matter. The gold pictured in the Figure above , for example, has a melting point of 1064°C. This is a high melting point, and most other metals also have high melting points. The melting point of ice, in comparison, is much lower at 0°C. Many substances have even lower melting points. For example, the melting point of oxygen is -222°C.",
+          "substitution_tier": "exact",
+          "all_four_models_both_wrong": false,
+          "primary_pred_with_fact": "boiling"
+        }
+      ]
+    },
+    {
+      "dataset": "obqa",
+      "counterfactual_results_available": true,
+      "n_both_wrong_primary": 190,
+      "split_ineligibility_base_rate": {
+        "n_ineligible": 355,
+        "n_split": 500,
+        "rate": 0.71
+      },
+      "enrichment": {
+        "bucket_rate": 0.7473684210526316,
+        "base_rate": 0.71,
+        "risk_ratio": 1.0526315789473684,
+        "interpretation": "ineligibility is at the split base rate -> NOT informative for this dataset"
+      },
+      "setting_c_ineligible": {
+        "count": 142,
+        "percentage_of_both_wrong": 74.74,
+        "also_failed_by_all_four_models": 28,
+        "interpretation": "passage never lexically states the gold answer -> H3 (broken/ill-posed) prior",
+        "ids": [
+          1,
+          2,
+          6,
+          9,
+          13,
+          17,
+          18,
+          19,
+          37,
+          39,
+          41,
+          46,
+          60,
+          64,
+          71,
+          72,
+          73,
+          75,
+          86,
+          87,
+          91,
+          92,
+          95,
+          98,
+          100,
+          101,
+          110,
+          111,
+          115,
+          116,
+          117,
+          122,
+          125,
+          128,
+          130,
+          136,
+          137,
+          138,
+          139,
+          141,
+          142,
+          143,
+          156,
+          157,
+          162,
+          166,
+          172,
+          175,
+          178,
+          179,
+          184,
+          195,
+          196,
+          199,
+          204,
+          205,
+          211,
+          212,
+          213,
+          216,
+          219,
+          223,
+          232,
+          235,
+          237,
+          239,
+          241,
+          243,
+          246,
+          254,
+          256,
+          258,
+          260,
+          267,
+          286,
+          292,
+          294,
+          300,
+          302,
+          308,
+          317,
+          320,
+          322,
+          323,
+          326,
+          327,
+          330,
+          331,
+          333,
+          335,
+          349,
+          355,
+          356,
+          364,
+          369,
+          373,
+          374,
+          377,
+          378,
+          380,
+          381,
+          382,
+          384,
+          385,
+          387,
+          392,
+          393,
+          397,
+          401,
+          402,
+          410,
+          411,
+          412,
+          413,
+          415,
+          417,
+          419,
+          420,
+          424,
+          425,
+          428,
+          429,
+          431,
+          434,
+          435,
+          436,
+          440,
+          441,
+          450,
+          451,
+          452,
+          455,
+          463,
+          466,
+          472,
+          474,
+          475,
+          482,
+          485,
+          487,
+          490,
+          499
+        ]
+      },
+      "setting_c_eligible": {
+        "count": 48,
+        "percentage_of_both_wrong": 25.26,
+        "also_failed_by_all_four_models": 9,
+        "interpretation": "passage does state the answer, yet the model still failed -> H1 (hard) or H2 (mis-key)",
+        "ids": [
+          34,
+          47,
+          76,
+          81,
+          84,
+          88,
+          107,
+          126,
+          159,
+          165,
+          185,
+          186,
+          202,
+          203,
+          221,
+          226,
+          228,
+          245,
+          249,
+          259,
+          272,
+          282,
+          283,
+          306,
+          309,
+          310,
+          315,
+          329,
+          336,
+          347,
+          363,
+          386,
+          388,
+          394,
+          399,
+          403,
+          408,
+          422,
+          427,
+          446,
+          460,
+          462,
+          471,
+          473,
+          479,
+          483,
+          491,
+          493
+        ]
+      },
+      "examples_ineligible": [
+        {
+          "id": 1,
+          "question": "There is most likely going to be fog around:",
+          "gold_answer": "a marsh",
+          "options": [
+            "a marsh",
+            "a tundra",
+            "the plains",
+            "a desert"
+          ],
+          "passage": "fog is formed by water vapor condensing in the air",
+          "substitution_tier": "none",
+          "all_four_models_both_wrong": true,
+          "primary_pred_with_fact": "the plains"
+        },
+        {
+          "id": 2,
+          "question": "Predators eat",
+          "gold_answer": "bunnies",
+          "options": [
+            "lions",
+            "humans",
+            "bunnies",
+            "grass"
+          ],
+          "passage": "predators eat prey",
+          "substitution_tier": "none",
+          "all_four_models_both_wrong": false,
+          "primary_pred_with_fact": "lions"
+        },
+        {
+          "id": 6,
+          "question": "an electric car contains a motor that runs on",
+          "gold_answer": "ions",
+          "options": [
+            "gas",
+            "hydrogen",
+            "ions",
+            "plutonium"
+          ],
+          "passage": "an electric car contains an electric motor",
+          "substitution_tier": "none",
+          "all_four_models_both_wrong": true,
+          "primary_pred_with_fact": "hydrogen"
+        },
+        {
+          "id": 9,
+          "question": "The main component in dirt is",
+          "gold_answer": "broken stones",
+          "options": [
+            "microorganisms",
+            "broken stones",
+            "pollution",
+            "bacteria"
+          ],
+          "passage": "soil is formed by rocks eroding",
+          "substitution_tier": "none",
+          "all_four_models_both_wrong": true,
+          "primary_pred_with_fact": "microorganisms"
+        },
+        {
+          "id": 13,
+          "question": "The chance of wildfires is increased by",
+          "gold_answer": "parched foliage",
+          "options": [
+            "parched foliage",
+            "torrential rain",
+            "lush foliage",
+            "careful fire maintenance"
+          ],
+          "passage": "drought may cause wildfires",
+          "substitution_tier": "none",
+          "all_four_models_both_wrong": false,
+          "primary_pred_with_fact": "torrential rain"
+        }
+      ],
+      "examples_eligible": [
+        {
+          "id": 34,
+          "question": "What explains the characteristic lunar formations?",
+          "gold_answer": "many collisions that have occured",
+          "options": [
+            "remains of ancient ponds",
+            "many collisions that have occured",
+            "volcanic explosions over millions of years",
+            "sink holes due to the moons porous nature"
+          ],
+          "passage": "the lunar surface contains many craters",
+          "substitution_tier": "partial",
+          "all_four_models_both_wrong": false,
+          "primary_pred_with_fact": "volcanic explosions over millions of years"
+        },
+        {
+          "id": 47,
+          "question": "A balloon is filled with helium for a party. After the party, the balloons are left in the living room, where a fireplace is heating the room. The balloons",
+          "gold_answer": "expand",
+          "options": [
+            "expand",
+            "melt",
+            "shrink",
+            "fall"
+          ],
+          "passage": "as heat increases , a flexible container containing gas will expand",
+          "substitution_tier": "exact",
+          "all_four_models_both_wrong": false,
+          "primary_pred_with_fact": "melt"
+        },
+        {
+          "id": 76,
+          "question": "Plant growth may cause",
+          "gold_answer": "an uptick in the number of leaves",
+          "options": [
+            "an uptick in the number of leaves",
+            "a surge in leaf disease",
+            "a gradual decrease in leaves",
+            "a rapid decline of the leaves"
+          ],
+          "passage": "when a plant grows , the number of the leaves of that plant may increase",
+          "substitution_tier": "partial",
+          "all_four_models_both_wrong": false,
+          "primary_pred_with_fact": "a gradual decrease in leaves"
+        },
+        {
+          "id": 81,
+          "question": "are explosions safe?",
+          "gold_answer": "they could harm living things",
+          "options": [
+            "they could harm living things",
+            "they are very safe",
+            "they cause nothing serious",
+            "none of these"
+          ],
+          "passage": "explosions can cause harm to an organism",
+          "substitution_tier": "partial",
+          "all_four_models_both_wrong": false,
+          "primary_pred_with_fact": "none of these"
+        },
+        {
+          "id": 84,
+          "question": "Ocean water contains",
+          "gold_answer": "copious amounts of the combination of Na and Cl",
+          "options": [
+            "copious amounts of seltzer",
+            "scant amounts of sodium chloride",
+            "scant amounts of carbonation",
+            "copious amounts of the combination of Na and Cl"
+          ],
+          "passage": "the ocean contains large amounts of salt water",
+          "substitution_tier": "partial",
+          "all_four_models_both_wrong": true,
+          "primary_pred_with_fact": "scant amounts of carbonation"
+        }
+      ]
+    }
+  ]
+}

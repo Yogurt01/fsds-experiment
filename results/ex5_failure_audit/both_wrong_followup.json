@@ -1,0 +1,85 @@
+{
+  "_provenance": {
+    "what": "First-pass manual triage of the two actionable leads produced by the Setting-C ineligibility join (code/rq1_audit/bucket_diagnostics.py).",
+    "annotator": "second annotator (Claude, this session), single pass, no second rater, no kappa",
+    "status": "first-pass categorisation intended to scope the full re-annotation, NOT a substitute for it"
+  },
+  "sciq_h3_screen": {
+    "definition": "both_wrong (primary model) AND Setting-C-ineligible (substitution_tier == 'none'). Risk ratio 4.30 vs the split base rate.",
+    "n": 7,
+    "headline": "Zero mis-keys of the SciQ #38 type. Five of seven are passage/question mismatches - the support paragraph is about an unrelated topic entirely - and two are orthographic mismatches on an otherwise on-topic passage.",
+    "quantitative_confirmation": {
+      "metric": "share of question content words present in the passage",
+      "sciq_split_mean": 0.838,
+      "sciq_split_median": 0.889,
+      "sciq_split_5th_percentile": 0.500,
+      "the_five_mismatches": 0.000,
+      "note": "the five mismatch items share literally no content word with their passage"
+    },
+    "verdicts": {
+      "306": {"verdict": "H3_passage_question_mismatch", "overlap": 0.0, "detail": "Question asks what reptile skin is covered in; the passage is about the cell cycle and mitosis."},
+      "598": {"verdict": "H3_passage_question_mismatch", "overlap": 0.0, "detail": "Question asks about simple diffusion through lipids; the passage is about blood disorders."},
+      "655": {"verdict": "H3_passage_question_mismatch", "overlap": 0.0, "detail": "Question asks what moving charged particles generate; the passage is about paint toxicity and disposal."},
+      "739": {"verdict": "H3_passage_question_mismatch", "overlap": 0.0, "detail": "Question asks about sickle-cell disease; the passage is about metalloids."},
+      "746": {"verdict": "H3_passage_question_mismatch", "overlap": 0.0, "detail": "Question asks what kPa/atm/mmHg measure; the passage is about lymph organs."},
+      "33":  {"verdict": "H3_orthographic_corruption_in_passage", "overlap": 0.857, "detail": "On-topic passage, but it misspells the gold answer as 'flight-or-flight' (for 'fight-or-flight'), so the locator finds no span. Key is correct; the material is corrupted."},
+      "760": {"verdict": "H3_orthographic_corruption_in_option", "overlap": 1.0, "detail": "On-topic passage says 'theropods'; the gold OPTION is misspelled 'therapods'. Key is substantively correct; the option string is corrupted."}
+    },
+    "verdict_counts": {
+      "H3_passage_question_mismatch": 5,
+      "H3_orthographic_corruption_in_passage": 1,
+      "H3_orthographic_corruption_in_option": 1,
+      "H2_mis_keyed_gold": 0,
+      "H1_hard_but_correctly_keyed": 0
+    }
+  },
+  "obqa_eligible_complement": {
+    "definition": "both_wrong (primary model) AND Setting-C-eligible: the fact DOES lexically contain the gold answer, and the model still failed in both settings. Ineligibility cannot explain these.",
+    "n": 48,
+    "coverage": "all 48 categorised (no sampling)",
+    "categories": {
+      "extraction_failure": {
+        "definition": "The fact states the answer directly or via a one-step synonym; a competent reader would simply extract it.",
+        "count": 20,
+        "ids": [47, 76, 88, 107, 186, 202, 226, 249, 283, 309, 336, 347, 363, 386, 403, 422, 446, 462, 473, 491],
+        "examples": [
+          "#363 fact 'polar bears live in cold environments', gold 'frosty environments' - model answered 'warm environments', the exact opposite",
+          "#386 fact 'a desert environment usually has a lot of sunlight', gold 'deserts get surplus sun' - model answered 'deserts get little sun'",
+          "#473 fact 'live birth means developing inside the mother instead of an egg' - model chose 'sea turtles emerging from their shells', an egg example"
+        ]
+      },
+      "multi_hop_gap": {
+        "definition": "The fact is a general rule; the question asks for an instance, so the fact must be composed with a second piece of knowledge.",
+        "count": 10,
+        "ids": [34, 84, 126, 221, 245, 329, 388, 427, 460, 493],
+        "examples": [
+          "#126 fact 'plant cells can perform photosynthesis' -> requires knowing a cabbage is a plant",
+          "#388 fact 'a paper clip is often made of ferromagnetic metals' -> requires inferring that the object holding paper is a paper clip",
+          "#493 gold is 'a river named after the 38th state to join the union' -> requires knowing Colorado was the 38th state"
+        ]
+      },
+      "distractor_pull": {
+        "definition": "A distractor is more lexically or topically attractive than the gold; the fact's own vocabulary often points at the distractor.",
+        "count": 8,
+        "ids": [159, 185, 272, 282, 310, 394, 479, 483],
+        "examples": [
+          "#159 fact mentions light, but the question 'green parts absorb' pulls the model to 'carbon dioxide' via photosynthesis association",
+          "#310 fact says 'motion and heat' - the model picks the 'heat' distractor over the gold 'calories'",
+          "#394 options are removed/renewed/retrieved/restored - a near-homograph cluster; the model picks the wrong polarity"
+        ]
+      },
+      "other_item_defect": {
+        "definition": "Failures attributable to the item rather than to the model's reading.",
+        "count": 10,
+        "ids": [81, 165, 203, 228, 259, 306, 315, 399, 408, 471],
+        "breakdown": {
+          "meta_option_all_or_none_of_these": {"count": 7, "ids": [81, 165, 259, 306, 315, 399, 471], "detail": "The model is pulled to 'all of these' / 'none of these', which are structurally unlike the other options."},
+          "negated_stem": {"count": 1, "ids": [203], "detail": "'Photosynthesis means plants are unable to' - the model answers the un-negated question."},
+          "contested_key": {"count": 1, "ids": [228], "detail": "Gold 'insects' vs the model's 'invertebrates' for a small reptile's diet; insects are a subset of invertebrates, so the model's answer is arguably at least as defensible."},
+          "corrupted_fact": {"count": 1, "ids": [408], "detail": "fact reads 'water is in the solid state , called ice , for temperatures between 0 and 0 F' - a degenerate range."}
+        }
+      }
+    },
+    "headline": "42 of 48 (87.5%) are model-side failures - extraction, composition, or distractor pull - not item defects. Only 10 show item-side problems and only 1 is a contested key. The dominant single cause is extraction failure (20/48), where the fact states the answer and the model still answers the opposite."
+  }
+}

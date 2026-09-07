@@ -1,0 +1,159 @@
+2026-09-04 10:52:22 | INFO     | free_response | ====================================================================================================
+2026-09-04 10:52:22 | INFO     | free_response | OPTION-FREE FREE-RESPONSE EVALUATION
+2026-09-04 10:52:22 | INFO     | free_response | ====================================================================================================
+2026-09-04 10:52:22 | INFO     | free_response | Model    : /home/nghben/Downloads/research/fsds/experiment/models/Qwen3-4B-Instruct-2507
+2026-09-04 10:52:22 | INFO     | free_response | Cells    : A_prime, B_prime
+2026-09-04 10:52:22 | INFO     | free_response | Datasets : sciq, obqa
+2026-09-04 10:52:22 | INFO     | free_response | Limit    : 25
+2026-09-04 10:52:22 | INFO     | free_response | Decoding : greedy, max_new_tokens=24
+2026-09-04 10:52:24 | INFO     | free_response | Loading tokenizer from /home/nghben/Downloads/research/fsds/experiment/models/Qwen3-4B-Instruct-2507
+2026-09-04 10:52:31 | INFO     | free_response | VRAM after load: 2.66 GB of 3.68 GB
+2026-09-04 10:52:31 | INFO     | free_response |   judge verdict tokens: {'CORRECT': 52320, 'INCORRECT': 38439}
+2026-09-04 10:52:31 | INFO     | free_response | 
+2026-09-04 10:52:31 | INFO     | free_response | ====================================================================================================
+2026-09-04 10:52:31 | INFO     | free_response | DATASET SCIQ -- 25 samples, cells A_prime, B_prime
+2026-09-04 10:52:31 | INFO     | free_response | ====================================================================================================
+2026-09-04 10:52:33 | DEBUG    | free_response | id=0 cell=A_prime gold='oxidants' pred='oxidizing agents' stage=judge correct=True
+2026-09-04 10:52:33 | DEBUG    | free_response | id=0 cell=B_prime gold='oxidants' pred='oxidants' stage=strict correct=True
+2026-09-04 10:52:33 | DEBUG    | free_response | id=1 cell=A_prime gold='clone' pred='Clone' stage=strict correct=True
+2026-09-04 10:52:34 | DEBUG    | free_response | id=1 cell=B_prime gold='clone' pred='clone' stage=strict correct=True
+2026-09-04 10:52:34 | INFO     | free_response |   [  2/ 25] A_prime 1.00  B_prime 1.00 | 1.21s/item | ETA 0.5 min
+2026-09-04 10:52:34 | DEBUG    | free_response | id=2 cell=A_prime gold='backbone' pred='Vertebrae' stage=judge correct=True
+2026-09-04 10:52:35 | DEBUG    | free_response | id=2 cell=B_prime gold='backbone' pred='backbone' stage=strict correct=True
+2026-09-04 10:52:35 | DEBUG    | free_response | id=3 cell=A_prime gold='elevation' pred='elevation' stage=strict correct=True
+2026-09-04 10:52:35 | DEBUG    | free_response | id=3 cell=B_prime gold='elevation' pred='Elevation' stage=strict correct=True
+2026-09-04 10:52:35 | INFO     | free_response |   [  4/ 25] A_prime 1.00  B_prime 1.00 | 0.93s/item | ETA 0.3 min
+2026-09-04 10:52:36 | DEBUG    | free_response | id=4 cell=A_prime gold='tree rings' pred='fossil records' stage=judge correct=False
+2026-09-04 10:52:36 | DEBUG    | free_response | id=4 cell=B_prime gold='tree rings' pred='Tree rings' stage=strict correct=True
+2026-09-04 10:52:36 | DEBUG    | free_response | id=5 cell=A_prime gold='plant hormones' pred='Pheromones' stage=judge correct=False
+2026-09-04 10:52:37 | DEBUG    | free_response | id=5 cell=B_prime gold='plant hormones' pred='Plant hormones' stage=strict correct=True
+2026-09-04 10:52:37 | INFO     | free_response |   [  6/ 25] A_prime 0.67  B_prime 1.00 | 0.87s/item | ETA 0.3 min
+2026-09-04 10:52:37 | DEBUG    | free_response | id=6 cell=A_prime gold='sperm and eggs' pred='gametes' stage=judge correct=True
+2026-09-04 10:52:38 | DEBUG    | free_response | id=6 cell=B_prime gold='sperm and eggs' pred='sperm and eggs' stage=strict correct=True
+2026-09-04 10:52:38 | DEBUG    | free_response | id=7 cell=A_prime gold='deciduous' pred='Oak' stage=judge correct=False
+2026-09-04 10:52:39 | DEBUG    | free_response | id=7 cell=B_prime gold='deciduous' pred='Deciduous trees' stage=judge correct=True
+2026-09-04 10:52:39 | INFO     | free_response |   [  8/ 25] A_prime 0.62  B_prime 1.00 | 0.91s/item | ETA 0.3 min
+2026-09-04 10:52:39 | DEBUG    | free_response | id=8 cell=A_prime gold='highly viscous' pred='High viscosity' stage=judge correct=True
+2026-09-04 10:52:40 | DEBUG    | free_response | id=8 cell=B_prime gold='highly viscous' pred='high viscosity' stage=judge correct=True
+2026-09-04 10:52:40 | DEBUG    | free_response | id=9 cell=A_prime gold='regular array' pred='lattice structure' stage=judge correct=True
+2026-09-04 10:52:41 | DEBUG    | free_response | id=9 cell=B_prime gold='regular array' pred='regular array' stage=strict correct=True
+2026-09-04 10:52:41 | INFO     | free_response |   [ 10/ 25] A_prime 0.70  B_prime 1.00 | 0.93s/item | ETA 0.2 min
+2026-09-04 10:52:41 | DEBUG    | free_response | id=10 cell=A_prime gold='about 2 km' pred='A few kilometers' stage=judge correct=False
+2026-09-04 10:52:42 | DEBUG    | free_response | id=10 cell=B_prime gold='about 2 km' pred='2 km' stage=judge correct=True
+2026-09-04 10:52:42 | DEBUG    | free_response | id=11 cell=A_prime gold='insects' pred='arthropods' stage=judge correct=False
+2026-09-04 10:52:43 | DEBUG    | free_response | id=11 cell=B_prime gold='insects' pred='insects' stage=strict correct=True
+2026-09-04 10:52:43 | INFO     | free_response |   [ 12/ 25] A_prime 0.58  B_prime 1.00 | 0.93s/item | ETA 0.2 min
+2026-09-04 10:52:43 | DEBUG    | free_response | id=12 cell=A_prime gold='sediments' pred='sediment' stage=normalised correct=True
+2026-09-04 10:52:43 | DEBUG    | free_response | id=12 cell=B_prime gold='sediments' pred='sediments' stage=strict correct=True
+2026-09-04 10:52:43 | DEBUG    | free_response | id=13 cell=A_prime gold='male reproductive system' pred='reproductive system' stage=judge correct=True
+2026-09-04 10:52:44 | DEBUG    | free_response | id=13 cell=B_prime gold='male reproductive system' pred='reproductive system' stage=judge correct=True
+2026-09-04 10:52:44 | INFO     | free_response |   [ 14/ 25] A_prime 0.64  B_prime 1.00 | 0.90s/item | ETA 0.2 min
+2026-09-04 10:52:44 | DEBUG    | free_response | id=14 cell=A_prime gold='photosynthesis' pred='photosynthesis' stage=strict correct=True
+2026-09-04 10:52:44 | DEBUG    | free_response | id=14 cell=B_prime gold='photosynthesis' pred='photosynthesis' stage=strict correct=True
+2026-09-04 10:52:45 | DEBUG    | free_response | id=15 cell=A_prime gold='electroluminescence' pred='Gas discharge' stage=judge correct=True
+2026-09-04 10:52:45 | DEBUG    | free_response | id=15 cell=B_prime gold='electroluminescence' pred='Electroluminescence' stage=strict correct=True
+2026-09-04 10:52:45 | INFO     | free_response |   [ 16/ 25] A_prime 0.69  B_prime 1.00 | 0.87s/item | ETA 0.1 min
+2026-09-04 10:52:46 | DEBUG    | free_response | id=16 cell=A_prime gold='wings' pred='feathers' stage=judge correct=False
+2026-09-04 10:52:46 | DEBUG    | free_response | id=16 cell=B_prime gold='wings' pred='wings' stage=strict correct=True
+2026-09-04 10:52:47 | DEBUG    | free_response | id=17 cell=A_prime gold='oxygen' pred='cellular respiration' stage=judge correct=False
+2026-09-04 10:52:47 | DEBUG    | free_response | id=17 cell=B_prime gold='oxygen' pred='oxygen' stage=strict correct=True
+2026-09-04 10:52:47 | INFO     | free_response |   [ 18/ 25] A_prime 0.61  B_prime 1.00 | 0.86s/item | ETA 0.1 min
+2026-09-04 10:52:47 | DEBUG    | free_response | id=18 cell=A_prime gold='feldspar and quartz' pred='quartz, feldspar' stage=judge correct=True
+2026-09-04 10:52:48 | DEBUG    | free_response | id=18 cell=B_prime gold='feldspar and quartz' pred='Feldspar and quartz' stage=strict correct=True
+2026-09-04 10:52:48 | DEBUG    | free_response | id=19 cell=A_prime gold='humidity' pred='Humidity' stage=strict correct=True
+2026-09-04 10:52:48 | DEBUG    | free_response | id=19 cell=B_prime gold='humidity' pred='Humidity' stage=strict correct=True
+2026-09-04 10:52:48 | INFO     | free_response |   [ 20/ 25] A_prime 0.65  B_prime 1.00 | 0.84s/item | ETA 0.1 min
+2026-09-04 10:52:48 | DEBUG    | free_response | id=20 cell=A_prime gold='diffusion' pred='diffusion' stage=strict correct=True
+2026-09-04 10:52:49 | DEBUG    | free_response | id=20 cell=B_prime gold='diffusion' pred='diffusion' stage=strict correct=True
+2026-09-04 10:52:49 | DEBUG    | free_response | id=21 cell=A_prime gold='plant' pred='plant cell' stage=judge correct=True
+2026-09-04 10:52:50 | DEBUG    | free_response | id=21 cell=B_prime gold='plant' pred='plant cells' stage=judge correct=True
+2026-09-04 10:52:50 | INFO     | free_response |   [ 22/ 25] A_prime 0.68  B_prime 1.00 | 0.85s/item | ETA 0.0 min
+2026-09-04 10:52:51 | DEBUG    | free_response | id=22 cell=A_prime gold='goosebumps' pred='Piloerection' stage=judge correct=True
+2026-09-04 10:52:51 | DEBUG    | free_response | id=22 cell=B_prime gold='goosebumps' pred='Goosebumps' stage=strict correct=True
+2026-09-04 10:52:51 | DEBUG    | free_response | id=23 cell=A_prime gold='bone fractures' pred='Fractures' stage=judge correct=True
+2026-09-04 10:52:52 | DEBUG    | free_response | id=23 cell=B_prime gold='bone fractures' pred='fractures' stage=judge correct=True
+2026-09-04 10:52:52 | INFO     | free_response |   [ 24/ 25] A_prime 0.71  B_prime 1.00 | 0.86s/item | ETA 0.0 min
+2026-09-04 10:52:52 | DEBUG    | free_response | id=24 cell=A_prime gold='between atoms' pred='Chemical bonds' stage=judge correct=True
+2026-09-04 10:52:53 | DEBUG    | free_response | id=24 cell=B_prime gold='between atoms' pred='in atomic bonds' stage=judge correct=True
+2026-09-04 10:52:53 | INFO     | free_response |   [ 25/ 25] A_prime 0.72  B_prime 1.00 | 0.87s/item | ETA 0.0 min
+2026-09-04 10:52:53 | INFO     | free_response |   wrote /home/nghben/Downloads/research/fsds/experiment/results/free_response/results_free_response_sciq_pilot_bidir.json
+2026-09-04 10:52:53 | INFO     | free_response | 
+2026-09-04 10:52:53 | INFO     | free_response | ====================================================================================================
+2026-09-04 10:52:53 | INFO     | free_response | DATASET OBQA -- 25 samples, cells A_prime, B_prime
+2026-09-04 10:52:53 | INFO     | free_response | ====================================================================================================
+2026-09-04 10:52:54 | DEBUG    | free_response | id=0 cell=A_prime gold='quit eating lunch out' pred='cut back on expenses' stage=judge correct=True
+2026-09-04 10:52:54 | DEBUG    | free_response | id=0 cell=B_prime gold='quit eating lunch out' pred='use fewer resources' stage=judge correct=False
+2026-09-04 10:52:55 | DEBUG    | free_response | id=1 cell=A_prime gold='a marsh' pred='dew point' stage=judge correct=False
+2026-09-04 10:52:55 | DEBUG    | free_response | id=1 cell=B_prime gold='a marsh' pred='dew point' stage=judge correct=False
+2026-09-04 10:52:55 | INFO     | free_response |   [  2/ 25] A_prime 0.50  B_prime 0.00 | 1.20s/item | ETA 0.5 min
+2026-09-04 10:52:56 | DEBUG    | free_response | id=2 cell=A_prime gold='bunnies' pred='prey' stage=judge correct=False
+2026-09-04 10:52:56 | DEBUG    | free_response | id=2 cell=B_prime gold='bunnies' pred='prey' stage=judge correct=False
+2026-09-04 10:52:57 | DEBUG    | free_response | id=3 cell=A_prime gold='parts may break the concrete' pred='root pressure' stage=judge correct=False
+2026-09-04 10:52:58 | DEBUG    | free_response | id=3 cell=B_prime gold='parts may break the concrete' pred='sidewalk cracks' stage=judge correct=True
+2026-09-04 10:52:58 | INFO     | free_response |   [  4/ 25] A_prime 0.25  B_prime 0.25 | 1.16s/item | ETA 0.4 min
+2026-09-04 10:52:58 | DEBUG    | free_response | id=4 cell=A_prime gold='electrical conductors' pred='electric batteries' stage=judge correct=False
+2026-09-04 10:52:58 | DEBUG    | free_response | id=4 cell=B_prime gold='electrical conductors' pred='electrical conductor' stage=normalised correct=True
+2026-09-04 10:52:59 | DEBUG    | free_response | id=5 cell=A_prime gold='carbon' pred='carbon dioxide' stage=judge correct=False
+2026-09-04 10:52:59 | DEBUG    | free_response | id=5 cell=B_prime gold='carbon' pred='carbon dioxide' stage=judge correct=False
+2026-09-04 10:52:59 | INFO     | free_response |   [  6/ 25] A_prime 0.17  B_prime 0.33 | 1.06s/item | ETA 0.3 min
+2026-09-04 10:53:00 | DEBUG    | free_response | id=6 cell=A_prime gold='ions' pred='electricity' stage=judge correct=False
+2026-09-04 10:53:00 | DEBUG    | free_response | id=6 cell=B_prime gold='ions' pred='electricity' stage=judge correct=False
+2026-09-04 10:53:01 | DEBUG    | free_response | id=7 cell=A_prime gold='human planet rotation' pred='noon' stage=judge correct=False
+2026-09-04 10:53:02 | DEBUG    | free_response | id=7 cell=B_prime gold='human planet rotation' pred="Sun is directly overhead at noon due to Earth's axial tilt and rotation" stage=judge correct=True
+2026-09-04 10:53:02 | INFO     | free_response |   [  8/ 25] A_prime 0.12  B_prime 0.38 | 1.11s/item | ETA 0.3 min
+2026-09-04 10:53:02 | DEBUG    | free_response | id=8 cell=A_prime gold='October' pred='winter solstice' stage=judge correct=False
+2026-09-04 10:53:03 | DEBUG    | free_response | id=8 cell=B_prime gold='October' pred='December 21st' stage=judge correct=False
+2026-09-04 10:53:03 | DEBUG    | free_response | id=9 cell=A_prime gold='broken stones' pred='silt' stage=judge correct=False
+2026-09-04 10:53:04 | DEBUG    | free_response | id=9 cell=B_prime gold='broken stones' pred='rocks' stage=judge correct=True
+2026-09-04 10:53:04 | INFO     | free_response |   [ 10/ 25] A_prime 0.10  B_prime 0.40 | 1.10s/item | ETA 0.3 min
+2026-09-04 10:53:05 | DEBUG    | free_response | id=10 cell=A_prime gold='a town' pred='oxygen-rich environments' stage=judge correct=False
+2026-09-04 10:53:05 | DEBUG    | free_response | id=10 cell=B_prime gold='a town' pred='large groups' stage=judge correct=False
+2026-09-04 10:53:05 | DEBUG    | free_response | id=11 cell=A_prime gold='liquid' pred='water' stage=judge correct=True
+2026-09-04 10:53:06 | DEBUG    | free_response | id=11 cell=B_prime gold='liquid' pred='water' stage=judge correct=True
+2026-09-04 10:53:06 | INFO     | free_response |   [ 12/ 25] A_prime 0.17  B_prime 0.42 | 1.08s/item | ETA 0.2 min
+2026-09-04 10:53:06 | DEBUG    | free_response | id=12 cell=A_prime gold='a gecko' pred='small mammals' stage=judge correct=True
+2026-09-04 10:53:07 | DEBUG    | free_response | id=12 cell=B_prime gold='a gecko' pred='a lizard' stage=judge correct=True
+2026-09-04 10:53:07 | DEBUG    | free_response | id=13 cell=A_prime gold='parched foliage' pred='climate change' stage=judge correct=False
+2026-09-04 10:53:08 | DEBUG    | free_response | id=13 cell=B_prime gold='parched foliage' pred='drought' stage=judge correct=True
+2026-09-04 10:53:08 | INFO     | free_response |   [ 14/ 25] A_prime 0.21  B_prime 0.50 | 1.07s/item | ETA 0.2 min
+2026-09-04 10:53:09 | DEBUG    | free_response | id=14 cell=A_prime gold='powering the lights in a home' pred='reduces net greenhouse gas emissions' stage=judge correct=False
+2026-09-04 10:53:09 | DEBUG    | free_response | id=14 cell=B_prime gold='powering the lights in a home' pred='renewable energy' stage=judge correct=False
+2026-09-04 10:53:10 | DEBUG    | free_response | id=15 cell=A_prime gold='gasoline will be needed less' pred='demand for gasoline increases' stage=judge correct=False
+2026-09-04 10:53:10 | DEBUG    | free_response | id=15 cell=B_prime gold='gasoline will be needed less' pred='gasoline use will decrease' stage=judge correct=True
+2026-09-04 10:53:10 | INFO     | free_response |   [ 16/ 25] A_prime 0.19  B_prime 0.50 | 1.08s/item | ETA 0.2 min
+2026-09-04 10:53:11 | DEBUG    | free_response | id=16 cell=A_prime gold='panels collecting sunlight' pred='solar panels' stage=judge correct=True
+2026-09-04 10:53:12 | DEBUG    | free_response | id=16 cell=B_prime gold='panels collecting sunlight' pred='solar panels' stage=judge correct=True
+2026-09-04 10:53:12 | DEBUG    | free_response | id=17 cell=A_prime gold='Bay of Bengal' pred='Warm, shallow oceans' stage=judge correct=False
+2026-09-04 10:53:13 | DEBUG    | free_response | id=17 cell=B_prime gold='Bay of Bengal' pred='ocean' stage=judge correct=False
+2026-09-04 10:53:13 | INFO     | free_response |   [ 18/ 25] A_prime 0.22  B_prime 0.50 | 1.09s/item | ETA 0.1 min
+2026-09-04 10:53:13 | DEBUG    | free_response | id=18 cell=A_prime gold='weasel' pred='Active transport' stage=judge correct=True
+2026-09-04 10:53:14 | DEBUG    | free_response | id=18 cell=B_prime gold='weasel' pred='an animal' stage=judge correct=False
+2026-09-04 10:53:14 | DEBUG    | free_response | id=19 cell=A_prime gold='moth' pred='herbivore' stage=judge correct=True
+2026-09-04 10:53:15 | DEBUG    | free_response | id=19 cell=B_prime gold='moth' pred='herbivore' stage=judge correct=True
+2026-09-04 10:53:15 | INFO     | free_response |   [ 20/ 25] A_prime 0.30  B_prime 0.50 | 1.09s/item | ETA 0.1 min
+2026-09-04 10:53:15 | DEBUG    | free_response | id=20 cell=A_prime gold='Hanoi' pred='the coast' stage=judge correct=False
+2026-09-04 10:53:16 | DEBUG    | free_response | id=20 cell=B_prime gold='Hanoi' pred='humidity' stage=judge correct=False
+2026-09-04 10:53:16 | DEBUG    | free_response | id=21 cell=A_prime gold='gasoline' pred='plastics' stage=judge correct=False
+2026-09-04 10:53:17 | DEBUG    | free_response | id=21 cell=B_prime gold='gasoline' pred='fossil fuels' stage=judge correct=False
+2026-09-04 10:53:17 | INFO     | free_response |   [ 22/ 25] A_prime 0.27  B_prime 0.45 | 1.08s/item | ETA 0.1 min
+2026-09-04 10:53:17 | DEBUG    | free_response | id=22 cell=A_prime gold='keeping warm' pred='Insulation and waterproofing' stage=judge correct=True
+2026-09-04 10:53:18 | DEBUG    | free_response | id=22 cell=B_prime gold='keeping warm' pred='keeping warm' stage=strict correct=True
+2026-09-04 10:53:18 | DEBUG    | free_response | id=23 cell=A_prime gold='Lower Life Expectancy in Countries' pred='resource depletion' stage=judge correct=False
+2026-09-04 10:53:19 | DEBUG    | free_response | id=23 cell=B_prime gold='Lower Life Expectancy in Countries' pred='ecosystem imbalance' stage=judge correct=False
+2026-09-04 10:53:19 | INFO     | free_response |   [ 24/ 25] A_prime 0.29  B_prime 0.46 | 1.07s/item | ETA 0.0 min
+2026-09-04 10:53:19 | DEBUG    | free_response | id=24 cell=A_prime gold='summon a brilliant wave of color' pred='refract and reflect light' stage=judge correct=False
+2026-09-04 10:53:20 | DEBUG    | free_response | id=24 cell=B_prime gold='summon a brilliant wave of color' pred='refract light' stage=judge correct=False
+2026-09-04 10:53:20 | INFO     | free_response |   [ 25/ 25] A_prime 0.28  B_prime 0.44 | 1.07s/item | ETA 0.0 min
+2026-09-04 10:53:20 | INFO     | free_response |   wrote /home/nghben/Downloads/research/fsds/experiment/results/free_response/results_free_response_obqa_pilot_bidir.json
+2026-09-04 10:53:20 | INFO     | free_response | 
+2026-09-04 10:53:20 | INFO     | free_response | ====================================================================================================
+2026-09-04 10:53:20 | INFO     | free_response | SUMMARY -- accuracy by matching tier
+2026-09-04 10:53:20 | INFO     | free_response | ====================================================================================================
+2026-09-04 10:53:20 | INFO     | free_response |   data   cell          n    strict   normalised       BAND [low, high]   ->judge    flips
+2026-09-04 10:53:20 | INFO     | free_response |   sciq   A_prime      25     0.200        0.240         [0.680, 0.800]        19    0.158
+2026-09-04 10:53:20 | INFO     | free_response |   sciq   B_prime      25     0.720        0.720         [1.000, 1.000]         7    0.000
+2026-09-04 10:53:20 | INFO     | free_response |   obqa   A_prime      25     0.000        0.000         [0.080, 0.320]        25    0.240
+2026-09-04 10:53:20 | INFO     | free_response |   obqa   B_prime      25     0.040        0.080         [0.280, 0.640]        23    0.391
+2026-09-04 10:53:20 | INFO     | free_response |   sciq   A' relative to its own B' ceiling: 0.680 / 1.000 = 0.680
+2026-09-04 10:53:20 | INFO     | free_response |   obqa   A' relative to its own B' ceiling: 0.080 / 0.280 = 0.286
+2026-09-04 10:53:20 | INFO     | free_response | Runtime : 1.0 min

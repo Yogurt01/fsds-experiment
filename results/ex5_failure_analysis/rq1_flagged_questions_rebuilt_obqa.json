@@ -1,0 +1,2811 @@
+{
+  "dataset": "obqa",
+  "split_size": 500,
+  "n_flagged": 100,
+  "models": [
+    "google/t5-small-ssm-nq",
+    "Riiid/kda-albert-xlarge-v2-race",
+    "Riiid/kda-mpnet-base-race",
+    "Riiid/kda-scibert-uncased-race"
+  ],
+  "primary_model": "Riiid/kda-mpnet-base-race",
+  "counterfactual_available": true,
+  "criteria": {
+    "C1_kda_cont": "KDA_cont >= 0.7 and primary correct in Setting A",
+    "C1_kda_disc": "KDA_disc_proxy == 1.0 and primary correct in Setting A",
+    "C2_both_correct_conf": "both_correct and P(R^q=1) >= 0.7 on the primary model",
+    "C3_prior_dependent": "ensemble Setting-C class == prior_dependent"
+  },
+  "questions": [
+    {
+      "question_id": 0,
+      "question": "A person wants to start saving money so that they can afford a nice vacation at the end of the year. After looking over their budget and expenses, they decide the best way to save money is to",
+      "options": [
+        "make more phone calls",
+        "quit eating lunch out",
+        "buy less with monopoly money",
+        "have lunch with friends"
+      ],
+      "gold_answer": "quit eating lunch out",
+      "gold_index": 1,
+      "reference_passage": "using less resources usually causes money to be saved",
+      "kda_cont": 0.12749687646342528,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.3304851343287112,
+      "p_rqf_with_fact_ensemble": 0.3358036192405933,
+      "p_rq_without_fact_primary": 0.9417980909347534,
+      "p_rqf_with_fact_primary": 0.977942168712616,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": null,
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 15,
+      "question": "As gasoline costs rise, alternative fuels are being used, which means that",
+      "options": [
+        "wind power will be expensive",
+        "gas costs will rise",
+        "oil costs will be maintained",
+        "gasoline will be needed less"
+      ],
+      "gold_answer": "gasoline will be needed less",
+      "gold_index": 3,
+      "reference_passage": "as the use of alternative fuels increases , the use of gasoline will decrease",
+      "kda_cont": 0.24041112733379935,
+      "kda_disc_proxy": 1.0,
+      "p_rq_without_fact_ensemble": 0.5814585760235786,
+      "p_rqf_with_fact_ensemble": 0.48230293579399586,
+      "p_rq_without_fact_primary": 0.9284881353378296,
+      "p_rqf_with_fact_primary": 0.943687379360199,
+      "detection_flags": [
+        "C1_kda_disc",
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": "context_dependent",
+      "failure_category": "material_not_necessary",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 23,
+      "question": "Overpopulation can cause",
+      "options": [
+        "More fresh water for people to drink",
+        "Lower Life Expectancy in Countries",
+        "More food for more people",
+        "More space for places to people to live"
+      ],
+      "gold_answer": "Lower Life Expectancy in Countries",
+      "gold_index": 1,
+      "reference_passage": "if the population of an organism increases then the ecosystem may become overpopulated with that organism",
+      "kda_cont": 0.15879984124764607,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.36434151214780286,
+      "p_rqf_with_fact_ensemble": 0.3459451402304694,
+      "p_rq_without_fact_primary": 0.9836335778236389,
+      "p_rqf_with_fact_primary": 0.8759201169013977,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": null,
+      "failure_category": "reasoning_shortcut",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 24,
+      "question": "Shining a light through a diamond can",
+      "options": [
+        "make a lot of bright lights shine",
+        "summon a brilliant wave of color",
+        "heat up a room",
+        "make a lot of money"
+      ],
+      "gold_answer": "summon a brilliant wave of color",
+      "gold_index": 1,
+      "reference_passage": "a prism refracts light",
+      "kda_cont": 0.2135262644068321,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.3713610473364497,
+      "p_rqf_with_fact_ensemble": 0.32651467326468264,
+      "p_rq_without_fact_primary": 0.7781224846839905,
+      "p_rqf_with_fact_primary": 0.713025689125061,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": null,
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 27,
+      "question": "what system is needed for a body to get its needed supply of the gas humans breathe in?",
+      "options": [
+        "the circulatory system",
+        "the digestive system",
+        "the school system",
+        "central nervous system"
+      ],
+      "gold_answer": "the circulatory system",
+      "gold_index": 0,
+      "reference_passage": "the circulatory system carries oxygen from the digestive and respiratory systems to the rest of the body",
+      "kda_cont": 0.5185849007963359,
+      "kda_disc_proxy": 0.5,
+      "p_rq_without_fact_ensemble": 0.30882733687758446,
+      "p_rqf_with_fact_ensemble": 0.537530954927206,
+      "p_rq_without_fact_primary": 0.20301823318004608,
+      "p_rqf_with_fact_primary": 0.8307289481163025,
+      "detection_flags": [
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [
+        "gold_in_passage"
+      ],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_rationale": "Which body system supplies oxygen is elementary-curriculum biology; 'the school system' is a joke distractor.",
+      "failure_category_status": "second_annotator_new_admission"
+    },
+    {
+      "question_id": 28,
+      "question": "Every evening a child can look into the night sky and see that the moon is",
+      "options": [
+        "gone",
+        "breaking",
+        "falling",
+        "moving upwards"
+      ],
+      "gold_answer": "moving upwards",
+      "gold_index": 3,
+      "reference_passage": "the moon rising occurs once per day",
+      "kda_cont": 0.27084452896773814,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.38218356668949127,
+      "p_rqf_with_fact_ensemble": 0.3800193201750517,
+      "p_rq_without_fact_primary": 0.743583619594574,
+      "p_rqf_with_fact_primary": 0.9504252076148987,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "option_leakage",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 29,
+      "question": "When it's flying, a plane has no friction with the",
+      "options": [
+        "wings",
+        "ground",
+        "air",
+        "clouds"
+      ],
+      "gold_answer": "ground",
+      "gold_index": 1,
+      "reference_passage": "friction acts to counter the motion of two objects when their surfaces are touching",
+      "kda_cont": 0.20040411444739292,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.38978710398077965,
+      "p_rqf_with_fact_ensemble": 0.2449995670467615,
+      "p_rq_without_fact_primary": 0.8140002489089966,
+      "p_rqf_with_fact_primary": 0.44336867332458496,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": null,
+      "failure_category": "material_not_necessary",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 30,
+      "question": "To grow plants require",
+      "options": [
+        "acid rain",
+        "pesticides",
+        "shafts of sunlight",
+        "moonbeam rays"
+      ],
+      "gold_answer": "shafts of sunlight",
+      "gold_index": 2,
+      "reference_passage": "a plant requires sunlight to grow",
+      "kda_cont": 0.4445496941811867,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.5078190714120865,
+      "p_rqf_with_fact_ensemble": 0.5406325682997704,
+      "p_rq_without_fact_primary": 0.9672102928161621,
+      "p_rqf_with_fact_primary": 0.7480669617652893,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": "context_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 33,
+      "question": "Which of these is a hypothesis?",
+      "options": [
+        "The ice caps will completely melt if global warming continues",
+        "The earth is round",
+        "The earth revolves around the sun",
+        "Gravity causes objects to fall"
+      ],
+      "gold_answer": "The ice caps will completely melt if global warming continues",
+      "gold_index": 0,
+      "reference_passage": "hypothesis means scientific guess about the cause and effect of an event",
+      "kda_cont": 0.20668716928885653,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.39279037853702903,
+      "p_rqf_with_fact_ensemble": 0.4091109046712518,
+      "p_rq_without_fact_primary": 0.9644513726234436,
+      "p_rqf_with_fact_primary": 0.9756189584732056,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "reasoning_shortcut",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 44,
+      "question": "Thermometers",
+      "options": [
+        "can help you monitor a fever",
+        "indicate levels of mercury in the blood",
+        "read exactly at 98.6 degrees",
+        "are used only for babies"
+      ],
+      "gold_answer": "can help you monitor a fever",
+      "gold_index": 0,
+      "reference_passage": "a thermometer is used to measure temperature",
+      "kda_cont": 0.23750945208125177,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.4194632060825825,
+      "p_rqf_with_fact_ensemble": 0.3721857853233814,
+      "p_rq_without_fact_primary": 0.897429347038269,
+      "p_rqf_with_fact_primary": 0.8218867182731628,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "abs_in_distractor"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "reasoning_shortcut",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 48,
+      "question": "Seals are most likely to be found in what type of environment?",
+      "options": [
+        "desert",
+        "arctic",
+        "Mediterranean",
+        "tropical"
+      ],
+      "gold_answer": "arctic",
+      "gold_index": 1,
+      "reference_passage": "arctic animals live in an arctic environment",
+      "kda_cont": 0.5987661397137537,
+      "kda_disc_proxy": 1.0,
+      "p_rq_without_fact_ensemble": 0.2590865223923231,
+      "p_rqf_with_fact_ensemble": 0.6116469502449036,
+      "p_rq_without_fact_primary": 0.48089128732681274,
+      "p_rqf_with_fact_primary": 0.9684408903121948,
+      "detection_flags": [
+        "C1_kda_disc"
+      ],
+      "structural_cues": [
+        "gold_in_passage"
+      ],
+      "counterfactual_class": "context_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 49,
+      "question": "When the eggs hatch, the offspring are",
+      "options": [
+        "killed",
+        "hurt",
+        "born",
+        "cold"
+      ],
+      "gold_answer": "born",
+      "gold_index": 2,
+      "reference_passage": "if an animal hatches from an egg then that animal is born",
+      "kda_cont": 0.18659627928244318,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.3946563731878996,
+      "p_rqf_with_fact_ensemble": 0.38994766119867563,
+      "p_rq_without_fact_primary": 0.9909422993659973,
+      "p_rqf_with_fact_primary": 0.9595943689346313,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "gold_in_passage"
+      ],
+      "counterfactual_class": "unstable_other",
+      "failure_category": "material_not_necessary",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 52,
+      "question": "Overpopulation of an organism can",
+      "options": [
+        "strain the resources of an ecosystem",
+        "cause boundless growth of resources",
+        "lead to extinction of the organism",
+        "cause the ecosystem to flourish"
+      ],
+      "gold_answer": "strain the resources of an ecosystem",
+      "gold_index": 0,
+      "reference_passage": "if the population of an organism increases then the ecosystem may become overpopulated with that organism",
+      "kda_cont": 0.23571705466941395,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.4576138888951391,
+      "p_rqf_with_fact_ensemble": 0.3691563047468662,
+      "p_rq_without_fact_primary": 0.9740479588508606,
+      "p_rqf_with_fact_primary": 0.693321168422699,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": "context_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 53,
+      "question": "To improve health, what is a good strategy?",
+      "options": [
+        "high risk lifestyle",
+        "restaurant food",
+        "business trip",
+        "a spa trip"
+      ],
+      "gold_answer": "a spa trip",
+      "gold_index": 3,
+      "reference_passage": "rest has a positive impact on a health",
+      "kda_cont": 0.17545154385901707,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.39148105308413506,
+      "p_rqf_with_fact_ensemble": 0.29097250290215015,
+      "p_rq_without_fact_primary": 0.9705190062522888,
+      "p_rqf_with_fact_primary": 0.646251916885376,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "shortest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "option_leakage",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 57,
+      "question": "A construction group wants to put a shopping center in town, but the only place available is a small nature park with a trail. Deer and other wildlife frequent the park, since it is the only place in the city where trees and fresh water are available for them. The construction group decides to build the shopping center, which means that",
+      "options": [
+        "the deer are moved to a zoo",
+        "the trail is expanded",
+        "the mall has a nature park in it",
+        "the wildlife environment is destroyed"
+      ],
+      "gold_answer": "the wildlife environment is destroyed",
+      "gold_index": 3,
+      "reference_passage": "humans changing an environment sometimes causes that environment to be destroyed",
+      "kda_cont": 0.17110042219678356,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.3795918030664325,
+      "p_rqf_with_fact_ensemble": 0.32608182542026043,
+      "p_rq_without_fact_primary": 0.9408223032951355,
+      "p_rqf_with_fact_primary": 0.8019384145736694,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": "context_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 61,
+      "question": "If a UFO is flying overhead and looks small, then large, then",
+      "options": [
+        "the UFO is calling",
+        "the UFO had been close",
+        "the UFO is approaching",
+        "the UFO is leaving"
+      ],
+      "gold_answer": "the UFO is approaching",
+      "gold_index": 2,
+      "reference_passage": "as a source of light becomes closer , that source will appear brighter",
+      "kda_cont": 0.3107394939214426,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.5451671555638313,
+      "p_rqf_with_fact_ensemble": 0.3696322590112686,
+      "p_rq_without_fact_primary": 0.872679591178894,
+      "p_rqf_with_fact_primary": 0.33729302883148193,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": null,
+      "failure_category": "material_not_necessary",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 74,
+      "question": "A fallen leaf",
+      "options": [
+        "will turn into a tree",
+        "will become bright green",
+        "will begin to recycle the nutrients that made up its structure",
+        "is likely to continue to grow"
+      ],
+      "gold_answer": "will begin to recycle the nutrients that made up its structure",
+      "gold_index": 2,
+      "reference_passage": "if a leaf falls off of a tree then that leaf is dead",
+      "kda_cont": 0.31681432303153717,
+      "kda_disc_proxy": 0.3333333333333333,
+      "p_rq_without_fact_ensemble": 0.23007518444364905,
+      "p_rqf_with_fact_ensemble": 0.4032032335030351,
+      "p_rq_without_fact_primary": 0.4993586540222168,
+      "p_rqf_with_fact_primary": 0.964837372303009,
+      "detection_flags": [
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "reasoning_shortcut",
+      "failure_category_rationale": "Three distractors are absurd for a FALLEN leaf (turns into a tree, becomes bright green, continues to grow); the gold is the only physically sensible option and also the longest.",
+      "failure_category_status": "second_annotator_new_admission"
+    },
+    {
+      "question_id": 90,
+      "question": "What is a more comfortable color to have for your automobile upholstery if living in a desert?",
+      "options": [
+        "ecru",
+        "red",
+        "black",
+        "navy"
+      ],
+      "gold_answer": "ecru",
+      "gold_index": 0,
+      "reference_passage": "as lightness in color of an object increases , the ability of that object to reflect light will increase",
+      "kda_cont": 0.1896775690254251,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.4095276797306724,
+      "p_rqf_with_fact_ensemble": 0.2946571809006855,
+      "p_rq_without_fact_primary": 0.8404362797737122,
+      "p_rqf_with_fact_primary": 0.5405625700950623,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": null,
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 93,
+      "question": "When looking for good soil for plants, typically what is optimal?",
+      "options": [
+        "malleable and nutritious",
+        "dry and sandy",
+        "grainy and bitter",
+        "compact and hard"
+      ],
+      "gold_answer": "malleable and nutritious",
+      "gold_index": 0,
+      "reference_passage": "the looseness of soil has a positive impact on a plant 's roots' growth in that soil",
+      "kda_cont": 0.3028031096427882,
+      "kda_disc_proxy": null,
+      "p_rq_without_fact_ensemble": 0.560634657740593,
+      "p_rqf_with_fact_ensemble": 0.4312649331986904,
+      "p_rq_without_fact_primary": 0.9978387951850891,
+      "p_rqf_with_fact_primary": 0.9285491704940796,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "reasoning_shortcut",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 94,
+      "question": "Animals are drawn to",
+      "options": [
+        "gold",
+        "houses",
+        "feeders",
+        "Carbon Dioxide"
+      ],
+      "gold_answer": "feeders",
+      "gold_index": 2,
+      "reference_passage": "feeders attract animals to a location",
+      "kda_cont": 0.5450781233842816,
+      "kda_disc_proxy": 1.0,
+      "p_rq_without_fact_ensemble": 0.38683605194091797,
+      "p_rqf_with_fact_ensemble": 0.5918428301811218,
+      "p_rq_without_fact_primary": 0.698281466960907,
+      "p_rqf_with_fact_primary": 0.6750423908233643,
+      "detection_flags": [
+        "C1_kda_disc"
+      ],
+      "structural_cues": [
+        "gold_in_passage"
+      ],
+      "counterfactual_class": "context_dependent",
+      "failure_category": "option_leakage",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 97,
+      "question": "Crop rotation has a positive impact on what?",
+      "options": [
+        "government mentality",
+        "dirt quality",
+        "town economies",
+        "crop watering"
+      ],
+      "gold_answer": "dirt quality",
+      "gold_index": 1,
+      "reference_passage": "crop rotation has a positive impact on soil quality",
+      "kda_cont": 0.22149993406289525,
+      "kda_disc_proxy": 0.5,
+      "p_rq_without_fact_ensemble": 0.32476416626013815,
+      "p_rqf_with_fact_ensemble": 0.3010983485728502,
+      "p_rq_without_fact_primary": 0.7140745520591736,
+      "p_rqf_with_fact_primary": 0.6708841323852539,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "shortest_gold"
+      ],
+      "counterfactual_class": "context_dependent",
+      "failure_category": "option_leakage",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 102,
+      "question": "Pollinators",
+      "options": [
+        "enable plants to continue flourishing",
+        "play an unimportant role in the reproduction process",
+        "are useless to plants",
+        "are considered unwanted pests"
+      ],
+      "gold_answer": "enable plants to continue flourishing",
+      "gold_index": 0,
+      "reference_passage": "pollination requires pollinating animals",
+      "kda_cont": 0.15304375558519795,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.3573225916843512,
+      "p_rqf_with_fact_ensemble": 0.2715996109873231,
+      "p_rq_without_fact_primary": 0.9326807260513306,
+      "p_rqf_with_fact_primary": 0.6185360550880432,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": null,
+      "failure_category": "reasoning_shortcut",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 103,
+      "question": "A farmer harvests seeds from some plants, such as tomatoes, in order to plant them later on. These seeds, once planted",
+      "options": [
+        "have their own dirt",
+        "have their own sunlight",
+        "have a lot of sand",
+        "contain their necessary nutrition"
+      ],
+      "gold_answer": "contain their necessary nutrition",
+      "gold_index": 3,
+      "reference_passage": "a seed is used for storing food for a new plant",
+      "kda_cont": 0.2560506121901682,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.3891418587154476,
+      "p_rqf_with_fact_ensemble": 0.40889639359374996,
+      "p_rq_without_fact_primary": 0.8209866881370544,
+      "p_rqf_with_fact_primary": 0.8110348582267761,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "option_leakage",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 105,
+      "question": "A spinning object is used to make",
+      "options": [
+        "steam",
+        "heat",
+        "water",
+        "electricity"
+      ],
+      "gold_answer": "electricity",
+      "gold_index": 3,
+      "reference_passage": "a windmill converts wind energy into electricity",
+      "kda_cont": 0.1943053608821499,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.5042568817734718,
+      "p_rqf_with_fact_ensemble": 0.3421438131481409,
+      "p_rq_without_fact_primary": 0.9747657775878906,
+      "p_rqf_with_fact_primary": 0.6771504282951355,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "gold_in_passage",
+        "longest_gold"
+      ],
+      "counterfactual_class": "unstable_other",
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 118,
+      "question": "How could we determine approximately how far a bird is from the ground?",
+      "options": [
+        "Measure the altitude of the bird using a reference point, such as a tall building.",
+        "Identify the species of bird",
+        "Ask the bird how high it was when it returns back to earth",
+        "Measure the bird's mass"
+      ],
+      "gold_answer": "Measure the altitude of the bird using a reference point, such as a tall building.",
+      "gold_index": 0,
+      "reference_passage": "high means great in altitude",
+      "kda_cont": 0.31056783759229956,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.39749231934547424,
+      "p_rqf_with_fact_ensemble": 0.34513506665825844,
+      "p_rq_without_fact_primary": 0.7767431139945984,
+      "p_rqf_with_fact_primary": 0.5250521898269653,
+      "detection_flags": [
+        "C2_both_correct_conf",
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "reasoning_shortcut",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 123,
+      "question": "What does someone do when creating music?",
+      "options": [
+        "hit a toy baseball with a bat",
+        "shake a baby rattle with your hand",
+        "bang the wall with your fist",
+        "pluck the strings of a fingerboard with your fingers"
+      ],
+      "gold_answer": "pluck the strings of a fingerboard with your fingers",
+      "gold_index": 3,
+      "reference_passage": "An example of playing a musical instrument is strumming a guitar string",
+      "kda_cont": 0.16506542212314382,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.4009980285773054,
+      "p_rqf_with_fact_ensemble": 0.2750082341954112,
+      "p_rq_without_fact_primary": 0.9704177379608154,
+      "p_rqf_with_fact_primary": 0.5375815629959106,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": "context_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 124,
+      "question": "The pull the human planet space rock orbiter has on certain bodies of dihydrogen monooxide results in?",
+      "options": [
+        "telescope views",
+        "water level fluctuations",
+        "animal",
+        "plant harvesting"
+      ],
+      "gold_answer": "water level fluctuations",
+      "gold_index": 1,
+      "reference_passage": "the gravitational pull of the Moon on Earth 's oceans causes the tides",
+      "kda_cont": 0.37284528380704623,
+      "kda_disc_proxy": 0.5,
+      "p_rq_without_fact_ensemble": 0.4179068806115538,
+      "p_rqf_with_fact_ensemble": 0.49411698477342725,
+      "p_rq_without_fact_primary": 0.7414464354515076,
+      "p_rqf_with_fact_primary": 0.8431288599967957,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 132,
+      "question": "A desert environment is",
+      "options": [
+        "dry, grass covered, and humid",
+        "lush, green, and tropical",
+        "arid, parched, and sun-baked",
+        "dry, damp, and lush"
+      ],
+      "gold_answer": "arid, parched, and sun-baked",
+      "gold_index": 2,
+      "reference_passage": "a desert environment is dry",
+      "kda_cont": 0.18558474689731874,
+      "kda_disc_proxy": 0.5,
+      "p_rq_without_fact_ensemble": 0.37588536366820335,
+      "p_rqf_with_fact_ensemble": 0.22766264621168375,
+      "p_rq_without_fact_primary": 0.8790843486785889,
+      "p_rqf_with_fact_primary": 0.3453291058540344,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": null,
+      "failure_category": "reasoning_shortcut",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 144,
+      "question": "What is an example of hunting?",
+      "options": [
+        "humans throwing a spear through an animal",
+        "humans chewing on boiled animal muscles",
+        "humans gathering animals in a gate",
+        "humans plucking fruit from a tree"
+      ],
+      "gold_answer": "humans throwing a spear through an animal",
+      "gold_index": 0,
+      "reference_passage": "hunting means humans kill animals in the wild",
+      "kda_cont": 0.4366197860154098,
+      "kda_disc_proxy": 1.0,
+      "p_rq_without_fact_ensemble": 0.48836103826761246,
+      "p_rqf_with_fact_ensemble": 0.5340950638055801,
+      "p_rq_without_fact_primary": 0.8226627111434937,
+      "p_rqf_with_fact_primary": 0.8160547018051147,
+      "detection_flags": [
+        "C1_kda_disc",
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": "context_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 153,
+      "question": "if the population in a habitat is on a steady decline, what condition is the habitat?",
+      "options": [
+        "it is a place to emigrate from",
+        "it is an ideal habitat",
+        "it is an unsustainable habitat",
+        "it is a thriving abode"
+      ],
+      "gold_answer": "it is an unsustainable habitat",
+      "gold_index": 2,
+      "reference_passage": "if a habitat is destroyed then that habitat can not support animals",
+      "kda_cont": 0.3273822795201853,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.49732258915901184,
+      "p_rqf_with_fact_ensemble": 0.46869029477238655,
+      "p_rq_without_fact_primary": 0.9650450944900513,
+      "p_rqf_with_fact_primary": 0.8221924304962158,
+      "detection_flags": [
+        "C2_both_correct_conf",
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "reasoning_shortcut",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 160,
+      "question": "If a new species of predator joins a community",
+      "options": [
+        "the new species will become herbivores",
+        "prey will experience an increase in population",
+        "prey will experience a drop in population",
+        "the old species will die out"
+      ],
+      "gold_answer": "prey will experience a drop in population",
+      "gold_index": 2,
+      "reference_passage": "if a new predator begins eating prey then the population of that prey will decrease",
+      "kda_cont": 0.24407515566657043,
+      "kda_disc_proxy": 0.5,
+      "p_rq_without_fact_ensemble": 0.3653583077248186,
+      "p_rqf_with_fact_ensemble": 0.3085472248494625,
+      "p_rq_without_fact_primary": 0.8140760660171509,
+      "p_rqf_with_fact_primary": 0.5033774375915527,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": "unstable_other",
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 168,
+      "question": "Glucose travels",
+      "options": [
+        "from roots to leaves of a daffodil",
+        "from a rose's leaves to the atmosphere",
+        "from a daisy's leaves into it's underground support system",
+        "from the sun to a sunflower's buds"
+      ],
+      "gold_answer": "from a daisy's leaves into it's underground support system",
+      "gold_index": 2,
+      "reference_passage": "sugars are transported from the leaves to the roots of a plant",
+      "kda_cont": 0.20566487074159231,
+      "kda_disc_proxy": 0.5,
+      "p_rq_without_fact_ensemble": 0.3515994072658941,
+      "p_rqf_with_fact_ensemble": 0.30798111349577084,
+      "p_rq_without_fact_primary": 0.8123082518577576,
+      "p_rqf_with_fact_primary": 0.6474837064743042,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": "context_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 171,
+      "question": "The boy was able to warm the fireplace without a lighter thanks to what?",
+      "options": [
+        "friction",
+        "metal",
+        "wishing",
+        "magic"
+      ],
+      "gold_answer": "friction",
+      "gold_index": 0,
+      "reference_passage": "friction occurs when two object 's surfaces move against each other",
+      "kda_cont": 0.5619699646104799,
+      "kda_disc_proxy": 1.0,
+      "p_rq_without_fact_ensemble": 0.32554545626044273,
+      "p_rqf_with_fact_ensemble": 0.6014185547828674,
+      "p_rq_without_fact_primary": 0.22019456326961517,
+      "p_rqf_with_fact_primary": 0.752434253692627,
+      "detection_flags": [
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [
+        "gold_in_passage",
+        "longest_gold"
+      ],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_rationale": "Two distractors are jokes (wishing, magic); friction vs metal for starting a fire is elementary.",
+      "failure_category_status": "second_annotator_new_admission"
+    },
+    {
+      "question_id": 176,
+      "question": "If your dog is overweight",
+      "options": [
+        "add more fat to their diet",
+        "cut back their caloric intake",
+        "let them sleep more",
+        "increase their caloric intake"
+      ],
+      "gold_answer": "cut back their caloric intake",
+      "gold_index": 1,
+      "reference_passage": "as the amount of food an animal eats increases , the weight of that animal will increase",
+      "kda_cont": 0.1712055027469339,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.3956781541928649,
+      "p_rqf_with_fact_ensemble": 0.2800871765066404,
+      "p_rq_without_fact_primary": 0.9605737328529358,
+      "p_rqf_with_fact_primary": 0.5664290189743042,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": null,
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 181,
+      "question": "were there fossil fuels in the ground when humans evolved?",
+      "options": [
+        "this was only created by humans",
+        "humans predate fossil fuel formation",
+        "significant supplies accumulated prior",
+        "none of these"
+      ],
+      "gold_answer": "significant supplies accumulated prior",
+      "gold_index": 2,
+      "reference_passage": "fossil fuels forming occurs over a period of 300000000 years which is considered a very long time to a human",
+      "kda_cont": 0.24136706757102921,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.3308007456653286,
+      "p_rqf_with_fact_ensemble": 0.3816955751349269,
+      "p_rq_without_fact_primary": 0.7735647559165955,
+      "p_rqf_with_fact_primary": 0.9140709042549133,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "abs_in_distractor",
+        "longest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "option_leakage",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 189,
+      "question": "When a kid slams on the brakes on their bike what is caused?",
+      "options": [
+        "bike helmet",
+        "avoiding accidents",
+        "friction",
+        "gearing"
+      ],
+      "gold_answer": "friction",
+      "gold_index": 2,
+      "reference_passage": "skidding causes friction",
+      "kda_cont": 0.42190199594520744,
+      "kda_disc_proxy": 1.0,
+      "p_rq_without_fact_ensemble": 0.6418043822050095,
+      "p_rqf_with_fact_ensemble": 0.6580521911382675,
+      "p_rq_without_fact_primary": 0.9289072155952454,
+      "p_rqf_with_fact_primary": 0.8345847129821777,
+      "detection_flags": [
+        "C1_kda_disc",
+        "C2_both_correct_conf",
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [
+        "gold_in_passage"
+      ],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 191,
+      "question": "Conservation",
+      "options": [
+        "leads to longer drought of resources",
+        "leads to longer availability of resources",
+        "leads to more consumption",
+        "leads to short supply of resources"
+      ],
+      "gold_answer": "leads to longer availability of resources",
+      "gold_index": 1,
+      "reference_passage": "as the use of a resource decreases , the length of time that resource will be available increases",
+      "kda_cont": 0.18215565666740888,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.4731767103075981,
+      "p_rqf_with_fact_ensemble": 0.20631763897836208,
+      "p_rq_without_fact_primary": 0.9511181116104126,
+      "p_rqf_with_fact_primary": 0.26619163155555725,
+      "detection_flags": [
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_rationale": "Conservation increases availability; the gold is the only option with that polarity. Primary model already at P(R^q)=0.951.",
+      "failure_category_status": "second_annotator_new_admission"
+    },
+    {
+      "question_id": 197,
+      "question": "The reason Earth is so sturdy is because",
+      "options": [
+        "It is made from rock",
+        "It eats three meals a day",
+        "It has a loving family",
+        "It is made from metal"
+      ],
+      "gold_answer": "It is made from rock",
+      "gold_index": 0,
+      "reference_passage": "Earth is made of rock",
+      "kda_cont": 0.44634896392504925,
+      "kda_disc_proxy": 0.5,
+      "p_rq_without_fact_ensemble": 0.4166535660624504,
+      "p_rqf_with_fact_ensemble": 0.5679895505309105,
+      "p_rq_without_fact_primary": 0.9641308188438416,
+      "p_rqf_with_fact_primary": 0.9919323325157166,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "gold_in_passage",
+        "shortest_gold"
+      ],
+      "counterfactual_class": "context_dependent",
+      "failure_category": "option_leakage",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 198,
+      "question": "A plant left in the dark",
+      "options": [
+        "produces fruit",
+        "grows faster",
+        "fails to grow",
+        "gets greener"
+      ],
+      "gold_answer": "fails to grow",
+      "gold_index": 2,
+      "reference_passage": "a plant requires sunlight to grow",
+      "kda_cont": 0.40072271545538835,
+      "kda_disc_proxy": 1.0,
+      "p_rq_without_fact_ensemble": 0.5902810245752335,
+      "p_rqf_with_fact_ensemble": 0.6298154592514038,
+      "p_rq_without_fact_primary": 0.7195593118667603,
+      "p_rqf_with_fact_primary": 0.9774922728538513,
+      "detection_flags": [
+        "C1_kda_disc",
+        "C2_both_correct_conf",
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 202,
+      "question": "A rabbit has a litter of bunnies! Most of the babies are white, just like the mother rabbit, but one baby has brown spots, like the father rabbit. The father rabbit",
+      "options": [
+        "spread out some fur",
+        "has black on his ears",
+        "passed down inherited characteristics",
+        "is the same size as the mother"
+      ],
+      "gold_answer": "passed down inherited characteristics",
+      "gold_index": 2,
+      "reference_passage": "inheriting is when a inherited characteristic is copied from parent to offspring by DNA",
+      "kda_cont": 0.20586806206650096,
+      "kda_disc_proxy": 0.3333333333333333,
+      "p_rq_without_fact_ensemble": 0.25714659326195033,
+      "p_rqf_with_fact_ensemble": 0.24188751145265996,
+      "p_rq_without_fact_primary": 0.31834253668785095,
+      "p_rqf_with_fact_primary": 0.19173945486545563,
+      "detection_flags": [
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_rationale": "Only one option names a mechanism at all; elementary inheritance.",
+      "failure_category_status": "second_annotator_new_admission"
+    },
+    {
+      "question_id": 207,
+      "question": "Resources decreasing in an environment",
+      "options": [
+        "induces organisms to use more of their resources",
+        "causes an increase in use of resources",
+        "causes an uptick in birthrate",
+        "induces organisms to be more economical with resources"
+      ],
+      "gold_answer": "induces organisms to be more economical with resources",
+      "gold_index": 3,
+      "reference_passage": "when available resources decrease in an environment , organisms have to conserve those resources",
+      "kda_cont": 0.3455299099484496,
+      "kda_disc_proxy": 0.5,
+      "p_rq_without_fact_ensemble": 0.3290830831974745,
+      "p_rqf_with_fact_ensemble": 0.4027714729309082,
+      "p_rq_without_fact_primary": 0.7413544654846191,
+      "p_rqf_with_fact_primary": 0.7367458343505859,
+      "detection_flags": [
+        "C2_both_correct_conf",
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "reasoning_shortcut",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 210,
+      "question": "Moon phases",
+      "options": [
+        "change the moon into cheese",
+        "alter the way the moon's facade looks",
+        "change moon lakes into vapor",
+        "cause lunar eclipse every day"
+      ],
+      "gold_answer": "alter the way the moon's facade looks",
+      "gold_index": 1,
+      "reference_passage": "the phases of the Moon change the appearance of the Moon",
+      "kda_cont": 0.3686911030134819,
+      "kda_disc_proxy": 0.5,
+      "p_rq_without_fact_ensemble": 0.44887880980968475,
+      "p_rqf_with_fact_ensemble": 0.47763602435588837,
+      "p_rq_without_fact_primary": 0.9370742440223694,
+      "p_rqf_with_fact_primary": 0.8225184082984924,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "abs_in_distractor",
+        "longest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "option_leakage",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 214,
+      "question": "a large cluster of humans, dogs, apple trees, atmosphere and more can be called",
+      "options": [
+        "army of ants",
+        "a community",
+        "a toy store",
+        "a shopping mall"
+      ],
+      "gold_answer": "a community",
+      "gold_index": 1,
+      "reference_passage": "an ecosystem contains large numbers of living organisms in a particular place",
+      "kda_cont": 0.5079809613293961,
+      "kda_disc_proxy": null,
+      "p_rq_without_fact_ensemble": 0.6494533345103264,
+      "p_rqf_with_fact_ensemble": 0.7148920893669128,
+      "p_rq_without_fact_primary": 0.8709851503372192,
+      "p_rqf_with_fact_primary": 0.9549694061279297,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": null,
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 218,
+      "question": "A male bird spots a female of his species and begins a fancy dance, flashing his bright feathers around in the air, showing off. This male is attempting to procure",
+      "options": [
+        "a manager",
+        "an agent",
+        "a meal",
+        "a reproductive companion"
+      ],
+      "gold_answer": "a reproductive companion",
+      "gold_index": 3,
+      "reference_passage": "coloration is used to find a mate by some animals",
+      "kda_cont": 0.20481233051981718,
+      "kda_disc_proxy": 0.6666666666666666,
+      "p_rq_without_fact_ensemble": 0.3710982264019549,
+      "p_rqf_with_fact_ensemble": 0.3781154593452811,
+      "p_rq_without_fact_primary": 0.9554177522659302,
+      "p_rqf_with_fact_primary": 0.8757556676864624,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 225,
+      "question": "Members of rock bands often perform with",
+      "options": [
+        "flutes",
+        "sandals",
+        "earplugs",
+        "gloves"
+      ],
+      "gold_answer": "earplugs",
+      "gold_index": 2,
+      "reference_passage": "musical instruments make sound when they are played",
+      "kda_cont": 0.2986647318298008,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.579699695110321,
+      "p_rqf_with_fact_ensemble": 0.48401113972067833,
+      "p_rq_without_fact_primary": 0.9311293959617615,
+      "p_rqf_with_fact_primary": 0.6170213222503662,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 226,
+      "question": "Muscles move bones to produce movement like when",
+      "options": [
+        "arms are resting",
+        "hair is growing",
+        "smiles are invisible",
+        "toes are wiggled"
+      ],
+      "gold_answer": "toes are wiggled",
+      "gold_index": 3,
+      "reference_passage": "muscles pull bones to move the bones",
+      "kda_cont": 0.37437111942148615,
+      "kda_disc_proxy": 0.3333333333333333,
+      "p_rq_without_fact_ensemble": 0.27920030802488327,
+      "p_rqf_with_fact_ensemble": 0.3871188834309578,
+      "p_rq_without_fact_primary": 0.2732532024383545,
+      "p_rqf_with_fact_primary": 0.2962246835231781,
+      "detection_flags": [
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "reasoning_shortcut",
+      "failure_category_rationale": "Odd-one-out: the gold is the only option describing actual bone movement (resting, hair growth, invisible smiles are not).",
+      "failure_category_status": "second_annotator_new_admission"
+    },
+    {
+      "question_id": 231,
+      "question": "During landslides there is often a lot of",
+      "options": [
+        "air",
+        "mud",
+        "snow",
+        "wind"
+      ],
+      "gold_answer": "mud",
+      "gold_index": 1,
+      "reference_passage": "storms can cause a landslide",
+      "kda_cont": 0.1471586007168939,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.2955671967356466,
+      "p_rqf_with_fact_ensemble": 0.2315925969851378,
+      "p_rq_without_fact_primary": 0.8384325504302979,
+      "p_rqf_with_fact_primary": 0.5241739749908447,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": null,
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 233,
+      "question": "The size of an object and the ability to see it more easily have what kind of relationship?",
+      "options": [
+        "equal",
+        "inverse",
+        "direct",
+        "reverse"
+      ],
+      "gold_answer": "direct",
+      "gold_index": 2,
+      "reference_passage": "as the size of an object appears larger , that object will be seen more easily",
+      "kda_cont": 0.29664187328763986,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.5358822755515575,
+      "p_rqf_with_fact_ensemble": 0.35333987697958946,
+      "p_rq_without_fact_primary": 0.735938549041748,
+      "p_rqf_with_fact_primary": 0.5481472015380859,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": null,
+      "failure_category": "material_not_necessary",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 244,
+      "question": "Bill planted rapeseed in his field one year and soybeans the next in order to",
+      "options": [
+        "get bigger yields",
+        "make things boring",
+        "keep things random",
+        "get smaller yields"
+      ],
+      "gold_answer": "get bigger yields",
+      "gold_index": 0,
+      "reference_passage": "crop rotation is when different crops are planted on a field in different years",
+      "kda_cont": 0.18151915989371833,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.3669380368664861,
+      "p_rqf_with_fact_ensemble": 0.3193090627901256,
+      "p_rq_without_fact_primary": 0.9392368793487549,
+      "p_rqf_with_fact_primary": 0.7254905104637146,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "shortest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "reasoning_shortcut",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 251,
+      "question": "Sources of air pollution are",
+      "options": [
+        "Walking",
+        "Landfills",
+        "Water",
+        "Chips"
+      ],
+      "gold_answer": "Landfills",
+      "gold_index": 1,
+      "reference_passage": "a landfill is a source of pollution",
+      "kda_cont": 0.578122808418816,
+      "kda_disc_proxy": 0.75,
+      "p_rq_without_fact_ensemble": 0.1760227419435978,
+      "p_rqf_with_fact_ensemble": 0.5524087622761726,
+      "p_rq_without_fact_primary": 0.1264781504869461,
+      "p_rqf_with_fact_primary": 0.7505096197128296,
+      "detection_flags": [
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_rationale": "Distractors (Walking, Water, Chips) are absurd as pollution sources.",
+      "failure_category_status": "second_annotator_new_admission"
+    },
+    {
+      "question_id": 253,
+      "question": "Putting one kind of soda into the same cup as another kind of soda is doing what to the substances?",
+      "options": [
+        "combining",
+        "drinking",
+        "Subtracting",
+        "throwing"
+      ],
+      "gold_answer": "combining",
+      "gold_index": 0,
+      "reference_passage": "An example of combining two substances is pouring one substance into the other substance",
+      "kda_cont": 0.5363222309040047,
+      "kda_disc_proxy": 0.5,
+      "p_rq_without_fact_ensemble": 0.3990281643345952,
+      "p_rqf_with_fact_ensemble": 0.49612151458859444,
+      "p_rq_without_fact_primary": 0.8406015038490295,
+      "p_rqf_with_fact_primary": 0.3736801743507385,
+      "detection_flags": [
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [
+        "gold_in_passage"
+      ],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "material_not_necessary",
+      "failure_category_rationale": "The stem already states the action ('putting one kind of soda into the same cup as another'); the fact merely restates that pouring one substance into another is combining.",
+      "failure_category_status": "second_annotator_new_admission"
+    },
+    {
+      "question_id": 265,
+      "question": "If your dog sits in an oxygen deficient chamber, what happens?",
+      "options": [
+        "it will be fine",
+        "it will be happy",
+        "it will be comfortable",
+        "It will pass out"
+      ],
+      "gold_answer": "It will pass out",
+      "gold_index": 3,
+      "reference_passage": "an animal requires oxygen for to breathe",
+      "kda_cont": 0.18223067083098748,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.41533289663493633,
+      "p_rqf_with_fact_ensemble": 0.3960843508830294,
+      "p_rq_without_fact_primary": 0.9753881096839905,
+      "p_rqf_with_fact_primary": 0.9853423833847046,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": null,
+      "failure_category": "reasoning_shortcut",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 266,
+      "question": "Which of the following can be used to turn on an electrical device?",
+      "options": [
+        "solar-rechargeable battery",
+        "a wedge",
+        "a magnet",
+        "pressure gauge"
+      ],
+      "gold_answer": "solar-rechargeable battery",
+      "gold_index": 0,
+      "reference_passage": "an electrical device requires electricity to turn on",
+      "kda_cont": 0.19356426698097257,
+      "kda_disc_proxy": 0.3333333333333333,
+      "p_rq_without_fact_ensemble": 0.3552170460752677,
+      "p_rqf_with_fact_ensemble": 0.3291630860794612,
+      "p_rq_without_fact_primary": 0.9062440395355225,
+      "p_rqf_with_fact_primary": 0.7313382625579834,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 273,
+      "question": "Fruit comes from what source",
+      "options": [
+        "an organism that releases carbon dioxide",
+        "an organism that absorbs water through it's branches",
+        "an organism that absorbs oxygen",
+        "an organism that absorbs water through it's roots"
+      ],
+      "gold_answer": "an organism that absorbs water through it's roots",
+      "gold_index": 3,
+      "reference_passage": "plants are the source of fruit",
+      "kda_cont": 0.3023198233236443,
+      "kda_disc_proxy": 0.3333333333333333,
+      "p_rq_without_fact_ensemble": 0.34706205502152443,
+      "p_rqf_with_fact_ensemble": 0.3436216078698635,
+      "p_rq_without_fact_primary": 0.7111238241195679,
+      "p_rqf_with_fact_primary": 0.5271632075309753,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": null,
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 275,
+      "question": "Cutting down trees in a forest",
+      "options": [
+        "leads to more habitats for animals",
+        "decreases the chance of erosion",
+        "increases the number of trees in the forest",
+        "leads to less habitats for animals"
+      ],
+      "gold_answer": "leads to less habitats for animals",
+      "gold_index": 3,
+      "reference_passage": "cutting down trees in a forest causes the number of trees to decrease in that forest",
+      "kda_cont": 0.1615815942997132,
+      "kda_disc_proxy": 0.3333333333333333,
+      "p_rq_without_fact_ensemble": 0.3505156598985195,
+      "p_rqf_with_fact_ensemble": 0.3268695070873946,
+      "p_rq_without_fact_primary": 0.9278965592384338,
+      "p_rqf_with_fact_primary": 0.8391024470329285,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": null,
+      "failure_category": "material_not_necessary",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 276,
+      "question": "I chipped away at a toy doll and the surface became really rough, when I rub it against a piece of wood that will create an increase in",
+      "options": [
+        "animals",
+        "resistance",
+        "water",
+        "sunshine"
+      ],
+      "gold_answer": "resistance",
+      "gold_index": 1,
+      "reference_passage": "as the roughness of something increases , the friction of that something will increase when its surface moves against another surface",
+      "kda_cont": 0.4384053682705178,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.4748286157846451,
+      "p_rqf_with_fact_ensemble": 0.5266771838068962,
+      "p_rq_without_fact_primary": 0.8462156057357788,
+      "p_rqf_with_fact_primary": 0.70181804895401,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 277,
+      "question": "The arctic is white in coloring",
+      "options": [
+        "because it's overpopulated with polar bears",
+        "because it's covered in white lilies",
+        "because it's blanketed in crystalline ice water",
+        "because it's gets so little sunlight"
+      ],
+      "gold_answer": "because it's blanketed in crystalline ice water",
+      "gold_index": 2,
+      "reference_passage": "the arctic environment is white in color from being covered in snow",
+      "kda_cont": 0.2873940617662401,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.4313490130007267,
+      "p_rqf_with_fact_ensemble": 0.4020132049918175,
+      "p_rq_without_fact_primary": 0.9860671162605286,
+      "p_rqf_with_fact_primary": 0.7630613446235657,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 285,
+      "question": "What can cause people to crash their car?",
+      "options": [
+        "Seeing a solar eclipse",
+        "Using their turn signals",
+        "Driving the speed limit",
+        "Keeping their eyes on the road"
+      ],
+      "gold_answer": "Seeing a solar eclipse",
+      "gold_index": 0,
+      "reference_passage": "a decrease in visibility while driving can cause people to crash their car",
+      "kda_cont": 0.37792253029082834,
+      "kda_disc_proxy": 1.0,
+      "p_rq_without_fact_ensemble": 0.5531562939286232,
+      "p_rqf_with_fact_ensemble": 0.5412638857960701,
+      "p_rq_without_fact_primary": 0.9569697976112366,
+      "p_rqf_with_fact_primary": 0.8260998725891113,
+      "detection_flags": [
+        "C1_kda_disc",
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "shortest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "option_leakage",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 288,
+      "question": "A deer is eating in a field, and wants more food. Regardless of how hard the deer tries, the deer is unable to produce",
+      "options": [
+        "longer antlers",
+        "food for itself",
+        "baby deer",
+        "urine"
+      ],
+      "gold_answer": "food for itself",
+      "gold_index": 1,
+      "reference_passage": "a consumer can not produce its own food",
+      "kda_cont": 0.23285835767776175,
+      "kda_disc_proxy": 0.5,
+      "p_rq_without_fact_ensemble": 0.32610688998829573,
+      "p_rqf_with_fact_ensemble": 0.36342078540474176,
+      "p_rq_without_fact_primary": 0.794666588306427,
+      "p_rqf_with_fact_primary": 0.8642038106918335,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": "context_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 295,
+      "question": "An organism that makes food for itself",
+      "options": [
+        "is nutritionally self sustaining",
+        "will die faster than other organisms",
+        "will need help sustaining strength",
+        "is reliant on other organisms for assistance"
+      ],
+      "gold_answer": "is nutritionally self sustaining",
+      "gold_index": 0,
+      "reference_passage": "if an organism makes food for itself then that organism does not need to eat other organisms",
+      "kda_cont": 0.25672632284622177,
+      "kda_disc_proxy": 0.5,
+      "p_rq_without_fact_ensemble": 0.39158013806445524,
+      "p_rqf_with_fact_ensemble": 0.3748864629524178,
+      "p_rq_without_fact_primary": 0.9082698822021484,
+      "p_rqf_with_fact_primary": 0.6342040300369263,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "shortest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "material_not_necessary",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 313,
+      "question": "What kind of implement is a compass?",
+      "options": [
+        "to test heat",
+        "for wind speed",
+        "it measures distance",
+        "it shows direction"
+      ],
+      "gold_answer": "it shows direction",
+      "gold_index": 3,
+      "reference_passage": "a compass is a kind of tool for determining direction by pointing north",
+      "kda_cont": 0.4285950432403393,
+      "kda_disc_proxy": 1.0,
+      "p_rq_without_fact_ensemble": 0.3972433703020215,
+      "p_rqf_with_fact_ensemble": 0.490081749856472,
+      "p_rq_without_fact_primary": 0.8360866904258728,
+      "p_rqf_with_fact_primary": 0.8467336297035217,
+      "detection_flags": [
+        "C1_kda_disc",
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": "context_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 329,
+      "question": "Xylem",
+      "options": [
+        "discourages pests from landing on leaves",
+        "allows plants to move carbon dioxide from root to stems",
+        "carries seedlings from roots to leaves",
+        "allows plants to move rain thru their systems"
+      ],
+      "gold_answer": "allows plants to move rain thru their systems",
+      "gold_index": 3,
+      "reference_passage": "xylem carries water from the roots of a plant to the leaves of a plant",
+      "kda_cont": 0.19711828340315918,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.223645088262856,
+      "p_rqf_with_fact_ensemble": 0.21638736966997385,
+      "p_rq_without_fact_primary": 0.31855660676956177,
+      "p_rqf_with_fact_primary": 0.3514426648616791,
+      "detection_flags": [
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_rationale": "Xylem transports water; school-level botany. The only water-related option.",
+      "failure_category_status": "second_annotator_new_admission"
+    },
+    {
+      "question_id": 337,
+      "question": "A small lamb, two days old, is walking with its mother. The mother feels ill, so refuses food, which dries up her milk production. The lack of lactation causes the lamb to",
+      "options": [
+        "weaken",
+        "strengthen",
+        "coexist",
+        "thrive"
+      ],
+      "gold_answer": "weaken",
+      "gold_index": 0,
+      "reference_passage": "the decrease of something required by an organism has a negative impact on that organism 's survival",
+      "kda_cont": 0.3892133175968187,
+      "kda_disc_proxy": 1.0,
+      "p_rq_without_fact_ensemble": 0.5556366890668869,
+      "p_rqf_with_fact_ensemble": 0.5119732990860939,
+      "p_rq_without_fact_primary": 0.7908108830451965,
+      "p_rqf_with_fact_primary": 0.9721505045890808,
+      "detection_flags": [
+        "C1_kda_disc",
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": null,
+      "failure_category": "reasoning_shortcut",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 339,
+      "question": "How do polar bears survive the cold?",
+      "options": [
+        "B and D",
+        "Double Fur Coats",
+        "Cold blooded",
+        "Compact ears"
+      ],
+      "gold_answer": "B and D",
+      "gold_index": 0,
+      "reference_passage": "polar bears live in cold environments",
+      "kda_cont": 0.31650432195961803,
+      "kda_disc_proxy": null,
+      "p_rq_without_fact_ensemble": 0.7646176144480705,
+      "p_rqf_with_fact_ensemble": 0.5377252586185932,
+      "p_rq_without_fact_primary": 0.9898529648780823,
+      "p_rqf_with_fact_primary": 0.9987228512763977,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "shortest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "option_leakage",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 345,
+      "question": "A stick bug uses what to protect itself from predators?",
+      "options": [
+        "poison",
+        "its appearance",
+        "speed",
+        "hearing"
+      ],
+      "gold_answer": "its appearance",
+      "gold_index": 1,
+      "reference_passage": "camouflage is a kind of protection against predators",
+      "kda_cont": 0.5156225116773013,
+      "kda_disc_proxy": 1.0,
+      "p_rq_without_fact_ensemble": 0.36147733870893717,
+      "p_rqf_with_fact_ensemble": 0.5693453401327133,
+      "p_rq_without_fact_primary": 0.7585459351539612,
+      "p_rqf_with_fact_primary": 0.9950998425483704,
+      "detection_flags": [
+        "C1_kda_disc",
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 348,
+      "question": "Little puppies are a result of:",
+      "options": [
+        "reproduction ?",
+        "pet store sale",
+        "a begging child",
+        "evolution"
+      ],
+      "gold_answer": "reproduction ?",
+      "gold_index": 0,
+      "reference_passage": "reproduction produces offspring",
+      "kda_cont": 0.16743790853413654,
+      "kda_disc_proxy": 0.3333333333333333,
+      "p_rq_without_fact_ensemble": 0.31638214053676705,
+      "p_rqf_with_fact_ensemble": 0.2333194178692395,
+      "p_rq_without_fact_primary": 0.7539600729942322,
+      "p_rqf_with_fact_primary": 0.47523733973503113,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "gold_in_passage"
+      ],
+      "counterfactual_class": "context_dependent",
+      "failure_category": "option_leakage",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 353,
+      "question": "Tapping a drumstick to a drum will",
+      "options": [
+        "reverberate when touched together",
+        "vibrate when next to each other",
+        "shake around when near",
+        "put each other down"
+      ],
+      "gold_answer": "reverberate when touched together",
+      "gold_index": 0,
+      "reference_passage": "tapping two objects together causes the particles in those objects to vibrate",
+      "kda_cont": 0.1780472511945911,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.3505333159118891,
+      "p_rqf_with_fact_ensemble": 0.26651665161989513,
+      "p_rq_without_fact_primary": 0.8436145782470703,
+      "p_rqf_with_fact_primary": 0.5421103835105896,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": "unstable_other",
+      "failure_category": "reasoning_shortcut",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 354,
+      "question": "Snow is more likely to fall two months before",
+      "options": [
+        "June",
+        "March",
+        "September",
+        "December"
+      ],
+      "gold_answer": "March",
+      "gold_index": 1,
+      "reference_passage": "snow falls during the winter in some environments",
+      "kda_cont": 0.2886500864135179,
+      "kda_disc_proxy": 1.0,
+      "p_rq_without_fact_ensemble": 0.36468372493982315,
+      "p_rqf_with_fact_ensemble": 0.29759707674384117,
+      "p_rq_without_fact_primary": 0.31913504004478455,
+      "p_rqf_with_fact_primary": 0.3270345628261566,
+      "detection_flags": [
+        "C1_kda_disc"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": null,
+      "failure_category": "material_not_necessary",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 360,
+      "question": "Erosion is caused by different kinds of",
+      "options": [
+        "soil",
+        "fish",
+        "rocks",
+        "weather"
+      ],
+      "gold_answer": "weather",
+      "gold_index": 3,
+      "reference_passage": "wind and rain cause erosion",
+      "kda_cont": 0.37442317586324764,
+      "kda_disc_proxy": null,
+      "p_rq_without_fact_ensemble": 0.6136376187205315,
+      "p_rqf_with_fact_ensemble": 0.5824424251914024,
+      "p_rq_without_fact_primary": 0.7844334840774536,
+      "p_rqf_with_fact_primary": 0.6568232178688049,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 361,
+      "question": "Respiration is a",
+      "options": [
+        "happens for some species",
+        "happens for only land dwelling mammals",
+        "occurs for only sea creatures",
+        "commonality among all animals"
+      ],
+      "gold_answer": "commonality among all animals",
+      "gold_index": 3,
+      "reference_passage": "all animals breathe",
+      "kda_cont": 0.19098797944356113,
+      "kda_disc_proxy": 0.3333333333333333,
+      "p_rq_without_fact_ensemble": 0.3320518620312214,
+      "p_rqf_with_fact_ensemble": 0.32060210179770365,
+      "p_rq_without_fact_primary": 0.8411000370979309,
+      "p_rqf_with_fact_primary": 0.7721404433250427,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": "context_dependent",
+      "failure_category": "reasoning_shortcut",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 366,
+      "question": "What is an example of the digestive system digesting food for the body?",
+      "options": [
+        "a man eating nachos then getting food poisoning",
+        "a baby drinking formula then needing a diaper change",
+        "a cat eating food then throwing it up",
+        "a horse licking a salt lick"
+      ],
+      "gold_answer": "a baby drinking formula then needing a diaper change",
+      "gold_index": 1,
+      "reference_passage": "the digestive system digests food for the body",
+      "kda_cont": 0.40665982379783033,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.5334494709968567,
+      "p_rqf_with_fact_ensemble": 0.5069581717252731,
+      "p_rq_without_fact_primary": 0.7248547077178955,
+      "p_rqf_with_fact_primary": 0.7102887630462646,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 368,
+      "question": "Someone wants their electromagnets to work, but is having difficulty powering them. In order to make them work, they need to",
+      "options": [
+        "run wire through currants",
+        "run a continuous current",
+        "run around the wire",
+        "currently run wire through"
+      ],
+      "gold_answer": "run a continuous current",
+      "gold_index": 1,
+      "reference_passage": "electromagnets can be powered by electricity",
+      "kda_cont": 0.35973473896350305,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.607924148440361,
+      "p_rqf_with_fact_ensemble": 0.6020502001047134,
+      "p_rq_without_fact_primary": 0.8807876110076904,
+      "p_rqf_with_fact_primary": 0.8112199306488037,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": null,
+      "failure_category": "option_leakage",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 372,
+      "question": "An ideal abode for crickets is",
+      "options": [
+        "a small potted plant in a house",
+        "a green and lush tree and plant packed area",
+        "a briny and warm body of water",
+        "a area surrounded by spider webs"
+      ],
+      "gold_answer": "a green and lush tree and plant packed area",
+      "gold_index": 1,
+      "reference_passage": "some crickets live in forests",
+      "kda_cont": 0.24300985087923874,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.3985084118321538,
+      "p_rqf_with_fact_ensemble": 0.3427971191704273,
+      "p_rq_without_fact_primary": 0.9454671144485474,
+      "p_rqf_with_fact_primary": 0.6238745450973511,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 375,
+      "question": "If you find something smooth and hard on the ground, it is probably made of what?",
+      "options": [
+        "minerals",
+        "mist",
+        "clouds",
+        "water"
+      ],
+      "gold_answer": "minerals",
+      "gold_index": 0,
+      "reference_passage": "rock is made of minerals",
+      "kda_cont": 0.6202543837457257,
+      "kda_disc_proxy": 1.0,
+      "p_rq_without_fact_ensemble": 0.43413954228162766,
+      "p_rqf_with_fact_ensemble": 0.674795001745224,
+      "p_rq_without_fact_primary": 0.9060786962509155,
+      "p_rqf_with_fact_primary": 0.991649866104126,
+      "detection_flags": [
+        "C1_kda_disc",
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "gold_in_passage",
+        "longest_gold"
+      ],
+      "counterfactual_class": "context_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 379,
+      "question": "Which animal is hiding from a predator?",
+      "options": [
+        "a tadpole losing its tail as it grows",
+        "an angler fish using its Esca to lure another fish",
+        "an octopus mimicking the color and texture of a rocky outcrop",
+        "a great white shark breaching the water's surface"
+      ],
+      "gold_answer": "an octopus mimicking the color and texture of a rocky outcrop",
+      "gold_index": 2,
+      "reference_passage": "camouflage is used for hiding by animals from predators",
+      "kda_cont": 0.3558760917311247,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.5839562527835369,
+      "p_rqf_with_fact_ensemble": 0.5222725719213486,
+      "p_rq_without_fact_primary": 0.9148420691490173,
+      "p_rqf_with_fact_primary": 0.8383790850639343,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 389,
+      "question": "In order for plants and animals to grow, they need to consume food and water for",
+      "options": [
+        "energy",
+        "fun",
+        "taste",
+        "soil"
+      ],
+      "gold_answer": "energy",
+      "gold_index": 0,
+      "reference_passage": "an organism requires energy for growth",
+      "kda_cont": 0.28774388507589405,
+      "kda_disc_proxy": null,
+      "p_rq_without_fact_ensemble": 0.6002792939543724,
+      "p_rqf_with_fact_ensemble": 0.46869637072086334,
+      "p_rq_without_fact_primary": 0.606701672077179,
+      "p_rqf_with_fact_primary": 0.20560039579868317,
+      "detection_flags": [
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [
+        "gold_in_passage",
+        "longest_gold"
+      ],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_rationale": "Distractors (fun, taste, soil) are absurd; food and water supply energy is elementary.",
+      "failure_category_status": "second_annotator_new_admission"
+    },
+    {
+      "question_id": 390,
+      "question": "A bear cub learns to stay away from unknown bears because",
+      "options": [
+        "they are much bigger than the cub",
+        "the other bears look like its mother",
+        "their mother teaches them to keep their distance",
+        "the unknown bears look harmless"
+      ],
+      "gold_answer": "their mother teaches them to keep their distance",
+      "gold_index": 2,
+      "reference_passage": "animals learn some behaviors from watching their parents",
+      "kda_cont": 0.18889921968511617,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.35004287472111173,
+      "p_rqf_with_fact_ensemble": 0.2821113534155302,
+      "p_rq_without_fact_primary": 0.8615766167640686,
+      "p_rqf_with_fact_primary": 0.5545012950897217,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": "context_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 394,
+      "question": "When a city tears down a park in a city, the park",
+      "options": [
+        "is removed",
+        "is renewed",
+        "is retrieved",
+        "is restored"
+      ],
+      "gold_answer": "is removed",
+      "gold_index": 0,
+      "reference_passage": "if a habitat is removed then that habitat is destroyed",
+      "kda_cont": 0.27597814591538494,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.4080444909632206,
+      "p_rqf_with_fact_ensemble": 0.4521023891866207,
+      "p_rq_without_fact_primary": 0.24293848872184753,
+      "p_rqf_with_fact_primary": 0.32897475361824036,
+      "detection_flags": [
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [
+        "gold_in_passage"
+      ],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "reasoning_shortcut",
+      "failure_category_rationale": "Polarity odd-one-out: renewed/retrieved/restored are all restorative, the gold is the only removal, and 'tears down' echoes 'is removed'.",
+      "failure_category_status": "second_annotator_new_admission"
+    },
+    {
+      "question_id": 396,
+      "question": "If a grizzly bear eats a salmon, what is the grizzly bear demonstrating?",
+      "options": [
+        "consumption",
+        "cinematography",
+        "direction",
+        "production"
+      ],
+      "gold_answer": "consumption",
+      "gold_index": 0,
+      "reference_passage": "In the food chain process an animal has the role of consumer which eats producers for food",
+      "kda_cont": 0.4175438110417778,
+      "kda_disc_proxy": 0.5,
+      "p_rq_without_fact_ensemble": 0.5180372782051563,
+      "p_rqf_with_fact_ensemble": 0.6303263679146767,
+      "p_rq_without_fact_primary": 0.9114729166030884,
+      "p_rqf_with_fact_primary": 0.9738813638687134,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": null,
+      "failure_category": "option_leakage",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 399,
+      "question": "which of these is the quickest to go visiting from our world?",
+      "options": [
+        "none of these",
+        "a trip to mars",
+        "a trip to the moon",
+        "a trip to the northern star"
+      ],
+      "gold_answer": "a trip to the moon",
+      "gold_index": 2,
+      "reference_passage": "the moon is the celestial object that is closest to the Earth",
+      "kda_cont": 0.3152904632534325,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.38433418422937393,
+      "p_rqf_with_fact_ensemble": 0.39867474883794785,
+      "p_rq_without_fact_primary": 0.30698662996292114,
+      "p_rqf_with_fact_primary": 0.36371925473213196,
+      "detection_flags": [
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [
+        "abs_in_distractor"
+      ],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_rationale": "The Moon is the nearest body; common knowledge.",
+      "failure_category_status": "second_annotator_new_admission"
+    },
+    {
+      "question_id": 403,
+      "question": "Coal-fire power stations heat coal to incredible temps in order to",
+      "options": [
+        "produce energy",
+        "use heat energy",
+        "burn energy",
+        "fuel the world"
+      ],
+      "gold_answer": "produce energy",
+      "gold_index": 0,
+      "reference_passage": "coal is used to produce electricity by burning in coal-fire power stations",
+      "kda_cont": 0.3626041283887335,
+      "kda_disc_proxy": 0.5,
+      "p_rq_without_fact_ensemble": 0.3965645506978035,
+      "p_rqf_with_fact_ensemble": 0.43675048649311066,
+      "p_rq_without_fact_primary": 0.3162139356136322,
+      "p_rqf_with_fact_primary": 0.2664107084274292,
+      "detection_flags": [
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_rationale": "The gold is the only coherent purpose; the distractors are circular ('use heat energy', 'burn energy').",
+      "failure_category_status": "second_annotator_new_admission"
+    },
+    {
+      "question_id": 405,
+      "question": "A renewable resource is",
+      "options": [
+        "fossil fuel",
+        "turbine produced electricity",
+        "copper",
+        "coal lumps"
+      ],
+      "gold_answer": "turbine produced electricity",
+      "gold_index": 1,
+      "reference_passage": "renewable resources can be used over again",
+      "kda_cont": 0.09690088493078763,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.42392192044917465,
+      "p_rqf_with_fact_ensemble": 0.23319971159799024,
+      "p_rq_without_fact_primary": 0.971341609954834,
+      "p_rqf_with_fact_primary": 0.6417451500892639,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "reasoning_shortcut",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 408,
+      "question": "Global warming is lowering the world's amount of",
+      "options": [
+        "hurricanes",
+        "ocean levels",
+        "carbon dioxide",
+        "ice"
+      ],
+      "gold_answer": "ice",
+      "gold_index": 3,
+      "reference_passage": "water is in the solid state , called ice , for temperatures between 0 and 0 F",
+      "kda_cont": 0.34162375897280256,
+      "kda_disc_proxy": 0.3333333333333333,
+      "p_rq_without_fact_ensemble": 0.17575284838676453,
+      "p_rqf_with_fact_ensemble": 0.33719536662101746,
+      "p_rq_without_fact_primary": 0.10749280452728271,
+      "p_rqf_with_fact_primary": 0.1481417864561081,
+      "detection_flags": [
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [
+        "gold_in_passage",
+        "shortest_gold"
+      ],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_rationale": "Global warming reduces ice; elementary and widely known.",
+      "failure_category_status": "second_annotator_new_admission"
+    },
+    {
+      "question_id": 414,
+      "question": "cellular respiration is when energy is produced in a cell by consumption of",
+      "options": [
+        "water",
+        "nutrients",
+        "mitochondria",
+        "gas"
+      ],
+      "gold_answer": "nutrients",
+      "gold_index": 1,
+      "reference_passage": "cellular respiration is when cells break down food to produce energy",
+      "kda_cont": 0.18897790743784976,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.32766427130263764,
+      "p_rqf_with_fact_ensemble": 0.24298576544970274,
+      "p_rq_without_fact_primary": 0.7945786118507385,
+      "p_rqf_with_fact_primary": 0.40205180644989014,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": null,
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 422,
+      "question": "In general, how many times per month is there a full moon?",
+      "options": [
+        "twice",
+        "three times",
+        "once",
+        "four times"
+      ],
+      "gold_answer": "once",
+      "gold_index": 2,
+      "reference_passage": "each of the moon 's phases usually occurs once per month",
+      "kda_cont": 0.23733142269137603,
+      "kda_disc_proxy": 0.5,
+      "p_rq_without_fact_ensemble": 0.43948548287153244,
+      "p_rqf_with_fact_ensemble": 0.42670922726392746,
+      "p_rq_without_fact_primary": 0.24342487752437592,
+      "p_rqf_with_fact_primary": 0.1760130226612091,
+      "detection_flags": [
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [
+        "gold_in_passage",
+        "shortest_gold"
+      ],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_rationale": "One full moon per month is common knowledge.",
+      "failure_category_status": "second_annotator_new_admission"
+    },
+    {
+      "question_id": 426,
+      "question": "What animal is more difficult for predators to see in water?",
+      "options": [
+        "a fish",
+        "a duck",
+        "an octopus",
+        "a crab"
+      ],
+      "gold_answer": "an octopus",
+      "gold_index": 2,
+      "reference_passage": "octopuses releasing ink into the water causes predators to have difficulty seeing the octopus",
+      "kda_cont": 0.5484522852067868,
+      "kda_disc_proxy": null,
+      "p_rq_without_fact_ensemble": 0.4069156274199486,
+      "p_rqf_with_fact_ensemble": 0.5759715884923935,
+      "p_rq_without_fact_primary": 0.41559502482414246,
+      "p_rqf_with_fact_primary": 0.6481108069419861,
+      "detection_flags": [
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [
+        "gold_in_passage",
+        "longest_gold"
+      ],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_rationale": "Octopus concealment (ink/camouflage) is common elementary knowledge; the other options are ordinary visible animals.",
+      "failure_category_status": "second_annotator_new_admission"
+    },
+    {
+      "question_id": 433,
+      "question": "A car has the least speed if it",
+      "options": [
+        "is heavy",
+        "is large",
+        "is turned off",
+        "is small"
+      ],
+      "gold_answer": "is turned off",
+      "gold_index": 2,
+      "reference_passage": "stopped means no speed",
+      "kda_cont": 0.36591530790189913,
+      "kda_disc_proxy": 0.5,
+      "p_rq_without_fact_ensemble": 0.5469502322375774,
+      "p_rqf_with_fact_ensemble": 0.5549959093332291,
+      "p_rq_without_fact_primary": 0.8645921945571899,
+      "p_rqf_with_fact_primary": 0.7906730771064758,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "material_not_necessary",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 442,
+      "question": "A boy at school is waiting desperately for the school day to be over so that he can go home and play video games. He watches the time count down on the clock at the head of the class, counting the",
+      "options": [
+        "seconds",
+        "days",
+        "weeks",
+        "years"
+      ],
+      "gold_answer": "seconds",
+      "gold_index": 0,
+      "reference_passage": "seconds are used to measure time",
+      "kda_cont": 0.43820537738175497,
+      "kda_disc_proxy": 1.0,
+      "p_rq_without_fact_ensemble": 0.4240512028336525,
+      "p_rqf_with_fact_ensemble": 0.5586546584963799,
+      "p_rq_without_fact_primary": 0.1802670806646347,
+      "p_rqf_with_fact_primary": 0.6902508735656738,
+      "detection_flags": [
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [
+        "gold_in_passage",
+        "longest_gold"
+      ],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_rationale": "A classroom clock counting down measures seconds; days/weeks/years are absurd for a clock.",
+      "failure_category_status": "second_annotator_new_admission"
+    },
+    {
+      "question_id": 447,
+      "question": "A measurement of time that is less than a minute is a",
+      "options": [
+        "day",
+        "minute",
+        "hour",
+        "second"
+      ],
+      "gold_answer": "second",
+      "gold_index": 3,
+      "reference_passage": "seconds are used to measure time",
+      "kda_cont": 0.4440628800326093,
+      "kda_disc_proxy": 0.5,
+      "p_rq_without_fact_ensemble": 0.4331825487315655,
+      "p_rqf_with_fact_ensemble": 0.574613094329834,
+      "p_rq_without_fact_primary": 0.30138611793518066,
+      "p_rqf_with_fact_primary": 0.7917875051498413,
+      "detection_flags": [
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [
+        "gold_in_passage"
+      ],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "material_not_necessary",
+      "failure_category_rationale": "The stem is logically self-sufficient: 'less than a minute' eliminates day, minute and hour by arithmetic alone. The fact adds nothing.",
+      "failure_category_status": "second_annotator_new_admission"
+    },
+    {
+      "question_id": 468,
+      "question": "An instinctual behavior is",
+      "options": [
+        "dogs rolling over on command",
+        "frogs returning to the ponds were they hatched to lay eggs",
+        "birds mimicking human speech",
+        "seals clapping for treats from trainers"
+      ],
+      "gold_answer": "frogs returning to the ponds were they hatched to lay eggs",
+      "gold_index": 1,
+      "reference_passage": "migration is an instinctive behavior",
+      "kda_cont": 0.319124253200347,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.5848107859492302,
+      "p_rqf_with_fact_ensemble": 0.6192522048950195,
+      "p_rq_without_fact_primary": 0.8677643537521362,
+      "p_rqf_with_fact_primary": 0.9602454304695129,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 470,
+      "question": "What produce pollen and seeds?",
+      "options": [
+        "lakes that are frozen over",
+        "things you give a loved one in a bouquet",
+        "various types of animals",
+        "a person that is healthy"
+      ],
+      "gold_answer": "things you give a loved one in a bouquet",
+      "gold_index": 1,
+      "reference_passage": "a flower produces pollen and seeds",
+      "kda_cont": 0.19859942074742448,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.3761760954221245,
+      "p_rqf_with_fact_ensemble": 0.40488167107105255,
+      "p_rq_without_fact_primary": 0.9672045707702637,
+      "p_rqf_with_fact_primary": 0.9906731247901917,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 477,
+      "question": "Will happen to the number of islands if the planet's temperature rises?",
+      "options": [
+        "they will increase",
+        "nothing will happen",
+        "they will shrink",
+        "they will double"
+      ],
+      "gold_answer": "they will shrink",
+      "gold_index": 2,
+      "reference_passage": "as the level of water rises , the amount of available land will decrease",
+      "kda_cont": 0.1788949385516985,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.3619296057149768,
+      "p_rqf_with_fact_ensemble": 0.377290983684361,
+      "p_rq_without_fact_primary": 0.9398720264434814,
+      "p_rqf_with_fact_primary": 0.9862150549888611,
+      "detection_flags": [
+        "C2_both_correct_conf",
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [
+        "abs_in_distractor"
+      ],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 481,
+      "question": "Burning something that reproduces usually will:",
+      "options": [
+        "impair its well being in some way",
+        "weed out weaker members of the species",
+        "speed up its biological functions",
+        "increase its population growth"
+      ],
+      "gold_answer": "impair its well being in some way",
+      "gold_index": 0,
+      "reference_passage": "burning a living thing usually causes harm to that living thing",
+      "kda_cont": 0.5115907714706796,
+      "kda_disc_proxy": 1.0,
+      "p_rq_without_fact_ensemble": 0.35104266833513975,
+      "p_rqf_with_fact_ensemble": 0.5165405124425888,
+      "p_rq_without_fact_primary": 0.5066050291061401,
+      "p_rqf_with_fact_primary": 0.8132187724113464,
+      "detection_flags": [
+        "C1_kda_disc"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": null,
+      "failure_category": "reasoning_shortcut",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 483,
+      "question": "A pot of pasta is boiling on the stove, and the lid on top of the pot is shaking as the water boils more rapidly. A person goes to the stove and removes the pot, releasing steam into the air above, and so the steam is",
+      "options": [
+        "cold air",
+        "water vapor",
+        "very dry",
+        "boiling water"
+      ],
+      "gold_answer": "water vapor",
+      "gold_index": 1,
+      "reference_passage": "water is in the gas state , called water vapor , for temperatures between 100 and 100000000000 F",
+      "kda_cont": 0.22341326655370494,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.477465795353055,
+      "p_rqf_with_fact_ensemble": 0.41666484251618385,
+      "p_rq_without_fact_primary": 0.10025838762521744,
+      "p_rqf_with_fact_primary": 0.10799215734004974,
+      "detection_flags": [
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [
+        "gold_in_passage"
+      ],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_rationale": "Steam is water vapor; elementary states of matter.",
+      "failure_category_status": "second_annotator_new_admission"
+    },
+    {
+      "question_id": 484,
+      "question": "A plant that gets extra minerals such as zinc are probably",
+      "options": [
+        "planted in zinc pills",
+        "plated in the sea",
+        "placed in good soil",
+        "made out of soil"
+      ],
+      "gold_answer": "placed in good soil",
+      "gold_index": 2,
+      "reference_passage": "plants absorb nutrients from soil into themselves through their roots",
+      "kda_cont": 0.24327867365755723,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.3296954487450421,
+      "p_rqf_with_fact_ensemble": 0.3557601164211519,
+      "p_rq_without_fact_primary": 0.706907331943512,
+      "p_rqf_with_fact_primary": 0.8471065163612366,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": "unstable_other",
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 486,
+      "question": "if a student wants an orange, he would have to get it from which of these?",
+      "options": [
+        "from a live cow",
+        "from a live plant",
+        "from a volcano cave",
+        "from a wild dog"
+      ],
+      "gold_answer": "from a live plant",
+      "gold_index": 1,
+      "reference_passage": "plants are the source of fruit",
+      "kda_cont": 0.5066716136688827,
+      "kda_disc_proxy": 0.5,
+      "p_rq_without_fact_ensemble": 0.43131452426314354,
+      "p_rqf_with_fact_ensemble": 0.526048019528389,
+      "p_rq_without_fact_primary": 0.7526517510414124,
+      "p_rqf_with_fact_primary": 0.6107866764068604,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": "context_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 491,
+      "question": "A shark will be unable to survive on eating algae and moss, because",
+      "options": [
+        "it is a predator",
+        "it is a vegetarian",
+        "it is a freshwater fish",
+        "it is a producer"
+      ],
+      "gold_answer": "it is a predator",
+      "gold_index": 0,
+      "reference_passage": "if an animal eats another animal then that animal is a carnivore or omnivore or predator",
+      "kda_cont": 0.42605381823655275,
+      "kda_disc_proxy": 0.3333333333333333,
+      "p_rq_without_fact_ensemble": 0.3170962855219841,
+      "p_rqf_with_fact_ensemble": 0.42166100069880486,
+      "p_rq_without_fact_primary": 0.4589306116104126,
+      "p_rqf_with_fact_primary": 0.38857340812683105,
+      "detection_flags": [
+        "C3_prior_dependent"
+      ],
+      "structural_cues": [
+        "gold_in_passage"
+      ],
+      "counterfactual_class": "prior_dependent",
+      "failure_category": "common_knowledge",
+      "failure_category_rationale": "Sharks are predators; common knowledge.",
+      "failure_category_status": "second_annotator_new_admission"
+    },
+    {
+      "question_id": 496,
+      "question": "Pasta may be cooked in water when",
+      "options": [
+        "the water is warm",
+        "the water is on the stove",
+        "water is bubbling from applied warmth",
+        "the pasta is very fresh"
+      ],
+      "gold_answer": "water is bubbling from applied warmth",
+      "gold_index": 2,
+      "reference_passage": "boiling is when liquids are heated above their boiling point",
+      "kda_cont": 0.19752044474294458,
+      "kda_disc_proxy": 0.5,
+      "p_rq_without_fact_ensemble": 0.366370265282967,
+      "p_rqf_with_fact_ensemble": 0.2996205115923658,
+      "p_rq_without_fact_primary": 0.8367586135864258,
+      "p_rqf_with_fact_primary": 0.6095699071884155,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [
+        "longest_gold"
+      ],
+      "counterfactual_class": null,
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 497,
+      "question": "A decrease in diseases",
+      "options": [
+        "has no impact on a population",
+        "leads to more sick people",
+        "leads to less sick people",
+        "leads to an uptick in emergency room visits"
+      ],
+      "gold_answer": "leads to less sick people",
+      "gold_index": 2,
+      "reference_passage": "decreasing something negative has a positive impact on a thing",
+      "kda_cont": 0.16733612946187743,
+      "kda_disc_proxy": 0.0,
+      "p_rq_without_fact_ensemble": 0.35488480189815164,
+      "p_rqf_with_fact_ensemble": 0.3795122457668185,
+      "p_rq_without_fact_primary": 0.9943076968193054,
+      "p_rqf_with_fact_primary": 0.995163083076477,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": null,
+      "failure_category": "material_not_necessary",
+      "failure_category_status": "carried_from_original_artefact"
+    },
+    {
+      "question_id": 498,
+      "question": "When soil is viewed in a scientific way, what is seen and viewed is actually",
+      "options": [
+        "insects like big beetles",
+        "tiny lifeforms in dirt",
+        "small mammals living there",
+        "a lot of tiny pebbles"
+      ],
+      "gold_answer": "tiny lifeforms in dirt",
+      "gold_index": 1,
+      "reference_passage": "studying a soil sample means studying the microorganisms in that soil",
+      "kda_cont": 0.18015312481781487,
+      "kda_disc_proxy": 0.3333333333333333,
+      "p_rq_without_fact_ensemble": 0.35374386972762295,
+      "p_rqf_with_fact_ensemble": 0.3559006640134612,
+      "p_rq_without_fact_primary": 0.8693845272064209,
+      "p_rqf_with_fact_primary": 0.955813467502594,
+      "detection_flags": [
+        "C2_both_correct_conf"
+      ],
+      "structural_cues": [],
+      "counterfactual_class": null,
+      "failure_category": "common_knowledge",
+      "failure_category_status": "carried_from_original_artefact"
+    }
+  ],
+  "extra_labels_source": "results/rq1_failure_analysis/obqa_new_admission_labels.json",
+  "extra_labels_provenance": {
+    "what": "failure_category labels for the 20 OpenBookQA items newly admitted to the RQ1 flagged pool by criterion C3_prior_dependent, which could not be applied when the original artefact was built.",
+    "annotator": "second annotator (Claude, this session) - NOT the annotator who labelled the original 408 items",
+    "rubric": "the reconstructed operational definitions in docs/failure_taxonomy_methodology.md section 4.1",
+    "passes": 1,
+    "inter_annotator_agreement": "not measured",
+    "known_risk": "these 20 labels come from a different annotator than the other 80 OBQA labels, using a rubric reconstructed after the fact. Mixing them into a single distribution introduces an annotator effect that did not exist before. Reported separately in docs/failure_taxonomy_methodology.md section 6.1 for this reason.",
+    "note_on_category_availability": "option_leakage and parametric_knowledge received zero items here, consistent with the original OBQA pool (which also had zero parametric_knowledge)."
+  },
+  "n_unlabelled": 0,
+  "n_second_annotator": 20
+}

@@ -1,0 +1,4939 @@
+{
+  "summary": {
+    "experiment": "persona_conditioned_student_simulation_zero_context",
+    "model": "Qwen3-4B-Instruct-2507",
+    "model_path": "/home/nghben/Downloads/research/fsds/experiment/models/Qwen3-4B-Instruct-2507",
+    "quantization": {
+      "load_in_4bit": true,
+      "bnb_4bit_quant_type": "nf4",
+      "bnb_4bit_compute_dtype": "float16",
+      "bnb_4bit_use_double_quant": false
+    },
+    "setting": "zero_context (Setting A) -- no reference passage is ever shown",
+    "tiers": [
+      "beginner",
+      "intermediate",
+      "advanced"
+    ],
+    "paradigms": {
+      "joint": "all three profiles in one prompt; the assistant turn is teacher-forced through 'Beginner:/Intermediate:/Advanced:' and each tier's committed letter conditions the next",
+      "isolated": "three independent single-persona roleplay prompts"
+    },
+    "scoring_protocol": "letter-logit: logits at the scored position restricted to A/B/C/D, logsumexp over tokenisation variants, softmax over the four options",
+    "personas": {
+      "beginner": "Beginner (Grade 5-6, no formal science coursework). This student has never taken chemistry, physics, or biology as a subject. Their science vocabulary is limited to everyday words: they do not know what 'oxidant', 'covalent', 'mitosis', 'valence', or 'isotope' mean, and technical terms look interchangeable to them. They answer by matching words: if a word from the question also appears in an option, that option feels right, and if an option merely looks longer or more scientific they treat that as a sign of correctness. They hold common intuitive misconceptions (heavier objects fall faster, plants take their mass from soil, cold is a substance that flows in, the Sun orbits the Earth). Multi-step reasoning is beyond them; they answer from the first association the question triggers. They get easy, familiar questions right and miss anything that needs a definition they were never taught.",
+      "intermediate": "Intermediate (Grade 10-11 high-school science student). This student has completed introductory biology, chemistry, and physics. They know standard definitions and mechanisms -- photosynthesis, the periodic table, Newton's laws, cell structure, acids and bases -- and can reason one or two steps from them. They are not fooled by simple word-matching. Their weakness is precision: they confuse closely related terms (mass vs weight, speed vs velocity, evaporation vs boiling, mitosis vs meiosis), they miss exception cases and edge conditions, and when two options are both textbook-plausible they pick the more familiar one rather than the strictly correct one. Advanced or specialised terminology outside the standard curriculum defeats them.",
+      "advanced": "Advanced (university-level science major with strong domain mastery). This student commands the formal vocabulary and mechanisms across chemistry, physics, biology, and earth science, including specialised terminology. They reason from first principles rather than association, are immune to surface-level traps such as word overlap with the question or option length, and reliably discriminate between near-synonymous distractors by checking the precise technical definition. They answer with the rigorously correct choice even when a more intuitive-sounding option is present."
+    },
+    "prompts": {
+      "joint_system": "You are a psychometrics expert who models student behaviour. Given a student profile and an exam question, you predict the option that student would actually select -- which is often not the correct option. You never reveal the correct answer; you report predicted selections only, in the exact format requested.",
+      "isolated_system": "You are role-playing a specific student taking a multiple-choice exam. Stay strictly in character: answer exactly as that student would, using only the knowledge and reasoning habits their profile describes, even when that leads to a wrong option. Answer with a single letter and nothing else."
+    },
+    "environment": {
+      "python": "3.12.3",
+      "platform": "Linux-7.0.0-30-generic-x86_64-with-glibc2.39",
+      "torch": "2.13.0+cu130",
+      "cuda_available": true,
+      "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU"
+    },
+    "memory": {
+      "load_seconds": 5.66,
+      "n_parameters_packed": 2205810176,
+      "weights_vram_gb": 2.657,
+      "allocated_after_load_gb": 2.657,
+      "reserved_after_load_gb": 2.703,
+      "device_total_gb": 3.68,
+      "peak_allocated_gb": 2.989,
+      "peak_reserved_gb": 3.406
+    },
+    "limit": 50,
+    "metrics": {
+      "dataset_key": "sciq",
+      "dataset_name": "allenai/sciq",
+      "split": "test",
+      "data_file": "/home/nghben/Downloads/research/fsds/experiment/datasets/sciq/sciq_test_full.json",
+      "setting": "zero_context_no_fact",
+      "n_samples": 50,
+      "scoring_seconds": 90.14,
+      "mean_latency_seconds": 1.802568669319153,
+      "joint_emission_order": [
+        "beginner",
+        "intermediate",
+        "advanced"
+      ],
+      "paradigms": {
+        "joint": {
+          "per_tier": {
+            "beginner": {
+              "n_samples": 50,
+              "accuracy": 0.46,
+              "n_correct": 23,
+              "n_errors": 27,
+              "mean_p_correct": 0.457485042875258,
+              "mean_p_selected": 0.9476862472295761,
+              "mean_entropy_bits": 0.19184517057242256,
+              "mean_p_selected_on_errors": 0.9361371431085799,
+              "answer_position_distribution": {
+                "A": 0.58,
+                "B": 0.08,
+                "C": 0.22,
+                "D": 0.12
+              },
+              "error_position_distribution": {
+                "A": 0.7407,
+                "B": 0.1111,
+                "C": 0.1111,
+                "D": 0.037
+              },
+              "trap_probes": {
+                "longest_option": {
+                  "eligible_questions": 29,
+                  "eligible_errors": 17,
+                  "trap_hits": 4,
+                  "trap_hit_rate_among_errors": 0.23529411764705882,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 0.7058823529411765
+                },
+                "surface_match": {
+                  "eligible_questions": 0,
+                  "eligible_errors": 0,
+                  "trap_hits": 0,
+                  "trap_hit_rate_among_errors": null,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": null
+                },
+                "lookalike_to_gold": {
+                  "eligible_questions": 40,
+                  "eligible_errors": 24,
+                  "trap_hits": 8,
+                  "trap_hit_rate_among_errors": 0.3333333333333333,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 1.0
+                }
+              }
+            },
+            "intermediate": {
+              "n_samples": 50,
+              "accuracy": 0.82,
+              "n_correct": 41,
+              "n_errors": 9,
+              "mean_p_correct": 0.829835914498976,
+              "mean_p_selected": 0.987471307516098,
+              "mean_entropy_bits": 0.055222244150847546,
+              "mean_p_selected_on_errors": 0.93690515226788,
+              "answer_position_distribution": {
+                "A": 0.22,
+                "B": 0.22,
+                "C": 0.28,
+                "D": 0.28
+              },
+              "error_position_distribution": {
+                "A": 0.2222,
+                "B": 0.4444,
+                "C": 0.1111,
+                "D": 0.2222
+              },
+              "trap_probes": {
+                "longest_option": {
+                  "eligible_questions": 29,
+                  "eligible_errors": 5,
+                  "trap_hits": 3,
+                  "trap_hit_rate_among_errors": 0.6,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 1.8
+                },
+                "surface_match": {
+                  "eligible_questions": 0,
+                  "eligible_errors": 0,
+                  "trap_hits": 0,
+                  "trap_hit_rate_among_errors": null,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": null
+                },
+                "lookalike_to_gold": {
+                  "eligible_questions": 40,
+                  "eligible_errors": 9,
+                  "trap_hits": 4,
+                  "trap_hit_rate_among_errors": 0.4444444444444444,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 1.3333333333333333
+                }
+              }
+            },
+            "advanced": {
+              "n_samples": 50,
+              "accuracy": 0.86,
+              "n_correct": 43,
+              "n_errors": 7,
+              "mean_p_correct": 0.8425319273236758,
+              "mean_p_selected": 0.9824999558925629,
+              "mean_entropy_bits": 0.049995531147753305,
+              "mean_p_selected_on_errors": 0.9998376880373273,
+              "answer_position_distribution": {
+                "A": 0.2,
+                "B": 0.18,
+                "C": 0.3,
+                "D": 0.32
+              },
+              "error_position_distribution": {
+                "A": 0.2857,
+                "B": 0.2857,
+                "C": 0.1429,
+                "D": 0.2857
+              },
+              "trap_probes": {
+                "longest_option": {
+                  "eligible_questions": 29,
+                  "eligible_errors": 6,
+                  "trap_hits": 2,
+                  "trap_hit_rate_among_errors": 0.3333333333333333,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 1.0
+                },
+                "surface_match": {
+                  "eligible_questions": 0,
+                  "eligible_errors": 0,
+                  "trap_hits": 0,
+                  "trap_hit_rate_among_errors": null,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": null
+                },
+                "lookalike_to_gold": {
+                  "eligible_questions": 40,
+                  "eligible_errors": 7,
+                  "trap_hits": 5,
+                  "trap_hit_rate_among_errors": 0.7142857142857143,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 2.1428571428571432
+                }
+              }
+            }
+          },
+          "accuracy_by_tier": {
+            "beginner": 0.46,
+            "intermediate": 0.82,
+            "advanced": 0.86
+          },
+          "ability_gap_advanced_minus_beginner": 0.39999999999999997,
+          "monotonicity": {
+            "strict_beginner_lt_intermediate": true,
+            "intermediate_le_advanced": true,
+            "holds": true
+          },
+          "error_set_overlap_jaccard": {
+            "beginner_vs_intermediate": 0.2857142857142857,
+            "beginner_vs_advanced": 0.0967741935483871,
+            "intermediate_vs_advanced": 0.14285714285714285
+          },
+          "error_containment": {
+            "advanced_errors_also_missed_by_beginner": 0.42857142857142855,
+            "intermediate_errors_also_missed_by_beginner": 0.8888888888888888
+          }
+        },
+        "isolated": {
+          "per_tier": {
+            "beginner": {
+              "n_samples": 50,
+              "accuracy": 0.88,
+              "n_correct": 44,
+              "n_errors": 6,
+              "mean_p_correct": 0.8747111153581266,
+              "mean_p_selected": 0.9726321864128112,
+              "mean_entropy_bits": 0.07997463174243459,
+              "mean_p_selected_on_errors": 0.893518348534902,
+              "answer_position_distribution": {
+                "A": 0.2,
+                "B": 0.12,
+                "C": 0.32,
+                "D": 0.36
+              },
+              "error_position_distribution": {
+                "A": 0.1667,
+                "B": 0.0,
+                "C": 0.1667,
+                "D": 0.6667
+              },
+              "trap_probes": {
+                "longest_option": {
+                  "eligible_questions": 29,
+                  "eligible_errors": 2,
+                  "trap_hits": 1,
+                  "trap_hit_rate_among_errors": 0.5,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 1.5
+                },
+                "surface_match": {
+                  "eligible_questions": 0,
+                  "eligible_errors": 0,
+                  "trap_hits": 0,
+                  "trap_hit_rate_among_errors": null,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": null
+                },
+                "lookalike_to_gold": {
+                  "eligible_questions": 40,
+                  "eligible_errors": 6,
+                  "trap_hits": 3,
+                  "trap_hit_rate_among_errors": 0.5,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 1.5
+                }
+              }
+            },
+            "intermediate": {
+              "n_samples": 50,
+              "accuracy": 0.92,
+              "n_correct": 46,
+              "n_errors": 4,
+              "mean_p_correct": 0.9060445798923609,
+              "mean_p_selected": 0.9841702783107757,
+              "mean_entropy_bits": 0.06134076883012555,
+              "mean_p_selected_on_errors": 0.9798243492841721,
+              "answer_position_distribution": {
+                "A": 0.18,
+                "B": 0.16,
+                "C": 0.3,
+                "D": 0.36
+              },
+              "error_position_distribution": {
+                "A": 0.0,
+                "B": 0.25,
+                "C": 0.0,
+                "D": 0.75
+              },
+              "trap_probes": {
+                "longest_option": {
+                  "eligible_questions": 29,
+                  "eligible_errors": 3,
+                  "trap_hits": 2,
+                  "trap_hit_rate_among_errors": 0.6666666666666666,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 2.0
+                },
+                "surface_match": {
+                  "eligible_questions": 0,
+                  "eligible_errors": 0,
+                  "trap_hits": 0,
+                  "trap_hit_rate_among_errors": null,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": null
+                },
+                "lookalike_to_gold": {
+                  "eligible_questions": 40,
+                  "eligible_errors": 4,
+                  "trap_hits": 1,
+                  "trap_hit_rate_among_errors": 0.25,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 0.75
+                }
+              }
+            },
+            "advanced": {
+              "n_samples": 50,
+              "accuracy": 0.92,
+              "n_correct": 46,
+              "n_errors": 4,
+              "mean_p_correct": 0.9196711296388219,
+              "mean_p_selected": 0.9956884372234345,
+              "mean_entropy_bits": 0.02354949714025491,
+              "mean_p_selected_on_errors": 0.9740925133228302,
+              "answer_position_distribution": {
+                "A": 0.2,
+                "B": 0.14,
+                "C": 0.32,
+                "D": 0.34
+              },
+              "error_position_distribution": {
+                "A": 0.25,
+                "B": 0.0,
+                "C": 0.25,
+                "D": 0.5
+              },
+              "trap_probes": {
+                "longest_option": {
+                  "eligible_questions": 29,
+                  "eligible_errors": 2,
+                  "trap_hits": 1,
+                  "trap_hit_rate_among_errors": 0.5,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 1.5
+                },
+                "surface_match": {
+                  "eligible_questions": 0,
+                  "eligible_errors": 0,
+                  "trap_hits": 0,
+                  "trap_hit_rate_among_errors": null,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": null
+                },
+                "lookalike_to_gold": {
+                  "eligible_questions": 40,
+                  "eligible_errors": 4,
+                  "trap_hits": 2,
+                  "trap_hit_rate_among_errors": 0.5,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 1.5
+                }
+              }
+            }
+          },
+          "accuracy_by_tier": {
+            "beginner": 0.88,
+            "intermediate": 0.92,
+            "advanced": 0.92
+          },
+          "ability_gap_advanced_minus_beginner": 0.040000000000000036,
+          "monotonicity": {
+            "strict_beginner_lt_intermediate": true,
+            "intermediate_le_advanced": true,
+            "holds": true
+          },
+          "error_set_overlap_jaccard": {
+            "beginner_vs_intermediate": 0.42857142857142855,
+            "beginner_vs_advanced": 0.6666666666666666,
+            "intermediate_vs_advanced": 0.6
+          },
+          "error_containment": {
+            "advanced_errors_also_missed_by_beginner": 1.0,
+            "intermediate_errors_also_missed_by_beginner": 0.75
+          }
+        }
+      },
+      "joint_differentiation": {
+        "emission_order": [
+          "beginner",
+          "intermediate",
+          "advanced"
+        ],
+        "last_scored_tier": "advanced",
+        "all_three_tiers_distinct_rate": 0.1,
+        "chance_all_distinct_if_independent_uniform": 0.375,
+        "n_questions_earlier_tiers_agree": 25,
+        "last_tier_deviates_from_agreeing_earlier_tiers": 0.28,
+        "deviations_that_are_wrong": 0.5714285714285714,
+        "deviations_away_from_a_correct_consensus": 0.5714285714285714
+      },
+      "cross_paradigm": {
+        "beginner": {
+          "prediction_agreement": 0.48,
+          "accuracy_joint": 0.46,
+          "accuracy_isolated": 0.88
+        },
+        "intermediate": {
+          "prediction_agreement": 0.84,
+          "accuracy_joint": 0.82,
+          "accuracy_isolated": 0.92
+        },
+        "advanced": {
+          "prediction_agreement": 0.88,
+          "accuracy_joint": 0.86,
+          "accuracy_isolated": 0.92
+        }
+      },
+      "gap_joint_minus_isolated": 0.35999999999999993
+    },
+    "total_runtime_seconds": 99.94
+  },
+  "results": [
+    {
+      "id": 0,
+      "question": "Compounds that are capable of accepting electrons, such as o 2 or f2, are called what?",
+      "options": [
+        "Oxygen",
+        "antioxidants",
+        "residues",
+        "oxidants"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "oxidants",
+      "longest_option_idx": 1,
+      "surface_match_idx": null,
+      "lookalike_idx": 1,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9995653033256531,
+            0.00040446926141157746,
+            5.600361063784476e-09,
+            3.0229726689867675e-05
+          ],
+          "pred_idx": 0,
+          "p_correct": 3.0229726689867675e-05,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            1.3017686928407102e-10,
+            0.0120537793263793,
+            4.1370126768747184e-10,
+            0.9879462122917175
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9879462122917175,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            8.352922765119677e-16,
+            2.7388179309922097e-15,
+            5.651869692201682e-16,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            6.339209903671872e-06,
+            9.931130762197427e-08,
+            1.4165996153892024e-09,
+            0.9999935626983643
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999935626983643,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            5.315785500670245e-08,
+            9.94615431682e-11,
+            5.756392931766108e-11,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.7629980808564483e-09,
+            7.0932678133961424e-12,
+            1.649234221412499e-11,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 693,
+        "isolated": 930
+      },
+      "latency_seconds": 3.016594886779785
+    },
+    {
+      "id": 1,
+      "question": "What term in biotechnology means a genetically exact copy of an organism?",
+      "options": [
+        "phenotype",
+        "male",
+        "clone",
+        "adult"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "clone",
+      "longest_option_idx": 0,
+      "surface_match_idx": null,
+      "lookalike_idx": 1,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.0029246597550809383,
+            0.10637049376964569,
+            0.890629231929779,
+            7.55415967432782e-05
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.890629231929779,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            3.37488578190892e-16,
+            1.0277338062612135e-13,
+            1.0,
+            1.961464370374595e-14
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            2.3931523614263207e-16,
+            1.1530854328550659e-14,
+            1.0,
+            5.982128261852607e-15
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.4637784257268138e-12,
+            3.147618450605183e-12,
+            1.0,
+            1.9697292841930336e-12
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.006039218945376e-12,
+            5.384939998250016e-13,
+            1.0,
+            5.301454262564287e-13
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            6.807201829127363e-13,
+            3.8786267492034454e-13,
+            1.0,
+            3.165642932251994e-13
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 684,
+        "isolated": 903
+      },
+      "latency_seconds": 1.7187631130218506
+    },
+    {
+      "id": 2,
+      "question": "Vertebrata are characterized by the presence of what?",
+      "options": [
+        "Bones",
+        "Thumbs",
+        "Muscles",
+        "backbone"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "backbone",
+      "longest_option_idx": 3,
+      "surface_match_idx": null,
+      "lookalike_idx": 0,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.0384661927819252,
+            1.8224927345045216e-08,
+            5.566661714917487e-12,
+            0.961533784866333
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.961533784866333,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            2.5946095966178362e-11,
+            9.251365298834635e-12,
+            3.9008374438584403e-14,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.000626334163825959,
+            2.9382364596930444e-11,
+            1.3319508256753876e-12,
+            0.999373733997345
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.999373733997345,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.7087563586315468e-09,
+            1.1694822193986099e-11,
+            3.4033869472649414e-12,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            6.485707526593387e-10,
+            7.318432318492718e-12,
+            5.271269098300335e-12,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            4.406940945500537e-08,
+            3.5262179287620654e-10,
+            3.364740708278191e-10,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 684,
+        "isolated": 903
+      },
+      "latency_seconds": 1.722409725189209
+    },
+    {
+      "id": 3,
+      "question": "What is the height above or below sea level called?",
+      "options": [
+        "depth",
+        "latitude",
+        "elevation",
+        "variation"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "elevation",
+      "longest_option_idx": null,
+      "surface_match_idx": null,
+      "lookalike_idx": 3,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9999921321868896,
+            1.9555526975523208e-08,
+            7.411276783386711e-06,
+            4.888266289526655e-07
+          ],
+          "pred_idx": 0,
+          "p_correct": 7.411276783386711e-06,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            1.1253516163378663e-07,
+            1.1628232404747862e-10,
+            0.9999998807907104,
+            1.3460655333419336e-11
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999998807907104,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            6.5700826296620236e-15,
+            2.293184156562829e-14,
+            1.0,
+            1.527589869648651e-14
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            2.1233784082141938e-06,
+            2.7305790961662524e-09,
+            0.9999978542327881,
+            2.486220340713885e-09
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999978542327881,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            6.385155737476111e-10,
+            2.0848274495666175e-11,
+            1.0,
+            2.1848802281287938e-11
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            3.850741947530878e-09,
+            5.323793142442135e-11,
+            1.0,
+            6.835885330014335e-11
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 681,
+        "isolated": 894
+      },
+      "latency_seconds": 1.7250592708587646
+    },
+    {
+      "id": 4,
+      "question": "Ice cores, varves and what else indicate the environmental conditions at the time of their creation?",
+      "options": [
+        "mountain ranges",
+        "fossils",
+        "magma",
+        "tree rings"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "tree rings",
+      "longest_option_idx": 0,
+      "surface_match_idx": null,
+      "lookalike_idx": 1,
+      "joint": {
+        "beginner": {
+          "probs": [
+            4.0647663728833605e-13,
+            3.471549159250742e-10,
+            3.7010116651046976e-13,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            7.97041433284266e-16,
+            1.404745596103943e-13,
+            5.5010625910198105e-14,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            8.637408843714667e-11,
+            0.9995417594909668,
+            9.731738748186558e-10,
+            0.0004583129193633795
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.0004583129193633795,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            3.5061404890512904e-09,
+            1.0923714710564525e-10,
+            2.8054418163558914e-11,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            4.388449326153676e-10,
+            1.5581841372735994e-12,
+            2.339111326507548e-12,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            9.833214242860322e-09,
+            4.2777878461741636e-11,
+            8.37550237497986e-11,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 691,
+        "isolated": 924
+      },
+      "latency_seconds": 1.7767040729522705
+    },
+    {
+      "id": 5,
+      "question": "What chemical signals in plants control different processes?",
+      "options": [
+        "produce hormones",
+        "Human Hormones",
+        "nitrogen hormones",
+        "plant hormones"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "plant hormones",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": 0,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9304581880569458,
+            8.413626062520052e-08,
+            2.8789848283139463e-09,
+            0.06954173743724823
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.06954173743724823,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            5.438597055346106e-12,
+            1.2015425275829078e-13,
+            3.336563406748823e-14,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.863788930174599e-16,
+            3.322562968570246e-16,
+            5.651869692201682e-16,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            3.0590220490012143e-07,
+            2.219286213134275e-11,
+            2.6769701039208726e-11,
+            0.9999996423721313
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999996423721313,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.1365636964910664e-06,
+            2.28973211918726e-11,
+            2.117656050515393e-11,
+            0.9999988079071045
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999988079071045,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            5.203571618039859e-07,
+            2.0091775465580497e-10,
+            4.819766252772695e-10,
+            0.9999995231628418
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999995231628418,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 684,
+        "isolated": 903
+      },
+      "latency_seconds": 1.7289013862609863
+    },
+    {
+      "id": 6,
+      "question": "Meiosis is part of the process of gametogenesis, which is the production of what?",
+      "options": [
+        "egg only",
+        "chromosomes",
+        "sperm and eggs",
+        "sperm only"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "sperm and eggs",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": 3,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.8354792594909668,
+            5.410524295257346e-07,
+            0.16451561450958252,
+            4.530176283878973e-06
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.16451561450958252,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            6.914400150527522e-13,
+            3.1971862223673098e-12,
+            1.0,
+            1.418742835886111e-12
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            8.654386343849574e-14,
+            1.1159276627759063e-11,
+            1.0,
+            2.3859586528729437e-10
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.0783276593429036e-05,
+            1.1365490308890003e-06,
+            0.999985933303833,
+            2.190755594710936e-06
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.999985933303833,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.6052279505629485e-09,
+            7.0825985076794495e-09,
+            1.0,
+            2.2508451991143374e-08
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            5.263340430161634e-09,
+            5.346226128466469e-09,
+            1.0,
+            1.1744099026600452e-09
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 693,
+        "isolated": 930
+      },
+      "latency_seconds": 1.779914140701294
+    },
+    {
+      "id": 7,
+      "question": "Which type of tree is dominant in temperate forests?",
+      "options": [
+        "vines",
+        "shrubs",
+        "deciduous",
+        "fungus"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "deciduous",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": 3,
+      "joint": {
+        "beginner": {
+          "probs": [
+            1.370957193103095e-06,
+            7.123146517074019e-10,
+            0.9999985694885254,
+            9.146299828621807e-10
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999985694885254,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            7.605422541914861e-16,
+            1.266416662428502e-14,
+            1.0,
+            6.233520779630811e-14
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.9697292841930336e-12,
+            5.189545841666199e-12,
+            1.0,
+            3.7322669399486585e-09
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.8010158642223217e-10,
+            5.079998574575306e-11,
+            1.0,
+            7.052879807956103e-11
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            2.219287080496013e-11,
+            7.0932678133961424e-12,
+            1.0,
+            8.827714600978531e-12
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            2.4616969573898473e-10,
+            4.8473686869998645e-11,
+            1.0,
+            6.322160850391612e-11
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 683,
+        "isolated": 900
+      },
+      "latency_seconds": 1.7297639846801758
+    },
+    {
+      "id": 8,
+      "question": "What kind of viscosity is found in long-chain hydrocarbons?",
+      "options": [
+        "highly viscous",
+        "low viscosity",
+        "increased viscosity",
+        "intense viscosity"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "highly viscous",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": 1,
+      "joint": {
+        "beginner": {
+          "probs": [
+            1.0,
+            4.745044912546348e-10,
+            1.211689748537026e-09,
+            2.9066924422949114e-09
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            1.6052279505629485e-09,
+            1.004526017922558e-09,
+            1.6752058074054332e-11
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.8716424555489074e-14,
+            1.0,
+            1.2135149655978505e-12,
+            5.611236735675318e-12
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.8716424555489074e-14,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.9999996423721313,
+            1.5869997582740325e-07,
+            7.734418971949708e-08,
+            3.326532294067874e-08
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999996423721313,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            0.999962329864502,
+            3.76364441763144e-05,
+            5.8380283718406645e-08,
+            2.7149351211619432e-08
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.999962329864502,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.9999896287918091,
+            1.0129987458640244e-05,
+            1.855372318004811e-07,
+            4.916246609809605e-08
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999896287918091,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 688,
+        "isolated": 915
+      },
+      "latency_seconds": 1.7771053314208984
+    },
+    {
+      "id": 9,
+      "question": "Ionic compounds have strong electrostatic attractions between oppositely charged ions in this?",
+      "options": [
+        "normal array",
+        "occasional array",
+        "regular array",
+        "incorrect array"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "regular array",
+      "longest_option_idx": 1,
+      "surface_match_idx": null,
+      "lookalike_idx": 0,
+      "joint": {
+        "beginner": {
+          "probs": [
+            6.814869993831962e-05,
+            1.2116068148770864e-09,
+            0.9999315738677979,
+            2.9647037536051357e-07
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999315738677979,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            3.0379751448858516e-14,
+            9.357622912219837e-14,
+            1.0,
+            5.219263064272506e-13
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.4921770989894867,
+            3.9275430907537157e-08,
+            0.5078004598617554,
+            2.2344805984175764e-05
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.5078004598617554,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            4.888302669314726e-07,
+            8.410789398283214e-09,
+            0.9999995231628418,
+            6.796960216881587e-10
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999995231628418,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            2.3823690753488336e-07,
+            2.2993826842565568e-09,
+            0.9999997615814209,
+            7.123154843746704e-10
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999997615814209,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.0008040856919251382,
+            1.6360600341158715e-07,
+            0.9991956353187561,
+            9.177465187804046e-08
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9991956353187561,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 690,
+        "isolated": 921
+      },
+      "latency_seconds": 1.7805671691894531
+    },
+    {
+      "id": 10,
+      "question": "About how tall can mid-ocean ridges be?",
+      "options": [
+        "about 2 feet",
+        "about 2 meters",
+        "2 inches",
+        "about 2 km"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "about 2 km",
+      "longest_option_idx": 1,
+      "surface_match_idx": null,
+      "lookalike_idx": 0,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.45323920249938965,
+            0.5467108488082886,
+            6.213724077497318e-07,
+            4.936172626912594e-05
+          ],
+          "pred_idx": 1,
+          "p_correct": 4.936172626912594e-05,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            2.151006976702785e-11,
+            1.0,
+            2.650560543618341e-12,
+            7.582560135332983e-10
+          ],
+          "pred_idx": 1,
+          "p_correct": 7.582560135332983e-10,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            1.5039069978500103e-14,
+            7.133886580426574e-13,
+            5.532564254547966e-15,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.0007125184056349099,
+            0.4452119469642639,
+            3.0215375090847374e-07,
+            0.5540752410888672
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.5540752410888672,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            5.4455598728964105e-05,
+            0.9943909049034119,
+            7.812155189412806e-08,
+            0.005554622504860163
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.005554622504860163,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            0.0008242541225627065,
+            0.09527081996202469,
+            5.085731800136273e-07,
+            0.903904378414154
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.903904378414154,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 692,
+        "isolated": 927
+      },
+      "latency_seconds": 1.7820744514465332
+    },
+    {
+      "id": 11,
+      "question": "What are by far the most common type of invertebrate?",
+      "options": [
+        "corals",
+        "crustaceans",
+        "spiders",
+        "insects"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "insects",
+      "longest_option_idx": 1,
+      "surface_match_idx": null,
+      "lookalike_idx": 0,
+      "joint": {
+        "beginner": {
+          "probs": [
+            1.6052279505629485e-09,
+            5.0012407409871784e-11,
+            1.2520361266851743e-12,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.9810088085995409e-13,
+            3.511422055901825e-12,
+            4.903044116544297e-13,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.9997454285621643,
+            0.00025315600214526057,
+            4.0115438082466426e-08,
+            1.4141179462967557e-06
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.4141179462967557e-06,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            4.0525461031393206e-07,
+            1.211689304447816e-09,
+            2.040817792536842e-10,
+            0.9999996423721313
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999996423721313,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            4.792325647429152e-09,
+            4.7722173435182924e-11,
+            1.50164481543813e-11,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            2.785271817629109e-07,
+            1.3307803747864e-09,
+            7.123154843746704e-10,
+            0.9999997615814209
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999997615814209,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 686,
+        "isolated": 909
+      },
+      "latency_seconds": 1.7811572551727295
+    },
+    {
+      "id": 12,
+      "question": "What do waves deposit to form sandbars and barrier islands?",
+      "options": [
+        "glaciers",
+        "magma",
+        "sediments",
+        "organisms"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "sediments",
+      "longest_option_idx": null,
+      "surface_match_idx": null,
+      "lookalike_idx": 0,
+      "joint": {
+        "beginner": {
+          "probs": [
+            1.1365624459358514e-06,
+            3.541068238632761e-08,
+            0.9999977350234985,
+            1.0677016462068423e-06
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999977350234985,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            2.7661080620033224e-14,
+            5.219263064272506e-13,
+            1.0,
+            4.5990555808117506e-10
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.111245223985903e-13,
+            4.326921037179493e-13,
+            1.0,
+            5.780648404396516e-09
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.2898370149727612e-09,
+            3.16088155649652e-10,
+            1.0,
+            1.1382771392121072e-09
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            8.117814753738628e-11,
+            1.989356075704496e-11,
+            1.0,
+            7.746073227288264e-11
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            2.9693733583080473e-10,
+            2.8054418163558914e-11,
+            1.0,
+            9.94615431682e-11
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 683,
+        "isolated": 900
+      },
+      "latency_seconds": 1.7326688766479492
+    },
+    {
+      "id": 13,
+      "question": "Penis, testes, and epididymis are organs in what system?",
+      "options": [
+        "plant reproductive system​",
+        "female reproductive system​",
+        "virus reproductive system​",
+        "male reproductive system"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "male reproductive system",
+      "longest_option_idx": 1,
+      "surface_match_idx": null,
+      "lookalike_idx": 1,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9999762773513794,
+            2.0145618691458367e-05,
+            2.3823130845812557e-07,
+            3.2886819099076092e-06
+          ],
+          "pred_idx": 0,
+          "p_correct": 3.2886819099076092e-06,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            1.6893520182748034e-07,
+            4.181186454843555e-07,
+            5.376837308723736e-10,
+            0.9999994039535522
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999994039535522,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            4.4966001319525614e-17,
+            1.0395379134185484e-15,
+            5.393052422421026e-16,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            7.823256487071717e-10,
+            2.4374099960589035e-11,
+            3.546410734522887e-11,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            6.032647298370719e-11,
+            1.0543201511489797e-12,
+            1.4868295396958109e-12,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            3.081175245500667e-11,
+            6.914400150527522e-13,
+            2.6094675465576644e-12,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 697,
+        "isolated": 942
+      },
+      "latency_seconds": 1.7880136966705322
+    },
+    {
+      "id": 14,
+      "question": "Only about one percent of plants have lost what ability, turning them into consumers and even predators, instead of producers?",
+      "options": [
+        "photosynthesis",
+        "flowering",
+        "growth",
+        "rooting"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "photosynthesis",
+      "longest_option_idx": 0,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9999809265136719,
+            1.3845932699041441e-05,
+            2.081651473417878e-08,
+            5.255323230812792e-06
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999809265136719,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            1.6212228004519602e-08,
+            1.3046516124382013e-11,
+            2.2897348947448215e-11
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.0,
+            6.63554768857294e-14,
+            5.798077319776667e-15,
+            2.1542470362906005e-14
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.0,
+            5.211412412720051e-10,
+            8.915675836496106e-11,
+            8.641368870465627e-11
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            5.547519665860534e-10,
+            5.293480098700343e-10,
+            5.051074558615198e-10
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.0,
+            9.146313151298102e-10,
+            2.2993831283457666e-09,
+            3.7536396213511125e-10
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 694,
+        "isolated": 933
+      },
+      "latency_seconds": 1.7874038219451904
+    },
+    {
+      "id": 15,
+      "question": "How does a neon light produce visible light?",
+      "options": [
+        "mitosis",
+        "electroluminescence",
+        "radiation",
+        "luminescence"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "electroluminescence",
+      "longest_option_idx": 1,
+      "surface_match_idx": null,
+      "lookalike_idx": 3,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.883395791053772,
+            0.11587630957365036,
+            0.0001913355226861313,
+            0.000536613748408854
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.11587630957365036,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            9.667312284022955e-09,
+            0.141633078455925,
+            0.017452619969844818,
+            0.8409143090248108
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.141633078455925,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            5.095315444551913e-17,
+            1.0,
+            4.931120887053525e-14,
+            8.520212259246346e-14
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.00014823810488451272,
+            0.0021113227121531963,
+            0.0019223811104893684,
+            0.9958180785179138
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.0021113227121531963,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            1.4532544057033192e-08,
+            0.9999997615814209,
+            1.3867050618898702e-08,
+            2.006155881417726e-07
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999997615814209,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.3101489892974882e-09,
+            1.0,
+            4.819768473218744e-10,
+            2.138759447323224e-10
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 686,
+        "isolated": 909
+      },
+      "latency_seconds": 1.7819197177886963
+    },
+    {
+      "id": 16,
+      "question": "The bird ancestor that lived in trees developed what feature commonly associated with birds?",
+      "options": [
+        "tails",
+        "beaks",
+        "webbed feet",
+        "wings"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "wings",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9998878240585327,
+            7.111644322321808e-07,
+            5.954506832495099e-06,
+            0.00010554616164881736
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.00010554616164881736,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            3.57523219918221e-07,
+            0.0003150385746266693,
+            1.3436169510328e-08,
+            0.9996845722198486
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9996845722198486,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.004526017922558e-09,
+            1.447156977585351e-10,
+            2.4374099960589035e-11,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            6.814835069235414e-05,
+            5.4218494369706605e-06,
+            1.955424266952832e-08,
+            0.9999264478683472
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999264478683472,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            5.955139386060182e-06,
+            4.8677648578632216e-09,
+            3.911359236496992e-09,
+            0.9999940395355225
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999940395355225,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.00015843604342080653,
+            1.944123368957662e-07,
+            8.313961075145926e-07,
+            0.999840497970581
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.999840497970581,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 688,
+        "isolated": 915
+      },
+      "latency_seconds": 1.7849035263061523
+    },
+    {
+      "id": 17,
+      "question": "What do most living things use to make atp from glucose?",
+      "options": [
+        "enzymes",
+        "nitrogen",
+        "oxygen",
+        "carbon"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "oxygen",
+      "longest_option_idx": 1,
+      "surface_match_idx": null,
+      "lookalike_idx": 1,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9999964237213135,
+            6.9727681406561715e-09,
+            3.3931444249901688e-06,
+            1.9142811424899264e-07
+          ],
+          "pred_idx": 0,
+          "p_correct": 3.3931444249901688e-06,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            0.9999955892562866,
+            1.4166025019690665e-09,
+            4.356879799161106e-06,
+            1.876693689339959e-09
+          ],
+          "pred_idx": 0,
+          "p_correct": 4.356879799161106e-06,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            0.0229773111641407,
+            5.0338382351355904e-08,
+            0.9770201444625854,
+            2.5024307888088515e-06
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9770201444625854,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.008061986416578293,
+            6.770570593062075e-08,
+            0.9919372797012329,
+            5.848880277881108e-07
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9919372797012329,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            0.012431615963578224,
+            1.427012819021911e-07,
+            0.9875655770301819,
+            2.692575435503386e-06
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9875655770301819,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.000345991225913167,
+            5.3139409317282116e-08,
+            0.9996529817581177,
+            1.0344950851504109e-06
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9996529817581177,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 683,
+        "isolated": 900
+      },
+      "latency_seconds": 1.7372088432312012
+    },
+    {
+      "id": 18,
+      "question": "What are the two most common silicates?",
+      "options": [
+        "Micas\t and quartz",
+        "Micas\t and feldspar",
+        "Olivine and quartz",
+        "feldspar and quartz"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "feldspar and quartz",
+      "longest_option_idx": null,
+      "surface_match_idx": null,
+      "lookalike_idx": 0,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9999947547912598,
+            1.5534920976278954e-06,
+            3.972956630349245e-09,
+            3.7266336221364327e-06
+          ],
+          "pred_idx": 0,
+          "p_correct": 3.7266336221364327e-06,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            1.9977366427781362e-09,
+            0.9999991655349731,
+            3.511419020135742e-12,
+            8.851569646139978e-07
+          ],
+          "pred_idx": 1,
+          "p_correct": 8.851569646139978e-07,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            4.508755348242577e-12,
+            3.541076409874222e-08,
+            2.58372262387091e-13,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.9552336931228638,
+            0.009968758560717106,
+            3.2412572181783617e-06,
+            0.034794386476278305
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.034794386476278305,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            0.0010158283403143287,
+            0.015890227630734444,
+            3.9840335830376716e-07,
+            0.9830936193466187
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9830936193466187,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.001364040421321988,
+            0.002179730450734496,
+            4.0151771827368066e-06,
+            0.9964522123336792
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9964522123336792,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 696,
+        "isolated": 939
+      },
+      "latency_seconds": 1.7929377555847168
+    },
+    {
+      "id": 19,
+      "question": "What term means the amount of water vapor in the air?",
+      "options": [
+        "humidity",
+        "temperature",
+        "pressure",
+        "ambient"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "humidity",
+      "longest_option_idx": 1,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9999998807907104,
+            5.905303468445311e-10,
+            8.864909362138462e-10,
+            9.329492201004541e-08
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999998807907104,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            1.176179054325488e-12,
+            5.008774495965547e-14,
+            3.818494457262511e-13
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.0,
+            6.101936989542922e-13,
+            5.91419979396185e-13,
+            1.3046516124382013e-11
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.0,
+            8.915675836496106e-11,
+            2.719127353834061e-11,
+            5.293480098700343e-10
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            5.939120029108125e-11,
+            3.956307156882666e-11,
+            4.05865202557365e-10
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.0,
+            2.0729568062094472e-10,
+            2.923337683036209e-10,
+            1.0693124163907441e-09
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 682,
+        "isolated": 897
+      },
+      "latency_seconds": 1.7397470474243164
+    },
+    {
+      "id": 20,
+      "question": "Paracrine signals move by what method through the extracellular matrix?",
+      "options": [
+        "diffusion",
+        "deposition",
+        "transfusion",
+        "osmosis"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "diffusion",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": 2,
+      "joint": {
+        "beginner": {
+          "probs": [
+            1.0,
+            6.1627378547535194e-12,
+            2.707718218478844e-13,
+            2.620462735691831e-10
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            1.6076461993239088e-12,
+            9.709952873487252e-15,
+            9.545034901359273e-12
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.999997615814209,
+            1.955563533329041e-08,
+            4.3204023691956195e-10,
+            2.3320744730881415e-06
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.999997615814209,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.9999998807907104,
+            9.436647019356315e-10,
+            3.602258422108484e-11,
+            1.0571699959882608e-07
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999998807907104,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            8.245652077798482e-11,
+            2.894495927663332e-11,
+            2.312550151373216e-10
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.0,
+            3.658985961441097e-11,
+            6.032647298370719e-11,
+            7.868056206561391e-11
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 687,
+        "isolated": 912
+      },
+      "latency_seconds": 1.786877155303955
+    },
+    {
+      "id": 21,
+      "question": "Presence of a cell wall, large central vacuole, and organelles called plastids distinguish what type of cell?",
+      "options": [
+        "plant",
+        "heterotroph",
+        "reproductive",
+        "animal"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "plant",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            1.0,
+            6.904000149354772e-10,
+            1.8037291495479058e-13,
+            1.9391914289623724e-12
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            3.229043421537625e-11,
+            3.743520132147267e-15,
+            7.92503253099026e-15
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.0,
+            2.151006976702785e-11,
+            4.326921037179493e-13,
+            1.6076461993239088e-12
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.0,
+            9.004513246146928e-10,
+            2.399621473747615e-11,
+            1.623665091265991e-11
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            7.235329557708781e-10,
+            9.791954053151031e-11,
+            4.081893503760092e-11
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.0,
+            3.192377251437506e-09,
+            1.4166087192180044e-09,
+            1.3808867938003289e-10
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 697,
+        "isolated": 942
+      },
+      "latency_seconds": 1.7948203086853027
+    },
+    {
+      "id": 22,
+      "question": "What happens when mammals raise their hair with tiny muscles in the skin?",
+      "options": [
+        "bleeding",
+        "bruising",
+        "balding",
+        "goosebumps"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "goosebumps",
+      "longest_option_idx": 3,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            3.465598865659558e-07,
+            1.1493774820792169e-08,
+            0.9997897744178772,
+            0.00020988301548641175
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.00020988301548641175,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            1.37716408152381e-15,
+            3.0379751448858516e-14,
+            1.2645116724552263e-11,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.2882974908224495e-17,
+            2.978326396525934e-16,
+            2.7819480016334514e-15,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.868827141648932e-11,
+            1.0877878459103485e-12,
+            4.169917015850455e-12,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            6.458493895938888e-12,
+            3.818494457262511e-13,
+            1.0877878459103485e-12,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            2.1848802281287938e-11,
+            9.160092389465246e-13,
+            3.6228864960102802e-12,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 688,
+        "isolated": 915
+      },
+      "latency_seconds": 1.7884833812713623
+    },
+    {
+      "id": 23,
+      "question": "What are people with osteoporosis at increased risk of?",
+      "options": [
+        "senility",
+        "growth spurt",
+        "bone fractures",
+        "epilepsy"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "bone fractures",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.010328137315809727,
+            4.269353155450517e-07,
+            0.9896703362464905,
+            1.090217438104446e-06
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9896703362464905,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            3.5517528046251357e-14,
+            1.1399918552548738e-12,
+            1.0,
+            4.75219310517444e-13
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.619287973040419e-16,
+            1.9421125050902077e-15,
+            1.0,
+            5.116785850410458e-15
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            7.669650504971148e-12,
+            5.271269098300335e-12,
+            1.0,
+            1.4410847732140852e-12
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            2.1633246409524798e-12,
+            1.7656539208141253e-12,
+            1.0,
+            1.2135149655978505e-12
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.684798784859498e-12,
+            1.0543201511489797e-12,
+            1.0,
+            7.958426127309404e-13
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 686,
+        "isolated": 909
+      },
+      "latency_seconds": 1.7868435382843018
+    },
+    {
+      "id": 24,
+      "question": "Where is energy stored in a chemical substance?",
+      "options": [
+        "in molecules",
+        "between atoms",
+        "on the surface",
+        "inside atoms"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "between atoms",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": 3,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9999953508377075,
+            1.0246397152968711e-07,
+            6.224114973418793e-11,
+            4.495180746744154e-06
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0246397152968711e-07,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            7.233504906167809e-10,
+            0.9539660811424255,
+            2.395407783239989e-08,
+            0.04603390023112297
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9539660811424255,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            2.222630208408103e-14,
+            9.736200734522527e-10,
+            1.2501528701136522e-09,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 9.736200734522527e-10,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.1225176677107811,
+            4.513962994678877e-05,
+            6.475693226093426e-08,
+            0.8774370551109314
+          ],
+          "pred_idx": 3,
+          "p_correct": 4.513962994678877e-05,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            0.015787743031978607,
+            0.00745760090649128,
+            1.565553020554944e-06,
+            0.9767530560493469
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.00745760090649128,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            0.004751788452267647,
+            0.0896596685051918,
+            5.79758379899431e-05,
+            0.905530571937561
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.0896596685051918,
+          "correct": 0
+        }
+      },
+      "prompt_tokens": {
+        "joint": 684,
+        "isolated": 903
+      },
+      "latency_seconds": 1.7413074970245361
+    },
+    {
+      "id": 25,
+      "question": "By the year 2050, 25 percent of the population of the united states will be 60 years of age or older. the cdc estimates that 80 percent of those 60 years and older have one or more chronic disease associated with deficiencies of this?",
+      "options": [
+        "respiratory system",
+        "blood vessels",
+        "immune system",
+        "cardiovascular system"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "immune system",
+      "longest_option_idx": 3,
+      "surface_match_idx": null,
+      "lookalike_idx": 0,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.4978671967983246,
+            0.3214472234249115,
+            0.15666085481643677,
+            0.0240247193723917
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.15666085481643677,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            5.832006752526375e-12,
+            6.769287352881292e-08,
+            0.17781084775924683,
+            0.8221890330314636
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.17781084775924683,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            4.2598360277569525e-13,
+            1.8688261008148466e-11,
+            5.36874949830235e-07,
+            0.9999994039535522
+          ],
+          "pred_idx": 3,
+          "p_correct": 5.36874949830235e-07,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            8.219972369261086e-05,
+            1.777693978510797e-05,
+            8.663786502438597e-06,
+            0.9998914003372192
+          ],
+          "pred_idx": 3,
+          "p_correct": 8.663786502438597e-06,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            2.757790795726578e-08,
+            8.315280410897685e-07,
+            4.7180237494615085e-09,
+            0.9999991655349731
+          ],
+          "pred_idx": 3,
+          "p_correct": 4.7180237494615085e-09,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            1.826625464218523e-07,
+            2.8736846502397384e-07,
+            3.1741990369482664e-08,
+            0.9999995231628418
+          ],
+          "pred_idx": 3,
+          "p_correct": 3.1741990369482664e-08,
+          "correct": 0
+        }
+      },
+      "prompt_tokens": {
+        "joint": 734,
+        "isolated": 1053
+      },
+      "latency_seconds": 1.9162092208862305
+    },
+    {
+      "id": 26,
+      "question": "Upon death of an organism, during composition, what returns to the soil as ammonium ions?",
+      "options": [
+        "hydrogen",
+        "calcium",
+        "potasium",
+        "nitrogen"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "nitrogen",
+      "longest_option_idx": null,
+      "surface_match_idx": null,
+      "lookalike_idx": 0,
+      "joint": {
+        "beginner": {
+          "probs": [
+            1.0364131775020269e-09,
+            1.7456046330632802e-10,
+            1.493094675675266e-10,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            2.1542470362906005e-14,
+            1.8037291495479058e-13,
+            3.068246611642733e-13,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            2.707718218478844e-13,
+            4.75219310517444e-13,
+            7.91311200593059e-12,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            8.152020392060422e-09,
+            2.105601110136135e-10,
+            4.3204126387585973e-10,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            8.72747374369709e-10,
+            2.4374099960589035e-11,
+            4.6982310403231864e-11,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.1979305725162703e-07,
+            1.5558401234017083e-09,
+            5.346225684377259e-09,
+            0.9999998807907104
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999998807907104,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 691,
+        "isolated": 924
+      },
+      "latency_seconds": 1.7945690155029297
+    },
+    {
+      "id": 27,
+      "question": "Most insects reproduce quickly and through what type of reproduction?",
+      "options": [
+        "spores",
+        "asexual reproduction",
+        "sexual reproduction",
+        "photosynthesis"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "sexual reproduction",
+      "longest_option_idx": 1,
+      "surface_match_idx": null,
+      "lookalike_idx": 1,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.0018102108733728528,
+            0.9981897473335266,
+            2.7256419343757443e-09,
+            1.287502104929672e-09
+          ],
+          "pred_idx": 1,
+          "p_correct": 2.7256419343757443e-09,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            2.9664852263522334e-07,
+            0.9399130940437317,
+            0.06008663401007652,
+            4.459929925371142e-10
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.06008663401007652,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            1.4743783705175413e-16,
+            7.32945656072145e-15,
+            1.0,
+            1.0175943814254469e-14
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.00010789273073896766,
+            0.27509933710098267,
+            0.7247902154922485,
+            2.5373940388817573e-06
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.7247902154922485,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.392685589962639e-06,
+            0.24508464336395264,
+            0.754913866519928,
+            1.5144752296691877e-07
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.754913866519928,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            7.178618943726178e-06,
+            0.0006461986340582371,
+            0.9993466734886169,
+            1.8358859321665477e-08
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9993466734886169,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 686,
+        "isolated": 909
+      },
+      "latency_seconds": 1.7887413501739502
+    },
+    {
+      "id": 28,
+      "question": "Digestion of proteins begins with acids in what organ?",
+      "options": [
+        "brain",
+        "colon",
+        "stomach",
+        "liver"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "stomach",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.0928632840514183,
+            0.07943018525838852,
+            0.8276814818382263,
+            2.503146606613882e-05
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.8276814818382263,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.6423139432598932e-13,
+            2.339111326507548e-12,
+            1.0,
+            9.450863485901961e-13
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            4.111452609709696e-15,
+            4.024663496351652e-14,
+            1.0,
+            1.2790354712854946e-13
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            5.301454262564287e-13,
+            7.835042293777295e-13,
+            1.0,
+            2.4513678847232212e-12
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            6.295633502365061e-13,
+            4.605983563304994e-13,
+            1.0,
+            1.157944183247106e-12
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.3537738638436103e-12,
+            1.006039218945376e-12,
+            1.0,
+            1.418742835886111e-12
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 681,
+        "isolated": 894
+      },
+      "latency_seconds": 1.740786075592041
+    },
+    {
+      "id": 29,
+      "question": "Many species of rotifers exhibit haplodiploidy, which is a method of what?",
+      "options": [
+        "gender determination",
+        "circulation",
+        "digestion",
+        "respiration"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "gender determination",
+      "longest_option_idx": 0,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.999998927116394,
+            2.99895774880099e-09,
+            4.4575526603196636e-10,
+            1.0677028967620572e-06
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.999998927116394,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            8.605109897211194e-13,
+            6.993815943723671e-15,
+            9.654666524800196e-14
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.0,
+            5.611236735675318e-12,
+            8.130043811565776e-14,
+            8.340358568711959e-13
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.999998927116394,
+            9.422444691153942e-07,
+            3.432125339486447e-08,
+            1.611990256833451e-07
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.999998927116394,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            3.8727929196902267e-10,
+            1.447156977585351e-10,
+            7.052879807956103e-11
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.0,
+            3.775134718719819e-11,
+            8.117814753738628e-11,
+            2.8496210599526783e-11
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 691,
+        "isolated": 924
+      },
+      "latency_seconds": 1.793856143951416
+    },
+    {
+      "id": 30,
+      "question": "What is the most abundant metal of the earth's crust?",
+      "options": [
+        "copper",
+        "aluminum",
+        "magnetite",
+        "calcium"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "aluminum",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": 3,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.15201430022716522,
+            0.8478676080703735,
+            5.261386831989512e-05,
+            6.547902012243867e-05
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.8478676080703735,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            2.940077695190446e-11,
+            1.0,
+            6.1627378547535194e-12,
+            1.7113305130628254e-12
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            4.779406105365376e-14,
+            1.0,
+            4.779406105365376e-14,
+            3.4767788691450474e-13
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            2.0176443626951368e-08,
+            1.0,
+            4.972764422461751e-10,
+            1.8010158642223217e-10
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            7.582560135332983e-10,
+            1.0,
+            3.437299056496812e-11,
+            3.7166065364191425e-11
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            5.13061704232598e-10,
+            1.0,
+            6.943535330039552e-11,
+            3.602258769053179e-11
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 683,
+        "isolated": 900
+      },
+      "latency_seconds": 1.7427849769592285
+    },
+    {
+      "id": 31,
+      "question": "What is the term for the total kinetic energy of moving particles of matter?",
+      "options": [
+        "thermal energy",
+        "Newton's energy",
+        "mechanical energy",
+        "heavy energy"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "thermal energy",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": 2,
+      "joint": {
+        "beginner": {
+          "probs": [
+            1.0,
+            4.605983563304994e-13,
+            5.9731304104249094e-12,
+            1.2645116724552263e-11
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            3.233908095739285e-14,
+            1.1878988244451438e-11,
+            4.5605412621243374e-14
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.9999991655349731,
+            1.3307795976302828e-09,
+            6.893609452163219e-07,
+            1.742977389085354e-07
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999991655349731,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.0,
+            1.2972231622221386e-10,
+            5.905304023556823e-10,
+            1.5647498574633545e-10
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            7.012722069710264e-10,
+            7.901209464478143e-09,
+            7.465003615259036e-10
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.0,
+            1.7087563586315468e-09,
+            9.98806459762136e-09,
+            2.7735853613819472e-09
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 690,
+        "isolated": 921
+      },
+      "latency_seconds": 1.7911908626556396
+    },
+    {
+      "id": 32,
+      "question": "What part of the eye allows light to enter?",
+      "options": [
+        "pupil",
+        "eyelid",
+        "retina",
+        "iris"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "pupil",
+      "longest_option_idx": null,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9999996423721313,
+            2.699577521525498e-07,
+            1.0693120833238368e-09,
+            4.840075717993386e-08
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999996423721313,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            5.4927885156930145e-11,
+            2.2671443715427397e-12,
+            1.0160636221279162e-11
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.0,
+            6.993815943723671e-15,
+            4.806775179847173e-15,
+            4.284231999653228e-14
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.0,
+            1.85818638254176e-10,
+            2.0525052144004796e-11,
+            2.894495927663332e-11
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            8.37550237497986e-11,
+            1.5493120675280636e-11,
+            3.658985961441097e-11
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.0,
+            9.290346825174822e-10,
+            4.671479869600148e-10,
+            3.581747953784742e-10
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 681,
+        "isolated": 894
+      },
+      "latency_seconds": 1.7422661781311035
+    },
+    {
+      "id": 33,
+      "question": "The body cannot sustain for very long the bursts of energy mediated by epinephrine and norepinephrine, hormones associated with what stress response?",
+      "options": [
+        "do-or-die",
+        "sink-or-swim",
+        "fight-or-flight",
+        "fainting"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "fight-or-flight",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": 0,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.003592192428186536,
+            0.00011547084432095289,
+            0.9960153698921204,
+            0.00027700013015419245
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9960153698921204,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            8.980238224592409e-15,
+            6.101936989542922e-13,
+            1.0,
+            1.9810088085995409e-13
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            6.076333148663862e-15,
+            8.790673267436433e-14,
+            1.0,
+            6.295633502365061e-13
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.2378190139550327e-10,
+            1.6656676038451224e-10,
+            1.0,
+            2.8496210599526783e-11
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.9281500007739538e-11,
+            1.868827141648932e-11,
+            1.0,
+            8.164300832613769e-12
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.4699463868339535e-10,
+            7.868056206561391e-11,
+            1.0,
+            7.276762525876279e-11
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 710,
+        "isolated": 981
+      },
+      "latency_seconds": 1.8552472591400146
+    },
+    {
+      "id": 34,
+      "question": "What system enters the brain stem and influences activity in the cerebellum, spinal cord, and cerebral cortex?",
+      "options": [
+        "vasculature system",
+        "ventrical system",
+        "vestibular system",
+        "lipids system"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "vestibular system",
+      "longest_option_idx": 0,
+      "surface_match_idx": null,
+      "lookalike_idx": 1,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9999936819076538,
+            2.902302185248118e-06,
+            3.1875551940174773e-06,
+            2.382354580277024e-07
+          ],
+          "pred_idx": 0,
+          "p_correct": 3.1875551940174773e-06,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            7.276762525876279e-11,
+            1.1142490485838152e-08,
+            1.0,
+            1.2645116724552263e-11
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            4.1524201205333025e-14,
+            1.3307807078533074e-09,
+            1.0,
+            5.9731304104249094e-12
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            3.2563119134465524e-07,
+            6.023571330615596e-08,
+            0.9999995231628418,
+            1.484592559997111e-09
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999995231628418,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            5.315785500670245e-08,
+            4.718027746264397e-09,
+            1.0,
+            4.122566454878296e-10
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            8.764247638737288e-08,
+            3.2426492602155577e-09,
+            0.9999998807907104,
+            8.727472633474065e-10
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999998807907104,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 701,
+        "isolated": 954
+      },
+      "latency_seconds": 1.801572322845459
+    },
+    {
+      "id": 35,
+      "question": "Chemical reactions involve a transfer of heat energy. measured in what?",
+      "options": [
+        "amps",
+        "amperes",
+        "thermals",
+        "joules"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "joules",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": 1,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.028179721906781197,
+            0.008329909294843674,
+            0.9628066420555115,
+            0.0006837606197223067
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.0006837606197223067,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            6.7448282514703806e-09,
+            0.9980121850967407,
+            3.123475436628276e-11,
+            0.0019877743907272816
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.0019877743907272816,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            7.074145213249039e-17,
+            5.619689216469596e-15,
+            6.468223106106431e-15,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.974995171849514e-07,
+            6.411870856481983e-08,
+            2.931152812379878e-05,
+            0.9999703168869019
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999703168869019,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            6.41206057139243e-08,
+            4.9444497385309205e-09,
+            6.385155182364599e-10,
+            0.9999998807907104
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999998807907104,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            5.430416560869844e-09,
+            1.3176514046531196e-10,
+            1.917171560394948e-10,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 687,
+        "isolated": 912
+      },
+      "latency_seconds": 1.78836989402771
+    },
+    {
+      "id": 36,
+      "question": "The products of what process are needed for cellular respiration, and vice versa?",
+      "options": [
+        "digestion",
+        "photosynthesis",
+        "spermatogenesis",
+        "circulation"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "photosynthesis",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": 2,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9987156391143799,
+            0.0012843080330640078,
+            2.382894159769222e-10,
+            3.648789714816303e-08
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.0012843080330640078,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            1.0277338062612135e-13,
+            1.0,
+            6.993815943723671e-15,
+            1.457636637260118e-14
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            5.6756852093598625e-14,
+            1.0,
+            6.233520779630811e-14,
+            2.944506414409055e-14
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            2.8130175451224204e-06,
+            0.9999971389770508,
+            2.906684226644529e-09,
+            1.1206265915220115e-09
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999971389770508,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            4.2051322424185855e-08,
+            1.0,
+            8.592166977905435e-10,
+            2.4616969573898473e-10
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            4.295813038623919e-09,
+            1.0,
+            5.37684063939281e-10,
+            1.199735311097072e-10
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 689,
+        "isolated": 918
+      },
+      "latency_seconds": 1.790032148361206
+    },
+    {
+      "id": 37,
+      "question": "Most fungi get organic compounds from what?",
+      "options": [
+        "dead organisms",
+        "living organisms",
+        "inorganic material",
+        "carnivorous organisms"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "dead organisms",
+      "longest_option_idx": 3,
+      "surface_match_idx": null,
+      "lookalike_idx": 1,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9999771118164062,
+            2.2827996872365475e-05,
+            5.430292215891086e-09,
+            1.0246210280229207e-07
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999771118164062,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            0.9999998807907104,
+            1.315669351242832e-07,
+            8.777449600483322e-11,
+            2.4862254477397983e-09
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999998807907104,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.9999998807907104,
+            1.1253516163378663e-07,
+            3.6174367945562835e-09,
+            3.653481783771895e-08
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999998807907104,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.9999450445175171,
+            5.475975922308862e-05,
+            2.5905645628654383e-08,
+            2.1023183194301964e-07
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999450445175171,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            3.028842954222455e-08,
+            1.120629811168783e-09,
+            6.758262394157555e-09
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.9999991655349731,
+            6.893609452163219e-07,
+            6.719776735053529e-08,
+            5.747729758809328e-08
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999991655349731,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 684,
+        "isolated": 903
+      },
+      "latency_seconds": 1.7432639598846436
+    },
+    {
+      "id": 38,
+      "question": "How do very massive stars end their lives?",
+      "options": [
+        "become super novas",
+        "become red supergiants",
+        "consumed by black hole",
+        "explode"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "become red supergiants",
+      "longest_option_idx": null,
+      "surface_match_idx": null,
+      "lookalike_idx": 0,
+      "joint": {
+        "beginner": {
+          "probs": [
+            3.6954450610693357e-10,
+            1.5102437529723733e-12,
+            2.58372262387091e-13,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.5102437529723733e-12,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            0.9999992847442627,
+            1.1253509768494041e-07,
+            3.9729748380068486e-09,
+            5.53917118395475e-07
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.1253509768494041e-07,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            0.00041731345118023455,
+            2.1224852844170528e-06,
+            0.9995772242546082,
+            3.391721975276596e-06
+          ],
+          "pred_idx": 2,
+          "p_correct": 2.1224852844170528e-06,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            4.539786823443137e-05,
+            1.621149081643125e-08,
+            2.1939869920828414e-09,
+            0.9999545812606812
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.621149081643125e-08,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            0.051845453679561615,
+            2.480865646248276e-07,
+            6.272610875157625e-08,
+            0.9481542706489563
+          ],
+          "pred_idx": 3,
+          "p_correct": 2.480865646248276e-07,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            0.998034656047821,
+            0.00012316726497374475,
+            0.0015972574474290013,
+            0.0002449473540764302
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.00012316726497374475,
+          "correct": 0
+        }
+      },
+      "prompt_tokens": {
+        "joint": 689,
+        "isolated": 918
+      },
+      "latency_seconds": 1.790898323059082
+    },
+    {
+      "id": 39,
+      "question": "The strength of a base depends on the concentration of _______ it produces when dissolved in water?",
+      "options": [
+        "monoxide ions",
+        "combustion ions",
+        "calcium ions",
+        "hydroxide ions"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "hydroxide ions",
+      "longest_option_idx": 1,
+      "surface_match_idx": null,
+      "lookalike_idx": 0,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9999955892562866,
+            3.1923632626273957e-09,
+            4.229193883986682e-09,
+            4.356879799161106e-06
+          ],
+          "pred_idx": 0,
+          "p_correct": 4.356879799161106e-06,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            2.0785171727766283e-05,
+            1.8581478022916542e-10,
+            2.1723947640772678e-10,
+            0.9999792575836182
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999792575836182,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.0894264599459321e-15,
+            1.9726965354749555e-15,
+            4.0708893135964306e-16,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            5.594337835646002e-06,
+            9.8331591757983e-09,
+            1.3517299501941693e-09,
+            0.9999943971633911
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999943971633911,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.3440409674103648e-08,
+            2.0091785180031962e-10,
+            3.0334058181979984e-11,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            3.1428841751335312e-09,
+            6.127648388698503e-11,
+            3.3840086982595e-11,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 696,
+        "isolated": 939
+      },
+      "latency_seconds": 1.7959434986114502
+    },
+    {
+      "id": 40,
+      "question": "The overall voltage of the battery is therefore the sum of ________ of the individual cells.",
+      "options": [
+        "weights",
+        "currents",
+        "voltages",
+        "resistances"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "voltages",
+      "longest_option_idx": 3,
+      "surface_match_idx": null,
+      "lookalike_idx": 3,
+      "joint": {
+        "beginner": {
+          "probs": [
+            1.0,
+            1.1142490485838152e-08,
+            1.8954017022565495e-08,
+            1.50797219156118e-09
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.8954017022565495e-08,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            1.3176514046531196e-10,
+            5.37684063939281e-10,
+            1.0,
+            8.327813993957989e-10
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            6.964470990191858e-17,
+            1.37716408152381e-15,
+            1.0,
+            2.944506414409055e-14
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            6.421720100124872e-11,
+            2.020683967374204e-11,
+            1.0,
+            7.276762525876279e-11
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            4.951899133798232e-12,
+            1.6586784029604118e-12,
+            1.0,
+            4.302284223323127e-12
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            2.302846932242253e-12,
+            6.295633502365061e-13,
+            1.0,
+            1.6329629705727489e-12
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 690,
+        "isolated": 921
+      },
+      "latency_seconds": 1.7915253639221191
+    },
+    {
+      "id": 41,
+      "question": "Organisms that live deep in the ocean must be able to withstand what?",
+      "options": [
+        "significant water pressure",
+        "the sun",
+        "extreme water pressure",
+        "tsunamis"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "extreme water pressure",
+      "longest_option_idx": 0,
+      "surface_match_idx": null,
+      "lookalike_idx": 0,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.3923358917236328,
+            3.8963641202371946e-08,
+            0.6076616644859314,
+            2.410595016044681e-06
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.6076616644859314,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            3.535625000949949e-05,
+            6.421492504404824e-11,
+            0.9999645948410034,
+            7.122904488454651e-10
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999645948410034,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.0,
+            2.0760793800235489e-13,
+            4.457557378767518e-10,
+            3.2986755688080294e-12
+          ],
+          "pred_idx": 0,
+          "p_correct": 4.457557378767518e-10,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            3.426849434617907e-05,
+            1.063187582417413e-08,
+            0.9999657869338989,
+            3.486057664758846e-08
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999657869338989,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            0.19682613015174866,
+            2.6984056944456825e-07,
+            0.8031734824180603,
+            1.467097803242723e-07
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.8031734824180603,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.010328150354325771,
+            9.526225852596326e-08,
+            0.9896715879440308,
+            1.4300559314506245e-07
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9896715879440308,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 693,
+        "isolated": 930
+      },
+      "latency_seconds": 1.794358491897583
+    },
+    {
+      "id": 42,
+      "question": "Which system are the brain and spinal cord apart of?",
+      "options": [
+        "limbic system",
+        "large nervous system",
+        "cerebral cortex",
+        "central nervous system"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "central nervous system",
+      "longest_option_idx": 3,
+      "surface_match_idx": null,
+      "lookalike_idx": 1,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.8806616067886353,
+            0.11918458342552185,
+            5.527655844161927e-07,
+            0.0001532665773993358
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.0001532665773993358,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            2.2637316465790036e-09,
+            4.099088624087699e-09,
+            1.1726421007551835e-06,
+            0.9999988079071045
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999988079071045,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            2.6283636170603873e-16,
+            7.444879199344952e-15,
+            1.3066170155117806e-14,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            2.6729447100137804e-08,
+            1.9667665274170076e-09,
+            6.385155737476111e-10,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            3.3840086982595e-11,
+            2.2671443715427397e-12,
+            4.041622071737638e-12,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            2.0007480915074094e-12,
+            4.534574213517495e-13,
+            1.29177994256241e-12,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 688,
+        "isolated": 915
+      },
+      "latency_seconds": 1.7880547046661377
+    },
+    {
+      "id": 43,
+      "question": "What are biochemical catalysts that speed up biochemical reactions?",
+      "options": [
+        "polymers",
+        "enzymes",
+        "metabolites",
+        "inhibitor"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "enzymes",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": 0,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9830815196037292,
+            0.01691485196352005,
+            1.9006524780706968e-06,
+            1.7854979432740947e-06
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.01691485196352005,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            8.520212259246346e-14,
+            1.0,
+            1.6752058074054332e-11,
+            4.903044116544297e-13
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            4.685564976853319e-16,
+            1.0,
+            8.17660046929184e-15,
+            1.5039069978500103e-14
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            8.152020392060422e-09,
+            1.0,
+            1.4615767485182118e-09,
+            6.385155737476111e-10
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            2.940077695190446e-11,
+            1.0,
+            5.9731304104249094e-12,
+            2.865939256746497e-12
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            2.650560543618341e-12,
+            1.0,
+            1.6586784029604118e-12,
+            5.91419979396185e-13
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 683,
+        "isolated": 900
+      },
+      "latency_seconds": 1.7419955730438232
+    },
+    {
+      "id": 44,
+      "question": "What instrument is used to make very sensitive mass measurements in a laboratory, usually in grams?",
+      "options": [
+        "speedometer",
+        "analytical balance",
+        "scale",
+        "thermometer"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "analytical balance",
+      "longest_option_idx": 1,
+      "surface_match_idx": null,
+      "lookalike_idx": 2,
+      "joint": {
+        "beginner": {
+          "probs": [
+            9.833209801968223e-09,
+            4.592135383063578e-07,
+            0.9999995231628418,
+            6.972789901027454e-09
+          ],
+          "pred_idx": 2,
+          "p_correct": 4.592135383063578e-07,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            4.5345736714164087e-13,
+            0.9999998807907104,
+            6.825602838489431e-08,
+            5.61123586831358e-12
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999998807907104,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.1530854328550659e-14,
+            1.0,
+            3.165642932251994e-13,
+            1.0770557893908378e-13
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.836948726463561e-08,
+            0.9999251365661621,
+            7.48462334740907e-05,
+            3.911089674346613e-09
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999251365661621,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            2.1600705668589626e-09,
+            1.0,
+            6.691586174056852e-10,
+            2.789468100949932e-10
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            9.146313151298102e-10,
+            1.0,
+            2.0729568062094472e-10,
+            9.791954053151031e-11
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 690,
+        "isolated": 921
+      },
+      "latency_seconds": 1.7911403179168701
+    },
+    {
+      "id": 45,
+      "question": "What is the purpose of bright colors on a flower's petals?",
+      "options": [
+        "to absorb light",
+        "to attract pollinators",
+        "to attract a mate",
+        "to distract predators"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "to attract pollinators",
+      "longest_option_idx": 1,
+      "surface_match_idx": null,
+      "lookalike_idx": 3,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9856452345848083,
+            0.013626910746097565,
+            5.689098088623723e-06,
+            0.0007221997948363423
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.013626910746097565,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            7.593982951151212e-13,
+            1.0,
+            8.690853592341341e-12,
+            4.018610097467068e-11
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            5.362345360500689e-15,
+            1.0,
+            8.520212259246346e-14,
+            3.2986755688080294e-12
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            5.233371780377638e-08,
+            1.0,
+            5.181739481940895e-09,
+            9.094236474993522e-09
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            5.723617135799941e-10,
+            1.0,
+            1.0423480828469778e-10,
+            1.0423480828469778e-10
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            8.327813993957989e-10,
+            1.0,
+            3.16088155649652e-10,
+            1.2972231622221386e-10
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 694,
+        "isolated": 933
+      },
+      "latency_seconds": 1.7958014011383057
+    },
+    {
+      "id": 46,
+      "question": "Collateral ganglia controls organs in which cavity in the body?",
+      "options": [
+        "cardiac",
+        "cranial",
+        "pelvic",
+        "abdominal"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "abdominal",
+      "longest_option_idx": 3,
+      "surface_match_idx": null,
+      "lookalike_idx": 1,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.001310415449552238,
+            0.004573799669742584,
+            0.0064500910229980946,
+            0.9876656532287598
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9876656532287598,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            2.2886197257321328e-05,
+            4.1917530779755907e-07,
+            0.8311237096786499,
+            0.1688530296087265
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.1688530296087265,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            0.0035858643241226673,
+            0.15247483551502228,
+            0.201996311545372,
+            0.6419429779052734
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.6419429779052734,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.0005335779278539121,
+            0.038594115525484085,
+            0.5327752828598022,
+            0.4280970096588135
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.4280970096588135,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            0.00012433774827513844,
+            5.347700061975047e-05,
+            0.23930677771568298,
+            0.7605153918266296
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.7605153918266296,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.0010584278497844934,
+            0.0004144862468820065,
+            0.9928053021430969,
+            0.005721806548535824
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.005721806548535824,
+          "correct": 0
+        }
+      },
+      "prompt_tokens": {
+        "joint": 684,
+        "isolated": 903
+      },
+      "latency_seconds": 1.7433502674102783
+    },
+    {
+      "id": 47,
+      "question": "A bee will sometimes do a dance to tell other bees in the hive where to find what?",
+      "options": [
+        "enemies",
+        "water",
+        "food",
+        "honey"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "food",
+      "longest_option_idx": 0,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            2.2887084014655557e-06,
+            0.83943772315979,
+            0.1602095067501068,
+            0.00035045683034695685
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.1602095067501068,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            1.9810088085995409e-13,
+            1.5252922189179507e-11,
+            1.0,
+            4.1874875789105204e-10
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            3.5925473089692657e-16,
+            1.3066170155117806e-14,
+            1.0,
+            3.939706633843132e-13
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            8.37550237497986e-11,
+            6.943535330039552e-11,
+            1.0,
+            6.904000149354772e-10
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.5647498574633545e-10,
+            8.245652077798482e-11,
+            1.0,
+            1.829377760387274e-10
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            3.3455824777206544e-09,
+            7.582560135332983e-10,
+            1.0,
+            1.004526017922558e-09
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 689,
+        "isolated": 918
+      },
+      "latency_seconds": 1.7897913455963135
+    },
+    {
+      "id": 48,
+      "question": "The lens focuses light on the retina , which covers the back of the inside of the eye. the retina has light-sensing photoreceptor cells called?",
+      "options": [
+        "tubes and rods",
+        "rods and cones",
+        "cones and tubes",
+        "holes and cones"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "rods and cones",
+      "longest_option_idx": null,
+      "surface_match_idx": null,
+      "lookalike_idx": 3,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9979460835456848,
+            0.0020507369190454483,
+            6.263816203500028e-07,
+            2.5560279937053565e-06
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.0020507369190454483,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            4.951899133798232e-12,
+            1.0,
+            2.316033920635868e-13,
+            1.104918023395185e-12
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            7.371428102049085e-16,
+            1.0,
+            1.527589869648651e-14,
+            3.5517528046251357e-14
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            4.271353759577323e-08,
+            1.0,
+            6.587842493743779e-10,
+            3.16088155649652e-10
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            7.422499059828169e-09,
+            1.0,
+            5.723617135799941e-10,
+            3.2106581282498325e-10
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.2430347418046495e-08,
+            1.0,
+            1.1744099026600452e-09,
+            4.895668870297243e-10
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 709,
+        "isolated": 978
+      },
+      "latency_seconds": 1.8545341491699219
+    },
+    {
+      "id": 49,
+      "question": "Temperature, water, soil, and air are examples of nonliving factors of an ecosystem, also termed what?",
+      "options": [
+        "nucleic factors",
+        "conditional factors",
+        "diverse factors",
+        "abiotic factors"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "abiotic factors",
+      "longest_option_idx": 1,
+      "surface_match_idx": null,
+      "lookalike_idx": 0,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9361207485198975,
+            5.630310988635756e-05,
+            0.00011919368262169883,
+            0.06370382010936737
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.06370382010936737,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            0.00011959858238697052,
+            5.9634324145463324e-09,
+            4.098603234581333e-09,
+            0.9998804330825806
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9998804330825806,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.3558131337806077e-15,
+            2.306315920102349e-15,
+            8.352922765119677e-16,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.933358362293802e-06,
+            3.732259834521301e-09,
+            2.6882460701926902e-09,
+            0.9999980926513672
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999980926513672,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            2.510999053129126e-08,
+            2.399621473747615e-11,
+            2.5946095966178362e-11,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.4699463868339535e-10,
+            1.4868295396958109e-12,
+            3.978962558742749e-12,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 698,
+        "isolated": 945
+      },
+      "latency_seconds": 1.8000006675720215
+    }
+  ]
+}

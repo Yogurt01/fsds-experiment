@@ -1,0 +1,997 @@
+{
+  "summary": {
+    "experiment": "option_free_free_response",
+    "model": "Qwen3-4B-Instruct-2507",
+    "cells": {
+      "A_prime": "options removed, no fact (open-ended parametric recall)",
+      "B_prime": "options removed, fact present (open-ended reading comprehension)"
+    },
+    "prompts": {
+      "system_no_fact": "You are a student taking a short-answer science exam. Answer with the answer only - a word or short phrase. Do not explain, do not write a sentence.",
+      "system_with_fact": "You are a student taking a short-answer science exam. Answer using the reference text. Answer with the answer only - a word or short phrase. Do not explain, do not write a sentence."
+    },
+    "decoding": {
+      "greedy": true,
+      "max_new_tokens": 24
+    },
+    "matching": "3-stage cascade: normalised exact -> morphological -> LLM judge (residual only)",
+    "judge_system_prompt": "You are grading a short-answer science exam. Decide whether the student's answer means the same thing as the reference answer, in the context of the question. Ignore spelling, capitalisation, and phrasing. A more specific or more general answer counts as correct only if it identifies the same thing. Reply with exactly one word: CORRECT or INCORRECT.",
+    "memory": {
+      "load_seconds": 10.39,
+      "allocated_after_load_gb": 2.657,
+      "device_total_gb": 3.68,
+      "peak_reserved_gb": 2.861
+    },
+    "limit": 25,
+    "metrics": {
+      "A_prime": {
+        "n": 25,
+        "acc_strict": 0.0,
+        "acc_normalised": 0.0,
+        "acc_judged": 0.28,
+        "n_sent_to_judge": 25,
+        "n_judge_accepted": 7
+      },
+      "B_prime": {
+        "n": 25,
+        "acc_strict": 0.04,
+        "acc_normalised": 0.08,
+        "acc_judged": 0.44,
+        "n_sent_to_judge": 23,
+        "n_judge_accepted": 9
+      },
+      "seconds_per_item": 0.7685978031158447
+    },
+    "total_runtime_seconds": 49.73
+  },
+  "results": {
+    "A_prime": [
+      {
+        "id": 0,
+        "question": "A person wants to start saving money so that they can afford a nice vacation at the end of the year. After looking over their budget and expenses, they decide the best way to save money is to",
+        "gold_answer": "quit eating lunch out",
+        "options": [
+          "make more phone calls",
+          "quit eating lunch out",
+          "buy less with monopoly money",
+          "have lunch with friends"
+        ],
+        "raw_generation": "cut back on expenses",
+        "prediction": "cut back on expenses",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "verdict": "CORRECT",
+          "p_correct": 0.7826625108718872
+        }
+      },
+      {
+        "id": 1,
+        "question": "There is most likely going to be fog around:",
+        "gold_answer": "a marsh",
+        "options": [
+          "a marsh",
+          "a tundra",
+          "the plains",
+          "a desert"
+        ],
+        "raw_generation": "dew point",
+        "prediction": "dew point",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0003514382697176188
+        }
+      },
+      {
+        "id": 2,
+        "question": "Predators eat",
+        "gold_answer": "bunnies",
+        "options": [
+          "lions",
+          "humans",
+          "bunnies",
+          "grass"
+        ],
+        "raw_generation": "prey",
+        "prediction": "prey",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0011335689341649413
+        }
+      },
+      {
+        "id": 3,
+        "question": "Oak tree seeds are planted and a sidewalk is paved right next to that spot, until eventually, the tree is tall and the roots must extend past the sidewalk, which means",
+        "gold_answer": "parts may break the concrete",
+        "options": [
+          "roots may be split",
+          "roots may begin to die",
+          "parts may break the concrete",
+          "roots may fall apart"
+        ],
+        "raw_generation": "root pressure",
+        "prediction": "root pressure",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 7.9673009167891e-05
+        }
+      },
+      {
+        "id": 4,
+        "question": "An electric car runs on electricity via",
+        "gold_answer": "electrical conductors",
+        "options": [
+          "gasoline",
+          "a power station",
+          "electrical conductors",
+          "fuel"
+        ],
+        "raw_generation": "electric batteries",
+        "prediction": "electric batteries",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0002453695051372051
+        }
+      },
+      {
+        "id": 5,
+        "question": "As the rain forest is deforested the atmosphere will increase with",
+        "gold_answer": "carbon",
+        "options": [
+          "oxygen",
+          "nitrogen",
+          "carbon",
+          "rain"
+        ],
+        "raw_generation": "carbon dioxide",
+        "prediction": "carbon dioxide",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.1037486270070076
+        }
+      },
+      {
+        "id": 6,
+        "question": "an electric car contains a motor that runs on",
+        "gold_answer": "ions",
+        "options": [
+          "gas",
+          "hydrogen",
+          "ions",
+          "plutonium"
+        ],
+        "raw_generation": "electricity",
+        "prediction": "electricity",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.01098694372922182
+        }
+      },
+      {
+        "id": 7,
+        "question": "The middle of the day usually involves the bright star nearest to the earth to be straight overhead why?",
+        "gold_answer": "human planet rotation",
+        "options": [
+          "moons gravity",
+          "human planet rotation",
+          "global warming",
+          "moon rotation"
+        ],
+        "raw_generation": "noon",
+        "prediction": "noon",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.00023782205244060606
+        }
+      },
+      {
+        "id": 8,
+        "question": "The summer solstice in the northern hemisphere is four months before",
+        "gold_answer": "October",
+        "options": [
+          "May",
+          "July",
+          "April",
+          "October"
+        ],
+        "raw_generation": "winter solstice",
+        "prediction": "winter solstice",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.00013552079326473176
+        }
+      },
+      {
+        "id": 9,
+        "question": "The main component in dirt is",
+        "gold_answer": "broken stones",
+        "options": [
+          "microorganisms",
+          "broken stones",
+          "pollution",
+          "bacteria"
+        ],
+        "raw_generation": "silt",
+        "prediction": "silt",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.00039821304380893707
+        }
+      },
+      {
+        "id": 10,
+        "question": "It's easier for human's to survive in:",
+        "gold_answer": "a town",
+        "options": [
+          "a cave",
+          "the ocean.",
+          "a town",
+          "alone"
+        ],
+        "raw_generation": "oxygen-rich environments",
+        "prediction": "oxygen-rich environments",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0016484830994158983
+        }
+      },
+      {
+        "id": 11,
+        "question": "A cactus stem is used to store",
+        "gold_answer": "liquid",
+        "options": [
+          "fruit",
+          "liquid",
+          "food",
+          "spines"
+        ],
+        "raw_generation": "water",
+        "prediction": "water",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999994039535522
+        }
+      },
+      {
+        "id": 12,
+        "question": "A red-tailed hawk is searching for prey. It is most likely to swoop down on",
+        "gold_answer": "a gecko",
+        "options": [
+          "an eagle",
+          "a cow",
+          "a gecko",
+          "a deer"
+        ],
+        "raw_generation": "small mammals",
+        "prediction": "small mammals",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999959468841553
+        }
+      },
+      {
+        "id": 13,
+        "question": "The chance of wildfires is increased by",
+        "gold_answer": "parched foliage",
+        "options": [
+          "parched foliage",
+          "torrential rain",
+          "lush foliage",
+          "careful fire maintenance"
+        ],
+        "raw_generation": "climate change",
+        "prediction": "climate change",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.00033535013790242374
+        }
+      },
+      {
+        "id": 14,
+        "question": "A positive effect of burning biofuel is",
+        "gold_answer": "powering the lights in a home",
+        "options": [
+          "shortage of crops for the food supply",
+          "an increase in air pollution",
+          "powering the lights in a home",
+          "deforestation in the amazon to make room for crops"
+        ],
+        "raw_generation": "reduces net greenhouse gas emissions",
+        "prediction": "reduces net greenhouse gas emissions",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.000656372809316963
+        }
+      },
+      {
+        "id": 15,
+        "question": "As gasoline costs rise, alternative fuels are being used, which means that",
+        "gold_answer": "gasoline will be needed less",
+        "options": [
+          "wind power will be expensive",
+          "gas costs will rise",
+          "oil costs will be maintained",
+          "gasoline will be needed less"
+        ],
+        "raw_generation": "demand for gasoline increases",
+        "prediction": "demand for gasoline increases",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.00023050671734381467
+        }
+      },
+      {
+        "id": 16,
+        "question": "A person wants to be able to have more natural power in their home. They choose to cease using a traditional electric company to source this electricity, and so decide to install",
+        "gold_answer": "panels collecting sunlight",
+        "options": [
+          "sun grafts",
+          "sunlight shields",
+          "panels collecting sunlight",
+          "solar bees"
+        ],
+        "raw_generation": "solar panels",
+        "prediction": "solar panels",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "verdict": "CORRECT",
+          "p_correct": 1.0
+        }
+      },
+      {
+        "id": 17,
+        "question": "A Mola Mola might live where?",
+        "gold_answer": "Bay of Bengal",
+        "options": [
+          "Lake Michigan",
+          "The Mississippi River",
+          "Bay of Bengal",
+          "Lake Eerie"
+        ],
+        "raw_generation": "Warm, shallow oceans",
+        "prediction": "Warm, shallow oceans",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0003006163169629872
+        }
+      },
+      {
+        "id": 18,
+        "question": "Which requires energy to move?",
+        "gold_answer": "weasel",
+        "options": [
+          "weasel",
+          "willow",
+          "mango",
+          "poison ivy"
+        ],
+        "raw_generation": "Active transport",
+        "prediction": "Active transport",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "verdict": "CORRECT",
+          "p_correct": 0.957912266254425
+        }
+      },
+      {
+        "id": 19,
+        "question": "An animal that only eats plants is a",
+        "gold_answer": "moth",
+        "options": [
+          "rat",
+          "moth",
+          "chimpanzee",
+          "pig"
+        ],
+        "raw_generation": "herbivore",
+        "prediction": "herbivore",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "verdict": "CORRECT",
+          "p_correct": 0.7718434929847717
+        }
+      },
+      {
+        "id": 20,
+        "question": "There was a lot more water vapor in the air when we went on a trip to",
+        "gold_answer": "Hanoi",
+        "options": [
+          "Hanoi",
+          "Athens",
+          "Baghdad",
+          "Phoenix"
+        ],
+        "raw_generation": "the coast",
+        "prediction": "the coast",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0009399440023116767
+        }
+      },
+      {
+        "id": 21,
+        "question": "An example of conservation is avoiding the use of",
+        "gold_answer": "gasoline",
+        "options": [
+          "gasoline",
+          "air",
+          "snow",
+          "clothes"
+        ],
+        "raw_generation": "plastics",
+        "prediction": "plastics",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.00012931565288454294
+        }
+      },
+      {
+        "id": 22,
+        "question": "What can feathers on Spheniscidae be used for?",
+        "gold_answer": "keeping warm",
+        "options": [
+          "keeping warm",
+          "flying",
+          "sleeping",
+          "eating"
+        ],
+        "raw_generation": "Insulation and waterproofing",
+        "prediction": "Insulation and waterproofing",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999997615814209
+        }
+      },
+      {
+        "id": 23,
+        "question": "Overpopulation can cause",
+        "gold_answer": "Lower Life Expectancy in Countries",
+        "options": [
+          "More fresh water for people to drink",
+          "Lower Life Expectancy in Countries",
+          "More food for more people",
+          "More space for places to people to live"
+        ],
+        "raw_generation": "resource depletion",
+        "prediction": "resource depletion",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.28140559792518616
+        }
+      },
+      {
+        "id": 24,
+        "question": "Shining a light through a diamond can",
+        "gold_answer": "summon a brilliant wave of color",
+        "options": [
+          "make a lot of bright lights shine",
+          "summon a brilliant wave of color",
+          "heat up a room",
+          "make a lot of money"
+        ],
+        "raw_generation": "refract and reflect light",
+        "prediction": "refract and reflect light",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0001334200205747038
+        }
+      }
+    ],
+    "B_prime": [
+      {
+        "id": 0,
+        "question": "A person wants to start saving money so that they can afford a nice vacation at the end of the year. After looking over their budget and expenses, they decide the best way to save money is to",
+        "gold_answer": "quit eating lunch out",
+        "options": [
+          "make more phone calls",
+          "quit eating lunch out",
+          "buy less with monopoly money",
+          "have lunch with friends"
+        ],
+        "raw_generation": "use fewer resources",
+        "prediction": "use fewer resources",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0002453695051372051
+        }
+      },
+      {
+        "id": 1,
+        "question": "There is most likely going to be fog around:",
+        "gold_answer": "a marsh",
+        "options": [
+          "a marsh",
+          "a tundra",
+          "the plains",
+          "a desert"
+        ],
+        "raw_generation": "dew point",
+        "prediction": "dew point",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0003514382697176188
+        }
+      },
+      {
+        "id": 2,
+        "question": "Predators eat",
+        "gold_answer": "bunnies",
+        "options": [
+          "lions",
+          "humans",
+          "bunnies",
+          "grass"
+        ],
+        "raw_generation": "prey",
+        "prediction": "prey",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0011335689341649413
+        }
+      },
+      {
+        "id": 3,
+        "question": "Oak tree seeds are planted and a sidewalk is paved right next to that spot, until eventually, the tree is tall and the roots must extend past the sidewalk, which means",
+        "gold_answer": "parts may break the concrete",
+        "options": [
+          "roots may be split",
+          "roots may begin to die",
+          "parts may break the concrete",
+          "roots may fall apart"
+        ],
+        "raw_generation": "sidewalk cracks",
+        "prediction": "sidewalk cracks",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "verdict": "CORRECT",
+          "p_correct": 1.0
+        }
+      },
+      {
+        "id": 4,
+        "question": "An electric car runs on electricity via",
+        "gold_answer": "electrical conductors",
+        "options": [
+          "gasoline",
+          "a power station",
+          "electrical conductors",
+          "fuel"
+        ],
+        "raw_generation": "electrical conductor",
+        "prediction": "electrical conductor",
+        "match_stage": "normalised",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 5,
+        "question": "As the rain forest is deforested the atmosphere will increase with",
+        "gold_answer": "carbon",
+        "options": [
+          "oxygen",
+          "nitrogen",
+          "carbon",
+          "rain"
+        ],
+        "raw_generation": "carbon dioxide",
+        "prediction": "carbon dioxide",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.1037486270070076
+        }
+      },
+      {
+        "id": 6,
+        "question": "an electric car contains a motor that runs on",
+        "gold_answer": "ions",
+        "options": [
+          "gas",
+          "hydrogen",
+          "ions",
+          "plutonium"
+        ],
+        "raw_generation": "electricity",
+        "prediction": "electricity",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.01098694372922182
+        }
+      },
+      {
+        "id": 7,
+        "question": "The middle of the day usually involves the bright star nearest to the earth to be straight overhead why?",
+        "gold_answer": "human planet rotation",
+        "options": [
+          "moons gravity",
+          "human planet rotation",
+          "global warming",
+          "moon rotation"
+        ],
+        "raw_generation": "Sun is directly overhead at noon due to Earth's axial tilt and rotation.",
+        "prediction": "Sun is directly overhead at noon due to Earth's axial tilt and rotation",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9973269701004028
+        }
+      },
+      {
+        "id": 8,
+        "question": "The summer solstice in the northern hemisphere is four months before",
+        "gold_answer": "October",
+        "options": [
+          "May",
+          "July",
+          "April",
+          "October"
+        ],
+        "raw_generation": "December 21st",
+        "prediction": "December 21st",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0003006163169629872
+        }
+      },
+      {
+        "id": 9,
+        "question": "The main component in dirt is",
+        "gold_answer": "broken stones",
+        "options": [
+          "microorganisms",
+          "broken stones",
+          "pollution",
+          "bacteria"
+        ],
+        "raw_generation": "rocks",
+        "prediction": "rocks",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9603611826896667
+        }
+      },
+      {
+        "id": 10,
+        "question": "It's easier for human's to survive in:",
+        "gold_answer": "a town",
+        "options": [
+          "a cave",
+          "the ocean.",
+          "a town",
+          "alone"
+        ],
+        "raw_generation": "large groups",
+        "prediction": "large groups",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0006878511630930007
+        }
+      },
+      {
+        "id": 11,
+        "question": "A cactus stem is used to store",
+        "gold_answer": "liquid",
+        "options": [
+          "fruit",
+          "liquid",
+          "food",
+          "spines"
+        ],
+        "raw_generation": "water",
+        "prediction": "water",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999994039535522
+        }
+      },
+      {
+        "id": 12,
+        "question": "A red-tailed hawk is searching for prey. It is most likely to swoop down on",
+        "gold_answer": "a gecko",
+        "options": [
+          "an eagle",
+          "a cow",
+          "a gecko",
+          "a deer"
+        ],
+        "raw_generation": "a lizard",
+        "prediction": "a lizard",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "verdict": "CORRECT",
+          "p_correct": 1.0
+        }
+      },
+      {
+        "id": 13,
+        "question": "The chance of wildfires is increased by",
+        "gold_answer": "parched foliage",
+        "options": [
+          "parched foliage",
+          "torrential rain",
+          "lush foliage",
+          "careful fire maintenance"
+        ],
+        "raw_generation": "drought",
+        "prediction": "drought",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999948740005493
+        }
+      },
+      {
+        "id": 14,
+        "question": "A positive effect of burning biofuel is",
+        "gold_answer": "powering the lights in a home",
+        "options": [
+          "shortage of crops for the food supply",
+          "an increase in air pollution",
+          "powering the lights in a home",
+          "deforestation in the amazon to make room for crops"
+        ],
+        "raw_generation": "renewable energy",
+        "prediction": "renewable energy",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0002098830882459879
+        }
+      },
+      {
+        "id": 15,
+        "question": "As gasoline costs rise, alternative fuels are being used, which means that",
+        "gold_answer": "gasoline will be needed less",
+        "options": [
+          "wind power will be expensive",
+          "gas costs will rise",
+          "oil costs will be maintained",
+          "gasoline will be needed less"
+        ],
+        "raw_generation": "gasoline use will decrease",
+        "prediction": "gasoline use will decrease",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "verdict": "CORRECT",
+          "p_correct": 1.0
+        }
+      },
+      {
+        "id": 16,
+        "question": "A person wants to be able to have more natural power in their home. They choose to cease using a traditional electric company to source this electricity, and so decide to install",
+        "gold_answer": "panels collecting sunlight",
+        "options": [
+          "sun grafts",
+          "sunlight shields",
+          "panels collecting sunlight",
+          "solar bees"
+        ],
+        "raw_generation": "solar panels",
+        "prediction": "solar panels",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "verdict": "CORRECT",
+          "p_correct": 1.0
+        }
+      },
+      {
+        "id": 17,
+        "question": "A Mola Mola might live where?",
+        "gold_answer": "Bay of Bengal",
+        "options": [
+          "Lake Michigan",
+          "The Mississippi River",
+          "Bay of Bengal",
+          "Lake Eerie"
+        ],
+        "raw_generation": "ocean",
+        "prediction": "ocean",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 8.750300185056403e-05
+        }
+      },
+      {
+        "id": 18,
+        "question": "Which requires energy to move?",
+        "gold_answer": "weasel",
+        "options": [
+          "weasel",
+          "willow",
+          "mango",
+          "poison ivy"
+        ],
+        "raw_generation": "an animal",
+        "prediction": "an animal",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0004442183708306402
+        }
+      },
+      {
+        "id": 19,
+        "question": "An animal that only eats plants is a",
+        "gold_answer": "moth",
+        "options": [
+          "rat",
+          "moth",
+          "chimpanzee",
+          "pig"
+        ],
+        "raw_generation": "herbivore",
+        "prediction": "herbivore",
+        "match_stage": "judge",
+        "correct": true,
+        "judge": {
+          "verdict": "CORRECT",
+          "p_correct": 0.7718434929847717
+        }
+      },
+      {
+        "id": 20,
+        "question": "There was a lot more water vapor in the air when we went on a trip to",
+        "gold_answer": "Hanoi",
+        "options": [
+          "Hanoi",
+          "Athens",
+          "Baghdad",
+          "Phoenix"
+        ],
+        "raw_generation": "humidity",
+        "prediction": "humidity",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0003514382697176188
+        }
+      },
+      {
+        "id": 21,
+        "question": "An example of conservation is avoiding the use of",
+        "gold_answer": "gasoline",
+        "options": [
+          "gasoline",
+          "air",
+          "snow",
+          "clothes"
+        ],
+        "raw_generation": "fossil fuels",
+        "prediction": "fossil fuels",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0015011822106316686
+        }
+      },
+      {
+        "id": 22,
+        "question": "What can feathers on Spheniscidae be used for?",
+        "gold_answer": "keeping warm",
+        "options": [
+          "keeping warm",
+          "flying",
+          "sleeping",
+          "eating"
+        ],
+        "raw_generation": "keeping warm",
+        "prediction": "keeping warm",
+        "match_stage": "strict",
+        "correct": true,
+        "judge": null
+      },
+      {
+        "id": 23,
+        "question": "Overpopulation can cause",
+        "gold_answer": "Lower Life Expectancy in Countries",
+        "options": [
+          "More fresh water for people to drink",
+          "Lower Life Expectancy in Countries",
+          "More food for more people",
+          "More space for places to people to live"
+        ],
+        "raw_generation": "ecosystem imbalance",
+        "prediction": "ecosystem imbalance",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.00027372167096473277
+        }
+      },
+      {
+        "id": 24,
+        "question": "Shining a light through a diamond can",
+        "gold_answer": "summon a brilliant wave of color",
+        "options": [
+          "make a lot of bright lights shine",
+          "summon a brilliant wave of color",
+          "heat up a room",
+          "make a lot of money"
+        ],
+        "raw_generation": "refract light",
+        "prediction": "refract light",
+        "match_stage": "judge",
+        "correct": false,
+        "judge": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.00017400544311385602
+        }
+      }
+    ]
+  }
+}

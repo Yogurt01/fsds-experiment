@@ -1,0 +1,4939 @@
+{
+  "summary": {
+    "experiment": "persona_conditioned_student_simulation_zero_context",
+    "model": "Qwen3-4B-Instruct-2507",
+    "model_path": "/home/nghben/Downloads/research/fsds/experiment/models/Qwen3-4B-Instruct-2507",
+    "quantization": {
+      "load_in_4bit": true,
+      "bnb_4bit_quant_type": "nf4",
+      "bnb_4bit_compute_dtype": "float16",
+      "bnb_4bit_use_double_quant": false
+    },
+    "setting": "zero_context (Setting A) -- no reference passage is ever shown",
+    "tiers": [
+      "beginner",
+      "intermediate",
+      "advanced"
+    ],
+    "paradigms": {
+      "joint": "all three profiles in one prompt; the assistant turn is teacher-forced through 'Beginner:/Intermediate:/Advanced:' and each tier's committed letter conditions the next",
+      "isolated": "three independent single-persona roleplay prompts"
+    },
+    "scoring_protocol": "letter-logit: logits at the scored position restricted to A/B/C/D, logsumexp over tokenisation variants, softmax over the four options",
+    "personas": {
+      "beginner": "Beginner (Grade 2-3, very early elementary reader). This student can read the question but takes it literally and cannot chain two ideas together. OpenBookQA questions need a science fact combined with an everyday observation; this student uses only the everyday half and never retrieves the science fact. They pick whichever option shares words or topic with the question, or whichever describes something familiar and pleasant from their own life, and a longer or more detailed option feels more correct to them. They hold childhood misconceptions (the Sun moves across the sky, living things are only animals, heavier things always sink). Analogy and generalisation questions ('which is most like...') confuse them and they fall back on the most concrete, most literal option.",
+      "intermediate": "Intermediate (Grade 7-8 middle-school student). This student knows the core elementary science facts -- life cycles, food chains, states of matter, simple energy transfer, the solar system, basic properties of materials -- and can combine a fact with an everyday observation when the link is direct. Their weakness is indirect composition: when the question requires two hops, or phrases the target as an unfamiliar analogy, they settle for the option that is topically closest rather than the one that actually follows. They are also caught by distractors that are true statements in general but do not answer the question that was asked.",
+      "advanced": "Advanced (science teacher / expert reasoner). This student instantly retrieves the relevant core science fact and composes it with common-sense knowledge in as many steps as the question requires. They handle analogy and generalisation framings without difficulty, are immune to topical-similarity and option-length traps, and explicitly reject distractors that are true in isolation but irrelevant to the question asked. They select the option the question actually entails."
+    },
+    "prompts": {
+      "joint_system": "You are a psychometrics expert who models student behaviour. Given a student profile and an exam question, you predict the option that student would actually select -- which is often not the correct option. You never reveal the correct answer; you report predicted selections only, in the exact format requested.",
+      "isolated_system": "You are role-playing a specific student taking a multiple-choice exam. Stay strictly in character: answer exactly as that student would, using only the knowledge and reasoning habits their profile describes, even when that leads to a wrong option. Answer with a single letter and nothing else."
+    },
+    "environment": {
+      "python": "3.12.3",
+      "platform": "Linux-7.0.0-30-generic-x86_64-with-glibc2.39",
+      "torch": "2.13.0+cu130",
+      "cuda_available": true,
+      "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU"
+    },
+    "memory": {
+      "load_seconds": 5.66,
+      "n_parameters_packed": 2205810176,
+      "weights_vram_gb": 2.657,
+      "allocated_after_load_gb": 2.657,
+      "reserved_after_load_gb": 2.703,
+      "device_total_gb": 3.68,
+      "peak_allocated_gb": 2.989,
+      "peak_reserved_gb": 3.406
+    },
+    "limit": 50,
+    "metrics": {
+      "dataset_key": "obqa",
+      "dataset_name": "allenai/openbookqa",
+      "split": "test",
+      "data_file": "/home/nghben/Downloads/research/fsds/experiment/datasets/openbookqa/obqa_test_full.json",
+      "setting": "zero_context_no_fact",
+      "n_samples": 50,
+      "scoring_seconds": 82.09,
+      "mean_latency_seconds": 1.6414781618118286,
+      "joint_emission_order": [
+        "beginner",
+        "intermediate",
+        "advanced"
+      ],
+      "paradigms": {
+        "joint": {
+          "per_tier": {
+            "beginner": {
+              "n_samples": 50,
+              "accuracy": 0.72,
+              "n_correct": 36,
+              "n_errors": 14,
+              "mean_p_correct": 0.7268829794104917,
+              "mean_p_selected": 0.96112743973732,
+              "mean_entropy_bits": 0.12803422895324243,
+              "mean_p_selected_on_errors": 0.8862887833799634,
+              "answer_position_distribution": {
+                "A": 0.3,
+                "B": 0.16,
+                "C": 0.24,
+                "D": 0.3
+              },
+              "error_position_distribution": {
+                "A": 0.0714,
+                "B": 0.0714,
+                "C": 0.2857,
+                "D": 0.5714
+              },
+              "trap_probes": {
+                "longest_option": {
+                  "eligible_questions": 26,
+                  "eligible_errors": 7,
+                  "trap_hits": 2,
+                  "trap_hit_rate_among_errors": 0.2857142857142857,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 0.8571428571428571
+                },
+                "surface_match": {
+                  "eligible_questions": 4,
+                  "eligible_errors": 2,
+                  "trap_hits": 1,
+                  "trap_hit_rate_among_errors": 0.5,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 1.5
+                },
+                "lookalike_to_gold": {
+                  "eligible_questions": 36,
+                  "eligible_errors": 9,
+                  "trap_hits": 5,
+                  "trap_hit_rate_among_errors": 0.5555555555555556,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 1.6666666666666667
+                }
+              }
+            },
+            "intermediate": {
+              "n_samples": 50,
+              "accuracy": 0.74,
+              "n_correct": 37,
+              "n_errors": 13,
+              "mean_p_correct": 0.7465997236200375,
+              "mean_p_selected": 0.9726441967487335,
+              "mean_entropy_bits": 0.09733444132769825,
+              "mean_p_selected_on_errors": 0.9319913112200223,
+              "answer_position_distribution": {
+                "A": 0.28,
+                "B": 0.26,
+                "C": 0.28,
+                "D": 0.18
+              },
+              "error_position_distribution": {
+                "A": 0.1538,
+                "B": 0.2308,
+                "C": 0.3077,
+                "D": 0.3077
+              },
+              "trap_probes": {
+                "longest_option": {
+                  "eligible_questions": 26,
+                  "eligible_errors": 6,
+                  "trap_hits": 1,
+                  "trap_hit_rate_among_errors": 0.16666666666666666,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 0.5
+                },
+                "surface_match": {
+                  "eligible_questions": 4,
+                  "eligible_errors": 1,
+                  "trap_hits": 1,
+                  "trap_hit_rate_among_errors": 1.0,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 3.0
+                },
+                "lookalike_to_gold": {
+                  "eligible_questions": 36,
+                  "eligible_errors": 9,
+                  "trap_hits": 2,
+                  "trap_hit_rate_among_errors": 0.2222222222222222,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 0.6666666666666666
+                }
+              }
+            },
+            "advanced": {
+              "n_samples": 50,
+              "accuracy": 0.5,
+              "n_correct": 25,
+              "n_errors": 25,
+              "mean_p_correct": 0.48385972010496414,
+              "mean_p_selected": 0.9348993265628814,
+              "mean_entropy_bits": 0.24398819351831955,
+              "mean_p_selected_on_errors": 0.9170961928367615,
+              "answer_position_distribution": {
+                "A": 0.3,
+                "B": 0.36,
+                "C": 0.22,
+                "D": 0.12
+              },
+              "error_position_distribution": {
+                "A": 0.24,
+                "B": 0.4,
+                "C": 0.24,
+                "D": 0.12
+              },
+              "trap_probes": {
+                "longest_option": {
+                  "eligible_questions": 26,
+                  "eligible_errors": 13,
+                  "trap_hits": 4,
+                  "trap_hit_rate_among_errors": 0.3076923076923077,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 0.9230769230769231
+                },
+                "surface_match": {
+                  "eligible_questions": 4,
+                  "eligible_errors": 1,
+                  "trap_hits": 0,
+                  "trap_hit_rate_among_errors": 0.0,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 0.0
+                },
+                "lookalike_to_gold": {
+                  "eligible_questions": 36,
+                  "eligible_errors": 16,
+                  "trap_hits": 4,
+                  "trap_hit_rate_among_errors": 0.25,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 0.75
+                }
+              }
+            }
+          },
+          "accuracy_by_tier": {
+            "beginner": 0.72,
+            "intermediate": 0.74,
+            "advanced": 0.5
+          },
+          "ability_gap_advanced_minus_beginner": -0.21999999999999997,
+          "monotonicity": {
+            "strict_beginner_lt_intermediate": true,
+            "intermediate_le_advanced": false,
+            "holds": false
+          },
+          "error_set_overlap_jaccard": {
+            "beginner_vs_intermediate": 0.2857142857142857,
+            "beginner_vs_advanced": 0.14705882352941177,
+            "intermediate_vs_advanced": 0.11764705882352941
+          },
+          "error_containment": {
+            "advanced_errors_also_missed_by_beginner": 0.2,
+            "intermediate_errors_also_missed_by_beginner": 0.46153846153846156
+          }
+        },
+        "isolated": {
+          "per_tier": {
+            "beginner": {
+              "n_samples": 50,
+              "accuracy": 0.76,
+              "n_correct": 38,
+              "n_errors": 12,
+              "mean_p_correct": 0.7597819957943838,
+              "mean_p_selected": 0.9765679800510406,
+              "mean_entropy_bits": 0.08028531635437307,
+              "mean_p_selected_on_errors": 0.9506689657767614,
+              "answer_position_distribution": {
+                "A": 0.26,
+                "B": 0.24,
+                "C": 0.32,
+                "D": 0.18
+              },
+              "error_position_distribution": {
+                "A": 0.0,
+                "B": 0.1667,
+                "C": 0.5833,
+                "D": 0.25
+              },
+              "trap_probes": {
+                "longest_option": {
+                  "eligible_questions": 26,
+                  "eligible_errors": 4,
+                  "trap_hits": 1,
+                  "trap_hit_rate_among_errors": 0.25,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 0.75
+                },
+                "surface_match": {
+                  "eligible_questions": 4,
+                  "eligible_errors": 1,
+                  "trap_hits": 1,
+                  "trap_hit_rate_among_errors": 1.0,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 3.0
+                },
+                "lookalike_to_gold": {
+                  "eligible_questions": 36,
+                  "eligible_errors": 8,
+                  "trap_hits": 2,
+                  "trap_hit_rate_among_errors": 0.25,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 0.75
+                }
+              }
+            },
+            "intermediate": {
+              "n_samples": 50,
+              "accuracy": 0.84,
+              "n_correct": 42,
+              "n_errors": 8,
+              "mean_p_correct": 0.8441396189529041,
+              "mean_p_selected": 0.9889462757110595,
+              "mean_entropy_bits": 0.050855566987809075,
+              "mean_p_selected_on_errors": 0.9485100358724594,
+              "answer_position_distribution": {
+                "A": 0.26,
+                "B": 0.26,
+                "C": 0.28,
+                "D": 0.2
+              },
+              "error_position_distribution": {
+                "A": 0.0,
+                "B": 0.25,
+                "C": 0.5,
+                "D": 0.25
+              },
+              "trap_probes": {
+                "longest_option": {
+                  "eligible_questions": 26,
+                  "eligible_errors": 3,
+                  "trap_hits": 1,
+                  "trap_hit_rate_among_errors": 0.3333333333333333,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 1.0
+                },
+                "surface_match": {
+                  "eligible_questions": 4,
+                  "eligible_errors": 0,
+                  "trap_hits": 0,
+                  "trap_hit_rate_among_errors": null,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": null
+                },
+                "lookalike_to_gold": {
+                  "eligible_questions": 36,
+                  "eligible_errors": 3,
+                  "trap_hits": 0,
+                  "trap_hit_rate_among_errors": 0.0,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 0.0
+                }
+              }
+            },
+            "advanced": {
+              "n_samples": 50,
+              "accuracy": 0.84,
+              "n_correct": 42,
+              "n_errors": 8,
+              "mean_p_correct": 0.8557549210133675,
+              "mean_p_selected": 0.9677797770500183,
+              "mean_entropy_bits": 0.10250085992154721,
+              "mean_p_selected_on_errors": 0.828983262181282,
+              "answer_position_distribution": {
+                "A": 0.26,
+                "B": 0.22,
+                "C": 0.32,
+                "D": 0.2
+              },
+              "error_position_distribution": {
+                "A": 0.0,
+                "B": 0.125,
+                "C": 0.625,
+                "D": 0.25
+              },
+              "trap_probes": {
+                "longest_option": {
+                  "eligible_questions": 26,
+                  "eligible_errors": 2,
+                  "trap_hits": 2,
+                  "trap_hit_rate_among_errors": 1.0,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 3.0
+                },
+                "surface_match": {
+                  "eligible_questions": 4,
+                  "eligible_errors": 0,
+                  "trap_hits": 0,
+                  "trap_hit_rate_among_errors": null,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": null
+                },
+                "lookalike_to_gold": {
+                  "eligible_questions": 36,
+                  "eligible_errors": 3,
+                  "trap_hits": 1,
+                  "trap_hit_rate_among_errors": 0.3333333333333333,
+                  "random_distractor_baseline": 0.3333333333333333,
+                  "lift_over_random": 1.0
+                }
+              }
+            }
+          },
+          "accuracy_by_tier": {
+            "beginner": 0.76,
+            "intermediate": 0.84,
+            "advanced": 0.84
+          },
+          "ability_gap_advanced_minus_beginner": 0.07999999999999996,
+          "monotonicity": {
+            "strict_beginner_lt_intermediate": true,
+            "intermediate_le_advanced": true,
+            "holds": true
+          },
+          "error_set_overlap_jaccard": {
+            "beginner_vs_intermediate": 0.5384615384615384,
+            "beginner_vs_advanced": 0.3333333333333333,
+            "intermediate_vs_advanced": 0.6
+          },
+          "error_containment": {
+            "advanced_errors_also_missed_by_beginner": 0.625,
+            "intermediate_errors_also_missed_by_beginner": 0.875
+          }
+        }
+      },
+      "joint_differentiation": {
+        "emission_order": [
+          "beginner",
+          "intermediate",
+          "advanced"
+        ],
+        "last_scored_tier": "advanced",
+        "all_three_tiers_distinct_rate": 0.06,
+        "chance_all_distinct_if_independent_uniform": 0.375,
+        "n_questions_earlier_tiers_agree": 34,
+        "last_tier_deviates_from_agreeing_earlier_tiers": 0.6764705882352942,
+        "deviations_that_are_wrong": 0.8695652173913043,
+        "deviations_away_from_a_correct_consensus": 0.782608695652174
+      },
+      "cross_paradigm": {
+        "beginner": {
+          "prediction_agreement": 0.74,
+          "accuracy_joint": 0.72,
+          "accuracy_isolated": 0.76
+        },
+        "intermediate": {
+          "prediction_agreement": 0.78,
+          "accuracy_joint": 0.74,
+          "accuracy_isolated": 0.84
+        },
+        "advanced": {
+          "prediction_agreement": 0.56,
+          "accuracy_joint": 0.5,
+          "accuracy_isolated": 0.84
+        }
+      },
+      "gap_joint_minus_isolated": -0.29999999999999993
+    },
+    "total_runtime_seconds": 182.04
+  },
+  "results": [
+    {
+      "id": 0,
+      "question": "A person wants to start saving money so that they can afford a nice vacation at the end of the year. After looking over their budget and expenses, they decide the best way to save money is to",
+      "options": [
+        "make more phone calls",
+        "quit eating lunch out",
+        "buy less with monopoly money",
+        "have lunch with friends"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "quit eating lunch out",
+      "longest_option_idx": 2,
+      "surface_match_idx": 2,
+      "lookalike_idx": 3,
+      "joint": {
+        "beginner": {
+          "probs": [
+            5.469739786968797e-13,
+            2.96490611617628e-07,
+            2.7305842031921657e-09,
+            0.9999997615814209
+          ],
+          "pred_idx": 3,
+          "p_correct": 2.96490611617628e-07,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            5.708186371765778e-15,
+            1.0,
+            8.953242591758226e-09,
+            1.2626097500856304e-08
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.8188280881403784e-09,
+            0.9999265670776367,
+            7.254356023622677e-05,
+            8.058860316850769e-07
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999265670776367,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            2.952465605332577e-09,
+            0.9999997615814209,
+            3.8891105447191876e-08,
+            2.3823690753488336e-07
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999997615814209,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            4.229212535733495e-09,
+            1.0,
+            1.1496191554272173e-08,
+            1.0861516130944437e-09
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            6.375534553626494e-07,
+            0.9999972581863403,
+            2.0580478121701162e-06,
+            3.326524122826413e-08
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999972581863403,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 653,
+        "isolated": 954
+      },
+      "latency_seconds": 1.83540678024292
+    },
+    {
+      "id": 1,
+      "question": "There is most likely going to be fog around:",
+      "options": [
+        "a marsh",
+        "a tundra",
+        "the plains",
+        "a desert"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "a marsh",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            1.0,
+            9.736200734522527e-10,
+            8.410793839175312e-09,
+            9.23744991609965e-09
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            3.775134718719819e-11,
+            7.593982951151212e-13,
+            7.835042293777295e-13
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.875562372077866e-09,
+            0.9993927478790283,
+            0.0006070754607208073,
+            1.235206497085528e-07
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.875562372077866e-09,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.9999845027923584,
+            5.714919097954407e-07,
+            5.896330321775167e-07,
+            1.4285500583355315e-05
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999845027923584,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            0.999998927116394,
+            3.466323903467128e-07,
+            9.042445014983969e-08,
+            6.276701469687396e-07
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.999998927116394,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.9999959468841553,
+            1.6536856719540083e-06,
+            1.8553839709056774e-07,
+            2.190777649957454e-06
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999959468841553,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 614,
+        "isolated": 837
+      },
+      "latency_seconds": 1.6018257141113281
+    },
+    {
+      "id": 2,
+      "question": "Predators eat",
+      "options": [
+        "lions",
+        "humans",
+        "bunnies",
+        "grass"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "bunnies",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            4.6149875032597265e-09,
+            1.307202097677873e-07,
+            0.09534944593906403,
+            0.9046503901481628
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.09534944593906403,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            1.024641420599437e-07,
+            2.902311962316162e-06,
+            0.9999970197677612,
+            3.617426358459852e-09
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999970197677612,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.8838393688201904,
+            0.11593449115753174,
+            2.335627641514293e-06,
+            0.000223806215217337
+          ],
+          "pred_idx": 0,
+          "p_correct": 2.335627641514293e-06,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            8.232998993662477e-08,
+            6.214593639697341e-08,
+            0.9999696016311646,
+            3.024195393663831e-05
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999696016311646,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.1723631132554146e-06,
+            7.264079471269724e-08,
+            0.9997609257698059,
+            0.00023782174685038626
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9997609257698059,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            7.571148898932734e-07,
+            4.406937392786858e-08,
+            0.9999991655349731,
+            1.2751895894780318e-07
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999991655349731,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 605,
+        "isolated": 810
+      },
+      "latency_seconds": 1.5949060916900635
+    },
+    {
+      "id": 3,
+      "question": "Oak tree seeds are planted and a sidewalk is paved right next to that spot, until eventually, the tree is tall and the roots must extend past the sidewalk, which means",
+      "options": [
+        "roots may be split",
+        "roots may begin to die",
+        "parts may break the concrete",
+        "roots may fall apart"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "parts may break the concrete",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": 3,
+      "joint": {
+        "beginner": {
+          "probs": [
+            5.723616025576916e-10,
+            1.346065359869586e-11,
+            0.9999997615814209,
+            2.3090713341389346e-07
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999997615814209,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            6.814871449023485e-05,
+            8.952632413183892e-09,
+            0.999931812286377,
+            2.845140834040194e-08
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.999931812286377,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.9999992847442627,
+            8.677774943066652e-09,
+            1.161073370781196e-07,
+            5.71500379464851e-07
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.161073370781196e-07,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            9.833214242860322e-09,
+            2.7305848693259804e-09,
+            1.0,
+            6.972793009651923e-09
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            0.0005193047691136599,
+            7.975793892001093e-08,
+            0.9994805455207825,
+            2.080609817767254e-08
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9994805455207825,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            9.31459289859049e-05,
+            7.733700613243855e-08,
+            0.9999067783355713,
+            5.747198983385715e-08
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999067783355713,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 648,
+        "isolated": 939
+      },
+      "latency_seconds": 1.722682237625122
+    },
+    {
+      "id": 4,
+      "question": "An electric car runs on electricity via",
+      "options": [
+        "gasoline",
+        "a power station",
+        "electrical conductors",
+        "fuel"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "electrical conductors",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            2.5185696288384206e-14,
+            3.1971857886864408e-12,
+            1.090728147801201e-07,
+            0.9999998807907104
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.090728147801201e-07,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            3.295162536928742e-12,
+            0.9989350438117981,
+            0.0010649627074599266,
+            8.143338448007853e-09
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.0010649627074599266,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            9.265301233760213e-15,
+            2.0438928056542432e-13,
+            1.0,
+            5.4927885156930145e-11
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            4.7887018794767755e-09,
+            0.0005032082553952932,
+            0.0002530289930291474,
+            0.9992438554763794
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.0002530289930291474,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            7.473169716831762e-06,
+            0.02227720618247986,
+            0.00039546776679344475,
+            0.9773198366165161
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.00039546776679344475,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            7.465389353455976e-05,
+            0.1191171407699585,
+            0.0006449112552218139,
+            0.8801632523536682
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.0006449112552218139,
+          "correct": 0
+        }
+      },
+      "prompt_tokens": {
+        "joint": 611,
+        "isolated": 828
+      },
+      "latency_seconds": 1.5996532440185547
+    },
+    {
+      "id": 5,
+      "question": "As the rain forest is deforested the atmosphere will increase with",
+      "options": [
+        "oxygen",
+        "nitrogen",
+        "carbon",
+        "rain"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "carbon",
+      "longest_option_idx": 1,
+      "surface_match_idx": 3,
+      "lookalike_idx": 3,
+      "joint": {
+        "beginner": {
+          "probs": [
+            1.5380823725763548e-08,
+            2.147644284633543e-09,
+            0.49218812584877014,
+            0.5078118443489075
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.49218812584877014,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            2.9066924422949114e-09,
+            1.5893911187170318e-10,
+            1.0,
+            8.592166977905435e-10
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.010009175166487694,
+            0.0002667354710865766,
+            0.989551842212677,
+            0.00017221737653017044
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.989551842212677,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.6145274628343032e-07,
+            9.792604771519109e-08,
+            0.9263035655021667,
+            0.07369626313447952
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9263035655021667,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.2359566881059436e-07,
+            2.0494171693030694e-08,
+            0.9999997615814209,
+            9.042452830954062e-08
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999997615814209,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            2.8736846502397384e-07,
+            3.1249875576122577e-08,
+            0.9999995231628418,
+            1.6893521603833506e-07
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999995231628418,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 613,
+        "isolated": 834
+      },
+      "latency_seconds": 1.6021931171417236
+    },
+    {
+      "id": 6,
+      "question": "an electric car contains a motor that runs on",
+      "options": [
+        "gas",
+        "hydrogen",
+        "ions",
+        "plutonium"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "ions",
+      "longest_option_idx": 3,
+      "surface_match_idx": null,
+      "lookalike_idx": 0,
+      "joint": {
+        "beginner": {
+          "probs": [
+            6.81995544482561e-08,
+            0.9684311747550964,
+            0.022074595093727112,
+            0.009494165889918804
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.022074595093727112,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            1.206491243715968e-11,
+            9.314579074271023e-05,
+            0.9999053478240967,
+            1.459240252188465e-06
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999053478240967,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            4.847346135594677e-11,
+            0.9999953508377075,
+            2.5906947698217664e-08,
+            4.637873189494712e-06
+          ],
+          "pred_idx": 1,
+          "p_correct": 2.5906947698217664e-08,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.0027050389908254147,
+            0.9334302544593811,
+            0.06352072954177856,
+            0.0003439071006141603
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.06352072954177856,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            0.0015211299760267138,
+            0.7174501419067383,
+            0.28095752000808716,
+            7.114419713616371e-05
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.28095752000808716,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            0.0008557552937418222,
+            0.0001582988043082878,
+            0.9989744424819946,
+            1.1467127478681505e-05
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9989744424819946,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 610,
+        "isolated": 825
+      },
+      "latency_seconds": 1.7119946479797363
+    },
+    {
+      "id": 7,
+      "question": "The middle of the day usually involves the bright star nearest to the earth to be straight overhead why?",
+      "options": [
+        "moons gravity",
+        "human planet rotation",
+        "global warming",
+        "moon rotation"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "human planet rotation",
+      "longest_option_idx": 1,
+      "surface_match_idx": null,
+      "lookalike_idx": 3,
+      "joint": {
+        "beginner": {
+          "probs": [
+            3.0941582629395725e-09,
+            1.0,
+            3.546410734522887e-11,
+            3.028842954222455e-08
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            2.650560543618341e-12,
+            1.0,
+            2.0007480915074094e-12,
+            8.878265418850451e-13
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.033789634704589844,
+            0.7453874349594116,
+            0.07856325805187225,
+            0.14225968718528748
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.7453874349594116,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.2878950883532525e-06,
+            0.9999985694885254,
+            1.7805625418532145e-08,
+            1.1253501241981212e-07
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999985694885254,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.1430733337647325e-07,
+            0.9999998807907104,
+            4.363462036138799e-09,
+            3.2426492602155577e-09
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999998807907104,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            7.338209115914651e-07,
+            0.9999991655349731,
+            5.57089059327609e-08,
+            1.6467520680407688e-08
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999991655349731,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 624,
+        "isolated": 867
+      },
+      "latency_seconds": 1.6086132526397705
+    },
+    {
+      "id": 8,
+      "question": "The summer solstice in the northern hemisphere is four months before",
+      "options": [
+        "May",
+        "July",
+        "April",
+        "October"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "October",
+      "longest_option_idx": 3,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.32071685791015625,
+            4.213226566207595e-05,
+            0.6789575219154358,
+            0.00028345794999040663
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.00028345794999040663,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            0.010980582796037197,
+            0.0005135686369612813,
+            0.9884405136108398,
+            6.52929229545407e-05
+          ],
+          "pred_idx": 2,
+          "p_correct": 6.52929229545407e-05,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            0.009404853917658329,
+            0.9897733330726624,
+            3.3970295021390484e-08,
+            0.0008217869908548892
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.0008217869908548892,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.007113248575478792,
+            5.781303843832575e-05,
+            0.9917381405830383,
+            0.0010908519616350532
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.0010908519616350532,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            0.023874903097748756,
+            0.01640896312892437,
+            0.953679621219635,
+            0.006036520469933748
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.006036520469933748,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            0.02745753340423107,
+            0.19059304893016815,
+            0.777738630771637,
+            0.0042107487097382545
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.0042107487097382545,
+          "correct": 0
+        }
+      },
+      "prompt_tokens": {
+        "joint": 612,
+        "isolated": 831
+      },
+      "latency_seconds": 1.6018037796020508
+    },
+    {
+      "id": 9,
+      "question": "The main component in dirt is",
+      "options": [
+        "microorganisms",
+        "broken stones",
+        "pollution",
+        "bacteria"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "broken stones",
+      "longest_option_idx": 0,
+      "surface_match_idx": null,
+      "lookalike_idx": 3,
+      "joint": {
+        "beginner": {
+          "probs": [
+            2.3089685718957753e-10,
+            0.9984512329101562,
+            2.5611741616415884e-09,
+            0.0015487611526623368
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9984512329101562,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            0.007724367082118988,
+            0.3183431327342987,
+            1.1746498529419114e-07,
+            0.6739323735237122
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.3183431327342987,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            5.4759766499046236e-05,
+            0.9999451637268066,
+            2.67279816057453e-08,
+            1.1860469939506402e-08
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999451637268066,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            2.017643474516717e-08,
+            0.9999995231628418,
+            8.410789398283214e-09,
+            4.1811870232777437e-07
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999995231628418,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            4.9369855332770385e-06,
+            0.9999942779541016,
+            6.11839681141646e-08,
+            6.681482886961021e-07
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999942779541016,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            2.5071540221688338e-05,
+            0.9999728202819824,
+            8.579009431741724e-07,
+            1.172611632682674e-06
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999728202819824,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 608,
+        "isolated": 819
+      },
+      "latency_seconds": 1.5943424701690674
+    },
+    {
+      "id": 10,
+      "question": "It's easier for human's to survive in:",
+      "options": [
+        "a cave",
+        "the ocean.",
+        "a town",
+        "alone"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "a town",
+      "longest_option_idx": 1,
+      "surface_match_idx": null,
+      "lookalike_idx": 0,
+      "joint": {
+        "beginner": {
+          "probs": [
+            1.5869970582116366e-07,
+            2.1940822492183543e-09,
+            0.9999979734420776,
+            1.8738751350610983e-06
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999979734420776,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            2.3320728814724134e-06,
+            6.0835759541078e-07,
+            0.9999970197677612,
+            2.5109915924304005e-08
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999970197677612,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.3007306456565857,
+            0.6992196440696716,
+            5.81421204515209e-07,
+            4.916687976219691e-05
+          ],
+          "pred_idx": 1,
+          "p_correct": 5.81421204515209e-07,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.7983053623993328e-07,
+            4.099089512266119e-09,
+            0.9999990463256836,
+            6.681514719275583e-07
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999990463256836,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.1843138054246083e-05,
+            4.476286719068412e-08,
+            0.9999880790710449,
+            1.2751753786233166e-07
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999880790710449,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.0014103208668529987,
+            1.8316870409762487e-05,
+            0.9985629916191101,
+            8.386074114241637e-06
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9985629916191101,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 612,
+        "isolated": 831
+      },
+      "latency_seconds": 1.599841594696045
+    },
+    {
+      "id": 11,
+      "question": "A cactus stem is used to store",
+      "options": [
+        "fruit",
+        "liquid",
+        "food",
+        "spines"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "liquid",
+      "longest_option_idx": null,
+      "surface_match_idx": null,
+      "lookalike_idx": 2,
+      "joint": {
+        "beginner": {
+          "probs": [
+            4.4427881107367284e-07,
+            0.9981881976127625,
+            1.1345058510414674e-06,
+            0.001810208079405129
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9981881976127625,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.3887941144319349e-11,
+            0.9999997615814209,
+            1.1496188889736914e-08,
+            1.9750534363538463e-07
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999997615814209,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            4.9221739573113155e-06,
+            0.0006056184065528214,
+            0.0023952675983309746,
+            0.996994137763977
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.0006056184065528214,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            5.838246863731911e-08,
+            0.9999997615814209,
+            9.6256414394702e-08,
+            9.6256414394702e-08
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999997615814209,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.9444330234819063e-07,
+            0.9999997615814209,
+            2.1144726858324248e-08,
+            6.653483985985531e-09
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999997615814209,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            3.326533359881978e-08,
+            1.0,
+            4.099093509069007e-09,
+            1.120629811168783e-09
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 609,
+        "isolated": 822
+      },
+      "latency_seconds": 1.599111795425415
+    },
+    {
+      "id": 12,
+      "question": "A red-tailed hawk is searching for prey. It is most likely to swoop down on",
+      "options": [
+        "an eagle",
+        "a cow",
+        "a gecko",
+        "a deer"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "a gecko",
+      "longest_option_idx": 0,
+      "surface_match_idx": null,
+      "lookalike_idx": 1,
+      "joint": {
+        "beginner": {
+          "probs": [
+            1.2769205137708184e-10,
+            7.810320994394715e-07,
+            0.9998503923416138,
+            0.00014883837138768286
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9998503923416138,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            4.581562212946366e-11,
+            0.0015126443468034267,
+            0.053322553634643555,
+            0.9451647996902466
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.053322553634643555,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            4.22919876896799e-09,
+            1.1726397133315913e-06,
+            0.9999967813491821,
+            2.0580469026754145e-06
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999967813491821,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            3.597872364480281e-07,
+            0.0003592460707295686,
+            0.3700922429561615,
+            0.6295481324195862
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.3700922429561615,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            6.518341706396313e-06,
+            1.7004110759444302e-06,
+            0.9966152310371399,
+            0.0033765847329050303
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9966152310371399,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            2.5774392270250246e-05,
+            3.2768459732324118e-06,
+            0.9963774085044861,
+            0.0035934981424361467
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9963774085044861,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 624,
+        "isolated": 867
+      },
+      "latency_seconds": 1.610818862915039
+    },
+    {
+      "id": 13,
+      "question": "The chance of wildfires is increased by",
+      "options": [
+        "parched foliage",
+        "torrential rain",
+        "lush foliage",
+        "careful fire maintenance"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "parched foliage",
+      "longest_option_idx": 3,
+      "surface_match_idx": null,
+      "lookalike_idx": 2,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.8221890926361084,
+            1.3910601837086034e-10,
+            0.17781086266040802,
+            1.0710569320337981e-08
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.8221890926361084,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            3.0379751448858516e-14,
+            3.3698095854538257e-13,
+            4.284231999653228e-14
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.8774682879447937,
+            8.013528258743463e-07,
+            0.1225220188498497,
+            8.888835509424098e-06
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.8774682879447937,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.9999996423721313,
+            2.5651460955344874e-09,
+            3.576358835744031e-07,
+            1.997737753001161e-09
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999996423721313,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            0.9999966621398926,
+            2.565138323973315e-09,
+            3.393145107111195e-06,
+            1.4166039452589985e-09
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999966621398926,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.0,
+            1.906255597816653e-09,
+            3.2937139682331917e-09,
+            4.122566454878296e-10
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 614,
+        "isolated": 837
+      },
+      "latency_seconds": 1.6018993854522705
+    },
+    {
+      "id": 14,
+      "question": "A positive effect of burning biofuel is",
+      "options": [
+        "shortage of crops for the food supply",
+        "an increase in air pollution",
+        "powering the lights in a home",
+        "deforestation in the amazon to make room for crops"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "powering the lights in a home",
+      "longest_option_idx": 3,
+      "surface_match_idx": null,
+      "lookalike_idx": 1,
+      "joint": {
+        "beginner": {
+          "probs": [
+            4.308765546640796e-15,
+            6.63554768857294e-14,
+            1.0,
+            1.2645116724552263e-11
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.37509263958141e-12,
+            1.7629980808564483e-09,
+            1.0,
+            5.780648404396516e-09
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            6.615439218649044e-08,
+            0.9999754428863525,
+            1.1610457306687749e-07,
+            2.4300234144902788e-05
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.1610457306687749e-07,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.3046516124382013e-11,
+            8.037724999465645e-12,
+            1.0,
+            1.989356075704496e-11
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.1496191554272173e-08,
+            4.122566454878296e-10,
+            1.0,
+            1.1811350508761365e-10
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            5.6586241470313325e-08,
+            2.228638384949022e-09,
+            1.0,
+            1.9667665274170076e-09
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 632,
+        "isolated": 891
+      },
+      "latency_seconds": 1.7081801891326904
+    },
+    {
+      "id": 15,
+      "question": "As gasoline costs rise, alternative fuels are being used, which means that",
+      "options": [
+        "wind power will be expensive",
+        "gas costs will rise",
+        "oil costs will be maintained",
+        "gasoline will be needed less"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "gasoline will be needed less",
+      "longest_option_idx": null,
+      "surface_match_idx": 1,
+      "lookalike_idx": 2,
+      "joint": {
+        "beginner": {
+          "probs": [
+            5.152140758468704e-08,
+            1.834289105318021e-05,
+            1.4761130096019315e-08,
+            0.9999815225601196
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999815225601196,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            5.324550134133688e-09,
+            0.8128671050071716,
+            3.192830888565368e-07,
+            0.18713264167308807
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.18713264167308807,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            6.101936989542922e-13,
+            2.0999244840425773e-15,
+            4.854670742552962e-14,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            8.410786733747955e-09,
+            8.059445235630847e-07,
+            4.36345892751433e-09,
+            0.9999991655349731
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999991655349731,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            4.691164434689199e-08,
+            3.3455824777206544e-09,
+            4.527753727501249e-10,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.43072416136647e-08,
+            1.51660753400229e-10,
+            1.6398438162923412e-10,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 629,
+        "isolated": 882
+      },
+      "latency_seconds": 1.7057514190673828
+    },
+    {
+      "id": 16,
+      "question": "A person wants to be able to have more natural power in their home. They choose to cease using a traditional electric company to source this electricity, and so decide to install",
+      "options": [
+        "sun grafts",
+        "sunlight shields",
+        "panels collecting sunlight",
+        "solar bees"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "panels collecting sunlight",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": 1,
+      "joint": {
+        "beginner": {
+          "probs": [
+            4.3204126387585973e-10,
+            9.599694086523392e-13,
+            1.0,
+            1.2378190139550327e-10
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.1287447891509053e-13,
+            1.0379743939359365e-12,
+            1.0,
+            3.8949701103296874e-11
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            7.42199279812894e-09,
+            1.3306900026321955e-09,
+            0.999931812286377,
+            6.814871449023485e-05
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.999931812286377,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            2.105601110136135e-10,
+            3.956307156882666e-11,
+            1.0,
+            3.581747953784742e-10
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            9.889523644446285e-10,
+            1.3176514046531196e-10,
+            1.0,
+            2.2414005373949664e-10
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            3.67440367021743e-09,
+            3.6381522794393106e-10,
+            1.0,
+            6.188705103937764e-10
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 640,
+        "isolated": 915
+      },
+      "latency_seconds": 1.7138679027557373
+    },
+    {
+      "id": 17,
+      "question": "A Mola Mola might live where?",
+      "options": [
+        "Lake Michigan",
+        "The Mississippi River",
+        "Bay of Bengal",
+        "Lake Eerie"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "Bay of Bengal",
+      "longest_option_idx": 1,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            2.5572581829891305e-09,
+            1.6162369220751316e-08,
+            0.9969245791435242,
+            0.00307536986656487
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9969245791435242,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            2.540150867424984e-10,
+            3.326941211412304e-08,
+            0.5698526501655579,
+            0.43014732003211975
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.5698526501655579,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.005140289664268494,
+            0.3957803249359131,
+            0.10652283579111099,
+            0.4925565719604492
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.10652283579111099,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            2.510972052505167e-08,
+            2.3090471756859188e-07,
+            0.9999892711639404,
+            1.0451544767420273e-05
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999892711639404,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            5.771907581220148e-06,
+            2.535999499286845e-07,
+            0.9999921321868896,
+            1.9333467662363546e-06
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999921321868896,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            7.254344382090494e-05,
+            5.71457917430962e-07,
+            0.9999250173568726,
+            1.7602143316253205e-06
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9999250173568726,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 615,
+        "isolated": 840
+      },
+      "latency_seconds": 1.6020312309265137
+    },
+    {
+      "id": 18,
+      "question": "Which requires energy to move?",
+      "options": [
+        "weasel",
+        "willow",
+        "mango",
+        "poison ivy"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "weasel",
+      "longest_option_idx": 3,
+      "surface_match_idx": null,
+      "lookalike_idx": 1,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.061875052750110626,
+            4.731334968255396e-07,
+            1.4718752026965376e-05,
+            0.938109815120697
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.061875052750110626,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            0.0023967064917087555,
+            3.1799033877177862e-06,
+            6.945547283976339e-06,
+            0.997593104839325
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.0023967064917087555,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            0.9999879598617554,
+            9.818305443332065e-06,
+            7.571064202238631e-07,
+            1.5056859865580918e-06
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999879598617554,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.9996119141578674,
+            1.8918161003966816e-05,
+            9.418798185834021e-07,
+            0.0003682906390167773
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9996119141578674,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            0.9999443292617798,
+            4.539740257314406e-05,
+            6.143870450614486e-06,
+            4.0927002373791765e-06
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999443292617798,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.9998173117637634,
+            9.313759073847905e-05,
+            3.647320409072563e-05,
+            5.306819730321877e-05
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9998173117637634,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 609,
+        "isolated": 822
+      },
+      "latency_seconds": 1.5967693328857422
+    },
+    {
+      "id": 19,
+      "question": "An animal that only eats plants is a",
+      "options": [
+        "rat",
+        "moth",
+        "chimpanzee",
+        "pig"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "moth",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            1.357129804091528e-07,
+            0.9997764229774475,
+            8.408913565460807e-09,
+            0.00022341631120070815
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9997764229774475,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.1032560420787263e-09,
+            1.0,
+            8.327813993957989e-10,
+            5.780648404396516e-09
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.989287257194519,
+            0.0009907776257023215,
+            2.3300855900743045e-05,
+            0.00969863124191761
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.0009907776257023215,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            2.4060655050561763e-06,
+            0.9999823570251465,
+            2.6728976365575363e-08,
+            1.520680234534666e-05
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999823570251465,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            0.0006263337563723326,
+            0.9993731379508972,
+            6.821324660677419e-08,
+            4.3791013126792677e-07
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9993731379508972,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.0010005005169659853,
+            0.9989956021308899,
+            1.0020077070294064e-06,
+            2.8102001579100033e-06
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9989956021308899,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 609,
+        "isolated": 822
+      },
+      "latency_seconds": 1.598210334777832
+    },
+    {
+      "id": 20,
+      "question": "There was a lot more water vapor in the air when we went on a trip to",
+      "options": [
+        "Hanoi",
+        "Athens",
+        "Baghdad",
+        "Phoenix"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "Hanoi",
+      "longest_option_idx": null,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9999135732650757,
+            5.014326688979054e-06,
+            2.2124248062027618e-05,
+            5.920755211263895e-05
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999135732650757,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            0.9999971389770508,
+            2.6425852865941124e-06,
+            2.6995707003152347e-07,
+            3.653471836173594e-08
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999971389770508,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            2.1124744620237834e-08,
+            5.4171227930055466e-06,
+            0.0009399389382451773,
+            0.9990547299385071
+          ],
+          "pred_idx": 3,
+          "p_correct": 2.1124744620237834e-08,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            2.3090710499218403e-07,
+            4.271352338491852e-08,
+            9.625640018384729e-08,
+            0.9999996423721313
+          ],
+          "pred_idx": 3,
+          "p_correct": 2.3090710499218403e-07,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            3.0241950298659503e-05,
+            7.855982175897225e-08,
+            1.8845520344257238e-07,
+            0.999969482421875
+          ],
+          "pred_idx": 3,
+          "p_correct": 3.0241950298659503e-05,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            8.750238339416683e-05,
+            2.64234290625609e-06,
+            4.3564868974499404e-06,
+            0.9999054670333862
+          ],
+          "pred_idx": 3,
+          "p_correct": 8.750238339416683e-05,
+          "correct": 0
+        }
+      },
+      "prompt_tokens": {
+        "joint": 618,
+        "isolated": 849
+      },
+      "latency_seconds": 1.6049139499664307
+    },
+    {
+      "id": 21,
+      "question": "An example of conservation is avoiding the use of",
+      "options": [
+        "gasoline",
+        "air",
+        "snow",
+        "clothes"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "gasoline",
+      "longest_option_idx": 0,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            2.541423964430578e-05,
+            4.372761566173722e-07,
+            0.13296081125736237,
+            0.8670133352279663
+          ],
+          "pred_idx": 3,
+          "p_correct": 2.541423964430578e-05,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            0.9999905824661255,
+            2.332057874809834e-06,
+            1.653676804380666e-06,
+            5.422197318694089e-06
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999905824661255,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.962078332901001,
+            0.023344136774539948,
+            0.013301088474690914,
+            0.001276466646231711
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.962078332901001,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.9990711212158203,
+            1.8721383412412251e-06,
+            0.00035676639527082443,
+            0.0005701110931113362
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9990711212158203,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            1.8954017022565495e-08,
+            5.022314564229191e-09,
+            3.3982678893096363e-09
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.9999998807907104,
+            6.41206057139243e-08,
+            2.0494175245744373e-08,
+            1.3232033246879382e-08
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999998807907104,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 609,
+        "isolated": 822
+      },
+      "latency_seconds": 1.5974366664886475
+    },
+    {
+      "id": 22,
+      "question": "What can feathers on Spheniscidae be used for?",
+      "options": [
+        "keeping warm",
+        "flying",
+        "sleeping",
+        "eating"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "keeping warm",
+      "longest_option_idx": 0,
+      "surface_match_idx": null,
+      "lookalike_idx": 2,
+      "joint": {
+        "beginner": {
+          "probs": [
+            1.0,
+            2.940077695190446e-11,
+            4.457557378767518e-10,
+            1.0467402056235642e-08
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            4.024663496351652e-14,
+            2.1329934973363324e-15,
+            3.862352501899941e-15
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.9983193278312683,
+            0.0013665964361280203,
+            3.6418558011064306e-05,
+            0.0002776408800855279
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9983193278312683,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.999990701675415,
+            3.844914317596704e-06,
+            7.811416935510351e-07,
+            4.63785136162187e-06
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.999990701675415,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            1.7257828943684217e-08,
+            2.6882511772186035e-09,
+            2.1600705668589626e-09
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.0,
+            1.7805650287527897e-08,
+            3.911382329135904e-09,
+            1.7629980808564483e-09
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 613,
+        "isolated": 834
+      },
+      "latency_seconds": 1.60107421875
+    },
+    {
+      "id": 23,
+      "question": "Overpopulation can cause",
+      "options": [
+        "More fresh water for people to drink",
+        "Lower Life Expectancy in Countries",
+        "More food for more people",
+        "More space for places to people to live"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "Lower Life Expectancy in Countries",
+      "longest_option_idx": 3,
+      "surface_match_idx": null,
+      "lookalike_idx": 3,
+      "joint": {
+        "beginner": {
+          "probs": [
+            8.825259099898286e-12,
+            1.7424939358079428e-07,
+            0.00027803092962130904,
+            0.9997218251228333
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.7424939358079428e-07,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            2.257631642667724e-14,
+            1.0,
+            1.6561834126349595e-09,
+            8.071593948777434e-10
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            4.725134779975937e-12,
+            1.0,
+            1.2626097500856304e-08,
+            5.315785500670245e-08
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.580341413287556e-09,
+            1.0,
+            5.780648404396516e-09,
+            5.6586241470313325e-08
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.6561834126349595e-09,
+            1.0,
+            8.071593948777434e-10,
+            4.745044912546348e-10
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            3.192377251437506e-09,
+            1.0,
+            1.3101489892974882e-09,
+            4.745044912546348e-10
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 626,
+        "isolated": 873
+      },
+      "latency_seconds": 1.7025492191314697
+    },
+    {
+      "id": 24,
+      "question": "Shining a light through a diamond can",
+      "options": [
+        "make a lot of bright lights shine",
+        "summon a brilliant wave of color",
+        "heat up a room",
+        "make a lot of money"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "summon a brilliant wave of color",
+      "longest_option_idx": 0,
+      "surface_match_idx": null,
+      "lookalike_idx": 0,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.0850929468870163,
+            0.9148353934288025,
+            6.84771075611934e-05,
+            3.202716925443383e-06
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9148353934288025,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            8.851568509271601e-07,
+            0.9999990463256836,
+            1.0799661609439681e-08,
+            1.0261869826111436e-10
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999990463256836,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.2067892998456955,
+            0.0009576245211064816,
+            0.7683154344558716,
+            0.02393759973347187
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.0009576245211064816,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.0017006215639412403,
+            0.9982399940490723,
+            2.989179620271898e-06,
+            5.640168456011452e-05
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9982399940490723,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            0.00012339415843598545,
+            0.9998732805252075,
+            2.901952939282637e-06,
+            3.412154967463721e-07
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9998732805252075,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.014495710842311382,
+            0.984961748123169,
+            0.0005280062323436141,
+            1.4517546333081555e-05
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.984961748123169,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 626,
+        "isolated": 873
+      },
+      "latency_seconds": 1.7027404308319092
+    },
+    {
+      "id": 25,
+      "question": "If you were attacked by a shark and had to punch it sharply where it pulls in air from, you'd use your hand to make contact with",
+      "options": [
+        "its snout",
+        "its gills",
+        "its nose",
+        "its belly"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "its gills",
+      "longest_option_idx": null,
+      "surface_match_idx": null,
+      "lookalike_idx": 2,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.0005703144706785679,
+            2.3077500088675151e-07,
+            0.9994275569915771,
+            1.872806137726002e-06
+          ],
+          "pred_idx": 2,
+          "p_correct": 2.3077500088675151e-07,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            6.61558559045261e-08,
+            0.9999974966049194,
+            2.3320740183407906e-06,
+            1.0571675090886856e-07
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999974966049194,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.012418818660080433,
+            0.9865489602088928,
+            0.00010413813288323581,
+            0.0009281731909140944
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9865489602088928,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.00028782139997929335,
+            0.02673128992319107,
+            0.972222626209259,
+            0.0007583083934150636
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.02673128992319107,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            0.025752389803528786,
+            0.966351330280304,
+            0.007378183305263519,
+            0.0005180297885090113
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.966351330280304,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.013211500830948353,
+            0.9859323501586914,
+            0.0007453418802469969,
+            0.00011078518582507968
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9859323501586914,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 635,
+        "isolated": 900
+      },
+      "latency_seconds": 1.710618019104004
+    },
+    {
+      "id": 26,
+      "question": "which of these would stop a car quicker?",
+      "options": [
+        "a wheel with wet brake pads",
+        "a wheel without brake pads",
+        "a wheel with worn brake pads",
+        "a wheel with dry brake pads"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "a wheel with dry brake pads",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": 0,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.5635561347007751,
+            0.0001383134222123772,
+            0.41230645775794983,
+            0.023999115452170372
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.023999115452170372,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            0.9911527037620544,
+            1.0055594579228e-08,
+            0.008847354911267757,
+            8.87403039939727e-09
+          ],
+          "pred_idx": 0,
+          "p_correct": 8.87403039939727e-09,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            4.931120887053525e-14,
+            4.67851723074536e-13,
+            1.0,
+            1.4783637855564358e-11
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.4783637855564358e-11,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.00017947558080777526,
+            0.00011231295502511784,
+            0.9995287656784058,
+            0.00017947558080777526
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.00017947558080777526,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            4.222828010824742e-06,
+            1.1979241776316485e-07,
+            0.9999945163726807,
+            1.172636984847486e-06
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.172636984847486e-06,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            8.75024707056582e-05,
+            2.057860911008902e-06,
+            0.9999064207077026,
+            3.966630629292922e-06
+          ],
+          "pred_idx": 2,
+          "p_correct": 3.966630629292922e-06,
+          "correct": 0
+        }
+      },
+      "prompt_tokens": {
+        "joint": 627,
+        "isolated": 876
+      },
+      "latency_seconds": 1.7023272514343262
+    },
+    {
+      "id": 27,
+      "question": "what system is needed for a body to get its needed supply of the gas humans breathe in?",
+      "options": [
+        "the circulatory system",
+        "the digestive system",
+        "the school system",
+        "central nervous system"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "the circulatory system",
+      "longest_option_idx": null,
+      "surface_match_idx": null,
+      "lookalike_idx": 2,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9979662895202637,
+            3.493747044558404e-06,
+            4.2562547605484724e-05,
+            0.0019876828882843256
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9979662895202637,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            6.70166613175871e-13,
+            2.2447771723041465e-13,
+            2.4654052670908255e-13
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.9989616870880127,
+            0.0007319569704122841,
+            4.5352793677011505e-05,
+            0.0002609872608445585
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9989616870880127,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.08673147112131119,
+            0.009431609883904457,
+            0.9037626385688782,
+            7.429710240103304e-05
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.08673147112131119,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            0.9999791383743286,
+            1.8925111362477764e-05,
+            1.706150555946806e-06,
+            2.102389942137961e-07
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999791383743286,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.9999998807907104,
+            1.2751904421293148e-07,
+            1.5229979055675358e-08,
+            7.778711896833101e-09
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999998807907104,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 627,
+        "isolated": 876
+      },
+      "latency_seconds": 1.7026853561401367
+    },
+    {
+      "id": 28,
+      "question": "Every evening a child can look into the night sky and see that the moon is",
+      "options": [
+        "gone",
+        "breaking",
+        "falling",
+        "moving upwards"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "moving upwards",
+      "longest_option_idx": 3,
+      "surface_match_idx": null,
+      "lookalike_idx": 2,
+      "joint": {
+        "beginner": {
+          "probs": [
+            4.4135792243160665e-11,
+            4.951899133798232e-12,
+            6.421720100124872e-11,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            5.847042294782057e-11,
+            1.2898369039504587e-09,
+            9.329492201004541e-08,
+            0.9999998807907104
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999998807907104,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.9785674214363098,
+            0.0006735720671713352,
+            0.017923088744282722,
+            0.002835844410583377
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.002835844410583377,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            3.0231285563786514e-05,
+            6.959637175896205e-06,
+            0.00034597874036990106,
+            0.9996168613433838
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9996168613433838,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            0.0001355191634502262,
+            2.5609108433855e-06,
+            9.514938028587494e-06,
+            0.9998524188995361
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9998524188995361,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.003271888941526413,
+            2.4981181923067197e-05,
+            0.0003342445124872029,
+            0.9963688850402832
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9963688850402832,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 617,
+        "isolated": 846
+      },
+      "latency_seconds": 1.6044085025787354
+    },
+    {
+      "id": 29,
+      "question": "When it's flying, a plane has no friction with the",
+      "options": [
+        "wings",
+        "ground",
+        "air",
+        "clouds"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "ground",
+      "longest_option_idx": null,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.0002912507625296712,
+            3.9869229340183665e-07,
+            0.9838066101074219,
+            0.015901751816272736
+          ],
+          "pred_idx": 2,
+          "p_correct": 3.9869229340183665e-07,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            7.825621651136316e-06,
+            0.008061889559030533,
+            0.9919254183769226,
+            4.897149210592033e-06
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.008061889559030533,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            1.3287760793900816e-06,
+            0.9999977350234985,
+            1.0145330797683982e-08,
+            9.42243332247017e-07
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999977350234985,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            4.734013714369212e-07,
+            6.600221240660176e-05,
+            0.9991781115531921,
+            0.0007553554023616016
+          ],
+          "pred_idx": 2,
+          "p_correct": 6.600221240660176e-05,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            2.72645797849691e-06,
+            2.9022994567640126e-06,
+            0.9999927282333374,
+            1.6536803286726354e-06
+          ],
+          "pred_idx": 2,
+          "p_correct": 2.9022994567640126e-06,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            8.470083412248641e-05,
+            0.0012446697801351547,
+            0.9986158609390259,
+            5.468697054311633e-05
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.0012446697801351547,
+          "correct": 0
+        }
+      },
+      "prompt_tokens": {
+        "joint": 612,
+        "isolated": 831
+      },
+      "latency_seconds": 1.5988948345184326
+    },
+    {
+      "id": 30,
+      "question": "To grow plants require",
+      "options": [
+        "acid rain",
+        "pesticides",
+        "shafts of sunlight",
+        "moonbeam rays"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "shafts of sunlight",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            9.919341323872647e-16,
+            3.840360646677199e-14,
+            1.0,
+            1.8189616479702408e-09
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            2.6545531875752206e-15,
+            3.818494457262511e-13,
+            1.0,
+            3.6174372386454934e-09
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            6.048001544023407e-10,
+            1.1525450815952354e-07,
+            0.9926540851593018,
+            0.007345825433731079
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.9926540851593018,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.6329629705727489e-12,
+            4.651878708628043e-12,
+            1.0,
+            1.4026325934057837e-10
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            3.016134286770722e-10,
+            1.2378190139550327e-10,
+            1.0,
+            2.3489676870269705e-10
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            5.293480098700343e-10,
+            2.312550151373216e-10,
+            1.0,
+            5.461513463700385e-10
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 610,
+        "isolated": 825
+      },
+      "latency_seconds": 1.5981628894805908
+    },
+    {
+      "id": 31,
+      "question": "What is the best way to guess a babies eye color?",
+      "options": [
+        "The surroundings they are born in.",
+        "Their parents usual diet.",
+        "Just take a random guess.",
+        "The genealogy records of their family."
+      ],
+      "answer_idx": 3,
+      "correct_answer": "The genealogy records of their family.",
+      "longest_option_idx": 3,
+      "surface_match_idx": 2,
+      "lookalike_idx": 1,
+      "joint": {
+        "beginner": {
+          "probs": [
+            9.640018644452297e-11,
+            2.6204285963338236e-10,
+            1.3007128472963814e-05,
+            0.999987006187439
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.999987006187439,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.223582923870481e-08,
+            7.48407983337529e-05,
+            7.25381905795075e-05,
+            0.9998525381088257
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9998525381088257,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.01551392488181591,
+            0.5468847155570984,
+            0.41281023621559143,
+            0.024791181087493896
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.024791181087493896,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            4.356847966846544e-06,
+            3.39311691277544e-06,
+            0.999988317489624,
+            3.844905222649686e-06
+          ],
+          "pred_idx": 2,
+          "p_correct": 3.844905222649686e-06,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            0.0002958966651931405,
+            0.00011955304944422096,
+            8.477580558974296e-05,
+            0.9994997978210449
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9994997978210449,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            3.2192252547247335e-05,
+            1.9946644442825345e-06,
+            5.714808821721817e-07,
+            0.9999651908874512
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999651908874512,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 629,
+        "isolated": 882
+      },
+      "latency_seconds": 1.7031137943267822
+    },
+    {
+      "id": 32,
+      "question": "What animal eats plants?",
+      "options": [
+        "eagles",
+        "robins",
+        "owls",
+        "leopards"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "robins",
+      "longest_option_idx": 3,
+      "surface_match_idx": null,
+      "lookalike_idx": 2,
+      "joint": {
+        "beginner": {
+          "probs": [
+            3.1923486076834706e-09,
+            0.9999910593032837,
+            2.699554215723765e-07,
+            8.664650522405282e-06
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999910593032837,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            4.363462480228009e-09,
+            1.0,
+            4.099093509069007e-09,
+            1.9362746961348876e-09
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.07548309862613678,
+            0.8912801742553711,
+            0.027768684551119804,
+            0.005467977374792099
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.8912801742553711,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.1979304304077232e-07,
+            0.9999997615814209,
+            6.153466625136161e-09,
+            7.04227005599023e-08
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999997615814209,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            7.979938487778782e-08,
+            0.9999998807907104,
+            1.1929041088265535e-09,
+            1.0045259069002554e-09
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999998807907104,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.5057016753416974e-06,
+            0.9999984502792358,
+            4.6911573292618414e-08,
+            3.32652803081146e-08
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999984502792358,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 609,
+        "isolated": 822
+      },
+      "latency_seconds": 1.5973150730133057
+    },
+    {
+      "id": 33,
+      "question": "Which of these is a hypothesis?",
+      "options": [
+        "The ice caps will completely melt if global warming continues",
+        "The earth is round",
+        "The earth revolves around the sun",
+        "Gravity causes objects to fall"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "The ice caps will completely melt if global warming continues",
+      "longest_option_idx": 0,
+      "surface_match_idx": null,
+      "lookalike_idx": 2,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9995253086090088,
+            4.404849107686459e-08,
+            1.7595107237866614e-06,
+            0.0004728535714093596
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9995253086090088,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.067687094291614e-06,
+            6.758155368657981e-09,
+            1.4738964637217578e-05,
+            0.9999841451644897
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.067687094291614e-06,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            0.999895453453064,
+            2.7533573302207515e-05,
+            2.12316103898047e-06,
+            7.484401430701837e-05
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.999895453453064,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.9799231886863708,
+            0.003217884339392185,
+            0.004131845664232969,
+            0.01272698026150465
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9799231886863708,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            0.9999707937240601,
+            1.112540667236317e-05,
+            2.4060377654677723e-06,
+            1.5689338397351094e-05
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999707937240601,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.9998202919960022,
+            0.00015355837240349501,
+            1.7775673768483102e-05,
+            8.39663243823452e-06
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9998202919960022,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 627,
+        "isolated": 876
+      },
+      "latency_seconds": 1.7014107704162598
+    },
+    {
+      "id": 34,
+      "question": "What explains the characteristic lunar formations?",
+      "options": [
+        "remains of ancient ponds",
+        "many collisions that have occured",
+        "volcanic explosions over millions of years",
+        "sink holes due to the moons porous nature"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "many collisions that have occured",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": 2,
+      "joint": {
+        "beginner": {
+          "probs": [
+            3.581515639616839e-10,
+            2.2124724637251347e-05,
+            4.2646519432310015e-05,
+            0.9999351501464844
+          ],
+          "pred_idx": 3,
+          "p_correct": 2.2124724637251347e-05,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            6.456864990594946e-12,
+            0.9539660811424255,
+            0.04603390023112297,
+            3.8278511027556306e-08
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9539660811424255,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            4.501960582103948e-09,
+            2.9023121896898374e-06,
+            0.9999971389770508,
+            1.5713387924165545e-08
+          ],
+          "pred_idx": 2,
+          "p_correct": 2.9023121896898374e-06,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.2513490219134837e-05,
+            0.9925744533538818,
+            0.0002938464458566159,
+            0.007119246758520603
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9925744533538818,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            5.930124657993474e-08,
+            0.9999895095825195,
+            1.0451546586409677e-05,
+            4.4068947602227126e-08
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999895095825195,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            4.535271727945656e-06,
+            0.4765772223472595,
+            0.5234177112579346,
+            5.009545702705509e-07
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.4765772223472595,
+          "correct": 0
+        }
+      },
+      "prompt_tokens": {
+        "joint": 625,
+        "isolated": 870
+      },
+      "latency_seconds": 1.6535634994506836
+    },
+    {
+      "id": 35,
+      "question": "Tadpoles start their lives as",
+      "options": [
+        "Water animals",
+        "Frogs",
+        "Ants",
+        "College Students"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "Water animals",
+      "longest_option_idx": 3,
+      "surface_match_idx": null,
+      "lookalike_idx": 2,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9241317510604858,
+            0.07585734874010086,
+            1.1668177535284485e-08,
+            1.0944750101771206e-05
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9241317510604858,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            3.2937139682331917e-09,
+            1.0,
+            8.777450988262103e-11,
+            2.4616969573898473e-10
+          ],
+          "pred_idx": 1,
+          "p_correct": 3.2937139682331917e-09,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            0.005060331895947456,
+            0.9949396848678589,
+            3.869431353109576e-08,
+            5.808704983678581e-08
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.005060331895947456,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.009412545710802078,
+            0.9905828237533569,
+            5.840894345965353e-07,
+            4.054384135088185e-06
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.009412545710802078,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            0.02517879568040371,
+            0.9748193621635437,
+            6.933345844117866e-07,
+            1.1794019201261108e-06
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.02517879568040371,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            0.9999988079071045,
+            1.1365636964910664e-06,
+            4.406935616430019e-08,
+            4.406935616430019e-08
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999988079071045,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 612,
+        "isolated": 831
+      },
+      "latency_seconds": 1.5983972549438477
+    },
+    {
+      "id": 36,
+      "question": "If a person puts out four apples around their home on the same day, the molecules in which apple would be moving the most rapidly?",
+      "options": [
+        "the apple sitting on a sunny sidewalk",
+        "the apple in the freezer",
+        "the apple sitting on the shaded stoop",
+        "the apple in a closet"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "the apple sitting on a sunny sidewalk",
+      "longest_option_idx": null,
+      "surface_match_idx": null,
+      "lookalike_idx": 2,
+      "joint": {
+        "beginner": {
+          "probs": [
+            1.0,
+            7.507751365043447e-11,
+            2.020683967374204e-11,
+            5.323793142442135e-11
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            3.003478542262794e-12,
+            3.6644976332891877e-14,
+            3.0379751448858516e-14
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            3.49668820916367e-14,
+            1.0,
+            2.9110711237401166e-12,
+            5.611236735675318e-12
+          ],
+          "pred_idx": 1,
+          "p_correct": 3.49668820916367e-14,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.0,
+            1.0799672267580718e-08,
+            4.012565213429298e-08,
+            2.757793104990469e-08
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            0.9998799562454224,
+            0.0001195985241793096,
+            3.3592766612855485e-07,
+            9.328373806738455e-08
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9998799562454224,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.14804354310035706,
+            0.8519318103790283,
+            1.8849979824153706e-05,
+            5.839450750499964e-06
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.14804354310035706,
+          "correct": 0
+        }
+      },
+      "prompt_tokens": {
+        "joint": 647,
+        "isolated": 936
+      },
+      "latency_seconds": 1.7199900150299072
+    },
+    {
+      "id": 37,
+      "question": "What is used for sensing visual things?",
+      "options": [
+        "nerves",
+        "tibia",
+        "nostril",
+        "cornea"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "cornea",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": 1,
+      "joint": {
+        "beginner": {
+          "probs": [
+            5.152235971195296e-08,
+            1.1287447891509053e-13,
+            3.2986755688080294e-12,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            0.8397339582443237,
+            3.0077154655749894e-10,
+            3.0077154655749894e-10,
+            0.16026602685451508
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.16026602685451508,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            0.2568320035934448,
+            1.120676662580422e-09,
+            3.174333329525325e-08,
+            0.7431679368019104
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.7431679368019104,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.5689549400121905e-05,
+            3.364687695128765e-10,
+            7.65799423874114e-09,
+            0.9999842643737793
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999842643737793,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            0.10087861120700836,
+            1.1531168020439964e-08,
+            1.8426751680067355e-08,
+            0.8991213440895081
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.8991213440895081,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.201813206076622,
+            4.5877655452386534e-08,
+            7.56394626932888e-08,
+            0.798186719417572
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.798186719417572,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 610,
+        "isolated": 825
+      },
+      "latency_seconds": 1.5967116355895996
+    },
+    {
+      "id": 38,
+      "question": "They studied the soil by using",
+      "options": [
+        "plants",
+        "a telescope",
+        "roots",
+        "a microscope"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "a microscope",
+      "longest_option_idx": 3,
+      "surface_match_idx": null,
+      "lookalike_idx": 1,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.0033766075503081083,
+            2.3047383446161973e-10,
+            0.9966219663619995,
+            1.4096998484092182e-06
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.4096998484092182e-06,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            0.04083298146724701,
+            1.1486420703477052e-07,
+            0.9588552117347717,
+            0.00031176363700069487
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.00031176363700069487,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            0.32766827940940857,
+            7.107689725671662e-08,
+            3.254137226349485e-08,
+            0.6723316311836243
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.6723316311836243,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.0005468921735882759,
+            2.1662590370397083e-06,
+            0.988804280757904,
+            0.010646662674844265
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.010646662674844265,
+          "correct": 0
+        },
+        "intermediate": {
+          "probs": [
+            8.481099939672276e-05,
+            7.778050203910425e-09,
+            4.313546639878041e-07,
+            0.9999147653579712
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999147653579712,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            2.2125666873762384e-05,
+            1.1142241795880636e-08,
+            1.7703872856600356e-07,
+            0.999977707862854
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.999977707862854,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 608,
+        "isolated": 819
+      },
+      "latency_seconds": 1.5964360237121582
+    },
+    {
+      "id": 39,
+      "question": "Bill's arm got cold when he put it inside the",
+      "options": [
+        "refrigerator",
+        "room",
+        "jacket",
+        "oven"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "refrigerator",
+      "longest_option_idx": 0,
+      "surface_match_idx": null,
+      "lookalike_idx": 1,
+      "joint": {
+        "beginner": {
+          "probs": [
+            0.9966195821762085,
+            2.6376274497863506e-09,
+            0.003376599634066224,
+            3.831952653854387e-06
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9966195821762085,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            0.9928786158561707,
+            4.4258133269359234e-10,
+            0.00712142838165164,
+            2.1114374693098625e-09
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9928786158561707,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            5.9731304104249094e-12,
+            9.84802690784381e-12,
+            1.0,
+            5.964145621817352e-09
+          ],
+          "pred_idx": 2,
+          "p_correct": 5.9731304104249094e-12,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.9964058995246887,
+            3.8751338138354186e-08,
+            0.0035936010535806417,
+            4.037982250792993e-07
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9964058995246887,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            0.9999997615814209,
+            1.344040612138997e-08,
+            4.618433280256795e-08,
+            2.4579935598012526e-07
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999997615814209,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.9998408555984497,
+            1.0244814063753438e-07,
+            5.538293521567539e-07,
+            0.00015843610162846744
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9998408555984497,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 611,
+        "isolated": 828
+      },
+      "latency_seconds": 1.5987019538879395
+    },
+    {
+      "id": 40,
+      "question": "A recyclable material can be",
+      "options": [
+        "transformed",
+        "traded",
+        "thrown away",
+        "used more times"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "used more times",
+      "longest_option_idx": 3,
+      "surface_match_idx": null,
+      "lookalike_idx": 1,
+      "joint": {
+        "beginner": {
+          "probs": [
+            5.964145621817352e-09,
+            3.422876402887215e-13,
+            5.384939998250016e-13,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            3.8831109122838825e-05,
+            1.7283154074565488e-11,
+            2.910957933033309e-12,
+            0.9999611377716064
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999611377716064,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.9999998807907104,
+            7.713569908675277e-13,
+            1.694446449471143e-13,
+            7.265816037715922e-08
+          ],
+          "pred_idx": 0,
+          "p_correct": 7.265816037715922e-08,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            5.199991619520006e-07,
+            9.924357868840161e-08,
+            0.0006878507556393743,
+            0.9993115663528442
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9993115663528442,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            0.0003250358277000487,
+            1.808016847348881e-08,
+            2.446884694862206e-09,
+            0.999674916267395
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.999674916267395,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.00036829791497439146,
+            5.65653976991598e-08,
+            1.90555349277588e-09,
+            0.9996316432952881
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9996316432952881,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 609,
+        "isolated": 822
+      },
+      "latency_seconds": 1.5972943305969238
+    },
+    {
+      "id": 41,
+      "question": "What is different about birth in humans and chickens?",
+      "options": [
+        "Mother",
+        "Fertilization",
+        "Father",
+        "the hard shell"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "the hard shell",
+      "longest_option_idx": 3,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            1.0587626608771217e-10,
+            3.818494457262511e-13,
+            9.559413942936482e-15,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            4.90302785351171e-13,
+            3.288748985141865e-06,
+            2.569002736235726e-12,
+            0.9999966621398926
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999966621398926,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            2.4374099960589035e-11,
+            1.0,
+            1.37509263958141e-12,
+            1.070923297957771e-12
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.070923297957771e-12,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            6.214781933522318e-08,
+            1.5893909799391537e-10,
+            7.746072533398873e-11,
+            0.9999998807907104
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999998807907104,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.4738980098627508e-05,
+            2.757752426418847e-08,
+            7.307316085558568e-09,
+            0.9999852180480957
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999852180480957,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            4.53978318546433e-05,
+            7.570804996248626e-07,
+            1.8553056690961967e-07,
+            0.9999537467956543
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999537467956543,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 613,
+        "isolated": 834
+      },
+      "latency_seconds": 1.6020679473876953
+    },
+    {
+      "id": 42,
+      "question": "Which of these situations is an example of pollutants?",
+      "options": [
+        "plastic bags floating in the ocean",
+        "mallard ducks floating on a lake",
+        "cottonwood seeds floating in the air",
+        "cirrus clouds floating in the sky"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "plastic bags floating in the ocean",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": 3,
+      "joint": {
+        "beginner": {
+          "probs": [
+            1.0,
+            3.546410734522887e-11,
+            5.4927885156930145e-11,
+            1.211689748537026e-09
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            3.511422055901825e-12,
+            1.5917852431122925e-13,
+            1.9391914289623724e-12
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.9991129040718079,
+            0.0008830423466861248,
+            2.8105300771130715e-06,
+            1.1716032304320834e-06
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9991129040718079,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.0,
+            1.876701904990341e-09,
+            2.789468100949932e-10,
+            1.0587626608771217e-10
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            3.1118765897453216e-10,
+            4.6982310403231864e-11,
+            6.224144116773189e-11
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.0,
+            1.9555681518568235e-08,
+            3.451782859542618e-09,
+            1.3517374997107368e-09
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 632,
+        "isolated": 891
+      },
+      "latency_seconds": 1.7057926654815674
+    },
+    {
+      "id": 43,
+      "question": "Human reproduction requires",
+      "options": [
+        "eggs with shells",
+        "nest incubation",
+        "a nest",
+        "a womb"
+      ],
+      "answer_idx": 3,
+      "correct_answer": "a womb",
+      "longest_option_idx": 0,
+      "surface_match_idx": null,
+      "lookalike_idx": 2,
+      "joint": {
+        "beginner": {
+          "probs": [
+            3.192376807348296e-09,
+            4.508754914561708e-12,
+            6.023573462243803e-08,
+            0.9999998807907104
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.9999998807907104,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            2.6769711447549582e-11,
+            2.624410291949403e-13,
+            3.856543123043066e-12,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.9343861937522888,
+            2.0470406525419094e-06,
+            7.605677637911867e-06,
+            0.06560420244932175
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.06560420244932175,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            8.315209925058298e-07,
+            3.3596487014619925e-07,
+            8.139682904584333e-06,
+            0.999990701675415
+          ],
+          "pred_idx": 3,
+          "p_correct": 0.999990701675415,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            4.691164434689199e-08,
+            3.1118765897453216e-10,
+            1.7456046330632802e-10,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.0799672267580718e-08,
+            1.1811350508761365e-10,
+            2.2766974416832397e-10,
+            1.0
+          ],
+          "pred_idx": 3,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 609,
+        "isolated": 822
+      },
+      "latency_seconds": 1.5965774059295654
+    },
+    {
+      "id": 44,
+      "question": "Thermometers",
+      "options": [
+        "can help you monitor a fever",
+        "indicate levels of mercury in the blood",
+        "read exactly at 98.6 degrees",
+        "are used only for babies"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "can help you monitor a fever",
+      "longest_option_idx": 1,
+      "surface_match_idx": null,
+      "lookalike_idx": 3,
+      "joint": {
+        "beginner": {
+          "probs": [
+            1.0,
+            1.879528650772233e-12,
+            2.2414005373949664e-10,
+            5.051074558615198e-10
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            8.966731003534623e-12,
+            1.783247334519178e-11,
+            3.1971862223673098e-12
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.9610267281532288,
+            0.03392839431762695,
+            0.00504300557076931,
+            1.9778444766416214e-06
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9610267281532288,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.0,
+            3.658985961441097e-11,
+            7.123156509081241e-10,
+            3.364740708278191e-10
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            8.037724999465645e-12,
+            3.081175245500667e-11,
+            7.669650504971148e-12
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.0,
+            6.943535330039552e-11,
+            2.3489676870269705e-10,
+            4.146174029107108e-11
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 625,
+        "isolated": 870
+      },
+      "latency_seconds": 1.6530449390411377
+    },
+    {
+      "id": 45,
+      "question": "if the earth was a living room, what can be done to melt the glaciers?",
+      "options": [
+        "someone would turn up the room heater",
+        "someone would turn up the air conditioner",
+        "someone would turn up the music",
+        "someone would turn on the light"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "someone would turn up the room heater",
+      "longest_option_idx": 1,
+      "surface_match_idx": 0,
+      "lookalike_idx": 2,
+      "joint": {
+        "beginner": {
+          "probs": [
+            1.0,
+            6.835885330014335e-11,
+            2.565146983712907e-09,
+            7.349269526280011e-10
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            2.4654052670908255e-13,
+            1.1176086437054457e-14,
+            6.993815943723671e-15
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.04137028753757477,
+            0.024320339784026146,
+            0.7806000709533691,
+            0.1537092626094818
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.04137028753757477,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.9999974966049194,
+            1.444976760467398e-07,
+            2.3320740183407906e-06,
+            2.335587279134188e-09
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999974966049194,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            0.9999977350234985,
+            2.2603242086915998e-06,
+            2.51099336878724e-08,
+            1.7356613923880104e-09
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999977350234985,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.9999631643295288,
+            3.6478526453720406e-05,
+            3.3595563309063436e-07,
+            1.5229419503270947e-08
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999631643295288,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 638,
+        "isolated": 909
+      },
+      "latency_seconds": 1.712984323501587
+    },
+    {
+      "id": 46,
+      "question": "What would happen when balloons heat up?",
+      "options": [
+        "they get bigger",
+        "they get smaller",
+        "nothing happens",
+        "they fall down"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "they get bigger",
+      "longest_option_idx": 1,
+      "surface_match_idx": null,
+      "lookalike_idx": 1,
+      "joint": {
+        "beginner": {
+          "probs": [
+            1.0,
+            8.43615254015424e-15,
+            1.48059106072412e-14,
+            9.545034901359273e-12
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            1.7683137321704788e-15,
+            1.293726042263341e-15,
+            3.0379751448858516e-14
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            0.9999957084655762,
+            2.423521661132355e-10,
+            9.625602359619734e-08,
+            4.2228330130456015e-06
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.9999957084655762,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            1.0,
+            2.219287080496013e-11,
+            3.437299056496812e-11,
+            6.286163256596922e-10
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0,
+            3.3506220801365894e-12,
+            7.669650504971148e-12,
+            5.611236735675318e-12
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.0,
+            1.1694822193986099e-11,
+            2.940077695190446e-11,
+            2.635468752953951e-11
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 614,
+        "isolated": 837
+      },
+      "latency_seconds": 1.5984082221984863
+    },
+    {
+      "id": 47,
+      "question": "A balloon is filled with helium for a party. After the party, the balloons are left in the living room, where a fireplace is heating the room. The balloons",
+      "options": [
+        "expand",
+        "melt",
+        "shrink",
+        "fall"
+      ],
+      "answer_idx": 0,
+      "correct_answer": "expand",
+      "longest_option_idx": null,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            1.0,
+            4.94445018262013e-09,
+            2.510999053129126e-08,
+            6.864689705565752e-09
+          ],
+          "pred_idx": 0,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            0.08269733935594559,
+            3.91812413624848e-08,
+            0.917302668094635,
+            4.129672159791653e-09
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.08269733935594559,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            4.099093509069007e-09,
+            5.4927885156930145e-11,
+            1.0,
+            3.1118765897453216e-10
+          ],
+          "pred_idx": 2,
+          "p_correct": 4.099093509069007e-09,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            0.5294288396835327,
+            7.726369517513376e-07,
+            0.4672192931175232,
+            0.003351133782416582
+          ],
+          "pred_idx": 0,
+          "p_correct": 0.5294288396835327,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            0.035144828259944916,
+            4.866221843258245e-07,
+            0.9648545980453491,
+            4.971158418243249e-08
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.035144828259944916,
+          "correct": 0
+        },
+        "advanced": {
+          "probs": [
+            0.3998107314109802,
+            2.068598860205384e-06,
+            0.6001869440078735,
+            2.1132069605300785e-07
+          ],
+          "pred_idx": 2,
+          "p_correct": 0.3998107314109802,
+          "correct": 0
+        }
+      },
+      "prompt_tokens": {
+        "joint": 633,
+        "isolated": 894
+      },
+      "latency_seconds": 1.706336259841919
+    },
+    {
+      "id": 48,
+      "question": "Seals are most likely to be found in what type of environment?",
+      "options": [
+        "desert",
+        "arctic",
+        "Mediterranean",
+        "tropical"
+      ],
+      "answer_idx": 1,
+      "correct_answer": "arctic",
+      "longest_option_idx": 2,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            2.7619472681150725e-11,
+            1.0,
+            5.780648404396516e-09,
+            4.895668870297243e-10
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            4.326921037179493e-13,
+            1.0,
+            3.284834765846824e-14,
+            2.6394386893127675e-14
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            6.083563448555651e-07,
+            0.9999949932098389,
+            4.222830284561496e-06,
+            8.494558301208599e-08
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.9999949932098389,
+          "correct": 1
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            3.192377251437506e-09,
+            1.0,
+            1.9362746961348876e-09,
+            7.582560135332983e-10
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.6561834126349595e-09,
+            1.0,
+            2.2414005373949664e-10,
+            9.4906874026357e-11
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            5.780648404396516e-09,
+            1.0,
+            5.723617135799941e-10,
+            1.493094675675266e-10
+          ],
+          "pred_idx": 1,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 614,
+        "isolated": 837
+      },
+      "latency_seconds": 1.602827787399292
+    },
+    {
+      "id": 49,
+      "question": "When the eggs hatch, the offspring are",
+      "options": [
+        "killed",
+        "hurt",
+        "born",
+        "cold"
+      ],
+      "answer_idx": 2,
+      "correct_answer": "born",
+      "longest_option_idx": 0,
+      "surface_match_idx": null,
+      "lookalike_idx": null,
+      "joint": {
+        "beginner": {
+          "probs": [
+            2.598518019411144e-14,
+            2.514781785589726e-11,
+            1.0,
+            1.728382541255069e-11
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.2223026889036416e-16,
+            1.006039218945376e-12,
+            1.0,
+            5.6756852093598625e-14
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            1.3571789168054238e-06,
+            0.8736264109611511,
+            0.12585783004760742,
+            0.0005143521120771766
+          ],
+          "pred_idx": 1,
+          "p_correct": 0.12585783004760742,
+          "correct": 0
+        }
+      },
+      "isolated": {
+        "beginner": {
+          "probs": [
+            6.983296753360069e-12,
+            1.0003110319234398e-11,
+            1.0,
+            7.99195987166712e-11
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "intermediate": {
+          "probs": [
+            1.0102783887244726e-10,
+            3.129696501957824e-11,
+            1.0,
+            1.3251968966621064e-11
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        },
+        "advanced": {
+          "probs": [
+            2.8780153260576924e-10,
+            6.729904827862399e-11,
+            1.0,
+            4.8473686869998645e-11
+          ],
+          "pred_idx": 2,
+          "p_correct": 1.0,
+          "correct": 1
+        }
+      },
+      "prompt_tokens": {
+        "joint": 608,
+        "isolated": 819
+      },
+      "latency_seconds": 1.597219467163086
+    }
+  ]
+}
