@@ -1,0 +1,101 @@
+# BLIND VALIDATION SHEET -- free-response judge (Task A)
+# Derived from validation_sheet_pilot_bidir.csv by code/ex4_free_response/build_blind_sheet.py.
+# The original is unmodified; this copy exists so the judge's verdicts cannot be seen.
+#
+# Fill ONLY the `human_verdict` column with CORRECT or INCORRECT.
+# CORRECT means: the model_answer means the same thing as the gold_answer, in the context
+# of the question. Ignore spelling, capitalisation and phrasing. A more specific or more
+# general answer counts as CORRECT only if it identifies the same thing.
+# Full rubric, with worked examples: docs/ANNOTATION_GUIDE.md section 1.
+#
+# DROPPED COLUMNS AND WHY:
+#   judge_forward  the judge's verdict -- the quantity being measured
+#   judge_reverse  the judge's verdict, swapped direction
+#   judge_agree    whether the two judge passes matched
+#   stratum        re-encodes judge_agree verbatim
+#   cell           correlates with the base rate of correctness
+#   dataset        correlates with the base rate of correctness
+#   item_id        not needed to judge; not unique; withholding it strengthens pair_key
+#   (full reasoning is in the manifest, deliberately not repeated here -- some of it
+#    would itself prime the annotator reading this file)
+#
+# pair_key is an opaque per-item hash: unique, and stable across any regeneration of the
+#   sheet. row_id is the original's own key and survives sorting. Derivation: manifest.
+# Manifest (drops, derivation, checksums): validation_sheet_pilot_bidir_BLIND_manifest.json
+#
+# When done, the verdicts are joined back on row_id and scored with compute_kappa.py.
+pair_key,row_id,question,gold_answer,model_answer,human_verdict
+6b8b2891995b,1,It's easier for human's to survive in:,a town,large groups,INCORRECT
+ec03dd9ca340,2,Where is energy stored in a chemical substance?,between atoms,Chemical bonds,CORRECT
+95a7774fc590,3,Shining a light through a diamond can,summon a brilliant wave of color,refract light,INCORRECT
+6a687077ba9c,4,A red-tailed hawk is searching for prey. It is most likely to swoop down on,a gecko,a lizard,INCORRECT
+8e5d8adc07d6,5,Overpopulation can cause,Lower Life Expectancy in Countries,resource depletion,INCORRECT
+aa3cd7ecd922,6,"Meiosis is part of the process of gametogenesis, which is the production of what?",sperm and eggs,gametes,CORRECT
+67a56d27c07e,7,A positive effect of burning biofuel is,powering the lights in a home,renewable energy,INCORRECT
+65eb08857658,8,The summer solstice in the northern hemisphere is four months before,October,winter solstice,INCORRECT
+617e8c302c24,9,"Penis, testes, and epididymis are organs in what system?",male reproductive system,reproductive system,INCORRECT
+e132517ef6ee,10,As the rain forest is deforested the atmosphere will increase with,carbon,carbon dioxide,INCORRECT
+8d2b187509a4,11,It's easier for human's to survive in:,a town,oxygen-rich environments,INCORRECT
+4e9b25331a9e,12,"Ice cores, varves and what else indicate the environmental conditions at the time of their creation?",tree rings,fossil records,INCORRECT
+b7b2f70b8984,13,What are people with osteoporosis at increased risk of?,bone fractures,Fractures,CORRECT
+2b60ddfa0661,14,An animal that only eats plants is a,moth,herbivore,INCORRECT
+096f61c7b336,15,Which requires energy to move?,weasel,Active transport,INCORRECT
+4b1b6a25cbdf,16,What do most living things use to make atp from glucose?,oxygen,cellular respiration,INCORRECT
+3c217dd9547b,17,The middle of the day usually involves the bright star nearest to the earth to be straight overhead why?,human planet rotation,noon,INCORRECT
+832dbce03d0d,18,"Compounds that are capable of accepting electrons, such as o 2 or f2, are called what?",oxidants,oxidizing agents,CORRECT
+c8ae2d584d51,19,"As gasoline costs rise, alternative fuels are being used, which means that",gasoline will be needed less,demand for gasoline increases,INCORRECT
+c343ada4d3b5,20,How does a neon light produce visible light?,electroluminescence,Gas discharge,INCORRECT
+64ae6bd4f8f6,21,A Mola Mola might live where?,Bay of Bengal,ocean,INCORRECT
+0f1784abcead,22,As the rain forest is deforested the atmosphere will increase with,carbon,carbon dioxide,INCORRECT
+2f79e03a5ac8,23,A red-tailed hawk is searching for prey. It is most likely to swoop down on,a gecko,small mammals,INCORRECT
+8508bd632816,24,There was a lot more water vapor in the air when we went on a trip to,Hanoi,the coast,INCORRECT
+1823fe268841,25,A Mola Mola might live where?,Bay of Bengal,"Warm, shallow oceans",INCORRECT
+0454c11d36aa,26,An example of conservation is avoiding the use of,gasoline,fossil fuels,INCORRECT
+9206c46450fc,27,Which type of tree is dominant in temperate forests?,deciduous,Oak,INCORRECT
+be338899ae6e,28,"A person wants to start saving money so that they can afford a nice vacation at the end of the year. After looking over their budget and expenses, they decide the best way to save money is to",quit eating lunch out,use fewer resources,INCORRECT
+34db61872618,29,"As gasoline costs rise, alternative fuels are being used, which means that",gasoline will be needed less,gasoline use will decrease,CORRECT
+c37b4411c76c,30,What are the two most common silicates?,feldspar and quartz,"quartz, feldspar",CORRECT
+62284c7b6348,31,The main component in dirt is,broken stones,silt,INCORRECT
+1348d2ddbe57,32,Where is energy stored in a chemical substance?,between atoms,in atomic bonds,CORRECT
+8a17d49907d0,33,an electric car contains a motor that runs on,ions,electricity,INCORRECT
+6faa3ed8123b,34,Predators eat,bunnies,prey,INCORRECT
+5f1b25ce9483,35,The middle of the day usually involves the bright star nearest to the earth to be straight overhead why?,human planet rotation,Sun is directly overhead at noon due to Earth's axial tilt and rotation,INCORRECT
+bf9c6f459c2b,36,The chance of wildfires is increased by,parched foliage,climate change,INCORRECT
+b85d44b6e483,37,Vertebrata are characterized by the presence of what?,backbone,Vertebrae,CORRECT
+1f4dfdd89f8c,38,The main component in dirt is,broken stones,rocks,CORRECT
+1fcafde17861,39,What are by far the most common type of invertebrate?,insects,arthropods,INCORRECT
+b728e1be7ec8,40,What happens when mammals raise their hair with tiny muscles in the skin?,goosebumps,Piloerection,CORRECT
+4e3467c858af,41,A positive effect of burning biofuel is,powering the lights in a home,reduces net greenhouse gas emissions,INCORRECT
+9434404f0e68,42,What are people with osteoporosis at increased risk of?,bone fractures,fractures,CORRECT
+a6ccc7d727ba,43,The chance of wildfires is increased by,parched foliage,drought,INCORRECT
+2f8a35e8f41e,44,About how tall can mid-ocean ridges be?,about 2 km,A few kilometers,CORRECT
+64aed3d667ff,45,An electric car runs on electricity via,electrical conductors,electric batteries,INCORRECT
+cc4ffefa9ca0,46,Shining a light through a diamond can,summon a brilliant wave of color,refract and reflect light,INCORRECT
+206fff2a33f5,47,Ionic compounds have strong electrostatic attractions between oppositely charged ions in this?,regular array,lattice structure,CORRECT
+dff7bad1916b,48,What can feathers on Spheniscidae be used for?,keeping warm,Insulation and waterproofing,INCORRECT
+72c1ddf55cd1,49,A cactus stem is used to store,liquid,water,CORRECT
+23b482ca198f,50,"A person wants to be able to have more natural power in their home. They choose to cease using a traditional electric company to source this electricity, and so decide to install",panels collecting sunlight,solar panels,CORRECT
+10098929b0ca,51,The bird ancestor that lived in trees developed what feature commonly associated with birds?,wings,feathers,INCORRECT
+83835e724242,52,An example of conservation is avoiding the use of,gasoline,plastics,INCORRECT
+ac67ee720f34,53,Which requires energy to move?,weasel,an animal,INCORRECT
+e4c7b0a18d8c,54,Overpopulation can cause,Lower Life Expectancy in Countries,ecosystem imbalance,INCORRECT
+01138cf30960,55,What kind of viscosity is found in long-chain hydrocarbons?,highly viscous,high viscosity,CORRECT
+51c3579f61bd,56,"Oak tree seeds are planted and a sidewalk is paved right next to that spot, until eventually, the tree is tall and the roots must extend past the sidewalk, which means",parts may break the concrete,root pressure,INCORRECT
+3701d135c4e1,57,A cactus stem is used to store,liquid,water,CORRECT
+12d382f81f00,58,"Oak tree seeds are planted and a sidewalk is paved right next to that spot, until eventually, the tree is tall and the roots must extend past the sidewalk, which means",parts may break the concrete,sidewalk cracks,INCORRECT
+c6df0b3a3373,59,"Penis, testes, and epididymis are organs in what system?",male reproductive system,reproductive system,INCORRECT
+0d75c1b8ba6c,60,"A person wants to start saving money so that they can afford a nice vacation at the end of the year. After looking over their budget and expenses, they decide the best way to save money is to",quit eating lunch out,cut back on expenses,INCORRECT
+71bf4daee76f,61,There was a lot more water vapor in the air when we went on a trip to,Hanoi,humidity,INCORRECT
+0913ca537519,62,an electric car contains a motor that runs on,ions,electricity,INCORRECT
+0e5358cd258c,63,"Presence of a cell wall, large central vacuole, and organelles called plastids distinguish what type of cell?",plant,plant cell,CORRECT
+ba7abdcb3352,64,Predators eat,bunnies,prey,INCORRECT
+cddd164e91a2,65,"A person wants to be able to have more natural power in their home. They choose to cease using a traditional electric company to source this electricity, and so decide to install",panels collecting sunlight,solar panels,CORRECT
+1afa656f19b6,66,"Presence of a cell wall, large central vacuole, and organelles called plastids distinguish what type of cell?",plant,plant cells,CORRECT
+d159dd4deb55,67,An animal that only eats plants is a,moth,herbivore,INCORRECT
+153dd67cb02b,68,What chemical signals in plants control different processes?,plant hormones,Pheromones,INCORRECT
+120e22fc9dd0,69,About how tall can mid-ocean ridges be?,about 2 km,2 km,CORRECT
+2ee14de8fb8e,70,What kind of viscosity is found in long-chain hydrocarbons?,highly viscous,High viscosity,CORRECT
+7a190b08787e,71,The summer solstice in the northern hemisphere is four months before,October,December 21st,INCORRECT
+814f59fa4798,72,There is most likely going to be fog around:,a marsh,dew point,INCORRECT
+cb6532ada20d,73,Which type of tree is dominant in temperate forests?,deciduous,Deciduous trees,CORRECT
+93c280b2b8d5,74,There is most likely going to be fog around:,a marsh,dew point,INCORRECT

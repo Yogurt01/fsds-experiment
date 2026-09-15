@@ -1,0 +1,116 @@
+{
+  "kappa_gate": 0.7,
+  "n_labelled": 74,
+  "forward_only": {
+    "n": 74,
+    "observed_agreement": 0.8108108108108109,
+    "expected_agreement": 0.510226442658875,
+    "kappa": 0.6137211036539898,
+    "confusion": {
+      "human_CORRECT__judge_CORRECT": 22,
+      "human_CORRECT__judge_INCORRECT": 1,
+      "human_INCORRECT__judge_CORRECT": 13,
+      "human_INCORRECT__judge_INCORRECT": 38
+    }
+  },
+  "both_directions": {
+    "n": 74,
+    "observed_agreement": 0.8918918918918919,
+    "expected_agreement": 0.5613586559532505,
+    "kappa": 0.7535387177352206,
+    "confusion": {
+      "human_CORRECT__judge_CORRECT": 20,
+      "human_CORRECT__judge_INCORRECT": 3,
+      "human_INCORRECT__judge_CORRECT": 5,
+      "human_INCORRECT__judge_INCORRECT": 46
+    }
+  },
+  "by_stratum": {
+    "obqa/A_prime/agree": {
+      "n": 19,
+      "observed_agreement": 0.9473684210526315,
+      "expected_agreement": 0.853185595567867,
+      "kappa": 0.6415094339622639,
+      "confusion": {
+        "human_CORRECT__judge_CORRECT": 1,
+        "human_CORRECT__judge_INCORRECT": 0,
+        "human_INCORRECT__judge_CORRECT": 1,
+        "human_INCORRECT__judge_INCORRECT": 17
+      }
+    },
+    "obqa/A_prime/flip": {
+      "n": 6,
+      "observed_agreement": 0.3333333333333333,
+      "expected_agreement": 0.2777777777777778,
+      "kappa": 0.07692307692307689,
+      "confusion": {
+        "human_CORRECT__judge_CORRECT": 1,
+        "human_CORRECT__judge_INCORRECT": 0,
+        "human_INCORRECT__judge_CORRECT": 4,
+        "human_INCORRECT__judge_INCORRECT": 1
+      }
+    },
+    "obqa/B_prime/agree": {
+      "n": 14,
+      "observed_agreement": 0.8571428571428571,
+      "expected_agreement": 0.5816326530612246,
+      "kappa": 0.6585365853658535,
+      "confusion": {
+        "human_CORRECT__judge_CORRECT": 3,
+        "human_CORRECT__judge_INCORRECT": 0,
+        "human_INCORRECT__judge_CORRECT": 2,
+        "human_INCORRECT__judge_INCORRECT": 9
+      }
+    },
+    "obqa/B_prime/flip": {
+      "n": 9,
+      "observed_agreement": 0.6666666666666666,
+      "expected_agreement": 0.5432098765432098,
+      "kappa": 0.27027027027027023,
+      "confusion": {
+        "human_CORRECT__judge_CORRECT": 1,
+        "human_CORRECT__judge_INCORRECT": 0,
+        "human_INCORRECT__judge_CORRECT": 3,
+        "human_INCORRECT__judge_INCORRECT": 5
+      }
+    },
+    "sciq/A_prime/agree": {
+      "n": 16,
+      "observed_agreement": 0.9375,
+      "expected_agreement": 0.546875,
+      "kappa": 0.8620689655172413,
+      "confusion": {
+        "human_CORRECT__judge_CORRECT": 10,
+        "human_CORRECT__judge_INCORRECT": 0,
+        "human_INCORRECT__judge_CORRECT": 1,
+        "human_INCORRECT__judge_INCORRECT": 5
+      }
+    },
+    "sciq/A_prime/flip": {
+      "n": 3,
+      "observed_agreement": 0.3333333333333333,
+      "expected_agreement": 0.5555555555555556,
+      "kappa": -0.5000000000000001,
+      "confusion": {
+        "human_CORRECT__judge_CORRECT": 0,
+        "human_CORRECT__judge_INCORRECT": 1,
+        "human_INCORRECT__judge_CORRECT": 1,
+        "human_INCORRECT__judge_INCORRECT": 1
+      }
+    },
+    "sciq/B_prime/agree": {
+      "n": 7,
+      "observed_agreement": 0.8571428571428571,
+      "expected_agreement": 0.8571428571428571,
+      "kappa": 0.0,
+      "confusion": {
+        "human_CORRECT__judge_CORRECT": 6,
+        "human_CORRECT__judge_INCORRECT": 0,
+        "human_INCORRECT__judge_CORRECT": 1,
+        "human_INCORRECT__judge_INCORRECT": 0
+      }
+    }
+  },
+  "best_kappa": 0.7535387177352206,
+  "gate_passed": true
+}

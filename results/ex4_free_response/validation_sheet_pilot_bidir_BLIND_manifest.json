@@ -1,0 +1,75 @@
+{
+  "_provenance": {
+    "what": "Blind annotation copy of the free-response judge-validation sheet (Task A).",
+    "created": "2026-09-08",
+    "why": "The source sheet carries the judge's own verdicts so compute_kappa.py can read one file. Human independence from that judge is the whole measurement (docs/NEXT_PHASE_HANDOFF.md section 4.2), so the annotator gets a copy the verdicts cannot leak through.",
+    "generator": "code/ex4_free_response/build_blind_sheet.py",
+    "source_is_unmodified": true,
+    "rubric": "docs/ANNOTATION_GUIDE.md section 1"
+  },
+  "source": {
+    "path": "results/ex4_free_response/validation_sheet_pilot_bidir.csv",
+    "sha256": "34cf5685a4b703d376ed9cf322225324f9669702a2dac51e4d3f852dfc0bfdb4",
+    "n_rows": 74
+  },
+  "blind_copy": {
+    "path": "results/ex4_free_response/validation_sheet_pilot_bidir_BLIND.csv",
+    "columns": [
+      "pair_key",
+      "row_id",
+      "question",
+      "gold_answer",
+      "model_answer",
+      "human_verdict"
+    ],
+    "n_rows": 74,
+    "row_order": "identical to source; rows are copied in file order and not re-sorted"
+  },
+  "join_key": {
+    "primary": "row_id",
+    "primary_note": "the source's own key; unique across the sheet and carried on the row, so the join survives the annotator sorting or filtering",
+    "stable": "pair_key",
+    "derivation": "sha256('dataset|cell|item_id'.format(**row).encode('utf-8')).hexdigest()[:12]",
+    "derivation_plain": "SHA-256 of the '|'-joined values of ['dataset', 'cell', 'item_id'], truncated to 12 hex characters",
+    "why_not_item_id_alone": "not unique -- the same source item appears in more than one cell, so item_id collides across rows",
+    "why_not_row_id_alone": "row_id is assigned by position after the sampler's shuffle (build_validation_sample.py:136-139), so it would not survive a regeneration of the sheet",
+    "reversibility": "pair_key is obfuscation, not secrecy: the derivation is documented here and the input space is small, so it is brute-forceable by anyone who wants to. The threat model is the annotator's own accidental exposure, not an adversary.",
+    "no_mapping_stored": "this manifest deliberately stores the derivation formula only, never a pair_key -> dataset/cell/item_id table, which would reintroduce the values it exists to withhold"
+  },
+  "dropped_columns": {
+    "judge_forward": "the judge's verdict -- the quantity this sheet exists to measure against",
+    "judge_reverse": "the judge's verdict with reference and student swapped",
+    "judge_agree": "whether the two judge passes matched; compute_kappa.py:111-119 scores every non-matching row INCORRECT under the both-directions mechanism",
+    "stratum": "build_validation_sample.py:99 concatenates dataset, cell and the judge-agreement flag, so it re-encodes judge_agree verbatim",
+    "cell": "the two experimental cells differ sharply in base rate of correctness, because one supplies the supporting fact in the prompt and the other does not; knowing a row's cell signals how likely its answer is to be right before it is read. Value names and measured rates are withheld here on purpose -- see docs/ANNOTATION_GUIDE.md section 1.1 and docs/plan_option_free_response_experiment.md, after labelling",
+    "dataset": "the two datasets also differ sharply in base rate of correctness, for reasons unrelated to any individual item; also a component of stratum",
+    "item_id": "not needed for the judgement, not unique across the sheet, and its absence strengthens pair_key against casual reversal"
+  },
+  "kept_columns": {
+    "pair_key": "opaque stable join key (new; not present in the source)",
+    "row_id": "join key back to the source",
+    "question": "rule A1 judges meaning in the context of the question",
+    "gold_answer": "the reference half of the comparison",
+    "model_answer": "the answer under evaluation",
+    "human_verdict": "empty; the column the annotator fills"
+  },
+  "accepted_values": {
+    "CORRECT": [
+      "CORRECT",
+      "C",
+      "1",
+      "Y",
+      "YES",
+      "TRUE"
+    ],
+    "INCORRECT": [
+      "INCORRECT",
+      "I",
+      "0",
+      "N",
+      "NO",
+      "FALSE"
+    ],
+    "source": "code/ex4_free_response/compute_kappa.py:76-82"
+  }
+}
