@@ -22,7 +22,7 @@ same `content_tokens` the pool rebuild uses, so the number is comparable across 
 A caution that turns out to dominate the analysis
 -------------------------------------------------
 The metric does **not** mean the same thing on the two datasets, for the same structural reason
-the counterfactual mechanism failed to transfer (see docs/counterfactual_experiment_methodology.md
+the counterfactual mechanism failed to transfer (see docs/ex2_counterfactual/counterfactual_experiment_methodology.md
 section 5.1):
 
     SciQ  `support` is an EXTRACTIVE textbook paragraph containing the answer sentence, so a

@@ -4,8 +4,8 @@
 of it can be independently re-derived.
 **Artefact:** `results/ex5_failure_analysis/rq1_flagged_questions.json` (408 records: SciQ 328,
 OBQA 80)
-**Companions:** [`docs/failure_taxonomy_methodology.md`](failure_taxonomy_methodology.md) ·
-[`docs/rq1_test_split_failure_analysis.md`](rq1_test_split_failure_analysis.md)
+**Companions:** [`docs/ex5_failure_audit/failure_taxonomy_methodology.md`](failure_taxonomy_methodology.md) ·
+[`docs/ex5_failure_audit/rq1_test_split_failure_analysis.md`](rq1_test_split_failure_analysis.md)
 
 ---
 
@@ -20,7 +20,7 @@ It reported that the pool "cannot be re-derived". That is wrong. Everything in t
 the hand-assigned `failure_category` turned out to be **exactly recomputable** from files that are
 committed. The generator has now been restored by reimplementation:
 
-> [`code/ex5_failure_audit/rebuild_flagged_pool.py`](../code/ex5_failure_audit/rebuild_flagged_pool.py)
+> [`code/ex5_failure_audit/rebuild_flagged_pool.py`](../../code/ex5_failure_audit/rebuild_flagged_pool.py)
 
 verified against the surviving artefact at the level of individual records:
 

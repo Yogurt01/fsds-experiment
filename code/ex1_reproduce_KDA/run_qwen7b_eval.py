@@ -3,7 +3,7 @@
 
 This file is **self-contained**: it imports nothing from this repository, builds its own
 datasets, and can be dropped into a Colab or Kaggle session on its own. See
-`docs/RUN_QWEN2.5_7B_CLOUD_GUIDE.md` for the accompanying step-by-step guide.
+`RUN_QWEN2.5.md` for the accompanying step-by-step guide.
 
     pip install -q -U transformers accelerate bitsandbytes datasets pandas
     python run_qwen7b_eval.py --datasets obqa sciq --out-dir ./kda_out

@@ -8,14 +8,14 @@ bidirectional pilot and the validation tooling built this round.**
 > 1. **Human validation gate** — 150 items hand-labelled, Cohen's κ ≥ 0.70 against the judge
 >    (§9.3). Tooling is built and ready; the labelling is the user's.
 > 2. **Qwen2.5-7B cross-judge comparison** — queued as entry 3 in
->    [`RUN_QWEN2.5.md`](../RUN_QWEN2.5.md), to be run on Colab/Kaggle.
+>    [`RUN_QWEN2.5.md`](../../RUN_QWEN2.5.md), to be run on Colab/Kaggle.
 >
 > Do not launch the full run until both clear.
 **Audience:** a reviewer verifying that the experiment does not yet exist, and assessing the
 proposed design.
-**Companions:** [`docs/kda_qwen3_4b_evaluation_report.md`](kda_qwen3_4b_evaluation_report.md) ·
-[`docs/rq1_test_split_failure_analysis.md`](rq1_test_split_failure_analysis.md) ·
-[`docs/student_persona_simulation_report.md`](student_persona_simulation_report.md)
+**Companions:** [`docs/ex1_reproduce_KDA/kda_qwen3_4b_evaluation_report.md`](../ex1_reproduce_KDA/kda_qwen3_4b_evaluation_report.md) ·
+[`docs/ex5_failure_audit/rq1_test_split_failure_analysis.md`](../ex5_failure_audit/rq1_test_split_failure_analysis.md) ·
+[`docs/ex3_student_simulation/student_persona_simulation_report.md`](../ex3_student_simulation/student_persona_simulation_report.md)
 
 ---
 
@@ -33,9 +33,9 @@ free text, and matched that text against the gold answer string?*
    ```
    All 19 Python files under `code/` are listed in §0.1. Every scoring path is
    **closed-set**: either a softmax over four multiple-choice logits
-   ([`kda_tiny.py:161-178`](../code/ex1_reproduce_KDA/kda_tiny.py)), a length-normalised NLL over
+   ([`kda_tiny.py:161-178`](../../code/ex1_reproduce_KDA/kda_tiny.py)), a length-normalised NLL over
    the four option strings (`kda_tiny.py:238-264`), or a softmax over the four option *letters*
-   at one position ([`kda_qwen_eval.py`](../code/ex1_reproduce_KDA/kda_qwen_eval.py),
+   at one position ([`kda_qwen_eval.py`](../../code/ex1_reproduce_KDA/kda_qwen_eval.py),
    `score_prompt`). Not one of them can emit a token the option list did not supply.
 
 2. **No results file contains free-text answers.** Scanning every JSON under `results/` for keys
@@ -177,7 +177,7 @@ Deterministic matching will resolve most of SciQ and comparatively little of OBQ
 such as `parts may break the concrete` is an annotator's phrasing of an idea, not a recallable
 string** — a model can be entirely correct and share almost no tokens with it. This is the same
 extractive-vs-deductive split documented in
-[`docs/counterfactual_experiment_methodology.md`](counterfactual_experiment_methodology.md) §5.1,
+[`docs/ex2_counterfactual/counterfactual_experiment_methodology.md`](../ex2_counterfactual/counterfactual_experiment_methodology.md) §5.1,
 and it means **A′ on OBQA measures phrasing agreement as much as knowledge**. B′ is what makes
 that interpretable, and the per-stage breakdown must be reported for OBQA or the number will be
 misread.
@@ -188,7 +188,7 @@ misread.
 leading articles (`a`, `an`, `the`). Match iff the normalised strings are equal.
 
 **Stage 2 — alias / morphological match.** Reuse `morphological_variants()` from
-[`counterfactual_passage.py:56-84`](../code/ex2_counterfactual/counterfactual_passage.py) — already
+[`counterfactual_passage.py:56-84`](../../code/ex2_counterfactual/counterfactual_passage.py) — already
 written, already used in a published experiment, deterministic and dependency-free. Accept if any
 variant of the prediction equals any variant of the gold under stage-1 normalisation. Also accept
 when the normalised prediction and gold differ only by a leading article or by singular/plural.
@@ -271,7 +271,7 @@ Let `Δ = Acc_A − Acc_A′` (MCQ zero-context minus open-ended zero-context).
 **The ratio to report instead of Δ**, per dataset: `acc_band_low(A′) / acc_band_low(B′)`. Pilot
 values: SciQ **0.680 / 1.000 = 0.680**; OBQA **0.080 / 0.280 = 0.286**.
 
-**The link to the existing work is direct.** `docs/student_persona_simulation_report.md` concludes
+**The link to the existing work is direct.** `docs/ex3_student_simulation/student_persona_simulation_report.md` concludes
 that breaking saturation "will need a mechanism that actually removes knowledge — context
 ablation, counterfactual passages (ex2), or a genuinely weaker student model — rather than one that
 asks the model to pretend." **Option-stripping is a fourth candidate mechanism**, and unlike
@@ -342,8 +342,8 @@ uv run --active python code/ex4_free_response/run_free_response.py --limit 25 --
     --log-file results/ex4_free_response/free_response_pilot.log
 ```
 
-**Built:** [`code/ex4_free_response/run_free_response.py`](../code/ex4_free_response/run_free_response.py)
-(generation + judging) and [`code/ex4_free_response/matching.py`](../code/ex4_free_response/matching.py)
+**Built:** [`code/ex4_free_response/run_free_response.py`](../../code/ex4_free_response/run_free_response.py)
+(generation + judging) and [`code/ex4_free_response/matching.py`](../../code/ex4_free_response/matching.py)
 (the three-stage cascade, unit-tested against hand-written cases).
 **Outputs:** `results/ex4_free_response/results_free_response_{sciq,obqa}_pilot.json`,
 `results/ex4_free_response/free_response_pilot.log`.
@@ -506,7 +506,7 @@ pilot cost 0.8 minutes of GPU time and caught that before the full run — which
 | §6 interpretation table revised | this document | ✅ |
 | Validation sampling + annotation sheet | `code/ex4_free_response/build_validation_sample.py` | ✅ built, not run by a human yet |
 | Cohen's κ + pre-registered gate | `code/ex4_free_response/compute_kappa.py` | ✅ built, self-tested |
-| Second judge (Qwen2.5-7B) | [`RUN_QWEN2.5.md`](../RUN_QWEN2.5.md) entry 3 | ⬜ queued, cloud |
+| Second judge (Qwen2.5-7B) | [`RUN_QWEN2.5.md`](../../RUN_QWEN2.5.md) entry 3 | ⬜ queued, cloud |
 
 The band is defined in `accuracy_tiers`:
 
@@ -606,7 +606,7 @@ with the judge 85% of the time: it returned κ = 0.645 and correctly reported GA
 | Blocker | Owner | Cleared by |
 |---|---|---|
 | Human validation gate (150 items, κ ≥ 0.70) | user | filling `validation_sheet_*.csv` and running `compute_kappa.py` |
-| Qwen2.5-7B cross-judge comparison | user (Colab/Kaggle) | [`RUN_QWEN2.5.md`](../RUN_QWEN2.5.md) entry 3 — ~2 min of GPU time |
+| Qwen2.5-7B cross-judge comparison | user (Colab/Kaggle) | [`RUN_QWEN2.5.md`](../../RUN_QWEN2.5.md) entry 3 — ~2 min of GPU time |
 
 The full-scale run stays unlaunched until both clear. Machine time for the full run is ~1.5 h; the
 reason to wait is not cost but that a headline number produced now would rest on a grader whose

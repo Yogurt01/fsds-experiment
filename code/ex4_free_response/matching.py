@@ -11,7 +11,7 @@ judgement enters, so the stage that decided each item is always recorded and acc
 at all three tiers (`strict` / `normalised` / `judged`).
 
 Rationale for the cascade over the alternatives (exact-only, embedding threshold, judge-everything)
-is in docs/plan_option_free_response_experiment.md section 4.2.
+is in docs/ex4_free_response/plan_option_free_response_experiment.md section 4.2.
 """
 
 from __future__ import annotations
@@ -102,7 +102,7 @@ def accuracy_tiers(records: Sequence[Dict]) -> Dict[str, float]:
     """Accuracy at every tier, reported as a **band** rather than a point estimate.
 
     The pilot established that the judge decides 76-100% of items and flips 24.3% of its verdicts
-    when reference and student are swapped (docs/plan_option_free_response_experiment.md section
+    when reference and student are swapped (docs/ex4_free_response/plan_option_free_response_experiment.md section
     8.4). A single `acc_judged` number therefore hides a large, systematic uncertainty. Instead:
 
         acc_strict       stage 1 only                                    (hardest floor)

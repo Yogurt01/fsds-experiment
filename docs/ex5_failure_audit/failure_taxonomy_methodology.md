@@ -2,7 +2,7 @@
 
 **Audience:** a reviewer who did not write the code and needs to verify how the five failure
 categories were assigned.
-**Companion to:** [`docs/rq1_test_split_failure_analysis.md`](rq1_test_split_failure_analysis.md)
+**Companion to:** [`docs/ex5_failure_audit/rq1_test_split_failure_analysis.md`](rq1_test_split_failure_analysis.md)
 **Labelled artefact:** `results/ex5_failure_analysis/rq1_flagged_questions.json` (408 records)
 
 ---
@@ -18,7 +18,7 @@ categories were assigned.
 | Is there a script that produced the labels? | **No.** See §1.2. |
 | Was any part automated? | Yes — *candidate selection* (§3) and *structural cues* (§5) are computed. The **category label itself is not.** |
 
-The source document states this itself. `docs/rq1_test_split_failure_analysis.md` §5, limitation 1:
+The source document states this itself. `docs/ex5_failure_audit/rq1_test_split_failure_analysis.md` §5, limitation 1:
 
 > "**Single annotator, no inter-annotator agreement.** All 408 category labels were assigned by one
 > annotator in one pass. No second rater, no adjudication protocol, no κ. The four-way split among
@@ -42,9 +42,9 @@ The JSON schema block says the same thing in one line
 
 | Stage | Code | Output |
 |---|---|---|
-| Setting A/B scoring of the 4-model ensemble | [`code/ex1_reproduce_KDA/run_experiment.py`](../code/ex1_reproduce_KDA/run_experiment.py), students in [`kda_tiny.py`](../code/ex1_reproduce_KDA/kda_tiny.py) | `results/ex1_reproduce_KDA_pipeline/sciq/results_kda_small_sciq_test_full.json` |
-| Four-bucket assignment | [`categorize_kda_results.py:129-133`](../code/ex1_reproduce_KDA/categorize_kda_results.py) | `results/ex1_category_questions/basic_category/*.json` |
-| Setting C + `prior_dependent` classification | [`run_counterfactual_experiment.py:145-153`](../code/ex2_counterfactual/run_counterfactual_experiment.py) | `results/ex2_counterfactual/results_counterfactual_sciq_test_full.json` |
+| Setting A/B scoring of the 4-model ensemble | [`code/ex1_reproduce_KDA/run_experiment.py`](../../code/ex1_reproduce_KDA/run_experiment.py), students in [`kda_tiny.py`](../../code/ex1_reproduce_KDA/kda_tiny.py) | `results/ex1_reproduce_KDA_pipeline/sciq/results_kda_small_sciq_test_full.json` |
+| Four-bucket assignment | [`categorize_kda_results.py:129-133`](../../code/ex1_reproduce_KDA/categorize_kda_results.py) | `results/ex1_category_questions/basic_category/*.json` |
+| Setting C + `prior_dependent` classification | [`run_counterfactual_experiment.py:145-153`](../../code/ex2_counterfactual/run_counterfactual_experiment.py) | `results/ex2_counterfactual/results_counterfactual_sciq_test_full.json` |
 
 ### 1.2 NOT reproducible (no code in the repository)
 
@@ -64,7 +64,7 @@ files by hand, but cannot re-run the selection.
 logic it encoded has been fully recovered by reimplementation and verified exact against the
 artefact — see [`provenance_rq1_flagged_questions.md`](provenance_rq1_flagged_questions.md). The
 selection in §3 is now re-derivable with
-[`code/ex5_failure_audit/rebuild_flagged_pool.py`](../code/ex5_failure_audit/rebuild_flagged_pool.py); the manual
+[`code/ex5_failure_audit/rebuild_flagged_pool.py`](../../code/ex5_failure_audit/rebuild_flagged_pool.py); the manual
 labels in §4 remain irreproducible by their nature.
 
 ---
@@ -76,7 +76,7 @@ repository. What exists is:
 
 1. the five category **names**;
 2. one or two **worked examples per category** with a prose justification, in
-   `docs/rq1_test_split_failure_analysis.md` §3.1–§3.5;
+   `docs/ex5_failure_audit/rq1_test_split_failure_analysis.md` §3.1–§3.5;
 3. a one-line gloss of each in the executive summary and §4.4.
 
 The operational definitions below are **reconstructed by the present author from those worked
@@ -339,13 +339,13 @@ OpenBookQA. **That is no longer true.** The following now exist:
 ```
 results/ex2_counterfactual/results_counterfactual_obqa_test_full.json         (500 q, --min-substitution-tier partial)
 results/ex2_counterfactual/results_counterfactual_obqa_test_exact_tier.json   (sensitivity run, exact tier only)
-docs/counterfactual_obqa_analysis.md
+docs/ex2_counterfactual/counterfactual_obqa_analysis.md
 ```
 
 **This has now been fixed.** In the original artefact all 80 OBQA records carried
 `counterfactual_class: null` and no OBQA item carried a `C3_prior_dependent` flag. C3 has since
 been applied to OpenBookQA with
-[`code/ex5_failure_audit/rebuild_flagged_pool.py`](../code/ex5_failure_audit/rebuild_flagged_pool.py):
+[`code/ex5_failure_audit/rebuild_flagged_pool.py`](../../code/ex5_failure_audit/rebuild_flagged_pool.py):
 
 | | Before (artefact) | After (C3 applied) |
 |---|---:|---:|
@@ -368,7 +368,7 @@ the pool**.
 
 `counterfactual_class` for the 51 cannot be filled by labelling: OBQA's `fact1` is a deductive
 rule with no answer span to substitute, so 71% of the whole split is ineligible. See
-[`counterfactual_experiment_methodology.md`](counterfactual_experiment_methodology.md) §5.1.
+[`counterfactual_experiment_methodology.md`](../ex2_counterfactual/counterfactual_experiment_methodology.md) §5.1.
 
 **Category distribution, kept separable by annotator:**
 
@@ -406,11 +406,11 @@ category mix in §4 still describes the 80-item pool. Second, and more seriously
 OBQA's `context_dependent` labels rest on the loosest `partial` substitution tier**, where the
 perturbed passage is frequently ungrammatical — so the OBQA `prior_dependent` count of 26 is best
 read as a lower bound. See
-[`counterfactual_experiment_methodology.md`](counterfactual_experiment_methodology.md) §9.
+[`counterfactual_experiment_methodology.md`](../ex2_counterfactual/counterfactual_experiment_methodology.md) §9.
 
 Note the OBQA counterfactual run carries its own severe caveat (only 29.0% of the split is
 eligible, and the perturbation is often ungrammatical); see
-[`docs/counterfactual_experiment_methodology.md`](counterfactual_experiment_methodology.md) §5.
+[`docs/ex2_counterfactual/counterfactual_experiment_methodology.md`](../ex2_counterfactual/counterfactual_experiment_methodology.md) §5.
 
 ---
 
@@ -432,7 +432,7 @@ re-annotation. The precise percentages are not measurements.
 **To make this auditable, in ascending cost:**
 
 1. ~~Commit the selection + structural-cue script so the pool is re-derivable.~~ **Done** —
-   [`code/ex5_failure_audit/rebuild_flagged_pool.py`](../code/ex5_failure_audit/rebuild_flagged_pool.py),
+   [`code/ex5_failure_audit/rebuild_flagged_pool.py`](../../code/ex5_failure_audit/rebuild_flagged_pool.py),
    verified to reproduce the artefact exactly on both datasets. See
    [`provenance_rq1_flagged_questions.md`](provenance_rq1_flagged_questions.md).
 2. ~~Re-run criterion C3 on OBQA from the existing counterfactual results.~~ **Done** — see §6.1.

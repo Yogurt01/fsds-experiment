@@ -30,14 +30,26 @@ experiment/
 ├── datasets/
 │   ├── sciq/                 sciq_{train,val,test}_full.json, sciq_all_combined.json, sciq_50.json
 │   └── openbookqa/           obqa_{train,val,test}_full.json, obqa_all_combined.json, obqa_50.json
-├── results/                  outputs and logs, grouped by workflow stage
-│   ├── reproduce_KDA_pipeline/       baseline KDA runs, dataset prep logs
+├── results/                  outputs and logs, grouped by experiment ordinal
+│   ├── ex1_reproduce_KDA_pipeline/   baseline KDA runs, dataset prep logs
 │   │   └── openbookqa/               OpenBookQA baseline outputs
-│   ├── reproduce_KDA_w_modernLLM/    Qwen evaluations + model download reports
-│   ├── category_questions/           basic_category/ and complicated_category/
-│   └── counterfact_results/          counterfactual perturbation experiment
-├── docs/
-│   └── kda_reproduction_summary.md   SciQ vs OpenBookQA baseline comparison
+│   ├── ex1_reproduce_KDA_w_modernLLM/  Qwen evaluations + model download reports
+│   ├── ex1_category_questions/       basic_category/ and complicated_category/
+│   ├── ex2_counterfactual/           counterfactual perturbation experiment
+│   ├── ex3_student_simulation/       persona-conditioned simulation runs
+│   ├── ex4_free_response/            option-free pilots + validation sheets
+│   ├── ex5_failure_analysis/         the RQ1 flagged pool
+│   └── ex5_failure_audit/            bucket / overlap / corpus-defect audits
+├── docs/                     grouped by source, experiment, or role
+│   ├── NEXT_PHASE_HANDOFF.md         living session-to-session handoff
+│   ├── papers/                       the three source-paper walkthroughs
+│   ├── guides/                       operator runbooks (annotation)
+│   ├── synthesis/                    cross-cutting, project-wide summaries
+│   ├── ex1_reproduce_KDA/            kda_reproduction_summary.md, Qwen3-4B report
+│   ├── ex2_counterfactual/           methodology, OBQA analysis, E1/E2, conventions
+│   ├── ex3_student_simulation/       persona simulation report
+│   ├── ex4_free_response/            free-response plan + pilot results
+│   └── ex5_failure_audit/            taxonomy, provenance, buckets, corpus defect
 ├── question-score/           the reference implementation (untouched, do not move)
 └── .venv/
 ```
@@ -401,7 +413,7 @@ skipped, so one bad sample cannot abort the run.
 | `datasets/openbookqa/obqa_test_full.json` | Full OpenBookQA `test` split, 500 samples |
 | `datasets/openbookqa/obqa_all_combined.json` | All three OpenBookQA splits merged, 5,957 samples |
 | `datasets/openbookqa/obqa_50.json` | First 50 test samples, for smoke tests |
-| `docs/kda_reproduction_summary.md` | Cross-dataset baseline summary and integrity verification |
+| `docs/ex1_reproduce_KDA/kda_reproduction_summary.md` | Cross-dataset baseline summary and integrity verification |
 | `results/ex1_reproduce_KDA_pipeline/prep_openbookqa.log` | Log of the OpenBookQA preparation run |
 | `results/ex1_reproduce_KDA_pipeline/openbookqa/results_kda_small_obqa_test_full.json` | **OpenBookQA `KDA_small` baseline:** 4-model, 500 questions (2.1MB) |
 | `results/ex1_reproduce_KDA_pipeline/openbookqa/experiment_kda_small_obqa_test_full.log` | Execution log of the OpenBookQA run |

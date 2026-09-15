@@ -4,7 +4,7 @@ Evaluation report for the **KDA** metric computed with a modern instruction-tune
 the simulated student, on the full `test` splits of **OpenBookQA** (500 questions) and
 **SciQ** (884 questions).
 
-This run exists to test the central claim of [the project's RQ1](../README.md#rq1--finding-a-failure-mode-of-modern-llm-evaluators):
+This run exists to test the central claim of [the project's RQ1](../../README.md#rq1--finding-a-failure-mode-of-modern-llm-evaluators):
 that KDA's load-bearing assumption — *the solver does not already know the answer* — fails
 on modern LLMs. **It does, and more severely than the framing anticipated.**
 
@@ -131,7 +131,7 @@ $$KDA_{disc} = \frac{\sum_{i} (1 - r_i^q)\, r_i^{q+f}}{\sum_{i} (1 - r_i^q)}, \q
 with $P(R^q = 0) = 1 - P(R^q = 1)$.
 
 > **Aggregation caveat.** This is a *dataset-level* aggregation over samples. The encoder
-> baseline in [`run_experiment.py`](../code/ex1_reproduce_KDA/run_experiment.py) computes a
+> baseline in [`run_experiment.py`](../../code/ex1_reproduce_KDA/run_experiment.py) computes a
 > *per-question* $KDA_{cont}$ aggregated over models $k$, then averages. The two are
 > different quantities and their KDA values are **not directly comparable**. Accuracies
 > ($Acc_{wof}$, $Acc_{wf}$) *are* directly comparable, and §7 restricts itself to those.
@@ -376,7 +376,7 @@ side grows, and the fraction of the dataset the metric can see shrinks toward ze
 
 * **Single solver, single seed.** One model, $|M| = 1$, one option ordering. The original
   KDA is an ensemble metric; a single-model reading is degenerate by construction (see the
-  note in [§2.3 of the README](../README.md#23-continuous-plm-approximation-kda_cont)).
+  note in [§2.3 of the README](../../README.md#23-continuous-plm-approximation-kda_cont)).
   The *support-collapse* finding does not depend on ensembling — it follows from
   $Acc_{wof}$ alone — but the specific KDA values would shift with a multi-model ensemble.
 * **Letter-logit scoring sharpens the distribution.** Restricting the softmax to four
@@ -424,23 +424,23 @@ If VRAM is tighter than 3.68 GiB, add `--double-quant`.
 
 | Path | Contents |
 |---|---|
-| [`results/ex1_reproduce_KDA_w_modernLLM/kda_qwen3_4b_results.json`](../results/ex1_reproduce_KDA_w_modernLLM/kda_qwen3_4b_results.json) | Per-sample records (full 4-way probability vectors for both phases, predictions, `r_q`, `r_q_plus_f`, prompt token counts, per-sample latency) + the summary block |
-| [`results/ex1_reproduce_KDA_w_modernLLM/kda_qwen3_4b_eval.log`](../results/ex1_reproduce_KDA_w_modernLLM/kda_qwen3_4b_eval.log) | Execution log — environment, VRAM, per-sample DEBUG records |
-| [`results/ex1_reproduce_KDA_w_modernLLM/model_download_report.json`](../results/ex1_reproduce_KDA_w_modernLLM/model_download_report.json) | SHA-256 verification of every downloaded weight shard |
-| [`code/ex1_reproduce_KDA/kda_qwen_eval.py`](../code/ex1_reproduce_KDA/kda_qwen_eval.py) | The evaluation script |
+| [`results/ex1_reproduce_KDA_w_modernLLM/kda_qwen3_4b_results.json`](../../results/ex1_reproduce_KDA_w_modernLLM/kda_qwen3_4b_results.json) | Per-sample records (full 4-way probability vectors for both phases, predictions, `r_q`, `r_q_plus_f`, prompt token counts, per-sample latency) + the summary block |
+| [`results/ex1_reproduce_KDA_w_modernLLM/kda_qwen3_4b_eval.log`](../../results/ex1_reproduce_KDA_w_modernLLM/kda_qwen3_4b_eval.log) | Execution log — environment, VRAM, per-sample DEBUG records |
+| [`results/ex1_reproduce_KDA_w_modernLLM/model_download_report.json`](../../results/ex1_reproduce_KDA_w_modernLLM/model_download_report.json) | SHA-256 verification of every downloaded weight shard |
+| [`code/ex1_reproduce_KDA/kda_qwen_eval.py`](../../code/ex1_reproduce_KDA/kda_qwen_eval.py) | The evaluation script |
 
 ---
 
 ## Related documents
 
-* [`RUN_QWEN2.5_7B_CLOUD_GUIDE.md`](RUN_QWEN2.5_7B_CLOUD_GUIDE.md) — running the same
+* [`RUN_QWEN2.5.md`](../../RUN_QWEN2.5.md) — running the same
   evaluation with `Qwen2.5-7B-Instruct` on Colab / Kaggle, to test whether the support
   collapse deepens with scale.
 * [`kda_reproduction_summary.md`](kda_reproduction_summary.md) — the `KDA_small` encoder
   baseline compared against in §7.
-* [`KDA_Paper_Documentation.md`](KDA_Paper_Documentation.md) — the metric definition and
+* [`KDA_Paper_Documentation.md`](../papers/KDA_Paper_Documentation.md) — the metric definition and
   the Limitations §6.2/§6.3 this run empirically confirms.
-* [`ClashEval_Paper_Documentation.md`](ClashEval_Paper_Documentation.md) — prior-vs-context
+* [`ClashEval_Paper_Documentation.md`](../papers/ClashEval_Paper_Documentation.md) — prior-vs-context
   arbitration, the frame for §8.3.
-* [`../README.md`](../README.md) — project overview; this run is the RQ1 evidence at
+* [`../README.md`](../../README.md) — project overview; this run is the RQ1 evidence at
   modern-LLM scale.

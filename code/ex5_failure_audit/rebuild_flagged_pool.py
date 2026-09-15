@@ -3,7 +3,7 @@
 Why this exists
 ---------------
 `results/ex5_failure_analysis/rq1_flagged_questions.json` was produced by a script that is not
-in version control (see `docs/provenance_rq1_flagged_questions.md`). Everything in that artefact
+in version control (see `docs/ex5_failure_audit/provenance_rq1_flagged_questions.md`). Everything in that artefact
 except the hand-assigned `failure_category` turned out to be exactly recomputable from files that
 *are* committed, so this module restores the missing generator by reimplementation and proves it
 by byte-for-byte comparison against the surviving artefact (`--verify`).
@@ -17,7 +17,7 @@ Inputs (all read-only)
     results/ex1_reproduce_KDA_pipeline/...results_kda_small...   Settings A and B, 4 students
     results/ex2_counterfactual/results_counterfactual_*     Setting C ensemble class (optional)
 
-Detection criteria, as specified in docs/rq1_test_split_failure_analysis.md section 1
+Detection criteria, as specified in docs/ex5_failure_audit/rq1_test_split_failure_analysis.md section 1
 -------------------------------------------------------------------------------------
     C1_kda_cont            KDA_cont >= 0.70            AND primary model correct in Setting A
     C1_kda_disc            KDA_disc_proxy == 1.0       AND primary model correct in Setting A
@@ -83,7 +83,7 @@ RARE_CUES: frozenset = frozenset()
 
 _WORD_RE = re.compile(r"[a-z0-9]+")
 # Absolute/extremity vocabulary for `abs_in_distractor`. Recovered empirically, including the
-# exclusion of "only" -- see docs/provenance_rq1_flagged_questions.md section 4.3.
+# exclusion of "only" -- see docs/ex5_failure_audit/provenance_rq1_flagged_questions.md section 4.3.
 _ABSOLUTE_RE = re.compile(
     r"\b(always|never|all|none|every|exactly|nothing|must|entirely|completely)\b",
     re.IGNORECASE,
@@ -108,7 +108,7 @@ def gold_content_words_present(gold: str, passage: str) -> bool:
         SciQ #669  gold "safety precaution"      passage "...precautions..."  -> cue FIRES
         SciQ #146  gold "skeletal muscle fibers" passage "...muscle fiber..."  -> cue does NOT fire
 
-    See docs/provenance_rq1_flagged_questions.md section 4.2.
+    See docs/ex5_failure_audit/provenance_rq1_flagged_questions.md section 4.2.
     """
     gold_tokens = content_tokens(gold)
     if not gold_tokens:
@@ -340,7 +340,7 @@ def verify(pool: Dict, artefact_path: str, dataset_key: str) -> int:
     # `abs_in_distractor` and `numeric_odd` are excluded from the pass/fail decision: the
     # artefact applies them inconsistently (it fires `abs` on "every day" in OBQA #210 but not on
     # "Every 24 hours" in SciQ #522), so their exact definitions are unrecoverable. Neither cue
-    # appears in any published table. See docs/provenance_rq1_flagged_questions.md section 4.2.
+    # appears in any published table. See docs/ex5_failure_audit/provenance_rq1_flagged_questions.md section 4.2.
     core_bad, rare_bad = [], []
     for q in shared:
         a = set(original[q].get("structural_cues") or [])

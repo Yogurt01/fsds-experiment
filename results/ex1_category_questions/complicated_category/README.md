@@ -1,7 +1,7 @@
 # Complicated category — placeholder
 
 Reserved for question categorisations that go beyond the four-bucket contingency table in
-[`../basic_category/`](../basic_category/).
+[`../basic_category/`](../basic_category).
 
 `basic_category/` holds the output of
 [`code/ex1_reproduce_KDA/categorize_kda_results.py`](../../../code/ex1_reproduce_KDA/categorize_kda_results.py),
@@ -18,7 +18,7 @@ That split cannot say *why* an answer was correct. Richer categorisations belong
 example the counterfactual classes (`context_dependent` / `prior_dependent` /
 `unstable_other`) produced by
 [`code/ex2_counterfactual/run_counterfactual_experiment.py`](../../../code/ex2_counterfactual/run_counterfactual_experiment.py),
-whose raw output currently lives in [`../../counterfact_results/`](../../counterfact_results/).
+whose raw output currently lives in [`../../ex2_counterfactual/`](../../ex2_counterfactual).
 
 This file is a placeholder so the directory is preserved in git; replace or delete it once
 real artefacts land here.
