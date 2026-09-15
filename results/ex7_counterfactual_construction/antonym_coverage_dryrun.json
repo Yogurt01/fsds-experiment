@@ -1,0 +1,40 @@
+{
+ "what": "Coverage and answer-remapping feasibility for the antonym/scalar-swap counterfactual strategy on OpenBookQA. Lexicon matching only.",
+ "source_results_file": "results/ex2_counterfactual/results_counterfactual_obqa_test_full.json",
+ "results": {
+  "core": {
+   "lexicon": "core",
+   "n_pairs": 36,
+   "n_items": 500,
+   "n_currently_eligible": 145,
+   "n_fact_contains_lexicon_term": 128,
+   "share_fact_contains_lexicon_term": 0.256,
+   "n_ineligible_reachable_by_lexicon": 91,
+   "share_of_ineligible_reachable": 0.2563380281690141,
+   "projected_eligibility_union": 236,
+   "projected_eligibility_rate": 0.472,
+   "n_with_remappable_options": 6,
+   "share_remappable_of_lexicon_hits": 0.046875,
+   "n_ineligible_with_remappable_options": 4,
+   "effective_usable_items": 6
+  },
+  "permissive": {
+   "lexicon": "permissive",
+   "n_pairs": 65,
+   "n_items": 500,
+   "n_currently_eligible": 145,
+   "n_fact_contains_lexicon_term": 191,
+   "share_fact_contains_lexicon_term": 0.382,
+   "n_ineligible_reachable_by_lexicon": 137,
+   "share_of_ineligible_reachable": 0.38591549295774646,
+   "projected_eligibility_union": 282,
+   "projected_eligibility_rate": 0.564,
+   "n_with_remappable_options": 11,
+   "share_remappable_of_lexicon_hits": 0.05759162303664921,
+   "n_ineligible_with_remappable_options": 8,
+   "effective_usable_items": 11
+  }
+ },
+ "verdict": "REJECTED. Coverage improves substantially (29.0% -> 47.2% core / 56.4% permissive), but only 4.7% of lexicon-matched items have a polar contrast among their four options. Inverting the rule therefore leaves no option correct for roughly 95% of the items it can reach, so there is no counterfactual target to detect and Setting C degenerates. The necessary condition fails; coverage is irrelevant without it.",
+ "caveat": "The remapping test is a NECESSARY, not sufficient, condition, and it is a surface lexicon test -- an option could be correct under the inverted rule without containing a lexicon antonym. The true usable rate is therefore bounded below by this figure, not equal to it. It would have to be off by more than an order of magnitude to change the verdict."
+}

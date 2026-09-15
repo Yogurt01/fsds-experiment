@@ -1,0 +1,611 @@
+{
+ "what": "Audit of the ex2 counterfactual construction as a measurement instrument. Read-only; no ex2/ex6 artifact modified.",
+ "leakage_delta_bar": 0.05,
+ "runs": {
+  "sciq_test_full": {
+   "tag": "sciq_test_full",
+   "sources": {
+    "ex2_results": "results/ex2_counterfactual/results_counterfactual_sciq_test_full.json",
+    "ex2_preview": "results/ex2_counterfactual/counterfactual_passages_preview_sciq.json",
+    "ex6_scores": "results/ex6_psfd_score/psfd_scores_sciq_test_full.json"
+   },
+   "n_samples": 884,
+   "n_eligible": 860,
+   "block_a_fidelity_by_tier": {
+    "exact": {
+     "n": 813,
+     "n_eligible": 813,
+     "coverage_eq_1": 810,
+     "coverage_lt_0.5": 0,
+     "n_with_coverage": 810,
+     "token_mismatch_gt_1": 2,
+     "multiword_gold": 279,
+     "residual_gold_phrase": 0,
+     "residual_glued": 7,
+     "over_substitution_gt_2": 170,
+     "unmatched_gold_remainder_survives": 0,
+     "distractor_already_in_passage": 0,
+     "distractor_overlaps_answer": 0,
+     "note": null
+    },
+    "morphological": {
+     "n": 11,
+     "n_eligible": 11,
+     "coverage_eq_1": 0,
+     "coverage_lt_0.5": 7,
+     "n_with_coverage": 11,
+     "token_mismatch_gt_1": 0,
+     "multiword_gold": 4,
+     "residual_gold_phrase": 0,
+     "residual_glued": 0,
+     "over_substitution_gt_2": 3,
+     "unmatched_gold_remainder_survives": 1,
+     "distractor_already_in_passage": 0,
+     "distractor_overlaps_answer": 0,
+     "note": "coverage is word-set overlap and is INVALID for the morphological tier, where the match is an inflection of the gold by construction"
+    },
+    "partial": {
+     "n": 36,
+     "n_eligible": 36,
+     "coverage_eq_1": 4,
+     "coverage_lt_0.5": 6,
+     "n_with_coverage": 36,
+     "token_mismatch_gt_1": 10,
+     "multiword_gold": 36,
+     "residual_gold_phrase": 0,
+     "residual_glued": 9,
+     "over_substitution_gt_2": 2,
+     "unmatched_gold_remainder_survives": 25,
+     "distractor_already_in_passage": 0,
+     "distractor_overlaps_answer": 0,
+     "note": null
+    },
+    "none": {
+     "n": 24,
+     "n_eligible": 0,
+     "coverage_eq_1": 0,
+     "coverage_lt_0.5": 0,
+     "n_with_coverage": 0,
+     "token_mismatch_gt_1": 0,
+     "multiword_gold": 7,
+     "residual_gold_phrase": 0,
+     "residual_glued": 0,
+     "over_substitution_gt_2": 0,
+     "unmatched_gold_remainder_survives": 0,
+     "distractor_already_in_passage": 0,
+     "distractor_overlaps_answer": 0,
+     "note": null
+    }
+   },
+   "block_b_surface_leakage": {
+    "ALL": {
+     "n": 860,
+     "B_picks_gold": 0.9113372093023255,
+     "C_picks_cf_target": 0.8878875968992248,
+     "C_picks_gold": 0.044670542635658915,
+     "leakage_delta": -0.023449612403100728,
+     "passes_delta_bar": true,
+     "n_leakage_created": 22
+    },
+    "exact": {
+     "n": 813,
+     "B_picks_gold": 0.9231242312423125,
+     "C_picks_cf_target": 0.8896063960639606,
+     "C_picks_gold": 0.04192291922919229,
+     "leakage_delta": -0.03351783517835183,
+     "passes_delta_bar": true,
+     "n_leakage_created": 9
+    },
+    "morphological": {
+     "n": 11,
+     "B_picks_gold": 0.4090909090909091,
+     "C_picks_cf_target": 0.8636363636363636,
+     "C_picks_gold": 0.045454545454545456,
+     "leakage_delta": 0.45454545454545453,
+     "passes_delta_bar": false,
+     "n_leakage_created": 6
+    },
+    "partial": {
+     "n": 36,
+     "B_picks_gold": 0.7986111111111112,
+     "C_picks_cf_target": 0.8564814814814814,
+     "C_picks_gold": 0.10648148148148148,
+     "leakage_delta": 0.05787037037037024,
+     "passes_delta_bar": false,
+     "n_leakage_created": 7
+    }
+   },
+   "block_c_outcomes": {
+    "by_substitution_tier": {
+     "exact": {
+      "n_items": 813,
+      "ensemble_unstable_other": 69,
+      "ensemble_unstable_rate": 0.08487084870848709,
+      "pair_unstable_rate": 0.19464944649446494,
+      "F_auc": 0.9043119764081046,
+      "D_auc": 0.8315116125530011,
+      "n_context_dependent": 637,
+      "n_prior_dependent": 107,
+      "per_solver_D_auc_spread": 0.1867448265602376
+     },
+     "morphological": {
+      "n_items": 11,
+      "ensemble_unstable_other": 1,
+      "ensemble_unstable_rate": 0.09090909090909091,
+      "pair_unstable_rate": 0.3181818181818182,
+      "F_auc": 1.0,
+      "D_auc": 0.75,
+      "n_context_dependent": 8,
+      "n_prior_dependent": 2,
+      "per_solver_D_auc_spread": 0.4
+     },
+     "partial": {
+      "n_items": 36,
+      "ensemble_unstable_other": 6,
+      "ensemble_unstable_rate": 0.16666666666666666,
+      "pair_unstable_rate": 0.20833333333333334,
+      "F_auc": 0.75,
+      "D_auc": 0.6180555555555556,
+      "n_context_dependent": 24,
+      "n_prior_dependent": 6,
+      "per_solver_D_auc_spread": 0.24851190476190477
+     }
+    },
+    "by_passage_length_within_exact_tier": {
+     "<=15": {
+      "n_items": 80,
+      "ensemble_unstable_other": 9,
+      "ensemble_unstable_rate": 0.1125,
+      "pair_unstable_rate": 0.234375,
+      "F_auc": 0.9196428571428571,
+      "D_auc": 0.8995535714285714,
+      "n_context_dependent": 64,
+      "n_prior_dependent": 7,
+      "per_solver_D_auc_spread": 0.14436778499278502
+     },
+     "16-30": {
+      "n_items": 122,
+      "ensemble_unstable_other": 14,
+      "ensemble_unstable_rate": 0.11475409836065574,
+      "pair_unstable_rate": 0.2336065573770492,
+      "F_auc": 0.8663194444444444,
+      "D_auc": 0.7734375,
+      "n_context_dependent": 96,
+      "n_prior_dependent": 12,
+      "per_solver_D_auc_spread": 0.33617084826762245
+     },
+     "31-60": {
+      "n_items": 217,
+      "ensemble_unstable_other": 19,
+      "ensemble_unstable_rate": 0.08755760368663594,
+      "pair_unstable_rate": 0.21774193548387097,
+      "F_auc": 0.8974021084337349,
+      "D_auc": 0.818335843373494,
+      "n_context_dependent": 166,
+      "n_prior_dependent": 32,
+      "per_solver_D_auc_spread": 0.21484050078019223
+     },
+     "61-120": {
+      "n_items": 243,
+      "ensemble_unstable_other": 18,
+      "ensemble_unstable_rate": 0.07407407407407407,
+      "pair_unstable_rate": 0.15329218106995884,
+      "F_auc": 0.889338494018297,
+      "D_auc": 0.8219563687543983,
+      "n_context_dependent": 196,
+      "n_prior_dependent": 29,
+      "per_solver_D_auc_spread": 0.18106664143042772
+     },
+     ">120": {
+      "n_items": 151,
+      "ensemble_unstable_other": 9,
+      "ensemble_unstable_rate": 0.059602649006622516,
+      "pair_unstable_rate": 0.17549668874172186,
+      "F_auc": 0.9391304347826087,
+      "D_auc": 0.8714975845410629,
+      "n_context_dependent": 115,
+      "n_prior_dependent": 27,
+      "per_solver_D_auc_spread": 0.22905483405483407
+     }
+    },
+    "why": "The length control isolates passage brevity from substitution quality: every item here had a clean whole-word `exact` swap."
+   },
+   "block_d_probe_crosscheck": {
+    "tier": "partial",
+    "n": 30,
+    "contingency": {
+     "leakage_created & context_dependent": 4,
+     "leakage_created & prior_dependent": 1,
+     "no_leakage & context_dependent": 20,
+     "no_leakage & prior_dependent": 5
+    },
+    "p_context_dependent_given_leakage": 0.8,
+    "p_context_dependent_given_no_leakage": 0.8,
+    "phi_coefficient": 0.0,
+    "auc_leakage_delta_predicts_context_dependent": 0.6215277777777778,
+    "interpretation_rule": "phi >= 0.3 or AUC >= 0.65 => the model-free probe tracks real solver susceptibility, and Phase-3 criterion 5 is a VALIDATED predictor. Below that it stays a plausible proxy only."
+   },
+   "block_d_ex6_discount": {
+    "n_all": 860,
+    "n_after_dropping_leaking_items": 838,
+    "n_dropped": 22,
+    "dropped_ids": [
+     55,
+     62,
+     144,
+     160,
+     174,
+     265,
+     278,
+     301,
+     341,
+     366,
+     371,
+     410,
+     421,
+     497,
+     552,
+     570,
+     573,
+     578,
+     708,
+     725,
+     758,
+     781
+    ],
+    "tier1_as_published": {
+     "F": {
+      "auc": 0.8987456944173653,
+      "n_positive": 669,
+      "n_negative": 115
+     },
+     "D": {
+      "auc": 0.8240982647689609,
+      "n_positive": 669,
+      "n_negative": 115
+     },
+     "D_prime": {
+      "auc": 0.8574121011243258,
+      "n_positive": 669,
+      "n_negative": 115
+     },
+     "KDA_cont": {
+      "auc": 0.5494118411646195
+     }
+    },
+    "tier1_excluding_leaking_items": {
+     "F": {
+      "auc": 0.900751736606718,
+      "n_positive": 651,
+      "n_negative": 113
+     },
+     "D": {
+      "auc": 0.8239604148824817,
+      "n_positive": 651,
+      "n_negative": 113
+     },
+     "D_prime": {
+      "auc": 0.8609219308619822,
+      "n_positive": 651,
+      "n_negative": 113
+     },
+     "KDA_cont": {
+      "auc": 0.5507252287155228
+     }
+    },
+    "how_to_read": "The published ex6 OBQA Tier-1 numbers are the first block. The second is the same computation on items where the rewrite did NOT create a surface cue. The gap is the share of the published figure attributable to the artifact."
+   }
+  },
+  "obqa_test_full": {
+   "tag": "obqa_test_full",
+   "sources": {
+    "ex2_results": "results/ex2_counterfactual/results_counterfactual_obqa_test_full.json",
+    "ex2_preview": "results/ex2_counterfactual/counterfactual_passages_preview_obqa.json",
+    "ex6_scores": "results/ex6_psfd_score/psfd_scores_obqa_test_full.json"
+   },
+   "n_samples": 500,
+   "n_eligible": 145,
+   "block_a_fidelity_by_tier": {
+    "exact": {
+     "n": 42,
+     "n_eligible": 42,
+     "coverage_eq_1": 41,
+     "coverage_lt_0.5": 0,
+     "n_with_coverage": 41,
+     "token_mismatch_gt_1": 0,
+     "multiword_gold": 8,
+     "residual_gold_phrase": 0,
+     "residual_glued": 0,
+     "over_substitution_gt_2": 0,
+     "unmatched_gold_remainder_survives": 0,
+     "distractor_already_in_passage": 0,
+     "distractor_overlaps_answer": 0,
+     "note": null
+    },
+    "glued": {
+     "n": 1,
+     "n_eligible": 1,
+     "coverage_eq_1": 1,
+     "coverage_lt_0.5": 0,
+     "n_with_coverage": 1,
+     "token_mismatch_gt_1": 0,
+     "multiword_gold": 0,
+     "residual_gold_phrase": 0,
+     "residual_glued": 0,
+     "over_substitution_gt_2": 0,
+     "unmatched_gold_remainder_survives": 0,
+     "distractor_already_in_passage": 0,
+     "distractor_overlaps_answer": 0,
+     "note": null
+    },
+    "morphological": {
+     "n": 5,
+     "n_eligible": 5,
+     "coverage_eq_1": 0,
+     "coverage_lt_0.5": 4,
+     "n_with_coverage": 5,
+     "token_mismatch_gt_1": 0,
+     "multiword_gold": 1,
+     "residual_gold_phrase": 0,
+     "residual_glued": 0,
+     "over_substitution_gt_2": 0,
+     "unmatched_gold_remainder_survives": 0,
+     "distractor_already_in_passage": 0,
+     "distractor_overlaps_answer": 0,
+     "note": "coverage is word-set overlap and is INVALID for the morphological tier, where the match is an inflection of the gold by construction"
+    },
+    "partial": {
+     "n": 97,
+     "n_eligible": 97,
+     "coverage_eq_1": 5,
+     "coverage_lt_0.5": 68,
+     "n_with_coverage": 97,
+     "token_mismatch_gt_1": 79,
+     "multiword_gold": 97,
+     "residual_gold_phrase": 0,
+     "residual_glued": 20,
+     "over_substitution_gt_2": 0,
+     "unmatched_gold_remainder_survives": 9,
+     "distractor_already_in_passage": 0,
+     "distractor_overlaps_answer": 0,
+     "note": null
+    },
+    "none": {
+     "n": 355,
+     "n_eligible": 0,
+     "coverage_eq_1": 0,
+     "coverage_lt_0.5": 0,
+     "n_with_coverage": 0,
+     "token_mismatch_gt_1": 0,
+     "multiword_gold": 237,
+     "residual_gold_phrase": 0,
+     "residual_glued": 0,
+     "over_substitution_gt_2": 0,
+     "unmatched_gold_remainder_survives": 0,
+     "distractor_already_in_passage": 1,
+     "distractor_overlaps_answer": 0,
+     "note": null
+    }
+   },
+   "block_b_surface_leakage": {
+    "ALL": {
+     "n": 145,
+     "B_picks_gold": 0.6678160919540229,
+     "C_picks_cf_target": 0.9793103448275862,
+     "C_picks_gold": 0.013793103448275862,
+     "leakage_delta": 0.31149425287356325,
+     "passes_delta_bar": false,
+     "n_leakage_created": 56
+    },
+    "exact": {
+     "n": 42,
+     "B_picks_gold": 0.9702380952380952,
+     "C_picks_cf_target": 0.9821428571428571,
+     "C_picks_gold": 0.005952380952380952,
+     "leakage_delta": 0.011904761904761862,
+     "passes_delta_bar": true,
+     "n_leakage_created": 1
+    },
+    "morphological": {
+     "n": 5,
+     "B_picks_gold": 0.4,
+     "C_picks_cf_target": 1.0,
+     "C_picks_gold": 0.0,
+     "leakage_delta": 0.6,
+     "passes_delta_bar": false,
+     "n_leakage_created": 4
+    },
+    "partial": {
+     "n": 97,
+     "B_picks_gold": 0.5549828178694158,
+     "C_picks_cf_target": 0.9845360824742269,
+     "C_picks_gold": 0.015463917525773196,
+     "leakage_delta": 0.429553264604811,
+     "passes_delta_bar": false,
+     "n_leakage_created": 51
+    }
+   },
+   "block_c_outcomes": {
+    "by_substitution_tier": {
+     "exact": {
+      "n_items": 42,
+      "ensemble_unstable_other": 8,
+      "ensemble_unstable_rate": 0.19047619047619047,
+      "pair_unstable_rate": 0.34523809523809523,
+      "F_auc": 0.8625,
+      "D_auc": 0.7833333333333333,
+      "n_context_dependent": 24,
+      "n_prior_dependent": 10,
+      "per_solver_D_auc_spread": 0.2660256410256411
+     },
+     "morphological": {
+      "n_items": 5,
+      "ensemble_unstable_other": 0,
+      "ensemble_unstable_rate": 0.0,
+      "pair_unstable_rate": 0.4,
+      "F_auc": 0.3333333333333333,
+      "D_auc": 0.3333333333333333,
+      "n_context_dependent": 3,
+      "n_prior_dependent": 2,
+      "per_solver_D_auc_spread": 0.75
+     },
+     "partial": {
+      "n_items": 97,
+      "ensemble_unstable_other": 15,
+      "ensemble_unstable_rate": 0.15463917525773196,
+      "pair_unstable_rate": 0.32989690721649484,
+      "F_auc": 0.8119747899159664,
+      "D_auc": 0.6974789915966386,
+      "n_context_dependent": 68,
+      "n_prior_dependent": 14,
+      "per_solver_D_auc_spread": 0.2853963999735293
+     }
+    },
+    "by_passage_length_within_exact_tier": {
+     "<=15": {
+      "n_items": 36,
+      "ensemble_unstable_other": 8,
+      "ensemble_unstable_rate": 0.2222222222222222,
+      "pair_unstable_rate": 0.3402777777777778,
+      "F_auc": 0.8503401360544217,
+      "D_auc": 0.7891156462585034,
+      "n_context_dependent": 21,
+      "n_prior_dependent": 7,
+      "per_solver_D_auc_spread": 0.2931749622926093
+     },
+     "16-30": {
+      "n_items": 6,
+      "ensemble_unstable_other": 0,
+      "ensemble_unstable_rate": 0.0,
+      "pair_unstable_rate": 0.375,
+      "F_auc": 1.0,
+      "D_auc": 0.7777777777777778,
+      "n_context_dependent": 3,
+      "n_prior_dependent": 3,
+      "per_solver_D_auc_spread": 0.11111111111111116
+     }
+    },
+    "why": "The length control isolates passage brevity from substitution quality: every item here had a clean whole-word `exact` swap."
+   },
+   "block_d_probe_crosscheck": {
+    "tier": "partial",
+    "n": 82,
+    "contingency": {
+     "leakage_created & context_dependent": 32,
+     "leakage_created & prior_dependent": 7,
+     "no_leakage & context_dependent": 36,
+     "no_leakage & prior_dependent": 7
+    },
+    "p_context_dependent_given_leakage": 0.8205128205128205,
+    "p_context_dependent_given_no_leakage": 0.8372093023255814,
+    "phi_coefficient": -0.022160166842624788,
+    "auc_leakage_delta_predicts_context_dependent": 0.553046218487395,
+    "interpretation_rule": "phi >= 0.3 or AUC >= 0.65 => the model-free probe tracks real solver susceptibility, and Phase-3 criterion 5 is a VALIDATED predictor. Below that it stays a plausible proxy only."
+   },
+   "block_d_ex6_discount": {
+    "n_all": 145,
+    "n_after_dropping_leaking_items": 89,
+    "n_dropped": 56,
+    "dropped_ids": [
+     16,
+     26,
+     27,
+     50,
+     52,
+     59,
+     74,
+     81,
+     84,
+     97,
+     118,
+     123,
+     126,
+     129,
+     131,
+     144,
+     153,
+     158,
+     160,
+     165,
+     168,
+     186,
+     187,
+     191,
+     194,
+     203,
+     221,
+     224,
+     226,
+     238,
+     251,
+     264,
+     272,
+     282,
+     290,
+     306,
+     310,
+     315,
+     319,
+     324,
+     329,
+     336,
+     357,
+     363,
+     383,
+     386,
+     423,
+     446,
+     447,
+     449,
+     460,
+     461,
+     471,
+     477,
+     484,
+     486
+    ],
+    "tier1_as_published": {
+     "F": {
+      "auc": 0.7568108974358975,
+      "n_positive": 96,
+      "n_negative": 26
+     },
+     "D": {
+      "auc": 0.6550480769230769,
+      "n_positive": 96,
+      "n_negative": 26
+     },
+     "D_prime": {
+      "auc": 0.6354166666666666,
+      "n_positive": 96,
+      "n_negative": 26
+     },
+     "KDA_cont": {
+      "auc": 0.35496794871794873
+     }
+    },
+    "tier1_excluding_leaking_items": {
+     "F": {
+      "auc": 0.8326612903225806,
+      "n_positive": 62,
+      "n_negative": 16
+     },
+     "D": {
+      "auc": 0.7409274193548387,
+      "n_positive": 62,
+      "n_negative": 16
+     },
+     "D_prime": {
+      "auc": 0.7348790322580645,
+      "n_positive": 62,
+      "n_negative": 16
+     },
+     "KDA_cont": {
+      "auc": 0.4163306451612903
+     }
+    },
+    "how_to_read": "The published ex6 OBQA Tier-1 numbers are the first block. The second is the same computation on items where the rewrite did NOT create a surface cue. The gap is the share of the published figure attributable to the artifact."
+   }
+  }
+ }
+}
