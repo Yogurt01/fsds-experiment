@@ -1,0 +1,1515 @@
+{
+ "what": "Follow-up diagnostics on the P/S/F/D evaluation. Analysis only; no new formulation, no new inference.",
+ "diagnostic_1_S_distribution_by_class": {
+  "sciq_test_full": {
+   "premise_check": "The Setting-C class is assigned by `classify_counterfactual` from the Setting-C argmax alone (run_counterfactual_experiment.py:145-153). It does NOT require both_correct, so Tier-1 runs over every counterfactual-eligible item, not a both_correct subset. The ceiling argument is therefore tested twice: over all eligible items, and restricted to both_correct where it would actually apply.",
+   "all_eligible": {
+    "context_dependent": {
+     "S": {
+      "n": 669,
+      "mean": 0.5477648920346907,
+      "median": 0.5699289739131927,
+      "sd": 0.13049422797311314,
+      "p10": 0.3750476986169815,
+      "p90": 0.708850659430027,
+      "min": 0.1185851973714307,
+      "max": 0.8619586229324341,
+      "frac_above_0.9": 0.0
+     },
+     "P": {
+      "n": 669,
+      "mean": 0.3237398131638265,
+      "median": 0.30716729536652565,
+      "sd": 0.12813189503619352,
+      "p10": 0.1667889006785117,
+      "p90": 0.5201971307396889,
+      "min": 0.09983008849485486,
+      "max": 0.6617588251829147,
+      "frac_above_0.9": 0.0
+     },
+     "F": {
+      "n": 669,
+      "mean": 0.35274279408757825,
+      "median": 0.35247140427236445,
+      "sd": 0.11510771733290709,
+      "p10": 0.20836811838671565,
+      "p90": 0.49795962356438395,
+      "min": 0.01206666902089637,
+      "max": 0.6850015530362725,
+      "frac_above_0.9": 0.0
+     }
+    },
+    "prior_dependent": {
+     "S": {
+      "n": 115,
+      "mean": 0.5736105646790567,
+      "median": 0.5854346603155136,
+      "sd": 0.11620858777777131,
+      "p10": 0.42008032090961933,
+      "p90": 0.7214856892824173,
+      "min": 0.3451119549572468,
+      "max": 0.8842565715312958,
+      "frac_above_0.9": 0.0
+     },
+     "P": {
+      "n": 115,
+      "mean": 0.4197868607097697,
+      "median": 0.4378877319395542,
+      "sd": 0.12194221066529352,
+      "p10": 0.23251288384199142,
+      "p90": 0.5583980642259121,
+      "min": 0.16915631387382746,
+      "max": 0.661011915653944,
+      "frac_above_0.9": 0.0
+     },
+     "F": {
+      "n": 115,
+      "mean": 0.16047769925923966,
+      "median": 0.1469345581045367,
+      "sd": 0.09536106795311634,
+      "p10": 0.0341999255160772,
+      "p90": 0.2830030491863873,
+      "min": 0.0028640725093396213,
+      "max": 0.3848380120952015,
+      "frac_above_0.9": 0.0
+     }
+    },
+    "unstable_other": {
+     "S": {
+      "n": 76,
+      "mean": 0.3605012870391372,
+      "median": 0.35965134418802336,
+      "sd": 0.12504265923967678,
+      "p10": 0.2004178138449788,
+      "p90": 0.5333902761340141,
+      "min": 0.09205904067493975,
+      "max": 0.6642056405544281,
+      "frac_above_0.9": 0.0
+     },
+     "P": {
+      "n": 76,
+      "mean": 0.26735672378889813,
+      "median": 0.26218639929720666,
+      "sd": 0.09389678307024281,
+      "p10": 0.1467299115320202,
+      "p90": 0.3733100130839375,
+      "min": 0.10319624084513634,
+      "max": 0.5409029200673103,
+      "frac_above_0.9": 0.0
+     },
+     "F": {
+      "n": 76,
+      "mean": 0.15193928816221766,
+      "median": 0.14134688495299486,
+      "sd": 0.09224032659945486,
+      "p10": 0.037122029811143875,
+      "p90": 0.2739775961954365,
+      "min": 0.0,
+      "max": 0.36720016305480385,
+      "frac_above_0.9": 0.0
+     }
+    },
+    "S_auc_context_vs_prior": 0.4523558848378501,
+    "S_cohens_d_context_minus_prior": -0.20111707663330966
+   },
+   "both_correct_only": {
+    "context_dependent": {
+     "S": {
+      "n": 287,
+      "mean": 0.6113768194621018,
+      "median": 0.6213644221425056,
+      "sd": 0.09615643226995786,
+      "p10": 0.4785819873213768,
+      "p90": 0.7221763655543327,
+      "min": 0.2870045229792595,
+      "max": 0.8619586229324341,
+      "frac_above_0.9": 0.0
+     },
+     "P": {
+      "n": 287,
+      "mean": 0.44370697407672893,
+      "median": 0.4221680909395218,
+      "sd": 0.08653775885422672,
+      "p10": 0.34190068766474724,
+      "p90": 0.5721828676760197,
+      "min": 0.2829845864325762,
+      "max": 0.6617588251829147,
+      "frac_above_0.9": 0.0
+     },
+     "F": {
+      "n": 287,
+      "mean": 0.36684627704953326,
+      "median": 0.36826062056206865,
+      "sd": 0.10149495827969433,
+      "p10": 0.24707737832795829,
+      "p90": 0.49486327953491127,
+      "min": 0.10573653131723404,
+      "max": 0.6190438513185654,
+      "frac_above_0.9": 0.0
+     }
+    },
+    "prior_dependent": {
+     "S": {
+      "n": 85,
+      "mean": 0.5948632048014962,
+      "median": 0.5966401323676109,
+      "sd": 0.11291669157277855,
+      "p10": 0.43602290749549866,
+      "p90": 0.7253586947917938,
+      "min": 0.3667716999480035,
+      "max": 0.8842565715312958,
+      "frac_above_0.9": 0.0
+     },
+     "P": {
+      "n": 85,
+      "mean": 0.4770349870135118,
+      "median": 0.48483533412218094,
+      "sd": 0.07753836946324312,
+      "p10": 0.3712301477789879,
+      "p90": 0.5787424743175507,
+      "min": 0.29086045548319817,
+      "max": 0.661011915653944,
+      "frac_above_0.9": 0.0
+     },
+     "F": {
+      "n": 85,
+      "mean": 0.17557631672251325,
+      "median": 0.19376551359891891,
+      "sd": 0.09710393456845755,
+      "p10": 0.047589240139132016,
+      "p90": 0.28445169223454186,
+      "min": 0.0028640725093396213,
+      "max": 0.3848380120952015,
+      "frac_above_0.9": 0.0
+     }
+    },
+    "unstable_other": {
+     "S": {
+      "n": 9,
+      "mean": 0.4773345241361919,
+      "median": 0.4834701344370842,
+      "sd": 0.11585599007256152,
+      "p10": 0.336502508551348,
+      "p90": 0.6176118478178978,
+      "min": 0.336502508551348,
+      "max": 0.6495898365974426,
+      "frac_above_0.9": 0.0
+     },
+     "P": {
+      "n": 9,
+      "mean": 0.4130583544319961,
+      "median": 0.40161145105957985,
+      "sd": 0.08317503170657967,
+      "p10": 0.28492774814367294,
+      "p90": 0.5196217820048332,
+      "min": 0.28492774814367294,
+      "max": 0.5223767757415771,
+      "frac_above_0.9": 0.0
+     },
+     "F": {
+      "n": 9,
+      "mean": 0.17471710954254782,
+      "median": 0.18950191454496235,
+      "sd": 0.08602851378453094,
+      "p10": 0.05494236251252005,
+      "p90": 0.2768108902091626,
+      "min": 0.05494236251252005,
+      "max": 0.3110997704206966,
+      "frac_above_0.9": 0.0
+     }
+    },
+    "S_auc_context_vs_prior": 0.5424472227915557,
+    "S_cohens_d_context_minus_prior": 0.16479381869121962
+   }
+  },
+  "obqa_test_full": {
+   "premise_check": "The Setting-C class is assigned by `classify_counterfactual` from the Setting-C argmax alone (run_counterfactual_experiment.py:145-153). It does NOT require both_correct, so Tier-1 runs over every counterfactual-eligible item, not a both_correct subset. The ceiling argument is therefore tested twice: over all eligible items, and restricted to both_correct where it would actually apply.",
+   "all_eligible": {
+    "context_dependent": {
+     "S": {
+      "n": 96,
+      "mean": 0.3421741609012014,
+      "median": 0.31028232994140126,
+      "sd": 0.14901707752592278,
+      "p10": 0.15430531185120344,
+      "p90": 0.5556951686739922,
+      "min": 0.09952229890041053,
+      "max": 0.674795001745224,
+      "frac_above_0.9": 0.0
+     },
+     "P": {
+      "n": 96,
+      "mean": 0.2708447327477657,
+      "median": 0.2460391017521033,
+      "sd": 0.1123509305684721,
+      "p10": 0.14011523686349392,
+      "p90": 0.4166535660624504,
+      "min": 0.08779272543119987,
+      "max": 0.5814585760235786,
+      "frac_above_0.9": 0.0
+     },
+     "F": {
+      "n": 96,
+      "mean": 0.17577756375211365,
+      "median": 0.14883102395288006,
+      "sd": 0.11679315359730869,
+      "p10": 0.04030224347661715,
+      "p90": 0.3526637115282938,
+      "min": 0.0023610578737134347,
+      "max": 0.42925453897430543,
+      "frac_above_0.9": 0.0
+     }
+    },
+    "prior_dependent": {
+     "S": {
+      "n": 26,
+      "mean": 0.4458401409885576,
+      "median": 0.43172985687851906,
+      "sd": 0.12036541462422237,
+      "p10": 0.24188751145265996,
+      "p90": 0.5759715884923935,
+      "min": 0.20631763897836208,
+      "max": 0.6580521911382675,
+      "frac_above_0.9": 0.0
+     },
+     "P": {
+      "n": 26,
+      "mean": 0.38283664995683114,
+      "median": 0.39702843502163887,
+      "sd": 0.1223449733407867,
+      "p10": 0.223645088262856,
+      "p90": 0.49732258915901184,
+      "min": 0.17575284838676453,
+      "max": 0.6418043822050095,
+      "frac_above_0.9": 0.0
+     },
+     "F": {
+      "n": 26,
+      "mean": 0.07862469524256996,
+      "median": 0.05135222489479929,
+      "sd": 0.07344344094017988,
+      "p10": 0.0042216177098453045,
+      "p90": 0.1665489338338375,
+      "min": 0.0,
+      "max": 0.24552336777560413,
+      "frac_above_0.9": 0.0
+     }
+    },
+    "unstable_other": {
+     "S": {
+      "n": 23,
+      "mean": 0.2933164559513186,
+      "median": 0.26651665161989513,
+      "sd": 0.10233984209495624,
+      "p10": 0.1891567591810599,
+      "p90": 0.3882195819169283,
+      "min": 0.12729667261010036,
+      "max": 0.5266005247831345,
+      "frac_above_0.9": 0.0
+     },
+     "P": {
+      "n": 23,
+      "mean": 0.25448149946935067,
+      "median": 0.2372479120385833,
+      "sd": 0.10839372820124399,
+      "p10": 0.13360442242992576,
+      "p90": 0.3653583077248186,
+      "min": 0.09997484600171447,
+      "max": 0.5042568817734718,
+      "frac_above_0.9": 0.0
+     },
+     "F": {
+      "n": 23,
+      "mean": 0.07415951101721018,
+      "median": 0.06032478390261531,
+      "sd": 0.05995955466766318,
+      "p10": 0.0036383634724188596,
+      "p90": 0.13700671878177673,
+      "min": 0.00044443830847740173,
+      "max": 0.2110017593277007,
+      "frac_above_0.9": 0.0
+     }
+    },
+    "S_auc_context_vs_prior": 0.2876602564102564,
+    "S_cohens_d_context_minus_prior": -0.7223080802199119
+   },
+   "both_correct_only": {
+    "context_dependent": {
+     "S": {
+      "n": 22,
+      "mean": 0.5103086827068843,
+      "median": 0.5163843482732773,
+      "sd": 0.08172656440978299,
+      "p10": 0.3910077391192317,
+      "p90": 0.5912492163479328,
+      "min": 0.32608182542026043,
+      "max": 0.674795001745224,
+      "frac_above_0.9": 0.0
+     },
+     "P": {
+      "n": 22,
+      "mean": 0.4289605733726851,
+      "median": 0.41031299345195293,
+      "sd": 0.06851020069802383,
+      "p10": 0.34966888278722763,
+      "p90": 0.5078190714120865,
+      "min": 0.3337344564497471,
+      "max": 0.5814585760235786,
+      "frac_above_0.9": 0.0
+     },
+     "F": {
+      "n": 22,
+      "mean": 0.2919409173650129,
+      "median": 0.28761759832971734,
+      "sd": 0.0783810316347308,
+      "p10": 0.18498484720475972,
+      "p90": 0.3732682112022303,
+      "min": 0.10004690918140113,
+      "max": 0.42925453897430543,
+      "frac_above_0.9": 0.0
+     }
+    },
+    "prior_dependent": {
+     "S": {
+      "n": 17,
+      "mean": 0.4866164914496681,
+      "median": 0.46869029477238655,
+      "sd": 0.09568446009853204,
+      "p10": 0.377290983684361,
+      "p90": 0.6014185547828674,
+      "min": 0.34513506665825844,
+      "max": 0.6580521911382675,
+      "frac_above_0.9": 0.0
+     },
+     "P": {
+      "n": 17,
+      "mean": 0.4389957074514207,
+      "median": 0.4080444909632206,
+      "sd": 0.09669875521809745,
+      "p10": 0.32554545626044273,
+      "p90": 0.5902810245752335,
+      "min": 0.27920030802488327,
+      "max": 0.6418043822050095,
+      "frac_above_0.9": 0.0
+     },
+     "F": {
+      "n": 17,
+      "mean": 0.07770356893333386,
+      "median": 0.05381283722817898,
+      "sd": 0.0702324995604,
+      "p10": 0.0042216177098453045,
+      "p90": 0.1665489338338375,
+      "min": 0.0036124084144830704,
+      "max": 0.21331865143644535,
+      "frac_above_0.9": 0.0
+     }
+    },
+    "unstable_other": {
+     "S": {
+      "n": 2,
+      "mean": 0.36768049420788884,
+      "median": 0.36768049420788884,
+      "sd": 0.03149052955399718,
+      "p10": 0.34541332721710205,
+      "p90": 0.34541332721710205,
+      "min": 0.34541332721710205,
+      "max": 0.38994766119867563,
+      "frac_above_0.9": 0.0
+     },
+     "P": {
+      "n": 2,
+      "mean": 0.3583795791491866,
+      "median": 0.3583795791491866,
+      "sd": 0.05130313412896334,
+      "p10": 0.32210278511047363,
+      "p90": 0.32210278511047363,
+      "min": 0.32210278511047363,
+      "max": 0.3946563731878996,
+      "frac_above_0.9": 0.0
+     },
+     "F": {
+      "n": 2,
+      "mean": 0.10514888105745968,
+      "median": 0.10514888105745968,
+      "sd": 0.03469861425890916,
+      "p10": 0.08061325561720878,
+      "p90": 0.08061325561720878,
+      "min": 0.08061325561720878,
+      "max": 0.12968450649771057,
+      "frac_above_0.9": 0.0
+     }
+    },
+    "S_auc_context_vs_prior": 0.5882352941176471,
+    "S_cohens_d_context_minus_prior": 0.26912421679730725
+   }
+  },
+  "obqa_test_exact_tier": {
+   "premise_check": "The Setting-C class is assigned by `classify_counterfactual` from the Setting-C argmax alone (run_counterfactual_experiment.py:145-153). It does NOT require both_correct, so Tier-1 runs over every counterfactual-eligible item, not a both_correct subset. The ceiling argument is therefore tested twice: over all eligible items, and restricted to both_correct where it would actually apply.",
+   "all_eligible": {
+    "context_dependent": {
+     "S": {
+      "n": 24,
+      "mean": 0.4495589524061477,
+      "median": 0.4586426019668579,
+      "sd": 0.13698703787134076,
+      "p10": 0.2825488680973649,
+      "p90": 0.6116469502449036,
+      "min": 0.23314412543550134,
+      "max": 0.674795001745224,
+      "frac_above_0.9": 0.0
+     },
+     "P": {
+      "n": 24,
+      "mean": 0.2876863415313477,
+      "median": 0.26176477741792326,
+      "sd": 0.10042050122935926,
+      "p10": 0.18794051790609956,
+      "p90": 0.400148369371891,
+      "min": 0.13020428994786926,
+      "max": 0.5448401346802711,
+      "frac_above_0.9": 0.0
+     },
+     "F": {
+      "n": 24,
+      "mean": 0.2679277031688805,
+      "median": 0.2937915601655732,
+      "sd": 0.12421023141329819,
+      "p10": 0.059867413145943016,
+      "p90": 0.39529989379661856,
+      "min": 0.02294318550502794,
+      "max": 0.42925453897430543,
+      "frac_above_0.9": 0.0
+     }
+    },
+    "prior_dependent": {
+     "S": {
+      "n": 10,
+      "mean": 0.49531460702419283,
+      "median": 0.4824089426547289,
+      "sd": 0.0954558689849692,
+      "p10": 0.33719536662101746,
+      "p90": 0.6014185547828674,
+      "min": 0.33719536662101746,
+      "max": 0.6580521911382675,
+      "frac_above_0.9": 0.0
+     },
+     "P": {
+      "n": 10,
+      "mean": 0.42002844540402295,
+      "median": 0.41604784689843655,
+      "sd": 0.13618478404268727,
+      "p10": 0.17575284838676453,
+      "p90": 0.6002792939543724,
+      "min": 0.17575284838676453,
+      "max": 0.6418043822050095,
+      "frac_above_0.9": 0.0
+     },
+     "F": {
+      "n": 10,
+      "mean": 0.10185310361560092,
+      "median": 0.0921595606135952,
+      "sd": 0.0907126216700333,
+      "p10": 0.0,
+      "p90": 0.21331865143644535,
+      "min": 0.0,
+      "max": 0.24552336777560413,
+      "frac_above_0.9": 0.0
+     }
+    },
+    "unstable_other": {
+     "S": {
+      "n": 8,
+      "mean": 0.30043271870090393,
+      "median": 0.2960431585088372,
+      "sd": 0.13401230368854697,
+      "p10": 0.12729667261010036,
+      "p90": 0.38994766119867563,
+      "min": 0.12729667261010036,
+      "max": 0.5266005247831345,
+      "frac_above_0.9": 0.0
+     },
+     "P": {
+      "n": 8,
+      "mean": 0.26740197980198754,
+      "median": 0.24955126224085689,
+      "sd": 0.15389861393044674,
+      "p10": 0.09997484600171447,
+      "p90": 0.3946563731878996,
+      "min": 0.09997484600171447,
+      "max": 0.5042568817734718,
+      "frac_above_0.9": 0.0
+     },
+     "F": {
+      "n": 8,
+      "mean": 0.0979388625173101,
+      "median": 0.07902476702292915,
+      "sd": 0.05631689670595375,
+      "p10": 0.03064540773209501,
+      "p90": 0.1645002695004223,
+      "min": 0.03064540773209501,
+      "max": 0.18647223222069442,
+      "frac_above_0.9": 0.0
+     }
+    },
+    "S_auc_context_vs_prior": 0.3958333333333333,
+    "S_cohens_d_context_minus_prior": -0.3611622071500752
+   },
+   "both_correct_only": {
+    "context_dependent": {
+     "S": {
+      "n": 7,
+      "mean": 0.5397416921332479,
+      "median": 0.522285208106041,
+      "sd": 0.09665789151944992,
+      "p10": 0.3910077391192317,
+      "p90": 0.6206533834338188,
+      "min": 0.3910077391192317,
+      "max": 0.674795001745224,
+      "frac_above_0.9": 0.0
+     },
+     "P": {
+      "n": 7,
+      "mean": 0.41080515060041634,
+      "median": 0.400148369371891,
+      "sd": 0.06669968109877361,
+      "p10": 0.3337344564497471,
+      "p90": 0.43413954228162766,
+      "min": 0.3337344564497471,
+      "max": 0.5448401346802711,
+      "frac_above_0.9": 0.0
+     },
+     "F": {
+      "n": 7,
+      "mean": 0.33596066141889885,
+      "median": 0.3126184695865959,
+      "sd": 0.06917292892544903,
+      "p10": 0.2455372830916076,
+      "p90": 0.39529989379661856,
+      "min": 0.2455372830916076,
+      "max": 0.42925453897430543,
+      "frac_above_0.9": 0.0
+     }
+    },
+    "prior_dependent": {
+     "S": {
+      "n": 8,
+      "mean": 0.5098024685867131,
+      "median": 0.4824089426547289,
+      "sd": 0.08745881237628947,
+      "p10": 0.41666484251618385,
+      "p90": 0.6014185547828674,
+      "min": 0.41666484251618385,
+      "max": 0.6580521911382675,
+      "frac_above_0.9": 0.0
+     },
+     "P": {
+      "n": 8,
+      "mean": 0.46446303359698504,
+      "median": 0.43176834285259247,
+      "sd": 0.10629134071981361,
+      "p10": 0.32554545626044273,
+      "p90": 0.6002792939543724,
+      "min": 0.32554545626044273,
+      "max": 0.6418043822050095,
+      "frac_above_0.9": 0.0
+     },
+     "F": {
+      "n": 8,
+      "mean": 0.09662595854755063,
+      "median": 0.0921595606135952,
+      "sd": 0.07821694526655641,
+      "p10": 0.011953805515076965,
+      "p90": 0.1881046611815691,
+      "min": 0.011953805515076965,
+      "max": 0.21331865143644535,
+      "frac_above_0.9": 0.0
+     }
+    },
+    "unstable_other": {
+     "S": {
+      "n": 1,
+      "mean": 0.38994766119867563,
+      "median": 0.38994766119867563,
+      "sd": 0.0,
+      "p10": 0.38994766119867563,
+      "p90": 0.38994766119867563,
+      "min": 0.38994766119867563,
+      "max": 0.38994766119867563,
+      "frac_above_0.9": 0.0
+     },
+     "P": {
+      "n": 1,
+      "mean": 0.3946563731878996,
+      "median": 0.3946563731878996,
+      "sd": 0.0,
+      "p10": 0.3946563731878996,
+      "p90": 0.3946563731878996,
+      "min": 0.3946563731878996,
+      "max": 0.3946563731878996,
+      "frac_above_0.9": 0.0
+     },
+     "F": {
+      "n": 1,
+      "mean": 0.12968450649771057,
+      "median": 0.12968450649771057,
+      "sd": 0.0,
+      "p10": 0.12968450649771057,
+      "p90": 0.12968450649771057,
+      "min": 0.12968450649771057,
+      "max": 0.12968450649771057,
+      "frac_above_0.9": 0.0
+     }
+    },
+    "S_auc_context_vs_prior": 0.6071428571428571,
+    "S_cohens_d_context_minus_prior": 0.3260673682916568
+   }
+  },
+  "qwen3_4b_sciq": {
+   "premise_check": "The Setting-C class is assigned by `classify_counterfactual` from the Setting-C argmax alone (run_counterfactual_experiment.py:145-153). It does NOT require both_correct, so Tier-1 runs over every counterfactual-eligible item, not a both_correct subset. The ceiling argument is therefore tested twice: over all eligible items, and restricted to both_correct where it would actually apply.",
+   "all_eligible": {
+    "context_dependent": {
+     "S": {
+      "n": 334,
+      "mean": 0.9970058641776054,
+      "median": 1.0,
+      "sd": 0.054717558709178146,
+      "p10": 1.0,
+      "p90": 1.0,
+      "min": 9.436644798910265e-10,
+      "max": 1.0,
+      "frac_above_0.9": 0.9970059880239521
+     },
+     "P": {
+      "n": 334,
+      "mean": 0.9110249496861583,
+      "median": 1.0,
+      "sd": 0.27924064409016897,
+      "p10": 0.9706876873970032,
+      "p90": 1.0,
+      "min": 1.879528650772233e-12,
+      "max": 1.0,
+      "frac_above_0.9": 0.907185628742515
+     },
+     "F": {
+      "n": 334,
+      "mean": 0.9731953513319431,
+      "median": 0.9999999977489049,
+      "sd": 0.10046894044884802,
+      "p10": 0.9637799635523259,
+      "p90": 0.9999999999995595,
+      "min": 1.7928508967918547e-07,
+      "max": 0.9999999999999691,
+      "frac_above_0.9": 0.9281437125748503
+     }
+    },
+    "prior_dependent": {
+     "S": {
+      "n": 518,
+      "mean": 0.9992273644360796,
+      "median": 1.0,
+      "sd": 0.01758488145009131,
+      "p10": 1.0,
+      "p90": 1.0,
+      "min": 0.5997748970985413,
+      "max": 1.0,
+      "frac_above_0.9": 0.9980694980694981
+     },
+     "P": {
+      "n": 518,
+      "mean": 0.9889166558160382,
+      "median": 1.0,
+      "sd": 0.10232103919117481,
+      "p10": 1.0,
+      "p90": 1.0,
+      "min": 6.224144116773189e-11,
+      "max": 1.0,
+      "frac_above_0.9": 0.9884169884169884
+     },
+     "F": {
+      "n": 518,
+      "mean": 0.014006168544372269,
+      "median": 2.148131251706798e-09,
+      "sd": 0.06267397504236179,
+      "p10": 8.350859473328295e-13,
+      "p90": 0.003824478131713432,
+      "min": 0.0,
+      "max": 0.4921881407498191,
+      "frac_above_0.9": 0.0
+     }
+    },
+    "unstable_other": {
+     "S": {
+      "n": 8,
+      "mean": 0.8750037651038838,
+      "median": 1.0,
+      "sd": 0.3535397067076402,
+      "p10": 3.763101631193422e-05,
+      "p90": 1.0,
+      "min": 3.763101631193422e-05,
+      "max": 1.0,
+      "frac_above_0.9": 0.875
+     },
+     "P": {
+      "n": 8,
+      "mean": 0.3743821132807532,
+      "median": 5.384835367294727e-05,
+      "sd": 0.5166664094701684,
+      "p10": 8.690853592341341e-12,
+      "p90": 1.0,
+      "min": 8.690853592341341e-12,
+      "max": 1.0,
+      "frac_above_0.9": 0.375
+     },
+     "F": {
+      "n": 8,
+      "mean": 0.45506000712840955,
+      "median": 0.4996773576525501,
+      "sd": 0.20813917777122473,
+      "p10": 0.0,
+      "p90": 0.5001899921409216,
+      "min": 0.0,
+      "max": 0.7460940581864494,
+      "frac_above_0.9": 0.0
+     }
+    },
+    "S_auc_context_vs_prior": 0.4944425820174323,
+    "S_cohens_d_context_minus_prior": -0.06021605562411432
+   },
+   "both_correct_only": {
+    "context_dependent": {
+     "S": {
+      "n": 304,
+      "mean": 0.9999998639288702,
+      "median": 1.0,
+      "sd": 2.231871966434903e-06,
+      "p10": 1.0,
+      "p90": 1.0,
+      "min": 0.9999611377716064,
+      "max": 1.0,
+      "frac_above_0.9": 1.0
+     },
+     "P": {
+      "n": 304,
+      "mean": 0.9982229461403269,
+      "median": 1.0,
+      "sd": 0.01755792008906362,
+      "p10": 0.9999984502792358,
+      "p90": 1.0,
+      "min": 0.7057849764823914,
+      "max": 1.0,
+      "frac_above_0.9": 0.9967105263157895
+     },
+     "F": {
+      "n": 304,
+      "mean": 0.9744099210835834,
+      "median": 0.9999999972974158,
+      "sd": 0.08848144165063228,
+      "p10": 0.953582703506971,
+      "p90": 0.9999999999992654,
+      "min": 0.5078118592492895,
+      "max": 0.9999999999999691,
+      "frac_above_0.9": 0.9276315789473685
+     }
+    },
+    "prior_dependent": {
+     "S": {
+      "n": 512,
+      "mean": 0.9999999997671694,
+      "median": 1.0,
+      "sd": 5.268356063861754e-09,
+      "p10": 1.0,
+      "p90": 1.0,
+      "min": 0.9999998807907104,
+      "max": 1.0,
+      "frac_above_0.9": 1.0
+     },
+     "P": {
+      "n": 512,
+      "mean": 0.9999490409391001,
+      "median": 1.0,
+      "sd": 0.0011471577774105194,
+      "p10": 1.0,
+      "p90": 1.0,
+      "min": 0.9740425944328308,
+      "max": 1.0,
+      "frac_above_0.9": 1.0
+     },
+     "F": {
+      "n": 512,
+      "mean": 0.01400526655961683,
+      "median": 2.2161694603508154e-09,
+      "sd": 0.06298075745935033,
+      "p10": 8.642159338552663e-13,
+      "p90": 0.0021156852592357925,
+      "min": 0.0,
+      "max": 0.4921881407498191,
+      "frac_above_0.9": 0.0
+     }
+    },
+    "unstable_other": {
+     "S": {
+      "n": 3,
+      "mean": 1.0,
+      "median": 1.0,
+      "sd": 0.0,
+      "p10": 1.0,
+      "p90": 1.0,
+      "min": 1.0,
+      "max": 1.0,
+      "frac_above_0.9": 1.0
+     },
+     "P": {
+      "n": 3,
+      "mean": 0.9983132282892863,
+      "median": 1.0,
+      "sd": 0.0029215743037260085,
+      "p10": 0.9949396848678589,
+      "p90": 1.0,
+      "min": 0.9949396848678589,
+      "max": 1.0,
+      "frac_above_0.9": 1.0
+     },
+     "F": {
+      "n": 3,
+      "mean": 0.5507133080320391,
+      "median": 0.49935784627638535,
+      "sd": 0.17543418236105165,
+      "p10": 0.4066880196332827,
+      "p90": 0.49935784627638535,
+      "min": 0.4066880196332827,
+      "max": 0.7460940581864494,
+      "frac_above_0.9": 0.0
+     }
+    },
+    "S_auc_context_vs_prior": 0.49438797800164475,
+    "S_cohens_d_context_minus_prior": -0.099756638327664
+   }
+  }
+ },
+ "diagnostic_2_logistic_ceiling": {
+  "sciq_test_full": {
+   "what": "Upper-bound check: does ANY linear combination of P, S, F beat F alone? Fitted on the labels it is scored against; NOT a metric candidate.",
+   "n": 784,
+   "n_context_dependent": 669,
+   "n_prior_dependent": 115,
+   "coefficients_standardised": {
+    "intercept": 9.966020699503053,
+    "P": -0.47390046153684384,
+    "S": -6.217626231541642,
+    "F": 10.33754602056755
+   },
+   "feature_means": {
+    "P": 0.3378283469237544,
+    "S": 0.5515560302414535,
+    "F": 0.32454064369821733
+   },
+   "feature_sds": {
+    "P": 0.1316343530150273,
+    "S": 0.128754015237612,
+    "F": 0.13137962531149944
+   },
+   "auc_logistic_in_sample": 0.9902515110157926,
+   "auc_logistic_cross_validated": 0.9893546500292455,
+   "auc_F_alone": 0.8987456944173653,
+   "auc_S_alone": 0.4523558848378501,
+   "auc_P_alone": 0.2905309677000065,
+   "auc_D": 0.8240982647689609,
+   "auc_D_prime": 0.8574121011243258
+  },
+  "obqa_test_full": {
+   "what": "Upper-bound check: does ANY linear combination of P, S, F beat F alone? Fitted on the labels it is scored against; NOT a metric candidate.",
+   "n": 122,
+   "n_context_dependent": 96,
+   "n_prior_dependent": 26,
+   "coefficients_standardised": {
+    "intercept": 3.0639827715185954,
+    "P": -0.6511803901294017,
+    "S": -3.5743250162708344,
+    "F": 4.155835007812647
+   },
+   "feature_means": {
+    "P": 0.29471186264477967,
+    "S": 0.36426691075588385,
+    "F": 0.15507285406975188
+   },
+   "feature_sds": {
+    "P": 0.12297845257439648,
+    "S": 0.14914743686666462,
+    "F": 0.1158445613776165
+   },
+   "auc_logistic_in_sample": 0.953125,
+   "auc_logistic_cross_validated": 0.9270833333333334,
+   "auc_F_alone": 0.7568108974358975,
+   "auc_S_alone": 0.2876602564102564,
+   "auc_P_alone": 0.24519230769230768,
+   "auc_D": 0.6550480769230769,
+   "auc_D_prime": 0.6354166666666666
+  },
+  "obqa_test_exact_tier": {
+   "what": "Upper-bound check: does ANY linear combination of P, S, F beat F alone? Fitted on the labels it is scored against; NOT a metric candidate.",
+   "n": 34,
+   "n_context_dependent": 24,
+   "n_prior_dependent": 10,
+   "coefficients_standardised": {
+    "intercept": 8.619762374889829,
+    "P": 6.295889904453955,
+    "S": -32.19557200146167,
+    "F": 37.403883716439225
+   },
+   "feature_means": {
+    "P": 0.3266104897291933,
+    "S": 0.4630164978820433,
+    "F": 0.21908223271203356
+   },
+   "feature_sds": {
+    "P": 0.12582892656810304,
+    "S": 0.1265378053593012,
+    "F": 0.13746569828860009
+   },
+   "auc_logistic_in_sample": 1.0,
+   "auc_logistic_cross_validated": 1.0,
+   "auc_F_alone": 0.8625,
+   "auc_S_alone": 0.3958333333333333,
+   "auc_P_alone": 0.20416666666666666,
+   "auc_D": 0.7833333333333333,
+   "auc_D_prime": 0.8083333333333333
+  },
+  "qwen3_4b_sciq": {
+   "what": "Upper-bound check: does ANY linear combination of P, S, F beat F alone? Fitted on the labels it is scored against; NOT a metric candidate.",
+   "n": 852,
+   "n_context_dependent": 334,
+   "n_prior_dependent": 518,
+   "coefficients_standardised": {
+    "intercept": -19.35671085236257,
+    "P": -4.5337044515934295,
+    "S": -3.0750956248107113,
+    "F": 90.60252985871094
+   },
+   "feature_means": {
+    "P": 0.9583816442580806,
+    "S": 0.998356494616443,
+    "F": 0.3900263411394998
+   },
+   "feature_sds": {
+    "P": 0.19575576427648725,
+    "S": 0.03688644222995008,
+    "F": 0.4752653738340461
+   },
+   "auc_logistic_in_sample": 1.0,
+   "auc_logistic_cross_validated": 0.9999653203246017,
+   "auc_F_alone": 0.9989480498462534,
+   "auc_S_alone": 0.4944425820174323,
+   "auc_P_alone": 0.4041598270640187,
+   "auc_D": 0.5995826879060412,
+   "auc_D_prime": 0.9970233278616513
+  }
+ },
+ "diagnostic_3_reasoning_shortcut_examples": {
+  "category": "reasoning_shortcut",
+  "n_in_category_and_eligible": 42,
+  "top_by_ensemble_F": [
+   {
+    "id": 529,
+    "ensemble_F": 0.5897820490856702,
+    "ensemble_D": 0.11775764818904547,
+    "ensemble_S": 0.7865558713674545,
+    "ensemble_P": 0.6527386642992496,
+    "ensemble_counterfactual_class": "context_dependent",
+    "ensemble_baseline_category": "both_correct",
+    "kda_cont": 0.5807689196847272,
+    "question": "What crucial role does beneficial fungi play?",
+    "options": [
+     "cleaning water",
+     "balance of ecosystems",
+     "cleaning the soil",
+     "killing bacteria"
+    ],
+    "gold_answer": "balance of ecosystems",
+    "counterfactual_target": "cleaning the soil",
+    "substitution_tier": "exact",
+    "passage_snippet": "...ial Fungi Fungi play a crucial role in the balance of ecosystems. They colonize most habitats on Earth, preferring dark, moist conditions. They can th...",
+    "counterfactual_snippet": "...ial Fungi Fungi play a crucial role in the cleaning the soil. They colonize most habitats on Earth, preferring dark, moist conditions. They can th...",
+    "per_solver": {
+     "Riiid/kda-albert-xlarge-v2-race": {
+      "pred_B": "balance of ecosystems",
+      "pred_C": "cleaning the soil",
+      "class": "context_dependent",
+      "F": 0.022543802857398987
+     },
+     "Riiid/kda-mpnet-base-race": {
+      "pred_B": "balance of ecosystems",
+      "pred_C": "cleaning the soil",
+      "class": "context_dependent",
+      "F": 0.998794041192923
+     },
+     "Riiid/kda-scibert-uncased-race": {
+      "pred_B": "balance of ecosystems",
+      "pred_C": "cleaning the soil",
+      "class": "context_dependent",
+      "F": 0.6211384665220976
+     },
+     "google/t5-small-ssm-nq": {
+      "pred_B": "balance of ecosystems",
+      "pred_C": "cleaning the soil",
+      "class": "context_dependent",
+      "F": 0.7166518857702613
+     }
+    }
+   },
+   {
+    "id": 323,
+    "ensemble_F": 0.5351643434094058,
+    "ensemble_D": 0.37392079670747913,
+    "ensemble_S": 0.7137103378772736,
+    "ensemble_P": 0.26446025632321835,
+    "ensemble_counterfactual_class": "context_dependent",
+    "ensemble_baseline_category": "wrong_to_correct",
+    "kda_cont": 0.7173985168068959,
+    "question": "Water seeps into the ground through permeable material and stops when it reaches what?",
+    "options": [
+     "Lava",
+     "Bed Rock",
+     "Coral",
+     "impermeable rock"
+    ],
+    "gold_answer": "impermeable rock",
+    "counterfactual_target": "Bed Rock",
+    "substitution_tier": "exact",
+    "passage_snippet": "...able material and stops when it reaches an impermeable rock. Predict the purpose of the well in the diagram.",
+    "counterfactual_snippet": "...able material and stops when it reaches an Bed Rock. Predict the purpose of the well in the diagram.",
+    "per_solver": {
+     "Riiid/kda-albert-xlarge-v2-race": {
+      "pred_B": "impermeable rock",
+      "pred_C": "impermeable rock",
+      "class": "prior_dependent",
+      "F": 0.210221529006958
+     },
+     "Riiid/kda-mpnet-base-race": {
+      "pred_B": "impermeable rock",
+      "pred_C": "Bed Rock",
+      "class": "context_dependent",
+      "F": 0.904483474092558
+     },
+     "Riiid/kda-scibert-uncased-race": {
+      "pred_B": "impermeable rock",
+      "pred_C": "impermeable rock",
+      "class": "prior_dependent",
+      "F": 0.026514992117881775
+     },
+     "google/t5-small-ssm-nq": {
+      "pred_B": "impermeable rock",
+      "pred_C": "Bed Rock",
+      "class": "context_dependent",
+      "F": 0.9994373784202253
+     }
+    }
+   },
+   {
+    "id": 779,
+    "ensemble_F": 0.5143417369690724,
+    "ensemble_D": 0.3353507260400731,
+    "ensemble_S": 0.7366678714752197,
+    "ensemble_P": 0.2741169575601816,
+    "ensemble_counterfactual_class": "context_dependent",
+    "ensemble_baseline_category": "wrong_to_correct",
+    "kda_cont": 0.7328118761033627,
+    "question": "What analytical technique, using stained gel, can separate dna fragments or rna molecules and proteins?",
+    "options": [
+     "microwave electrophoresis",
+     "static electrophoresis",
+     "gel electrophoresis",
+     "surface electrophoresis"
+    ],
+    "gold_answer": "gel electrophoresis",
+    "counterfactual_target": "microwave electrophoresis",
+    "substitution_tier": "exact",
+    "passage_snippet": "Gel electrophoresis is an analytical technique used to separate DNA fragments by size and charge. Notice ...",
+    "counterfactual_snippet": "Microwave electrophoresis is an analytical technique used to separate DNA fragments by size and charge. Notice ...",
+    "per_solver": {
+     "Riiid/kda-albert-xlarge-v2-race": {
+      "pred_B": "gel electrophoresis",
+      "pred_C": "gel electrophoresis",
+      "class": "prior_dependent",
+      "F": 0.013997986912727356
+     },
+     "Riiid/kda-mpnet-base-race": {
+      "pred_B": "gel electrophoresis",
+      "pred_C": "microwave electrophoresis",
+      "class": "context_dependent",
+      "F": 0.9152466647792608
+     },
+     "Riiid/kda-scibert-uncased-race": {
+      "pred_B": "gel electrophoresis",
+      "pred_C": "microwave electrophoresis",
+      "class": "context_dependent",
+      "F": 0.4495750479400158
+     },
+     "google/t5-small-ssm-nq": {
+      "pred_B": "gel electrophoresis",
+      "pred_C": "microwave electrophoresis",
+      "class": "context_dependent",
+      "F": 0.6785472482442856
+     }
+    }
+   },
+   {
+    "id": 753,
+    "ensemble_F": 0.5122145946102137,
+    "ensemble_D": 0.10080012849208536,
+    "ensemble_S": 0.6255916431546211,
+    "ensemble_P": 0.5327879190444946,
+    "ensemble_counterfactual_class": "context_dependent",
+    "ensemble_baseline_category": "both_correct",
+    "kda_cont": 0.4158120770013764,
+    "question": "The concept that atoms tend to have eight electrons in their valence electron shell is called what?",
+    "options": [
+     "coupling rule",
+     "diagonal rule",
+     "string rule",
+     "octet rule"
+    ],
+    "gold_answer": "octet rule",
+    "counterfactual_target": "coupling rule",
+    "substitution_tier": "exact",
+    "passage_snippet": "The octet rule is the concept that atoms tend to have eight electrons in their valence electron shel...",
+    "counterfactual_snippet": "The coupling rule is the concept that atoms tend to have eight electrons in their valence electron shel...",
+    "per_solver": {
+     "Riiid/kda-albert-xlarge-v2-race": {
+      "pred_B": "octet rule",
+      "pred_C": "coupling rule",
+      "class": "context_dependent",
+      "F": 0.024960525333881378
+     },
+     "Riiid/kda-mpnet-base-race": {
+      "pred_B": "octet rule",
+      "pred_C": "coupling rule",
+      "class": "context_dependent",
+      "F": 0.9624639140092768
+     },
+     "Riiid/kda-scibert-uncased-race": {
+      "pred_B": "coupling rule",
+      "pred_C": "coupling rule",
+      "class": "context_dependent",
+      "F": 0.07706502825021744
+     },
+     "google/t5-small-ssm-nq": {
+      "pred_B": "octet rule",
+      "pred_C": "coupling rule",
+      "class": "context_dependent",
+      "F": 0.9843689108474791
+     }
+    }
+   },
+   {
+    "id": 617,
+    "ensemble_F": 0.49145115353167057,
+    "ensemble_D": 0.19487052901274937,
+    "ensemble_S": 0.6417861133813858,
+    "ensemble_P": 0.42721249535679817,
+    "ensemble_counterfactual_class": "context_dependent",
+    "ensemble_baseline_category": "both_correct",
+    "kda_cont": 0.5830911526904141,
+    "question": "What do we call a carbohydrate formed by two monosaccharides bonding together?",
+    "options": [
+     "disaccharide",
+     "Nitrate",
+     "calcite",
+     "olivine"
+    ],
+    "gold_answer": "disaccharide",
+    "counterfactual_target": "Nitrate",
+    "substitution_tier": "exact",
+    "passage_snippet": "...ogether, they form a carbohydrate called a disaccharide . Two monosaccharides will bond together through a dehydration reaction, in which a w...",
+    "counterfactual_snippet": "...ogether, they form a carbohydrate called a Nitrate . Two monosaccharides will bond together through a dehydration reaction, in which a w...",
+    "per_solver": {
+     "Riiid/kda-albert-xlarge-v2-race": {
+      "pred_B": "disaccharide",
+      "pred_C": "calcite",
+      "class": "unstable_other",
+      "F": 0.004750370979309082
+     },
+     "Riiid/kda-mpnet-base-race": {
+      "pred_B": "disaccharide",
+      "pred_C": "Nitrate",
+      "class": "context_dependent",
+      "F": 0.786737808957696
+     },
+     "Riiid/kda-scibert-uncased-race": {
+      "pred_B": "disaccharide",
+      "pred_C": "Nitrate",
+      "class": "context_dependent",
+      "F": 0.3700125366449356
+     },
+     "google/t5-small-ssm-nq": {
+      "pred_B": "disaccharide",
+      "pred_C": "Nitrate",
+      "class": "context_dependent",
+      "F": 0.8043038975447416
+     }
+    }
+   },
+   {
+    "id": 485,
+    "ensemble_F": 0.48794575627835,
+    "ensemble_D": 0.14056026591217283,
+    "ensemble_S": 0.5863466337323189,
+    "ensemble_P": 0.45691997185349464,
+    "ensemble_counterfactual_class": "context_dependent",
+    "ensemble_baseline_category": "both_correct",
+    "kda_cont": 0.4739803517677727,
+    "question": "A cold front is formed when a cold air mass runs into what?",
+    "options": [
+     "hurricane",
+     "dry air mass",
+     "warm air mass",
+     "cool air mass"
+    ],
+    "gold_answer": "warm air mass",
+    "counterfactual_target": "dry air mass",
+    "substitution_tier": "exact",
+    "passage_snippet": "...ont forms when a cold air mass runs into a warm air mass ( Figure below ). The cold air mass moves faster than the warm air mass. So the cold ...",
+    "counterfactual_snippet": "...ont forms when a cold air mass runs into a dry air mass ( Figure below ). The cold air mass moves faster than the dry air mass. So the cold a...",
+    "per_solver": {
+     "Riiid/kda-albert-xlarge-v2-race": {
+      "pred_B": "warm air mass",
+      "pred_C": "dry air mass",
+      "class": "context_dependent",
+      "F": 0.03803388774394989
+     },
+     "Riiid/kda-mpnet-base-race": {
+      "pred_B": "warm air mass",
+      "pred_C": "dry air mass",
+      "class": "context_dependent",
+      "F": 0.8573188041336834
+     },
+     "Riiid/kda-scibert-uncased-race": {
+      "pred_B": "warm air mass",
+      "pred_C": "dry air mass",
+      "class": "context_dependent",
+      "F": 0.13466950505971909
+     },
+     "google/t5-small-ssm-nq": {
+      "pred_B": "warm air mass",
+      "pred_C": "dry air mass",
+      "class": "context_dependent",
+      "F": 0.9217608281760477
+     }
+    }
+   },
+   {
+    "id": 865,
+    "ensemble_F": 0.4716693004302215,
+    "ensemble_D": 0.07932596121825883,
+    "ensemble_S": 0.5409865248948336,
+    "ensemble_P": 0.5554731115698814,
+    "ensemble_counterfactual_class": "context_dependent",
+    "ensemble_baseline_category": "both_correct",
+    "kda_cont": 0.44410512315108625,
+    "question": "What functions in removing phosphorylated amino acids from proteins?",
+    "options": [
+     "phosphatase",
+     "sucrose",
+     "carbonate",
+     "peptide"
+    ],
+    "gold_answer": "phosphatase",
+    "counterfactual_target": "sucrose",
+    "substitution_tier": "exact",
+    "passage_snippet": "What is the function of a phosphatase? a. A phosphatase removes phosphorylated amino acids from proteins. A phosphatase rem...",
+    "counterfactual_snippet": "What is the function of a sucrose? a. A sucrose removes phosphorylated amino acids from proteins. A sucrose removes the...",
+    "per_solver": {
+     "Riiid/kda-albert-xlarge-v2-race": {
+      "pred_B": "phosphatase",
+      "pred_C": "sucrose",
+      "class": "context_dependent",
+      "F": 0.009819895029067993
+     },
+     "Riiid/kda-mpnet-base-race": {
+      "pred_B": "phosphatase",
+      "pred_C": "sucrose",
+      "class": "context_dependent",
+      "F": 0.9700584560632706
+     },
+     "Riiid/kda-scibert-uncased-race": {
+      "pred_B": "phosphatase",
+      "pred_C": "sucrose",
+      "class": "context_dependent",
+      "F": 0.5136709166690707
+     },
+     "google/t5-small-ssm-nq": {
+      "pred_B": "peptide",
+      "pred_C": "sucrose",
+      "class": "context_dependent",
+      "F": 0.39312793395947665
+     }
+    }
+   },
+   {
+    "id": 831,
+    "ensemble_F": 0.45089479607122485,
+    "ensemble_D": 0.12670692422442928,
+    "ensemble_S": 0.555389516055584,
+    "ensemble_P": 0.387051522731781,
+    "ensemble_counterfactual_class": "context_dependent",
+    "ensemble_baseline_category": "both_correct",
+    "kda_cont": 0.45889974537440426,
+    "question": "What kind of muscle is the heart mainly composed of?",
+    "options": [
+     "idealized muscle",
+     "respiratory muscle",
+     "nerve muscle",
+     "cardiac muscle"
+    ],
+    "gold_answer": "cardiac muscle",
+    "counterfactual_target": "idealized muscle",
+    "substitution_tier": "exact",
+    "passage_snippet": "To move blood through the heart, the cardiac muscle needs to contract in an organized way. Blood first enters the atria ( Figure below )....",
+    "counterfactual_snippet": "To move blood through the heart, the idealized muscle needs to contract in an organized way. Blood first enters the atria ( Figure below )....",
+    "per_solver": {
+     "Riiid/kda-albert-xlarge-v2-race": {
+      "pred_B": "cardiac muscle",
+      "pred_C": "idealized muscle",
+      "class": "context_dependent",
+      "F": 0.015467502176761627
+     },
+     "Riiid/kda-mpnet-base-race": {
+      "pred_B": "cardiac muscle",
+      "pred_C": "idealized muscle",
+      "class": "context_dependent",
+      "F": 0.9979809369542636
+     },
+     "Riiid/kda-scibert-uncased-race": {
+      "pred_B": "cardiac muscle",
+      "pred_C": "idealized muscle",
+      "class": "context_dependent",
+      "F": 0.26355576515197754
+     },
+     "google/t5-small-ssm-nq": {
+      "pred_B": "cardiac muscle",
+      "pred_C": "idealized muscle",
+      "class": "context_dependent",
+      "F": 0.5265749800018966
+     }
+    }
+   }
+  ]
+ },
+ "diagnostic_4_margin_decomposition": {
+  "sciq_test_full": {
+   "decomposition": "F_raw = 0.5*(MarginB + MarginC); MarginB = p(gold|B) - p(c|B) uses no Setting-C information; sign(MarginC) IS the context/prior label among these two classes.",
+   "all_eligible": {
+    "n_context_dependent": 669,
+    "n_prior_dependent": 115,
+    "identity_holds": "784/784",
+    "auc": {
+     "MarginB": 0.4540326249431338,
+     "MarginC": 1.0,
+     "F_raw": 0.8922856957171639,
+     "F": 0.8987456944173653
+    },
+    "mean_MarginB_context": 0.39030339012554316,
+    "mean_MarginB_prior": 0.4319617938835914
+   },
+   "both_correct_only": {
+    "n_context_dependent": 287,
+    "n_prior_dependent": 85,
+    "identity_holds": "372/372",
+    "auc": {
+     "MarginB": 0.5379381020700963,
+     "MarginC": 1.0,
+     "F_raw": 0.9085058413609346,
+     "F": 0.9120721459315434
+    },
+    "mean_MarginB_context": 0.48261653108165015,
+    "mean_MarginB_prior": 0.4593047181353445
+   }
+  },
+  "obqa_test_full": {
+   "decomposition": "F_raw = 0.5*(MarginB + MarginC); MarginB = p(gold|B) - p(c|B) uses no Setting-C information; sign(MarginC) IS the context/prior label among these two classes.",
+   "all_eligible": {
+    "n_context_dependent": 96,
+    "n_prior_dependent": 26,
+    "identity_holds": "122/122",
+    "auc": {
+     "MarginB": 0.2688301282051282,
+     "MarginC": 1.0,
+     "F_raw": 0.7712339743589743,
+     "F": 0.7568108974358975
+    },
+    "mean_MarginB_context": 0.09373789548134918,
+    "mean_MarginB_prior": 0.27989367009922633
+   },
+   "both_correct_only": {
+    "n_context_dependent": 22,
+    "n_prior_dependent": 17,
+    "identity_holds": "39/39",
+    "auc": {
+     "MarginB": 0.5508021390374331,
+     "MarginC": 1.0,
+     "F_raw": 0.9679144385026738,
+     "F": 0.9705882352941176
+    },
+    "mean_MarginB_context": 0.33612324860688664,
+    "mean_MarginB_prior": 0.32267836329817856
+   }
+  },
+  "obqa_test_exact_tier": {
+   "decomposition": "F_raw = 0.5*(MarginB + MarginC); MarginB = p(gold|B) - p(c|B) uses no Setting-C information; sign(MarginC) IS the context/prior label among these two classes.",
+   "all_eligible": {
+    "n_context_dependent": 24,
+    "n_prior_dependent": 10,
+    "identity_holds": "34/34",
+    "auc": {
+     "MarginB": 0.3625,
+     "MarginC": 1.0,
+     "F_raw": 0.8708333333333333,
+     "F": 0.8625
+    },
+    "mean_MarginB_context": 0.23005902282050647,
+    "mean_MarginB_prior": 0.3443952573619221
+   },
+   "both_correct_only": {
+    "n_context_dependent": 7,
+    "n_prior_dependent": 8,
+    "identity_holds": "15/15",
+    "auc": {
+     "MarginB": 0.48214285714285715,
+     "MarginC": 1.0,
+     "F_raw": 0.9821428571428571,
+     "F": 1.0
+    },
+    "mean_MarginB_context": 0.37816022876197053,
+    "mean_MarginB_prior": 0.3655688357616116
+   }
+  },
+  "qwen3_4b_sciq": {
+   "decomposition": "F_raw = 0.5*(MarginB + MarginC); MarginB = p(gold|B) - p(c|B) uses no Setting-C information; sign(MarginC) IS the context/prior label among these two classes.",
+   "all_eligible": {
+    "n_context_dependent": 334,
+    "n_prior_dependent": 518,
+    "identity_holds": "852/852",
+    "auc": {
+     "MarginB": 0.45502913092733455,
+     "MarginC": 1.0,
+     "F_raw": 0.9989480498462534,
+     "F": 0.9989480498462534
+    },
+    "mean_MarginB_context": 0.9940118523133489,
+    "mean_MarginB_prior": 0.9992025707370769
+   },
+   "both_correct_only": {
+    "n_context_dependent": 304,
+    "n_prior_dependent": 512,
+    "identity_holds": "816/816",
+    "auc": {
+     "MarginB": 0.46133583470394735,
+     "MarginC": 1.0,
+     "F_raw": 1.0,
+     "F": 1.0
+    },
+    "mean_MarginB_context": 0.9999998628787597,
+    "mean_MarginB_prior": 0.9999999996392193
+   }
+  }
+ }
+}

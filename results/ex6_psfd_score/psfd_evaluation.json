@@ -1,0 +1,1632 @@
+{
+ "what": "Evaluation of the P/S/F/D formulation against existing ground truth. Derived entirely from committed Setting-C runs.",
+ "primary_split": "sciq_test_full",
+ "pre_registered_criteria": {
+  "1_tier1_auc": 0.75,
+  "2_within_both_correct_auc": 0.7,
+  "3_max_spearman_vs_kda_cont": 0.9,
+  "4_min_categories_below_control": 3,
+  "5_component_margin_auc": 0.02
+ },
+ "evaluations": {
+  "sciq_test_full": {
+   "tag": "sciq_test_full",
+   "source_scores_file": "results/ex6_psfd_score/psfd_scores_sciq_test_full.json",
+   "n_eligible": 860,
+   "eligibility_rate": 0.9728506787330317,
+   "solvers": [
+    "Riiid/kda-albert-xlarge-v2-race",
+    "Riiid/kda-mpnet-base-race",
+    "Riiid/kda-scibert-uncased-race",
+    "google/t5-small-ssm-nq"
+   ],
+   "single_solver_run": false,
+   "tier1_setting_c_discrimination": {
+    "what": "AUC separating context_dependent (positive) from prior_dependent (negative), ensemble-level Setting-C class.",
+    "circularity_note": "F and the Setting-C class are both functions of Setting C. This is a calibration check, not independent validation.",
+    "ensemble_all": {
+     "D": {
+      "auc": 0.8240982647689609,
+      "n_positive": 669,
+      "n_negative": 115
+     },
+     "D_prime": {
+      "auc": 0.8574121011243258,
+      "n_positive": 669,
+      "n_negative": 115
+     },
+     "S": {
+      "auc": 0.4523558848378501,
+      "n_positive": 669,
+      "n_negative": 115
+     },
+     "F": {
+      "auc": 0.8987456944173653,
+      "n_positive": 669,
+      "n_negative": 115
+     },
+     "one_minus_P": {
+      "auc": 0.7094690322999935,
+      "n_positive": 669,
+      "n_negative": 115
+     },
+     "KDA_cont": {
+      "auc": 0.5494118411646195,
+      "n_positive": 669,
+      "n_negative": 115
+     }
+    },
+    "ensemble_ex_albert": {
+     "D": {
+      "auc": 0.8244232144017677,
+      "n_positive": 669,
+      "n_negative": 115
+     },
+     "D_prime": {
+      "auc": 0.8582179762136869,
+      "n_positive": 669,
+      "n_negative": 115
+     },
+     "S": {
+      "auc": 0.4463378176382661,
+      "n_positive": 669,
+      "n_negative": 115
+     },
+     "F": {
+      "auc": 0.8988496782998635,
+      "n_positive": 669,
+      "n_negative": 115
+     },
+     "one_minus_P": {
+      "auc": 0.7108988106843439,
+      "n_positive": 669,
+      "n_negative": 115
+     },
+     "KDA_cont": {
+      "auc": 0.5494118411646195,
+      "n_positive": 669,
+      "n_negative": 115
+     }
+    },
+    "per_solver_D": {
+     "Riiid/kda-albert-xlarge-v2-race": {
+      "auc": 0.7694950012817227,
+      "n_positive": 470,
+      "n_negative": 166
+     },
+     "Riiid/kda-mpnet-base-race": {
+      "auc": 0.9458878612273094,
+      "n_positive": 734,
+      "n_negative": 71
+     },
+     "Riiid/kda-scibert-uncased-race": {
+      "auc": 0.7831054713077185,
+      "n_positive": 534,
+      "n_negative": 143
+     },
+     "google/t5-small-ssm-nq": {
+      "auc": 0.7709981829904461,
+      "n_positive": 363,
+      "n_negative": 282
+     }
+    },
+    "per_solver_D_auc_spread": 0.17639285994558673
+   },
+   "tier2_ab_structure": {
+    "what": "Structure visible from Settings A and B alone; independent of how F is defined.",
+    "bucket_means": {
+     "both_correct": {
+      "n": 381,
+      "D": 0.12336584579928002,
+      "D_prime": 0.27262194304333043,
+      "KDA_cont": 0.4985451696647396
+     },
+     "both_wrong": {
+      "n": 82,
+      "D": 0.05990436171879432,
+      "D_prime": 0.08762551177790111,
+      "KDA_cont": 0.2611643356826154
+     },
+     "correct_to_wrong": {
+      "n": 9,
+      "D": 0.019864628097558328,
+      "D_prime": 0.033266179321571526,
+      "KDA_cont": 0.27675431056686955
+     },
+     "wrong_to_correct": {
+      "n": 388,
+      "D": 0.19716659160651112,
+      "D_prime": 0.2746017520081073,
+      "KDA_cont": 0.5053980644666539
+     }
+    },
+    "within_both_correct": {
+     "n": 381,
+     "note": "The bucket baseline KDA cannot see: correct in A and in B, so the ignorance weight is small and the item is credited anyway.",
+     "D": {
+      "auc": 0.7723303955728633,
+      "n_positive": 287,
+      "n_negative": 85
+     },
+     "D_prime": {
+      "auc": 0.889198606271777,
+      "n_positive": 287,
+      "n_negative": 85
+     },
+     "S": {
+      "auc": 0.5424472227915557,
+      "n_positive": 287,
+      "n_negative": 85
+     },
+     "F": {
+      "auc": 0.9120721459315434,
+      "n_positive": 287,
+      "n_negative": 85
+     },
+     "one_minus_P": {
+      "auc": 0.6250461160073786,
+      "n_positive": 287,
+      "n_negative": 85
+     },
+     "KDA_cont": {
+      "auc": 0.6169296987087518,
+      "n_positive": 287,
+      "n_negative": 85
+     }
+    },
+    "wrong_to_correct_vs_both_correct": {
+     "D": {
+      "auc": 0.7140528181400005,
+      "n_positive": 388,
+      "n_negative": 381
+     },
+     "D_prime": {
+      "auc": 0.49441242525096735,
+      "n_positive": 388,
+      "n_negative": 381
+     },
+     "S": {
+      "auc": 0.29704792055632223,
+      "n_positive": 388,
+      "n_negative": 381
+     },
+     "F": {
+      "auc": 0.5379630381253889,
+      "n_positive": 388,
+      "n_negative": 381
+     },
+     "one_minus_P": {
+      "auc": 0.9855575398436021,
+      "n_positive": 388,
+      "n_negative": 381
+     },
+     "KDA_cont": {
+      "auc": 0.5084287144519306,
+      "n_positive": 388,
+      "n_negative": 381
+     }
+    },
+    "rank_agreement_with_kda_cont": {
+     "n": 860,
+     "spearman_D": 0.7113366114767974,
+     "spearman_D_prime": 0.6526293616619465,
+     "spearman_S": 0.8437737709343879,
+     "spearman_F": 0.6052191512830162
+    },
+    "retention_vs_kda_cont": {
+     "mean_kda_cont": 0.4766818871818648,
+     "mean_D": 0.1495278652403153,
+     "mean_D_prime": 0.25337107867248443,
+     "mean_kda_adjusted_hard": 0.33572649233570956,
+     "mean_kda_adjusted_soft": 0.2640509261652858,
+     "note": "D and KDA_cont are not on a common scale; the ratio is descriptive only, and is NOT a retention figure comparable to hard/soft."
+    }
+   },
+   "tier3_manual_taxonomy": {
+    "caveat": "CORROBORATION ONLY -- not a validation gate. The five failure-category labels are single-annotator, single-pass, with no rubric written in advance and no measured inter-annotator agreement (no kappa); each item carries exactly one forced label. See docs/ex5_failure_audit/failure_taxonomy_methodology.md section 0. The flagged pool contains only failure cases, so the 'unflagged_eligible' row is a remainder, not a verified-clean control.",
+    "n_flagged_labels_joined": 322,
+    "rows": {
+     "common_knowledge": {
+      "n": 179,
+      "mean_D": 0.1134202819877347,
+      "mean_D_prime": 0.26649661232645017,
+      "mean_one_minus_P": 0.5751928889127149,
+      "mean_F": 0.3141740408256183,
+      "mean_KDA_cont": 0.48833394494103366,
+      "below_control_D": true,
+      "below_control_D_prime": false
+     },
+     "parametric_knowledge": {
+      "n": 48,
+      "mean_D": 0.1249030450549542,
+      "mean_D_prime": 0.24304369124159572,
+      "mean_one_minus_P": 0.6150904633417267,
+      "mean_F": 0.2918399961270315,
+      "mean_KDA_cont": 0.5188818629732197,
+      "below_control_D": true,
+      "below_control_D_prime": true
+     },
+     "reasoning_shortcut": {
+      "n": 42,
+      "mean_D": 0.11613174060583041,
+      "mean_D_prime": 0.270906887096282,
+      "mean_one_minus_P": 0.5703838718112647,
+      "mean_F": 0.31776284709613,
+      "mean_KDA_cont": 0.4992724484723405,
+      "below_control_D": true,
+      "below_control_D_prime": false
+     },
+     "option_leakage": {
+      "n": 45,
+      "mean_D": 0.10028173139785374,
+      "mean_D_prime": 0.22507072549164672,
+      "mean_one_minus_P": 0.578213607376907,
+      "mean_F": 0.26383939604871415,
+      "mean_KDA_cont": 0.49694282593526895,
+      "below_control_D": true,
+      "below_control_D_prime": true
+     },
+     "material_not_necessary": {
+      "n": 8,
+      "mean_D": 0.0952008488408107,
+      "mean_D_prime": 0.20842953615996562,
+      "mean_one_minus_P": 0.5669036288745701,
+      "mean_F": 0.2513482730304233,
+      "mean_KDA_cont": 0.49147811020619175,
+      "below_control_D": true,
+      "below_control_D_prime": true
+     },
+     "unflagged_eligible": {
+      "n": 538,
+      "mean_D": 0.17127243431069533,
+      "mean_D_prime": 0.25159187486590656,
+      "mean_one_minus_P": 0.7208710625818047,
+      "mean_F": 0.3132196632962357,
+      "mean_KDA_cont": 0.4653617519045898
+     }
+    },
+    "n_categories_below_control_D": 5,
+    "n_categories_below_control_D_prime": 3
+   },
+   "d_vs_d_prime": {
+    "ensemble_all": {
+     "mean_D": 0.1495278652403153,
+     "mean_D_prime": 0.25337107867248443,
+     "frac_D_zero": 0.0011627906976744186,
+     "gate_attenuation": 0.5901536435166691
+    },
+    "per_solver": {
+     "Riiid/kda-albert-xlarge-v2-race": {
+      "mean_D": 0.010871674267143396,
+      "mean_D_prime": 0.014377672624404068,
+      "frac_D_zero": 0.1686046511627907,
+      "frac_D_prime_zero": 0.1686046511627907,
+      "mean_one_minus_P": 0.7492295424085718,
+      "frac_one_minus_P_lt_0.01": 0.0
+     },
+     "Riiid/kda-mpnet-base-race": {
+      "mean_D": 0.37461643892207863,
+      "mean_D_prime": 0.6569678231992502,
+      "frac_D_zero": 0.06162790697674419,
+      "frac_D_prime_zero": 0.06162790697674419,
+      "mean_one_minus_P": 0.5902927379600358,
+      "frac_one_minus_P_lt_0.01": 0.0011627906976744186
+     },
+     "Riiid/kda-scibert-uncased-race": {
+      "mean_D": 0.07843474255174275,
+      "mean_D_prime": 0.1122584532352085,
+      "frac_D_zero": 0.11162790697674418,
+      "frac_D_prime_zero": 0.11162790697674418,
+      "mean_one_minus_P": 0.7183740215982461,
+      "frac_one_minus_P_lt_0.01": 0.0
+     },
+     "google/t5-small-ssm-nq": {
+      "mean_D": 0.1341886052202965,
+      "mean_D_prime": 0.2298803656310748,
+      "frac_D_zero": 0.06744186046511629,
+      "frac_D_prime_zero": 0.06627906976744186,
+      "mean_one_minus_P": 0.6157012096788221,
+      "frac_one_minus_P_lt_0.01": 0.11162790697674418
+     }
+    },
+    "ensemble_ex_albert": {
+     "mean_D": 0.19574659556470594,
+     "mean_D_prime": 0.3330355473551778,
+     "gate_attenuation": 0.5877648711053205
+    }
+   },
+   "term1_only_divergence_by_cf_class": {
+    "prior_dependent": {
+     "n_pairs": 662,
+     "n_F_raw_positive": 512,
+     "n_term1_only_positive": 12,
+     "rate_term1_only_of_pairs": 0.01812688821752266,
+     "rate_term1_only_of_F_positive": 0.0234375
+    },
+    "context_dependent": {
+     "n_pairs": 2101,
+     "n_F_raw_positive": 2063,
+     "n_term1_only_positive": 14,
+     "rate_term1_only_of_pairs": 0.006663493574488339,
+     "rate_term1_only_of_F_positive": 0.0067862336403296175
+    },
+    "unstable_other": {
+     "n_pairs": 677,
+     "n_F_raw_positive": 514,
+     "n_term1_only_positive": 48,
+     "rate_term1_only_of_pairs": 0.07090103397341212,
+     "rate_term1_only_of_F_positive": 0.0933852140077821
+    }
+   },
+   "pair_census": {
+    "Riiid/kda-albert-xlarge-v2-race": {
+     "near_uniform_B": 607,
+     "P_gt_0.99": 0,
+     "one_minus_P_lt_0.01": 0,
+     "gold_cf_tie_in_C": 51,
+     "F_raw_positive": 715,
+     "F_raw_negative": 143,
+     "term1_only_positive": 39
+    },
+    "Riiid/kda-mpnet-base-race": {
+     "near_uniform_B": 3,
+     "P_gt_0.99": 1,
+     "one_minus_P_lt_0.01": 1,
+     "gold_cf_tie_in_C": 0,
+     "F_raw_positive": 807,
+     "F_raw_negative": 51,
+     "term1_only_positive": 7
+    },
+    "Riiid/kda-scibert-uncased-race": {
+     "near_uniform_B": 15,
+     "P_gt_0.99": 0,
+     "one_minus_P_lt_0.01": 0,
+     "gold_cf_tie_in_C": 3,
+     "F_raw_positive": 764,
+     "F_raw_negative": 95,
+     "term1_only_positive": 21
+    },
+    "google/t5-small-ssm-nq": {
+     "near_uniform_B": 0,
+     "P_gt_0.99": 96,
+     "one_minus_P_lt_0.01": 96,
+     "gold_cf_tie_in_C": 18,
+     "F_raw_positive": 803,
+     "F_raw_negative": 55,
+     "term1_only_positive": 7
+    }
+   },
+   "verdict": {
+    "adjudicated_on": "sciq_test_full",
+    "criteria": {
+     "1_tier1_auc": {
+      "statement": "Tier-1 AUC(context vs prior) >= 0.75 AND > KDA_cont's",
+      "D_auc": 0.8240982647689609,
+      "kda_cont_auc": 0.5494118411646195,
+      "passed": true
+     },
+     "2_within_both_correct": {
+      "statement": "Within-both_correct AUC >= 0.7",
+      "auc": 0.7723303955728633,
+      "n": 381,
+      "passed": true
+     },
+     "3_not_a_repackaging": {
+      "statement": "Spearman(D, KDA_cont) < 0.9",
+      "spearman": 0.7113366114767974,
+      "passed": true
+     },
+     "4_taxonomy_ordering": {
+      "statement": "Mean D below the unflagged control on >= 3 of 5 categories (corroboration only, not a gate)",
+      "n_below_control": 5,
+      "passed": true,
+      "caveat": "CORROBORATION ONLY -- not a validation gate. The five failure-category labels are single-annotator, single-pass, with no rubric written in advance and no measured inter-annotator agreement (no kappa); each item carries exactly one forced label. See docs/ex5_failure_audit/failure_taxonomy_methodology.md section 0. The flagged pool contains only failure cases, so the 'unflagged_eligible' row is a remainder, not a verified-clean control."
+     },
+     "5_product_form_earns_itself": {
+      "statement": "D's Tier-1 AUC exceeds its best single component by >= 0.02",
+      "D_auc": 0.8240982647689609,
+      "best_component": "F",
+      "best_component_auc": 0.8987456944173653,
+      "margin": -0.07464742964840443,
+      "passed": false
+     }
+    },
+    "n_criteria_passed": 4,
+    "n_criteria_decided": 5,
+    "overall": "NEEDS ANOTHER ITERATION -- the product form is not justified; a single component matches or beats D"
+   }
+  },
+  "obqa_test_full": {
+   "tag": "obqa_test_full",
+   "source_scores_file": "results/ex6_psfd_score/psfd_scores_obqa_test_full.json",
+   "n_eligible": 145,
+   "eligibility_rate": 0.29,
+   "solvers": [
+    "Riiid/kda-albert-xlarge-v2-race",
+    "Riiid/kda-mpnet-base-race",
+    "Riiid/kda-scibert-uncased-race",
+    "google/t5-small-ssm-nq"
+   ],
+   "single_solver_run": false,
+   "tier1_setting_c_discrimination": {
+    "what": "AUC separating context_dependent (positive) from prior_dependent (negative), ensemble-level Setting-C class.",
+    "circularity_note": "F and the Setting-C class are both functions of Setting C. This is a calibration check, not independent validation.",
+    "ensemble_all": {
+     "D": {
+      "auc": 0.6550480769230769,
+      "n_positive": 96,
+      "n_negative": 26
+     },
+     "D_prime": {
+      "auc": 0.6354166666666666,
+      "n_positive": 96,
+      "n_negative": 26
+     },
+     "S": {
+      "auc": 0.2876602564102564,
+      "n_positive": 96,
+      "n_negative": 26
+     },
+     "F": {
+      "auc": 0.7568108974358975,
+      "n_positive": 96,
+      "n_negative": 26
+     },
+     "one_minus_P": {
+      "auc": 0.7548076923076923,
+      "n_positive": 96,
+      "n_negative": 26
+     },
+     "KDA_cont": {
+      "auc": 0.35496794871794873,
+      "n_positive": 96,
+      "n_negative": 26
+     }
+    },
+    "ensemble_ex_albert": {
+     "D": {
+      "auc": 0.640625,
+      "n_positive": 96,
+      "n_negative": 26
+     },
+     "D_prime": {
+      "auc": 0.6237980769230769,
+      "n_positive": 96,
+      "n_negative": 26
+     },
+     "S": {
+      "auc": 0.2844551282051282,
+      "n_positive": 96,
+      "n_negative": 26
+     },
+     "F": {
+      "auc": 0.7467948717948718,
+      "n_positive": 96,
+      "n_negative": 26
+     },
+     "one_minus_P": {
+      "auc": 0.7524038461538461,
+      "n_positive": 96,
+      "n_negative": 26
+     },
+     "KDA_cont": {
+      "auc": 0.35496794871794873,
+      "n_positive": 96,
+      "n_negative": 26
+     }
+    },
+    "per_solver_D": {
+     "Riiid/kda-albert-xlarge-v2-race": {
+      "auc": 0.7979166666666667,
+      "n_positive": 40,
+      "n_negative": 48
+     },
+     "Riiid/kda-mpnet-base-race": {
+      "auc": 0.9181159420289855,
+      "n_positive": 46,
+      "n_negative": 45
+     },
+     "Riiid/kda-scibert-uncased-race": {
+      "auc": 0.7434982151963284,
+      "n_positive": 37,
+      "n_negative": 53
+     },
+     "google/t5-small-ssm-nq": {
+      "auc": 0.6461584633853541,
+      "n_positive": 98,
+      "n_negative": 17
+     }
+    },
+    "per_solver_D_auc_spread": 0.2719574786436314
+   },
+   "tier2_ab_structure": {
+    "what": "Structure visible from Settings A and B alone; independent of how F is defined.",
+    "bucket_means": {
+     "both_correct": {
+      "n": 41,
+      "D": 0.058654925559967486,
+      "D_prime": 0.15294446912899834,
+      "KDA_cont": 0.38254237613249137
+     },
+     "both_wrong": {
+      "n": 59,
+      "D": 0.016866661011086075,
+      "D_prime": 0.024847051771626053,
+      "KDA_cont": 0.20327167642659838
+     },
+     "correct_to_wrong": {
+      "n": 12,
+      "D": 0.005827769350240187,
+      "D_prime": 0.01564337678995374,
+      "KDA_cont": 0.2010485313168008
+     },
+     "wrong_to_correct": {
+      "n": 33,
+      "D": 0.1121188704963764,
+      "D_prime": 0.14513617273664375,
+      "KDA_cont": 0.42719844583973504
+     }
+    },
+    "within_both_correct": {
+     "n": 41,
+     "note": "The bucket baseline KDA cannot see: correct in A and in B, so the ignorance weight is small and the item is credited anyway.",
+     "D": {
+      "auc": 0.8074866310160428,
+      "n_positive": 22,
+      "n_negative": 17
+     },
+     "D_prime": {
+      "auc": 0.9598930481283422,
+      "n_positive": 22,
+      "n_negative": 17
+     },
+     "S": {
+      "auc": 0.5882352941176471,
+      "n_positive": 22,
+      "n_negative": 17
+     },
+     "F": {
+      "auc": 0.9705882352941176,
+      "n_positive": 22,
+      "n_negative": 17
+     },
+     "one_minus_P": {
+      "auc": 0.5267379679144385,
+      "n_positive": 22,
+      "n_negative": 17
+     },
+     "KDA_cont": {
+      "auc": 0.6122994652406417,
+      "n_positive": 22,
+      "n_negative": 17
+     }
+    },
+    "wrong_to_correct_vs_both_correct": {
+     "D": {
+      "auc": 0.6925351071692535,
+      "n_positive": 33,
+      "n_negative": 41
+     },
+     "D_prime": {
+      "auc": 0.47745750184774577,
+      "n_positive": 33,
+      "n_negative": 41
+     },
+     "S": {
+      "auc": 0.3392461197339246,
+      "n_positive": 33,
+      "n_negative": 41
+     },
+     "F": {
+      "auc": 0.5195861049519586,
+      "n_positive": 33,
+      "n_negative": 41
+     },
+     "one_minus_P": {
+      "auc": 0.9859571322985957,
+      "n_positive": 33,
+      "n_negative": 41
+     },
+     "KDA_cont": {
+      "auc": 0.5898004434589801,
+      "n_positive": 33,
+      "n_negative": 41
+     }
+    },
+    "rank_agreement_with_kda_cont": {
+     "n": 145,
+     "spearman_D": 0.7716934341048654,
+     "spearman_D_prime": 0.7284915761297434,
+     "spearman_S": 0.894189891355692,
+     "spearman_F": 0.5956502912927099
+    },
+    "retention_vs_kda_cont": {
+     "mean_kda_cont": 0.3047406718559608,
+     "mean_D": 0.04944717866342103,
+     "mean_D_prime": 0.0876821621420935,
+     "mean_kda_adjusted_hard": 0.12752792400940358,
+     "mean_kda_adjusted_soft": 0.11448716241513311,
+     "note": "D and KDA_cont are not on a common scale; the ratio is descriptive only, and is NOT a retention figure comparable to hard/soft."
+    }
+   },
+   "tier3_manual_taxonomy": {
+    "caveat": "CORROBORATION ONLY -- not a validation gate. The five failure-category labels are single-annotator, single-pass, with no rubric written in advance and no measured inter-annotator agreement (no kappa); each item carries exactly one forced label. See docs/ex5_failure_audit/failure_taxonomy_methodology.md section 0. The flagged pool contains only failure cases, so the 'unflagged_eligible' row is a remainder, not a verified-clean control.",
+    "n_flagged_labels_joined": 49,
+    "rows": {
+     "common_knowledge": {
+      "n": 33,
+      "mean_D": 0.045860597489513204,
+      "mean_D_prime": 0.09080231808057891,
+      "mean_one_minus_P": 0.6071650966559375,
+      "mean_F": 0.13796452275252857,
+      "mean_KDA_cont": 0.34371148271337637,
+      "below_control_D": true,
+      "below_control_D_prime": false
+     },
+     "parametric_knowledge": {
+      "n": 0,
+      "mean_D": null,
+      "mean_D_prime": null,
+      "mean_one_minus_P": null,
+      "mean_F": null,
+      "mean_KDA_cont": null,
+      "below_control_D": null,
+      "below_control_D_prime": null
+     },
+     "reasoning_shortcut": {
+      "n": 8,
+      "mean_D": 0.007406327125200971,
+      "mean_D_prime": 0.020465457449714952,
+      "mean_one_minus_P": 0.647024605865397,
+      "mean_F": 0.032886960631115514,
+      "mean_KDA_cont": 0.28995985575843686,
+      "below_control_D": true,
+      "below_control_D_prime": true
+     },
+     "option_leakage": {
+      "n": 4,
+      "mean_D": 0.0779574426960627,
+      "mean_D_prime": 0.16460039130518758,
+      "mean_one_minus_P": 0.6388410187999316,
+      "mean_F": 0.2775240157577752,
+      "mean_KDA_cont": 0.3450912324765907,
+      "below_control_D": false,
+      "below_control_D_prime": false
+     },
+     "material_not_necessary": {
+      "n": 4,
+      "mean_D": 0.055567259290306203,
+      "mean_D_prime": 0.1506528850070524,
+      "mean_one_minus_P": 0.5479185844305903,
+      "mean_F": 0.1962428257829032,
+      "mean_KDA_cont": 0.35184812938821414,
+      "below_control_D": false,
+      "below_control_D_prime": false
+     },
+     "unflagged_eligible": {
+      "n": 96,
+      "mean_D": 0.05274053920932323,
+      "mean_D_prime": 0.08638229426143514,
+      "mean_one_minus_P": 0.762837446042194,
+      "mean_F": 0.14493296508188006,
+      "mean_KDA_cont": 0.28893210620881443
+     }
+    },
+    "n_categories_below_control_D": 2,
+    "n_categories_below_control_D_prime": 1
+   },
+   "d_vs_d_prime": {
+    "ensemble_all": {
+     "mean_D": 0.04944717866342103,
+     "mean_D_prime": 0.0876821621420935,
+     "frac_D_zero": 0.006896551724137931,
+     "gate_attenuation": 0.5639365802053251
+    },
+    "per_solver": {
+     "Riiid/kda-albert-xlarge-v2-race": {
+      "mean_D": 0.006841136160491443,
+      "mean_D_prime": 0.009326183162393661,
+      "frac_D_zero": 0.3724137931034483,
+      "frac_D_prime_zero": 0.3724137931034483,
+      "mean_one_minus_P": 0.7469338811677078,
+      "frac_one_minus_P_lt_0.01": 0.0
+     },
+     "Riiid/kda-mpnet-base-race": {
+      "mean_D": 0.07277178455027368,
+      "mean_D_prime": 0.13796070902704782,
+      "frac_D_zero": 0.32413793103448274,
+      "frac_D_prime_zero": 0.32413793103448274,
+      "mean_one_minus_P": 0.5994429690305721,
+      "frac_one_minus_P_lt_0.01": 0.006896551724137931
+     },
+     "Riiid/kda-scibert-uncased-race": {
+      "mean_D": 0.00824648703549691,
+      "mean_D_prime": 0.012233531336852722,
+      "frac_D_zero": 0.43448275862068964,
+      "frac_D_prime_zero": 0.43448275862068964,
+      "mean_one_minus_P": 0.7128430666080836,
+      "frac_one_minus_P_lt_0.01": 0.0
+     },
+     "google/t5-small-ssm-nq": {
+      "mean_D": 0.10992930690742207,
+      "mean_D_prime": 0.19120822504207977,
+      "frac_D_zero": 0.06896551724137931,
+      "frac_D_prime_zero": 0.06896551724137931,
+      "mean_one_minus_P": 0.7874581044223761,
+      "frac_one_minus_P_lt_0.01": 0.041379310344827586
+     }
+    },
+    "ensemble_ex_albert": {
+     "mean_D": 0.06364919283106422,
+     "mean_D_prime": 0.11380082180199345,
+     "gate_attenuation": 0.5593034551350602
+    }
+   },
+   "term1_only_divergence_by_cf_class": {
+    "prior_dependent": {
+     "n_pairs": 163,
+     "n_F_raw_positive": 78,
+     "n_term1_only_positive": 10,
+     "rate_term1_only_of_pairs": 0.06134969325153374,
+     "rate_term1_only_of_F_positive": 0.1282051282051282
+    },
+    "context_dependent": {
+     "n_pairs": 221,
+     "n_F_raw_positive": 204,
+     "n_term1_only_positive": 2,
+     "rate_term1_only_of_pairs": 0.00904977375565611,
+     "rate_term1_only_of_F_positive": 0.00980392156862745
+    },
+    "unstable_other": {
+     "n_pairs": 196,
+     "n_F_raw_positive": 124,
+     "n_term1_only_positive": 27,
+     "rate_term1_only_of_pairs": 0.1377551020408163,
+     "rate_term1_only_of_F_positive": 0.21774193548387097
+    }
+   },
+   "pair_census": {
+    "Riiid/kda-albert-xlarge-v2-race": {
+     "near_uniform_B": 78,
+     "P_gt_0.99": 0,
+     "one_minus_P_lt_0.01": 0,
+     "gold_cf_tie_in_C": 2,
+     "F_raw_positive": 91,
+     "F_raw_negative": 54,
+     "term1_only_positive": 11
+    },
+    "Riiid/kda-mpnet-base-race": {
+     "near_uniform_B": 0,
+     "P_gt_0.99": 1,
+     "one_minus_P_lt_0.01": 1,
+     "gold_cf_tie_in_C": 0,
+     "F_raw_positive": 98,
+     "F_raw_negative": 47,
+     "term1_only_positive": 14
+    },
+    "Riiid/kda-scibert-uncased-race": {
+     "near_uniform_B": 7,
+     "P_gt_0.99": 0,
+     "one_minus_P_lt_0.01": 0,
+     "gold_cf_tie_in_C": 1,
+     "F_raw_positive": 82,
+     "F_raw_negative": 63,
+     "term1_only_positive": 11
+    },
+    "google/t5-small-ssm-nq": {
+     "near_uniform_B": 0,
+     "P_gt_0.99": 6,
+     "one_minus_P_lt_0.01": 6,
+     "gold_cf_tie_in_C": 3,
+     "F_raw_positive": 135,
+     "F_raw_negative": 10,
+     "term1_only_positive": 3
+    }
+   },
+   "verdict": {
+    "adjudicated_on": "obqa_test_full",
+    "criteria": {
+     "1_tier1_auc": {
+      "statement": "Tier-1 AUC(context vs prior) >= 0.75 AND > KDA_cont's",
+      "D_auc": 0.6550480769230769,
+      "kda_cont_auc": 0.35496794871794873,
+      "passed": false
+     },
+     "2_within_both_correct": {
+      "statement": "Within-both_correct AUC >= 0.7",
+      "auc": 0.8074866310160428,
+      "n": 41,
+      "passed": true
+     },
+     "3_not_a_repackaging": {
+      "statement": "Spearman(D, KDA_cont) < 0.9",
+      "spearman": 0.7716934341048654,
+      "passed": true
+     },
+     "4_taxonomy_ordering": {
+      "statement": "Mean D below the unflagged control on >= 3 of 5 categories (corroboration only, not a gate)",
+      "n_below_control": 2,
+      "passed": false,
+      "caveat": "CORROBORATION ONLY -- not a validation gate. The five failure-category labels are single-annotator, single-pass, with no rubric written in advance and no measured inter-annotator agreement (no kappa); each item carries exactly one forced label. See docs/ex5_failure_audit/failure_taxonomy_methodology.md section 0. The flagged pool contains only failure cases, so the 'unflagged_eligible' row is a remainder, not a verified-clean control."
+     },
+     "5_product_form_earns_itself": {
+      "statement": "D's Tier-1 AUC exceeds its best single component by >= 0.02",
+      "D_auc": 0.6550480769230769,
+      "best_component": "F",
+      "best_component_auc": 0.7568108974358975,
+      "margin": -0.1017628205128206,
+      "passed": false
+     }
+    },
+    "n_criteria_passed": 2,
+    "n_criteria_decided": 5,
+    "overall": "NEEDS ANOTHER ITERATION -- the product form is not justified; a single component matches or beats D (per-solver AUC spread 0.272 > 0.2: the kappa = 0.046 solver-dependence dominates)"
+   }
+  },
+  "obqa_test_exact_tier": {
+   "tag": "obqa_test_exact_tier",
+   "source_scores_file": "results/ex6_psfd_score/psfd_scores_obqa_test_exact_tier.json",
+   "n_eligible": 42,
+   "eligibility_rate": 0.084,
+   "solvers": [
+    "Riiid/kda-albert-xlarge-v2-race",
+    "Riiid/kda-mpnet-base-race",
+    "Riiid/kda-scibert-uncased-race",
+    "google/t5-small-ssm-nq"
+   ],
+   "single_solver_run": false,
+   "tier1_setting_c_discrimination": {
+    "what": "AUC separating context_dependent (positive) from prior_dependent (negative), ensemble-level Setting-C class.",
+    "circularity_note": "F and the Setting-C class are both functions of Setting C. This is a calibration check, not independent validation.",
+    "ensemble_all": {
+     "D": {
+      "auc": 0.7833333333333333,
+      "n_positive": 24,
+      "n_negative": 10
+     },
+     "D_prime": {
+      "auc": 0.8083333333333333,
+      "n_positive": 24,
+      "n_negative": 10
+     },
+     "S": {
+      "auc": 0.3958333333333333,
+      "n_positive": 24,
+      "n_negative": 10
+     },
+     "F": {
+      "auc": 0.8625,
+      "n_positive": 24,
+      "n_negative": 10
+     },
+     "one_minus_P": {
+      "auc": 0.7958333333333333,
+      "n_positive": 24,
+      "n_negative": 10
+     },
+     "KDA_cont": {
+      "auc": 0.5791666666666667,
+      "n_positive": 24,
+      "n_negative": 10
+     }
+    },
+    "ensemble_ex_albert": {
+     "D": {
+      "auc": 0.7666666666666667,
+      "n_positive": 24,
+      "n_negative": 10
+     },
+     "D_prime": {
+      "auc": 0.7916666666666666,
+      "n_positive": 24,
+      "n_negative": 10
+     },
+     "S": {
+      "auc": 0.4,
+      "n_positive": 24,
+      "n_negative": 10
+     },
+     "F": {
+      "auc": 0.8416666666666667,
+      "n_positive": 24,
+      "n_negative": 10
+     },
+     "one_minus_P": {
+      "auc": 0.7916666666666666,
+      "n_positive": 24,
+      "n_negative": 10
+     },
+     "KDA_cont": {
+      "auc": 0.5791666666666667,
+      "n_positive": 24,
+      "n_negative": 10
+     }
+    },
+    "per_solver_D": {
+     "Riiid/kda-albert-xlarge-v2-race": {
+      "auc": 0.7857142857142857,
+      "n_positive": 9,
+      "n_negative": 14
+     },
+     "Riiid/kda-mpnet-base-race": {
+      "auc": 0.925,
+      "n_positive": 20,
+      "n_negative": 8
+     },
+     "Riiid/kda-scibert-uncased-race": {
+      "auc": 0.658974358974359,
+      "n_positive": 13,
+      "n_negative": 15
+     },
+     "google/t5-small-ssm-nq": {
+      "auc": 0.797979797979798,
+      "n_positive": 22,
+      "n_negative": 9
+     }
+    },
+    "per_solver_D_auc_spread": 0.2660256410256411
+   },
+   "tier2_ab_structure": {
+    "what": "Structure visible from Settings A and B alone; independent of how F is defined.",
+    "bucket_means": {
+     "both_correct": {
+      "n": 16,
+      "D": 0.06823676990179038,
+      "D_prime": 0.16826694182054652,
+      "KDA_cont": 0.39261670929117765
+     },
+     "both_wrong": {
+      "n": 8,
+      "D": 0.042765148152887136,
+      "D_prime": 0.05382241111091828,
+      "KDA_cont": 0.25577200186988946
+     },
+     "correct_to_wrong": {
+      "n": 4,
+      "D": 0.004433948023144563,
+      "D_prime": 0.014268301216735531,
+      "KDA_cont": 0.20176575118420792
+     },
+     "wrong_to_correct": {
+      "n": 14,
+      "D": 0.16761733260446168,
+      "D_prime": 0.20915673736482956,
+      "KDA_cont": 0.4909681056364124
+     }
+    },
+    "within_both_correct": {
+     "n": 16,
+     "note": "The bucket baseline KDA cannot see: correct in A and in B, so the ignorance weight is small and the item is credited anyway.",
+     "D": {
+      "auc": 0.8035714285714286,
+      "n_positive": 7,
+      "n_negative": 8
+     },
+     "D_prime": {
+      "auc": 1.0,
+      "n_positive": 7,
+      "n_negative": 8
+     },
+     "S": {
+      "auc": 0.6071428571428571,
+      "n_positive": 7,
+      "n_negative": 8
+     },
+     "F": {
+      "auc": 1.0,
+      "n_positive": 7,
+      "n_negative": 8
+     },
+     "one_minus_P": {
+      "auc": 0.6964285714285714,
+      "n_positive": 7,
+      "n_negative": 8
+     },
+     "KDA_cont": {
+      "auc": 0.6428571428571429,
+      "n_positive": 7,
+      "n_negative": 8
+     }
+    },
+    "wrong_to_correct_vs_both_correct": {
+     "D": {
+      "auc": 0.8258928571428571,
+      "n_positive": 14,
+      "n_negative": 16
+     },
+     "D_prime": {
+      "auc": 0.6026785714285714,
+      "n_positive": 14,
+      "n_negative": 16
+     },
+     "S": {
+      "auc": 0.42410714285714285,
+      "n_positive": 14,
+      "n_negative": 16
+     },
+     "F": {
+      "auc": 0.6428571428571429,
+      "n_positive": 14,
+      "n_negative": 16
+     },
+     "one_minus_P": {
+      "auc": 1.0,
+      "n_positive": 14,
+      "n_negative": 16
+     },
+     "KDA_cont": {
+      "auc": 0.6919642857142857,
+      "n_positive": 14,
+      "n_negative": 16
+     }
+    },
+    "rank_agreement_with_kda_cont": {
+     "n": 42,
+     "spearman_D": 0.8510655538449072,
+     "spearman_D_prime": 0.7880236609675066,
+     "spearman_S": 0.845393404100154,
+     "spearman_F": 0.7794344056397374
+    },
+    "retention_vs_kda_cont": {
+     "mean_kda_cont": 0.3811585677920134,
+     "mean_D": 0.09043542743349489,
+     "mean_D_prime": 0.14543137823787256,
+     "mean_kda_adjusted_hard": 0.19022485107417741,
+     "mean_kda_adjusted_soft": 0.1734420146170009,
+     "note": "D and KDA_cont are not on a common scale; the ratio is descriptive only, and is NOT a retention figure comparable to hard/soft."
+    }
+   },
+   "tier3_manual_taxonomy": {
+    "caveat": "CORROBORATION ONLY -- not a validation gate. The five failure-category labels are single-annotator, single-pass, with no rubric written in advance and no measured inter-annotator agreement (no kappa); each item carries exactly one forced label. See docs/ex5_failure_audit/failure_taxonomy_methodology.md section 0. The flagged pool contains only failure cases, so the 'unflagged_eligible' row is a remainder, not a verified-clean control.",
+    "n_flagged_labels_joined": 15,
+    "rows": {
+     "common_knowledge": {
+      "n": 11,
+      "mean_D": 0.07024534825685239,
+      "mean_D_prime": 0.12303954234752525,
+      "mean_one_minus_P": 0.5826641140736513,
+      "mean_F": 0.15022192451539917,
+      "mean_KDA_cont": 0.4040091323971986,
+      "below_control_D": true,
+      "below_control_D_prime": true
+     },
+     "parametric_knowledge": {
+      "n": 0,
+      "mean_D": null,
+      "mean_D_prime": null,
+      "mean_one_minus_P": null,
+      "mean_F": null,
+      "mean_KDA_cont": null,
+      "below_control_D": null,
+      "below_control_D_prime": null
+     },
+     "reasoning_shortcut": {
+      "n": 1,
+      "mean_D": 0.0011189959335186263,
+      "mean_D_prime": 0.008571773304735842,
+      "mean_one_minus_P": 0.5919555090367794,
+      "mean_F": 0.011953805515076965,
+      "mean_KDA_cont": 0.27597814591538494,
+      "below_control_D": true,
+      "below_control_D_prime": true
+     },
+     "option_leakage": {
+      "n": 1,
+      "mean_D": 0.18211352775239734,
+      "mean_D_prime": 0.35180146926454514,
+      "mean_one_minus_P": 0.613163948059082,
+      "mean_F": 0.42925453897430543,
+      "mean_KDA_cont": 0.5450781233842816,
+      "below_control_D": false,
+      "below_control_D_prime": false
+     },
+     "material_not_necessary": {
+      "n": 2,
+      "mean_D": 0.06627117263563272,
+      "mean_D_prime": 0.12404028126576444,
+      "mean_one_minus_P": 0.6031577312387526,
+      "mean_F": 0.15889458383963984,
+      "mean_KDA_cont": 0.3614592550932239,
+      "below_control_D": true,
+      "below_control_D_prime": true
+     },
+     "unflagged_eligible": {
+      "n": 27,
+      "mean_D": 0.10036349083052694,
+      "mean_D_prime": 0.15356404129877996,
+      "mean_one_minus_P": 0.7383439754225184,
+      "mean_F": 0.21558770853739143,
+      "mean_KDA_cont": 0.3711327633855283
+     }
+    },
+    "n_categories_below_control_D": 3,
+    "n_categories_below_control_D_prime": 3
+   },
+   "d_vs_d_prime": {
+    "ensemble_all": {
+     "mean_D": 0.09043542743349489,
+     "mean_D_prime": 0.14543137823787256,
+     "frac_D_zero": 0.023809523809523808,
+     "gate_attenuation": 0.6218426073469207
+    },
+    "per_solver": {
+     "Riiid/kda-albert-xlarge-v2-race": {
+      "mean_D": 0.012927024835680903,
+      "mean_D_prime": 0.017870207793210652,
+      "frac_D_zero": 0.40476190476190477,
+      "frac_D_prime_zero": 0.40476190476190477,
+      "mean_one_minus_P": 0.7422664374822662,
+      "frac_one_minus_P_lt_0.01": 0.0
+     },
+     "Riiid/kda-mpnet-base-race": {
+      "mean_D": 0.12182908671747728,
+      "mean_D_prime": 0.20577134639930145,
+      "frac_D_zero": 0.35714285714285715,
+      "frac_D_prime_zero": 0.35714285714285715,
+      "mean_one_minus_P": 0.6217150093344528,
+      "frac_one_minus_P_lt_0.01": 0.023809523809523808
+     },
+     "Riiid/kda-scibert-uncased-race": {
+      "mean_D": 0.016271436716933367,
+      "mean_D_prime": 0.0231814645329085,
+      "frac_D_zero": 0.3333333333333333,
+      "frac_D_prime_zero": 0.3333333333333333,
+      "mean_one_minus_P": 0.7200024218431541,
+      "frac_one_minus_P_lt_0.01": 0.0
+     },
+     "google/t5-small-ssm-nq": {
+      "mean_D": 0.21071416146388802,
+      "mean_D_prime": 0.3349024942260696,
+      "frac_D_zero": 0.07142857142857142,
+      "frac_D_prime_zero": 0.07142857142857142,
+      "mean_one_minus_P": 0.6546854180821771,
+      "frac_one_minus_P_lt_0.01": 0.07142857142857142
+     }
+    },
+    "ensemble_ex_albert": {
+     "mean_D": 0.11627156163276622,
+     "mean_D_prime": 0.18795176838609318,
+     "gate_attenuation": 0.6186244621754212
+    }
+   },
+   "term1_only_divergence_by_cf_class": {
+    "context_dependent": {
+     "n_pairs": 64,
+     "n_F_raw_positive": 55,
+     "n_term1_only_positive": 0,
+     "rate_term1_only_of_pairs": 0.0,
+     "rate_term1_only_of_F_positive": 0.0
+    },
+    "unstable_other": {
+     "n_pairs": 58,
+     "n_F_raw_positive": 40,
+     "n_term1_only_positive": 7,
+     "rate_term1_only_of_pairs": 0.1206896551724138,
+     "rate_term1_only_of_F_positive": 0.175
+    },
+    "prior_dependent": {
+     "n_pairs": 46,
+     "n_F_raw_positive": 24,
+     "n_term1_only_positive": 3,
+     "rate_term1_only_of_pairs": 0.06521739130434782,
+     "rate_term1_only_of_F_positive": 0.125
+    }
+   },
+   "pair_census": {
+    "Riiid/kda-albert-xlarge-v2-race": {
+     "near_uniform_B": 24,
+     "P_gt_0.99": 0,
+     "one_minus_P_lt_0.01": 0,
+     "gold_cf_tie_in_C": 2,
+     "F_raw_positive": 25,
+     "F_raw_negative": 17,
+     "term1_only_positive": 4
+    },
+    "Riiid/kda-mpnet-base-race": {
+     "near_uniform_B": 0,
+     "P_gt_0.99": 1,
+     "one_minus_P_lt_0.01": 1,
+     "gold_cf_tie_in_C": 0,
+     "F_raw_positive": 27,
+     "F_raw_negative": 15,
+     "term1_only_positive": 0
+    },
+    "Riiid/kda-scibert-uncased-race": {
+     "near_uniform_B": 1,
+     "P_gt_0.99": 0,
+     "one_minus_P_lt_0.01": 0,
+     "gold_cf_tie_in_C": 0,
+     "F_raw_positive": 28,
+     "F_raw_negative": 14,
+     "term1_only_positive": 6
+    },
+    "google/t5-small-ssm-nq": {
+     "near_uniform_B": 0,
+     "P_gt_0.99": 3,
+     "one_minus_P_lt_0.01": 3,
+     "gold_cf_tie_in_C": 0,
+     "F_raw_positive": 39,
+     "F_raw_negative": 3,
+     "term1_only_positive": 0
+    }
+   },
+   "verdict": {
+    "adjudicated_on": "obqa_test_exact_tier",
+    "criteria": {
+     "1_tier1_auc": {
+      "statement": "Tier-1 AUC(context vs prior) >= 0.75 AND > KDA_cont's",
+      "D_auc": 0.7833333333333333,
+      "kda_cont_auc": 0.5791666666666667,
+      "passed": true
+     },
+     "2_within_both_correct": {
+      "statement": "Within-both_correct AUC >= 0.7",
+      "auc": 0.8035714285714286,
+      "n": 16,
+      "passed": true
+     },
+     "3_not_a_repackaging": {
+      "statement": "Spearman(D, KDA_cont) < 0.9",
+      "spearman": 0.8510655538449072,
+      "passed": true
+     },
+     "4_taxonomy_ordering": {
+      "statement": "Mean D below the unflagged control on >= 3 of 5 categories (corroboration only, not a gate)",
+      "n_below_control": 3,
+      "passed": true,
+      "caveat": "CORROBORATION ONLY -- not a validation gate. The five failure-category labels are single-annotator, single-pass, with no rubric written in advance and no measured inter-annotator agreement (no kappa); each item carries exactly one forced label. See docs/ex5_failure_audit/failure_taxonomy_methodology.md section 0. The flagged pool contains only failure cases, so the 'unflagged_eligible' row is a remainder, not a verified-clean control."
+     },
+     "5_product_form_earns_itself": {
+      "statement": "D's Tier-1 AUC exceeds its best single component by >= 0.02",
+      "D_auc": 0.7833333333333333,
+      "best_component": "F",
+      "best_component_auc": 0.8625,
+      "margin": -0.07916666666666672,
+      "passed": false
+     }
+    },
+    "n_criteria_passed": 4,
+    "n_criteria_decided": 5,
+    "overall": "NEEDS ANOTHER ITERATION -- the product form is not justified; a single component matches or beats D (per-solver AUC spread 0.266 > 0.2: the kappa = 0.046 solver-dependence dominates)"
+   }
+  },
+  "qwen3_4b_sciq": {
+   "tag": "qwen3_4b_sciq",
+   "source_scores_file": "results/ex6_psfd_score/psfd_scores_qwen3_4b_sciq.json",
+   "n_eligible": 860,
+   "eligibility_rate": 0.9728506787330317,
+   "solvers": [
+    "Qwen3-4B-Instruct-2507"
+   ],
+   "single_solver_run": true,
+   "tier1_setting_c_discrimination": {
+    "what": "AUC separating context_dependent (positive) from prior_dependent (negative), ensemble-level Setting-C class.",
+    "circularity_note": "F and the Setting-C class are both functions of Setting C. This is a calibration check, not independent validation.",
+    "ensemble_all": {
+     "D": {
+      "auc": 0.5995826879060412,
+      "n_positive": 334,
+      "n_negative": 518
+     },
+     "D_prime": {
+      "auc": 0.9970233278616513,
+      "n_positive": 334,
+      "n_negative": 518
+     },
+     "S": {
+      "auc": 0.4944425820174323,
+      "n_positive": 334,
+      "n_negative": 518
+     },
+     "F": {
+      "auc": 0.9989480498462534,
+      "n_positive": 334,
+      "n_negative": 518
+     },
+     "one_minus_P": {
+      "auc": 0.5958401729359813,
+      "n_positive": 334,
+      "n_negative": 518
+     },
+     "KDA_cont": {
+      "auc": null,
+      "n_positive": 0,
+      "n_negative": 0
+     }
+    },
+    "ensemble_ex_albert": {
+     "D": {
+      "auc": 0.5995826879060412,
+      "n_positive": 334,
+      "n_negative": 518
+     },
+     "D_prime": {
+      "auc": 0.9970233278616513,
+      "n_positive": 334,
+      "n_negative": 518
+     },
+     "S": {
+      "auc": 0.4944425820174323,
+      "n_positive": 334,
+      "n_negative": 518
+     },
+     "F": {
+      "auc": 0.9989480498462534,
+      "n_positive": 334,
+      "n_negative": 518
+     },
+     "one_minus_P": {
+      "auc": 0.5958401729359813,
+      "n_positive": 334,
+      "n_negative": 518
+     },
+     "KDA_cont": {
+      "auc": null,
+      "n_positive": 0,
+      "n_negative": 0
+     }
+    },
+    "per_solver_D": {
+     "Qwen3-4B-Instruct-2507": {
+      "auc": 0.5995826879060412,
+      "n_positive": 334,
+      "n_negative": 518
+     }
+    },
+    "per_solver_D_auc_spread": null
+   },
+   "tier2_ab_structure": {
+    "what": "Structure visible from Settings A and B alone; independent of how F is defined.",
+    "bucket_means": {
+     "both_correct": {
+      "n": 819,
+      "D": 0.0006599597936156338,
+      "D_prime": 0.37245837800335235,
+      "KDA_cont": null
+     },
+     "both_wrong": {
+      "n": 2,
+      "D": 8.459248221990474e-17,
+      "D_prime": 8.45924854521623e-17,
+      "KDA_cont": null
+     },
+     "wrong_to_correct": {
+      "n": 39,
+      "D": 0.7708486255242295,
+      "D_prime": 0.7922940115139994,
+      "KDA_cont": null
+     }
+    },
+    "within_both_correct": {
+     "n": 819,
+     "note": "The bucket baseline KDA cannot see: correct in A and in B, so the ignorance weight is small and the item is credited anyway.",
+     "D": {
+      "auc": 0.5646555047286185,
+      "n_positive": 304,
+      "n_negative": 512
+     },
+     "D_prime": {
+      "auc": 1.0,
+      "n_positive": 304,
+      "n_negative": 512
+     },
+     "S": {
+      "auc": 0.49438797800164475,
+      "n_positive": 304,
+      "n_negative": 512
+     },
+     "F": {
+      "auc": 1.0,
+      "n_positive": 304,
+      "n_negative": 512
+     },
+     "one_minus_P": {
+      "auc": 0.5629722193667763,
+      "n_positive": 304,
+      "n_negative": 512
+     },
+     "KDA_cont": {
+      "auc": null,
+      "n_positive": 0,
+      "n_negative": 0
+     }
+    },
+    "wrong_to_correct_vs_both_correct": {
+     "D": {
+      "auc": 0.9807144422529038,
+      "n_positive": 39,
+      "n_negative": 819
+     },
+     "D_prime": {
+      "auc": 0.7614977614977615,
+      "n_positive": 39,
+      "n_negative": 819
+     },
+     "S": {
+      "auc": 0.46451269528192607,
+      "n_positive": 39,
+      "n_negative": 819
+     },
+     "F": {
+      "auc": 0.7614664537741461,
+      "n_positive": 39,
+      "n_negative": 819
+     },
+     "one_minus_P": {
+      "auc": 1.0,
+      "n_positive": 39,
+      "n_negative": 819
+     },
+     "KDA_cont": {
+      "auc": null,
+      "n_positive": 39,
+      "n_negative": 819
+     }
+    }
+   },
+   "tier3_manual_taxonomy": {
+    "caveat": "CORROBORATION ONLY -- not a validation gate. The five failure-category labels are single-annotator, single-pass, with no rubric written in advance and no measured inter-annotator agreement (no kappa); each item carries exactly one forced label. See docs/ex5_failure_audit/failure_taxonomy_methodology.md section 0. The flagged pool contains only failure cases, so the 'unflagged_eligible' row is a remainder, not a verified-clean control.",
+    "n_flagged_labels_joined": 322,
+    "rows": {
+     "common_knowledge": {
+      "n": 179,
+      "mean_D": 0.014150655114484077,
+      "mean_D_prime": 0.2863200766011035,
+      "mean_one_minus_P": 0.01701063726069953,
+      "mean_F": 0.28632009808659714,
+      "mean_KDA_cont": null,
+      "below_control_D": true,
+      "below_control_D_prime": true
+     },
+     "parametric_knowledge": {
+      "n": 48,
+      "mean_D": 0.020355257616767604,
+      "mean_D_prime": 0.27071000425252567,
+      "mean_one_minus_P": 0.041188617812992996,
+      "mean_F": 0.27071000425252567,
+      "mean_KDA_cont": null,
+      "below_control_D": true,
+      "below_control_D_prime": true
+     },
+     "reasoning_shortcut": {
+      "n": 42,
+      "mean_D": 0.00015031032458523514,
+      "mean_D_prime": 0.25684276676086804,
+      "mean_one_minus_P": 0.0001509317329951695,
+      "mean_F": 0.25684276676086804,
+      "mean_KDA_cont": null,
+      "below_control_D": true,
+      "below_control_D_prime": true
+     },
+     "option_leakage": {
+      "n": 45,
+      "mean_D": 0.01597641571432888,
+      "mean_D_prime": 0.4858212680015383,
+      "mean_one_minus_P": 0.015980329116185507,
+      "mean_F": 0.4858212694498989,
+      "mean_KDA_cont": null,
+      "below_control_D": true,
+      "below_control_D_prime": false
+     },
+     "material_not_necessary": {
+      "n": 8,
+      "mean_D": 5.050141427800205e-05,
+      "mean_D_prime": 0.36721938341338184,
+      "mean_one_minus_P": 5.0552189350128174e-05,
+      "mean_F": 0.36721938341338184,
+      "mean_KDA_cont": null,
+      "below_control_D": true,
+      "below_control_D_prime": true
+     },
+     "unflagged_eligible": {
+      "n": 538,
+      "mean_D": 0.049011018742057724,
+      "mean_D_prime": 0.43886690666680306,
+      "mean_one_minus_P": 0.06452781803095074,
+      "mean_F": 0.43886698243447964,
+      "mean_KDA_cont": null
+     }
+    },
+    "n_categories_below_control_D": 5,
+    "n_categories_below_control_D_prime": 4
+   },
+   "d_vs_d_prime": {
+    "ensemble_all": {
+     "mean_D": 0.0355855854260653,
+     "mean_D_prime": 0.3906312535276646,
+     "frac_D_zero": 0.8813953488372093,
+     "gate_attenuation": 0.09109764030579576
+    },
+    "per_solver": {
+     "Qwen3-4B-Instruct-2507": {
+      "mean_D": 0.0355855854260653,
+      "mean_D_prime": 0.3906312535276646,
+      "frac_D_zero": 0.8813953488372093,
+      "frac_D_prime_zero": 0.004651162790697674,
+      "mean_one_minus_P": 0.04705090951845281,
+      "frac_one_minus_P_lt_0.01": 0.9418604651162791
+     }
+    },
+    "ensemble_ex_albert": {
+     "mean_D": 0.0355855854260653,
+     "mean_D_prime": 0.3906312535276646,
+     "gate_attenuation": 0.09109764030579576
+    }
+   },
+   "term1_only_divergence_by_cf_class": {
+    "prior_dependent": {
+     "n_pairs": 518,
+     "n_F_raw_positive": 515,
+     "n_term1_only_positive": 0,
+     "rate_term1_only_of_pairs": 0.0,
+     "rate_term1_only_of_F_positive": 0.0
+    },
+    "context_dependent": {
+     "n_pairs": 334,
+     "n_F_raw_positive": 334,
+     "n_term1_only_positive": 0,
+     "rate_term1_only_of_pairs": 0.0,
+     "rate_term1_only_of_F_positive": 0.0
+    },
+    "unstable_other": {
+     "n_pairs": 8,
+     "n_F_raw_positive": 7,
+     "n_term1_only_positive": 0,
+     "rate_term1_only_of_pairs": 0.0,
+     "rate_term1_only_of_F_positive": 0.0
+    }
+   },
+   "pair_census": {
+    "Qwen3-4B-Instruct-2507": {
+     "near_uniform_B": 0,
+     "P_gt_0.99": 810,
+     "one_minus_P_lt_0.01": 810,
+     "gold_cf_tie_in_C": 4,
+     "F_raw_positive": 856,
+     "F_raw_negative": 4,
+     "term1_only_positive": 0
+    }
+   },
+   "single_solver_note": "|M| = 1. There is no ensemble to aggregate and no KDA_cont on this run (the (1 - P) weight cancels at |M| = 1). Read this split only for the D vs D' saturation comparison.",
+   "verdict": {
+    "adjudicated_on": "qwen3_4b_sciq",
+    "criteria": {
+     "1_tier1_auc": {
+      "statement": "Tier-1 AUC(context vs prior) >= 0.75 AND > KDA_cont's",
+      "D_auc": 0.5995826879060412,
+      "kda_cont_auc": null,
+      "passed": false
+     },
+     "2_within_both_correct": {
+      "statement": "Within-both_correct AUC >= 0.7",
+      "auc": 0.5646555047286185,
+      "n": 819,
+      "passed": false
+     },
+     "3_not_a_repackaging": {
+      "statement": "Spearman(D, KDA_cont) < 0.9",
+      "spearman": null,
+      "passed": null
+     },
+     "4_taxonomy_ordering": {
+      "statement": "Mean D below the unflagged control on >= 3 of 5 categories (corroboration only, not a gate)",
+      "n_below_control": 5,
+      "passed": true,
+      "caveat": "CORROBORATION ONLY -- not a validation gate. The five failure-category labels are single-annotator, single-pass, with no rubric written in advance and no measured inter-annotator agreement (no kappa); each item carries exactly one forced label. See docs/ex5_failure_audit/failure_taxonomy_methodology.md section 0. The flagged pool contains only failure cases, so the 'unflagged_eligible' row is a remainder, not a verified-clean control."
+     },
+     "5_product_form_earns_itself": {
+      "statement": "D's Tier-1 AUC exceeds its best single component by >= 0.02",
+      "D_auc": 0.5995826879060412,
+      "best_component": "F",
+      "best_component_auc": 0.9989480498462534,
+      "margin": -0.3993653619402122,
+      "passed": false
+     }
+    },
+    "n_criteria_passed": 1,
+    "n_criteria_decided": 4,
+    "overall": "NEEDS ANOTHER ITERATION -- the product form is not justified; a single component matches or beats D"
+   }
+  }
+ }
+}
