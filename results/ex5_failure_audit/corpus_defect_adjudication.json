@@ -1,0 +1,51 @@
+{
+  "_provenance": {
+    "what": "Adjudication record for the SciQ corpus-defect census, step 3 of docs/corpus_defect_audit.md section 6.",
+    "adjudicated": "2026-09-09",
+    "adjudicator": "human (annotator 2), after the blind sheet was locked and kappa computed",
+    "scope": "the single disagreement inside the pre-registered 15-item comparison subset",
+    "note": "This file is documentation metadata. It does NOT modify any human label; the locked annotation sheet is unchanged and its checksum still verifies."
+  },
+  "kappa_inputs_unchanged": {
+    "seed": 20260904,
+    "comparison_subset": "results/ex5_failure_audit/corpus_defect_comparison_subset.json",
+    "annotation_sheet": "results/ex5_failure_audit/corpus_defect_sheet_sciq33_BLIND.csv",
+    "annotation_sheet_sha256": "9cf39c472d0ecdfed299564e987ff4d7c5a684e19f5ad1861809a0c1941f1532",
+    "kappa_report": "results/ex5_failure_audit/corpus_defect_kappa.json"
+  },
+  "disagreements": [
+    {
+      "item_id": 584,
+      "annotator_1": "MISMATCH",
+      "annotator_1_source": "results/ex5_failure_audit/passage_overlap_handcheck.json",
+      "annotator_1_rationale": "MISSED BY THE 0.10 THRESHOLD. Question is about the heart's atrium; the passage is about bronchi and respiratory bronchioles. Scores 0.286 only because 'respiratory'/'parts' coincide.",
+      "annotator_2": "ON_TOPIC",
+      "annotator_2_note": "The passage includes respiratory-system content but also directly discusses heart anatomy, including the atria and ventricles relevant to the question.",
+      "adjudicated": "ON_TOPIC",
+      "adjudication_reason": "The passage is not limited to respiratory anatomy. It also directly discusses the mammalian circulatory system and heart anatomy, explicitly including the atria and ventricles. Therefore it is on-topic for a question about the heart's atrium under the Task B specific-subject rubric.",
+      "effect": "annotator 1's label was not sustained; the confirmed mismatch count falls from 13 to 12",
+      "observation": "annotator 1's recorded rationale characterises only the passage's opening two sentences; the remainder states the keyed answer outright. This is the class of error the double annotation was introduced to catch, and the rater it was caught in is the LLM one."
+    }
+  ],
+  "outcome": {
+    "confirmed_mismatches": 12,
+    "confirmed_mismatch_item_ids": [
+      23,
+      153,
+      203,
+      306,
+      412,
+      598,
+      602,
+      610,
+      655,
+      739,
+      746,
+      754
+    ],
+    "denominator": 884,
+    "rate": 0.013575,
+    "rate_pct": "1.36%",
+    "supersedes": "13/884 = 1.47%, the single-annotator figure at corpus_defect_audit.md:24"
+  }
+}

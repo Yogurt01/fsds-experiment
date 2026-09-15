@@ -1,0 +1,14 @@
+{
+  "_provenance": {
+    "what": "Lock record for annotator 2's Task B corpus-defect annotations.",
+    "protocol": "docs/ANNOTATION_GUIDE.md section 2.6.3, step 2 -- 'Lock the file ... This is the moment the labels become final.'",
+    "locked": "2026-09-09",
+    "annotator": "annotator 2 (human)",
+    "meaning": "Every label scored after this point was fixed before annotator 1's verdicts were consulted. Re-running the scorer cannot change what was labelled; any later edit to the sheet will break this checksum and must be declared."
+  },
+  "file": "results/ex5_failure_audit/corpus_defect_sheet_sciq33_BLIND.csv",
+  "sha256": "9cf39c472d0ecdfed299564e987ff4d7c5a684e19f5ad1861809a0c1941f1532",
+  "n_rows": 33,
+  "n_labelled": 33,
+  "file_mode_set_read_only": true
+}

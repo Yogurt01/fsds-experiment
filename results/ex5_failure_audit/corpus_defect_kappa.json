@@ -1,0 +1,54 @@
+{
+  "_provenance": {
+    "what": "Cohen's kappa for docs/corpus_defect_audit.md section 6, step 2.",
+    "annotator_A": "annotator 1 -- prior hand-check (LLM agent, single pass)",
+    "annotator_A_source": "results/ex5_failure_audit/passage_overlap_handcheck.json",
+    "annotator_B": "annotator 2 -- human",
+    "annotator_B_source": "results/ex5_failure_audit/corpus_defect_sheet_sciq33_BLIND.csv",
+    "blind": "annotator 2 labelled without reading corpus_defect_audit.md sections 3.1-3.2 or the hand-check artifact",
+    "subset_source": "results/ex5_failure_audit/corpus_defect_comparison_subset.json",
+    "gate": "none; KAPPA_GATE=0.70 is pre-registered for Task A only",
+    "caveat": "one rater is an LLM agent; n is small, so kappa is unstable -- always quote n alongside it"
+  },
+  "labels": [
+    "MISMATCH",
+    "ON_TOPIC"
+  ],
+  "n_labelled_A": 21,
+  "n_labelled_B": 33,
+  "n_scored": 15,
+  "scored_item_ids": [
+    23,
+    153,
+    201,
+    203,
+    251,
+    306,
+    321,
+    412,
+    584,
+    598,
+    602,
+    619,
+    655,
+    746,
+    828
+  ],
+  "unlabelled_by_B": [],
+  "agreement": {
+    "n": 15,
+    "observed_agreement": 0.9333333333333333,
+    "expected_agreement": 0.5333333333333333,
+    "kappa": 0.8571428571428572,
+    "kappa_undefined_reason": null,
+    "confusion": {
+      "A_MISMATCH__B_MISMATCH": 9,
+      "A_MISMATCH__B_ON_TOPIC": 1,
+      "A_ON_TOPIC__B_MISMATCH": 0,
+      "A_ON_TOPIC__B_ON_TOPIC": 5
+    }
+  },
+  "disagreement_item_ids": [
+    584
+  ]
+}

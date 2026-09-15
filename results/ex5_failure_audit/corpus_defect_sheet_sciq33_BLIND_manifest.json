@@ -1,0 +1,86 @@
+{
+  "_provenance": {
+    "what": "Blind annotation copy of the SciQ corpus-defect census sheet (Task B, step 1 of docs/corpus_defect_audit.md section 6).",
+    "created": "2026-09-09",
+    "generator": "code/ex5_failure_audit/build_blind_corpus_sheet.py",
+    "rubric": "docs/ANNOTATION_GUIDE.md sections 2.2-2.3",
+    "annotator": "annotator 2 (human)",
+    "source_is_unmodified": true
+  },
+  "source": {
+    "path": "results/ex5_failure_audit/corpus_defect_sheet_sciq33.csv",
+    "sha256": "4cfc6c6f548695d2c5519a0bbc0dac78d7ccdd4b27268b80e6b8dd9f4c0e45c0",
+    "n_rows": 33
+  },
+  "blind_copy": {
+    "path": "results/ex5_failure_audit/corpus_defect_sheet_sciq33_BLIND.csv",
+    "columns": [
+      "item_id",
+      "question",
+      "passage",
+      "verdict",
+      "note"
+    ],
+    "n_rows": 33,
+    "row_order": "identical to source (ascending item_id); not sorted, shuffled or reordered, by explicit instruction"
+  },
+  "retained_columns": {
+    "item_id": "stable identifier; the Task B scorer joins on it (kappa_corpus_defect.py:96)",
+    "question": "one half of the judgement",
+    "passage": "the other half",
+    "verdict": "empty; the annotator fills ON_TOPIC / MISMATCH",
+    "note": "empty; optional free text for contested items"
+  },
+  "dropped_columns": {
+    "row_id": "row position (1..33, assigned in ascending item_id order); redundant with item_id, which is the stable identifier the scorer joins on",
+    "gold_answer": "not part of the Task B judgement (ANNOTATION_GUIDE.md sections 2.1 and 2.2 Source 4); showing it invites drift toward answer correctness and toward reconstructing the ineligibility screen by eye",
+    "overlap": "selection provenance, not evidence (ANNOTATION_GUIDE.md section 2.5); it also partitions the sheet by annotator-1 coverage, which would identify the double-annotated subset",
+    "screen": "selection provenance; same partition as overlap, categorically"
+  },
+  "stable_id": {
+    "column": "item_id",
+    "why": "it is the identifier the scoring protocol already uses, it is an index into datasets/sciq/sciq_test_full.json rather than a row position, and it is verified unique across all 33 rows",
+    "verified_unique": true,
+    "joins_to": [
+      "results/ex5_failure_audit/corpus_defect_sheet_sciq33.csv (the source)",
+      "results/ex5_failure_audit/corpus_defect_comparison_subset.json (the pre-registered subset, by comparison_item_ids)"
+    ],
+    "no_merge_step_required": "kappa_corpus_defect.py reads only item_id and verdict, so the filled blind sheet can be passed directly as --annotator-b"
+  },
+  "blindness": {
+    "annotator_1_information_exposed": false,
+    "annotator_1_information_copied": false,
+    "annotator_1_categories_inspected_to_build_this_sheet": false,
+    "statement": "No annotator-1 verdict or category was read, copied, summarised or used in deciding this sheet's contents. The generator reads only the source CSV; it does not open passage_overlap_handcheck.json.",
+    "comparison_subset_marked": false,
+    "comparison_subset_marking_rationale": "an annotator who knows which rows are scored against another rater may work them harder, biasing kappa upward"
+  },
+  "residual_channels": {
+    "note": "Recorded rather than claimed closed. None is removable without breaking the task or an explicit instruction; all are mitigated behaviourally.",
+    "item_id_cross_reference": "the 33 item_ids and the 15 comparison item_ids are both published in docs/ANNOTATION_GUIDE.md (sections 2.5 and 2.6.1) and in corpus_defect_comparison_subset.json, so subset membership is recoverable by consulting a document the annotator has already read. Mitigation: do not open those sections while labelling.",
+    "row_order": "rows are in ascending item_id order, which the annotator was instructed not to change; position therefore maps to item_id, but carries no verdict or screen information",
+    "metric_recomputation": "the overlap metric is a function of question and passage, which the task requires showing, so screen membership is in principle recomputable. Inherent to the annotation; cannot be removed."
+  },
+  "design_caveats": {
+    "gold_answer_excluded": "By explicit decision, the annotator is shown only question and passage and judges subject correspondence alone; the gold answer is not displayed. This is a deliberate narrowing of the task to what the rubric actually asks. It does mean the two annotators may not have had identical information in front of them, which should be stated beside the published kappa."
+  },
+  "accepted_values": {
+    "MISMATCH": [
+      "MISMATCH",
+      "M",
+      "1",
+      "Y",
+      "YES"
+    ],
+    "ON_TOPIC": [
+      "ON_TOPIC",
+      "ON-TOPIC",
+      "ONTOPIC",
+      "O",
+      "0",
+      "N",
+      "NO"
+    ],
+    "source": "code/ex5_failure_audit/kappa_corpus_defect.py ALIASES"
+  }
+}

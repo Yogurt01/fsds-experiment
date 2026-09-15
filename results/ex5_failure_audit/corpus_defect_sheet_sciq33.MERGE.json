@@ -1,0 +1,39 @@
+{
+  "_provenance": {
+    "what": "Post-annotation merge of Task B blind verdicts into the master sheet.",
+    "when": "20260911T034428",
+    "why": "Archival only. Task B was scored and adjudicated 2026-09-09 (docs/ex5_failure_audit/corpus_defect_audit.md section 8); the scorer reads the BLIND file directly and this merge was never required by the protocol.",
+    "generator": "code/ex5_failure_audit/merge_blind_corpus_verdicts.py",
+    "join_key": "item_id",
+    "columns_transferred": [
+      "verdict",
+      "note"
+    ],
+    "columns_preserved": [
+      "row_id",
+      "item_id",
+      "question",
+      "gold_answer",
+      "passage",
+      "overlap",
+      "screen"
+    ]
+  },
+  "blind_source": {
+    "path": "results/ex5_failure_audit/corpus_defect_sheet_sciq33_BLIND.csv",
+    "sha256": "9cf39c472d0ecdfed299564e987ff4d7c5a684e19f5ad1861809a0c1941f1532",
+    "matches_lock": true
+  },
+  "master": {
+    "path": "results/ex5_failure_audit/corpus_defect_sheet_sciq33.csv",
+    "sha256_before": "4cfc6c6f548695d2c5519a0bbc0dac78d7ccdd4b27268b80e6b8dd9f4c0e45c0",
+    "sha256_after": "118acac2b8279e7094e5861b45a9017c5d5a7fc0598f055cf4c0b514a5b05458",
+    "backup": "results/ex5_failure_audit/corpus_defect_sheet_sciq33.csv.pre_merge_20260911T034428.bak"
+  },
+  "stale_reference_note": "corpus_defect_sheet_sciq33_BLIND_manifest.json still records source.sha256 = 4cfc6c6f548695d2c5519a0bbc0dac78d7ccdd4b27268b80e6b8dd9f4c0e45c0 (the pre-merge master). That manifest is a historical record of the blind build and is intentionally left unchanged; this sidecar is the pointer to the post-merge state.",
+  "verdict_distribution": {
+    "MISMATCH": 12,
+    "ON_TOPIC": 21
+  },
+  "adjudication_note": "The raw human labels equal the adjudicated census: the only disagreement (item 584) was resolved to the human's ON_TOPIC in corpus_defect_adjudication.json, so the merged master reflects the final published result (12 MISMATCH / 21 ON_TOPIC)."
+}
