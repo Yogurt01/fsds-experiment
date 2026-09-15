@@ -6,3 +6,6 @@ __pycache__/
 models/
 paper_references/
 datasets/
+
+# merge backups
+*.bak
