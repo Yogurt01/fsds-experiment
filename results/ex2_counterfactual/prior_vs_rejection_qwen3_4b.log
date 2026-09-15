@@ -1,0 +1,68 @@
+2026-09-09 20:30:16 | INFO     | prior_vs_rejection | ====================================================================================================
+2026-09-09 20:30:16 | INFO     | prior_vs_rejection | E2 -- PRIOR-DEPENDENCE vs REJECTION OF A FALSE CONTEXT
+2026-09-09 20:30:16 | INFO     | prior_vs_rejection | ====================================================================================================
+2026-09-09 20:30:16 | INFO     | prior_vs_rejection | Workspace : /home/nghben/Downloads/research/fsds/experiment
+2026-09-09 20:30:16 | INFO     | prior_vs_rejection | Python    : 3.12.3
+2026-09-09 20:30:17 | INFO     | prior_vs_rejection | torch     : 2.13.0+cu130 (CUDA True)
+2026-09-09 20:30:17 | INFO     | prior_vs_rejection | C' system prompt: You are a careful student taking a multiple-choice exam. Answer using only the information in the Fact provided. Treat the Fact as true and authoritative, even where it contradicts what you believe. Answer with a single letter and nothing else.
+2026-09-09 20:30:17 | INFO     | prior_vs_rejection | Joined 884 E1 records from results/ex2_counterfactual/results_counterfactual_qwen3_4b.json
+2026-09-09 20:30:18 | INFO     | prior_vs_rejection | Generated 860 usable counterfactual passages of 884
+2026-09-09 20:30:18 | INFO     | prior_vs_rejection | GATE 2 counterfactual generation vs committed preview: PASS (884 compared)
+2026-09-09 20:30:18 | INFO     | prior_vs_rejection | Loading tokenizer from /home/nghben/Downloads/research/fsds/experiment/models/Qwen3-4B-Instruct-2507
+2026-09-09 20:30:18 | INFO     | prior_vs_rejection | Quantisation : 4-bit NF4, compute dtype float16, double_quant=False
+2026-09-09 20:30:18 | DEBUG    | bitsandbytes.cextension | Loading bitsandbytes native library from: /home/nghben/Downloads/research/fsds/experiment/.venv/lib/python3.12/site-packages/bitsandbytes/libbitsandbytes_cuda130.so
+2026-09-09 20:30:26 | INFO     | prior_vs_rejection | Loaded in 7.6s | 2.21B parameters (packed)
+2026-09-09 20:30:26 | INFO     | prior_vs_rejection | VRAM after load: 2.66 GB allocated / 2.70 GB reserved of 3.68 GB total
+2026-09-09 20:30:26 | DEBUG    | prior_vs_rejection |   letter A -> token ids [32, 362]
+2026-09-09 20:30:26 | DEBUG    | prior_vs_rejection |   letter B -> token ids [33, 425]
+2026-09-09 20:30:26 | DEBUG    | prior_vs_rejection |   letter C -> token ids [34, 356]
+2026-09-09 20:30:26 | DEBUG    | prior_vs_rejection |   letter D -> token ids [35, 422]
+2026-09-09 20:30:39 | INFO     | prior_vs_rejection | GATE 1 Setting C under the ORIGINAL prompt vs E1: PASS (50 checked, 0 mismatches, max |dP| = 0.00e+00)
+2026-09-09 20:30:39 | INFO     | prior_vs_rejection | 
+2026-09-09 20:30:39 | INFO     | prior_vs_rejection | Scoring 884 samples: Settings B' and C' + two passage NLLs each ...
+2026-09-09 20:31:19 | INFO     | prior_vs_rejection |   44/884 (5.0%) | 0.90 s/question | elapsed 39.4 s
+2026-09-09 20:31:57 | INFO     | prior_vs_rejection |   88/884 (10.0%) | 0.88 s/question | elapsed 77.8 s
+2026-09-09 20:32:31 | INFO     | prior_vs_rejection |   132/884 (14.9%) | 0.85 s/question | elapsed 111.8 s
+2026-09-09 20:33:12 | INFO     | prior_vs_rejection |   176/884 (19.9%) | 0.87 s/question | elapsed 152.5 s
+2026-09-09 20:33:47 | INFO     | prior_vs_rejection |   220/884 (24.9%) | 0.85 s/question | elapsed 187.4 s
+2026-09-09 20:34:26 | INFO     | prior_vs_rejection |   264/884 (29.9%) | 0.86 s/question | elapsed 226.5 s
+2026-09-09 20:35:05 | INFO     | prior_vs_rejection |   308/884 (34.8%) | 0.86 s/question | elapsed 265.4 s
+2026-09-09 20:35:39 | INFO     | prior_vs_rejection |   352/884 (39.8%) | 0.85 s/question | elapsed 300.0 s
+2026-09-09 20:36:12 | INFO     | prior_vs_rejection |   396/884 (44.8%) | 0.84 s/question | elapsed 333.0 s
+2026-09-09 20:36:50 | INFO     | prior_vs_rejection |   440/884 (49.8%) | 0.84 s/question | elapsed 370.7 s
+2026-09-09 20:37:25 | INFO     | prior_vs_rejection |   484/884 (54.8%) | 0.84 s/question | elapsed 405.6 s
+2026-09-09 20:38:03 | INFO     | prior_vs_rejection |   528/884 (59.7%) | 0.84 s/question | elapsed 443.2 s
+2026-09-09 20:38:41 | INFO     | prior_vs_rejection |   572/884 (64.7%) | 0.84 s/question | elapsed 481.4 s
+2026-09-09 20:39:12 | INFO     | prior_vs_rejection |   616/884 (69.7%) | 0.83 s/question | elapsed 512.4 s
+2026-09-09 20:39:45 | INFO     | prior_vs_rejection |   660/884 (74.7%) | 0.83 s/question | elapsed 545.9 s
+2026-09-09 20:40:19 | INFO     | prior_vs_rejection |   704/884 (79.6%) | 0.82 s/question | elapsed 579.4 s
+2026-09-09 20:40:53 | INFO     | prior_vs_rejection |   748/884 (84.6%) | 0.82 s/question | elapsed 613.4 s
+2026-09-09 20:41:28 | INFO     | prior_vs_rejection |   792/884 (89.6%) | 0.82 s/question | elapsed 648.4 s
+2026-09-09 20:42:07 | INFO     | prior_vs_rejection |   836/884 (94.6%) | 0.82 s/question | elapsed 687.2 s
+2026-09-09 20:42:42 | INFO     | prior_vs_rejection |   880/884 (99.5%) | 0.82 s/question | elapsed 722.2 s
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection |   884/884 (100.0%) | 0.82 s/question | elapsed 725.2 s
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection | 
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection | ====================================================================================================
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection | E2 -- PRIOR-DEPENDENCE vs REJECTION OF A FALSE CONTEXT
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection | ====================================================================================================
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection |   E1 Setting-C target set: 819
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection | 
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection |   CONTROL (gold passage, context-priority instruction):
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection |     Acc_B 0.9977 -> Acc_B' 0.9966 (delta -0.0011)
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection | 
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection |   PROBE A -- of 512 E1 `prior_dependent` items, under C':
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection |     flipped to context_dependent :   135   26.37%  95% CI [22.74%, 30.35%]
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection |     still prior_dependent        :   377   73.63%
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection |     became unstable_other        :     0    0.00%
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection |     (sanity) context_dependent items that stayed context_dependent: 302/304 = 99.3%
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection | 
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection |   PROBE A OUTCOME: P3 (20-60% flip): 26.4% flip. Mixed -- the bracket is the result.
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection | 
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection |   PROBE B -- plausibility penalty (mean per-token NLL, cf minus gold):
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection |     prior_dependent   +0.4294 | context_dependent +0.3713 | AUC 0.533
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection |   PROBE B VERDICT: REJECTS rejection (AUC 0.533 ~ chance): the plausibility penalty does not distinguish the two classes.
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection | 
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection |   BRACKET on genuine prior-dependence: 46.0% (lower, survives an explicit order) to 62.5% (upper, E1)
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection | 
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection | Wrote /home/nghben/Downloads/research/fsds/experiment/results/ex2_counterfactual/results_prior_vs_rejection_qwen3_4b.json
+2026-09-09 20:42:45 | INFO     | prior_vs_rejection | Total runtime: 749.1 s
