@@ -209,6 +209,21 @@ counterfactual target; the **exclusion** variant is a question-level filter that
 prior-dependent items entirely. Each answers a slightly different question, and Section 6
 reports all three.
 
+> **The exclusion variant has two readings, and both are now reported.** The expectation
+> above is over $\mathcal{Q}_{\text{ctx}}$ — a mean over the *retained* set, denominator
+> $|\mathcal{Q}_{\text{ctx}}|$. The implementation originally reported a different
+> quantity: a mean over the *eligible* set with dropped items zero-filled, denominator
+> $n_{\text{eligible}}$. They are related exactly,
+>
+> $$KDA^{\text{excl}}_{\text{zero-filled}} = KDA^{\text{excl}}_{\text{retained}} \cdot \frac{n_{\text{kept}}}{n_{\text{eligible}}},$$
+>
+> so the published figure was the retained mean scaled by the keep rate. The zero-filled
+> form is a **mass-retention statistic** — what share of the ensemble's total KDA mass
+> survives the filter — and it is the only one of the two that shares a denominator with
+> the hard and soft variants, so only it belongs in a retention comparison against them.
+> The retained mean is the filtered *score*. §6.3 reports both; the divergence between
+> them is itself a finding.
+
 We also report a **context-verified accuracy**, which replaces raw with-fact accuracy by
 counting only correctness that survives the intervention:
 
@@ -237,7 +252,7 @@ baseline KDA — is classified by its Setting C behaviour:
 
 ### 3.1. KDA — Moon et al., EMNLP 2022
 
-*Evaluating the Knowledge Dependency of Questions.* [`docs/KDA_Paper_Documentation.md`](docs/KDA_Paper_Documentation.md)
+*Evaluating the Knowledge Dependency of Questions.* [`docs/papers/KDA_Paper_Documentation.md`](docs/papers/KDA_Paper_Documentation.md)
 
 The direct baseline and the metric we reproduce in Experiment 1. Introduces reference-free
 knowledge-dependent answerability, validated against 116 students and 7 secondary-school
@@ -258,7 +273,7 @@ measurement for it. Their Table 11 already shows the symptom — SciQ and TabMCQ
 ### 3.2. ClashEval — Wu, Wu & Zou, NeurIPS 2024
 
 *Quantifying the tug-of-war between an LLM's internal prior and external evidence.*
-[`docs/ClashEval_Paper_Documentation.md`](docs/ClashEval_Paper_Documentation.md)
+[`docs/papers/ClashEval_Paper_Documentation.md`](docs/papers/ClashEval_Paper_Documentation.md)
 
 The methodological inspiration for our Setting C. ClashEval builds 1,294 questions across
 six domains, elicits each model's **prior response** with no context, then **systematically
@@ -283,7 +298,7 @@ Settings B and C differ in exactly one respect.
 ### 3.3. QG-SMS — Nguyen et al., ACL 2025
 
 *Enhancing Test Item Analysis via Student Modeling and Simulation.*
-[`docs/QG-SMS_Paper_Documentation.md`](docs/QG-SMS_Paper_Documentation.md)
+[`docs/papers/QG-SMS_Paper_Documentation.md`](docs/papers/QG-SMS_Paper_Documentation.md)
 
 The blueprint for RQ3. QG-SMS imports **test item analysis** — topic coverage (TC), item
 difficulty (DF), item discrimination (DC), distractor efficiency (DE) — into QG evaluation,
@@ -363,7 +378,7 @@ experiment/
 │   ├── QG-SMS_Paper_Documentation.md          Nguyen et al., ACL 2025
 │   ├── kda_reproduction_summary.md            SciQ vs OpenBookQA baseline comparison
 │   ├── kda_qwen3_4b_evaluation_report.md      Qwen3-4B (4-bit) KDA run — RQ1 at LLM scale
-│   └── RUN_QWEN2.5_7B_CLOUD_GUIDE.md          Colab / Kaggle guide for Qwen2.5-7B
+│   └── RUN_QWEN2.5.md          Colab / Kaggle guide for Qwen2.5-7B
 │
 ├── paper_references/                          source PDFs for the three papers above
 │
@@ -558,10 +573,10 @@ uv run --active python code/ex1_reproduce_KDA/kda_qwen_eval.py --datasets obqa s
 ```
 
 Results are written to `results/ex1_reproduce_KDA_w_modernLLM/kda_qwen3_4b_results.json`; the analysis is in
-[`docs/kda_qwen3_4b_evaluation_report.md`](docs/kda_qwen3_4b_evaluation_report.md).
+[`docs/ex1_reproduce_KDA/kda_qwen3_4b_evaluation_report.md`](docs/ex1_reproduce_KDA/kda_qwen3_4b_evaluation_report.md).
 
 `Qwen2.5-7B-Instruct` does not fit a 4GB GPU. To run it on Colab or Kaggle, follow
-[`docs/RUN_QWEN2.5_7B_CLOUD_GUIDE.md`](docs/RUN_QWEN2.5_7B_CLOUD_GUIDE.md), which wraps
+[`RUN_QWEN2.5.md`](RUN_QWEN2.5.md), which wraps
 [`code/ex1_reproduce_KDA/run_qwen7b_eval.py`](code/ex1_reproduce_KDA/run_qwen7b_eval.py).
 
 ### 5.1. Useful flags
@@ -632,7 +647,7 @@ each dataset by verbatim containment confirms the mechanism directly (SciQ: 0.48
 end: all 4,000 probability vectors, all argmax predictions and all 500 `kda_score` values
 are **identical at full float precision** (`mean_kda_tiny = 0.27116560020399944` both
 times). Only wall-clock timings differ. Full detail in
-[`docs/kda_reproduction_summary.md`](docs/kda_reproduction_summary.md).
+[`docs/ex1_reproduce_KDA/kda_reproduction_summary.md`](docs/ex1_reproduce_KDA/kda_reproduction_summary.md).
 
 **The symptom.** On SciQ, `both_correct` — questions the solver answers correctly *with and
 without* the passage — is the single largest bucket for the strongest model (mpnet: 423
@@ -668,15 +683,44 @@ that trend to a modern LLM is precisely the failure mode RQ1 names.
 | $KDA_{cont}$ (860 CF-eligible questions) | 0.4767 | — |
 | $KDA_{adj}^{hard}$ | **0.3357** | 70.4% |
 | $KDA_{adj}^{soft}$ | **0.2641** | 55.4% |
-| $KDA_{adj}^{excl}$ (85/860 questions dropped) | **0.4308** | 90.4% |
+| $KDA_{adj}^{excl}$, zero-filled / mass-retention (94/860 dropped) | **0.4269** | 89.6% |
+| $KDA_{adj}^{excl}$, retained mean — §2.4's $\mathbb{E}_{q \in \mathcal{Q}_{ctx}}$ form | **0.4793** | **100.5%** |
 
 The intervention strips **29.6%** of the baseline score under the hard adjustment and
 **44.6%** under the soft one — i.e. only about seven-tenths (resp. just over half) of the
 knowledge dependency SciQ appears to have survives a check that the answer actually came
-from the passage. The gap between the sample-exclusion figure (90.4%
-retention) and the hard figure (70.4%) is itself informative: only 9.9% of questions are
-prior-dependent for the *ensemble as a whole*, but far more are prior-dependent for *some
-member* — so per-solver adjustment is strictly more sensitive than question-level filtering.
+from the passage.
+
+**The two exclusion rows are the more interesting result.** Read as §2.4 defines it — a
+mean over the questions that survive the filter — the exclusion variant is **inert**: it
+returns a score 0.5% *higher* than the unfiltered baseline. Dropping the 94 questions whose
+Setting-B correctness Setting C fails to justify does not lower the mean, because those
+questions are not low-KDA questions. Their mean $KDA_{cont}$ is 0.4554 against the retained
+set's 0.4793, and $KDA_{cont}$'s ability to tell the two groups apart is near chance (AUC
+**0.553**; on OpenBookQA `partial` it is 0.346, i.e. *inverted*). **$KDA_{cont}$ carries almost no information about whether a
+question is answered from prior or from context** — which is the RQ1 thesis restated from
+inside the estimator meant to repair it.
+
+That conclusion is not an artifact of how $\mathcal{Q}_{ctx}$ is drawn. Across nine
+definitions — ensemble vote, all-buckets, each of the four solvers individually, and
+any/majority/all-member votes — dropping between 0 and 337 of the 860 questions, the
+retained mean stays within **98.4%–103.7%** of baseline (95.2%–110.7% across all three
+runs). Full sweep: [`results/ex2_counterfactual/adjusted_kda_corrected.json`](results/ex2_counterfactual/adjusted_kda_corrected.json).
+
+The zero-filled row measures something real but different — mass retention — and on that
+common denominator the comparison against the hard figure holds: only 9.9% of questions are
+prior-dependent for the *ensemble as a whole*, while far more are prior-dependent for *some
+member*, so ensemble-vote question-level filtering is less sensitive than per-solver
+adjustment. That ordering is a property of the ensemble-vote definition rather than of the
+two families: under an any-member $\mathcal{Q}_{ctx}$, question-level filtering drops 337
+questions and falls to 60.0% mass retention, below the hard variant's 70.4%.
+
+> **Scoring convention.** All four estimators treat `unstable_other` — a Setting-C
+> prediction that is neither the gold answer nor the counterfactual target — as earning no
+> credit. Before 2026-09-09 the exclusion variant alone retained those items at full
+> $KDA_{cont}$, disagreeing with the other three. The choice is not cosmetic: it moves hard
+> retention by up to 29 pp on OpenBookQA. The decision, the alternatives, and the numbers
+> are in [`docs/ex2_counterfactual/unstable_other_convention.md`](docs/ex2_counterfactual/unstable_other_convention.md).
 
 Per-model **context-verified accuracy** replaces the headline with-fact numbers:
 
@@ -690,7 +734,7 @@ Per-model **context-verified accuracy** replaces the headline with-fact numbers:
 ### 6.4. Experiment 1b — RQ1 at modern-LLM scale
 
 `Qwen3-4B-Instruct-2507` under 4-bit NF4 quantisation on a 4GB RTX 3050, scoring the same
-two test splits. Full write-up: [`docs/kda_qwen3_4b_evaluation_report.md`](docs/kda_qwen3_4b_evaluation_report.md).
+two test splits. Full write-up: [`docs/ex1_reproduce_KDA/kda_qwen3_4b_evaluation_report.md`](docs/ex1_reproduce_KDA/kda_qwen3_4b_evaluation_report.md).
 
 | Dataset | $n$ | $KDA_{disc}$ | $KDA_{cont}$ | $Acc_{wof}$ | $Acc_{wf}$ | Memorisation |
 |---|---:|---:|---:|---:|---:|---:|
@@ -738,11 +782,26 @@ validate downstream:
   material to answer surviving questions, on the QG-SMS item-analysis dimensions (topic
   coverage, difficulty, discrimination, distractor efficiency), scored with both Average
   Accuracy and order-swap Consistent Accuracy.
-* **Scaling to modern LLMs:** §6.4 confirms the prediction at 4B parameters. The open
-  question is whether the counterfactual intervention of §2.4 still separates prior from
-  context when the solver is this strong — running Experiment 2's Setting C with an LLM
-  solver is the next step. [`docs/RUN_QWEN2.5_7B_CLOUD_GUIDE.md`](docs/RUN_QWEN2.5_7B_CLOUD_GUIDE.md)
-  covers scaling the baseline to `Qwen2.5-7B-Instruct` on Colab / Kaggle.
+* **Scaling to modern LLMs — answered.** Setting C has now been run with `Qwen3-4B` on SciQ
+  ([`docs/ex2_counterfactual/e1_counterfactual_llm_scale.md`](docs/ex2_counterfactual/e1_counterfactual_llm_scale.md)). The
+  intervention **does** still separate prior from context on a saturated solver: on a target
+  set of **819** items (2.15× the encoder run's, because saturation grows the bucket baseline
+  KDA cannot see), **62.5%** are `prior_dependent` [95% CI 59.2–65.8] against the encoder
+  ensemble's 22.3%, and context-verified Acc$_{wf}$ falls from a raw **0.9977** to **0.3988**
+  — a prior inflation of **+59.9 pp** versus +4.0 pp for the encoders.
+
+  Two findings constrain how that can be used. The Setting-C label agrees across the two
+  solvers at only **κ = 0.046**, so it is a property of the solver rather than the question —
+  a direct problem for the *Our Disentangled Filtering* arm below, which assumes such labels
+  can filter a question bank; that remains open. The second — that `prior_dependent` might
+  just be the model *correctly rejecting a false* context — was tested and largely ruled out
+  ([`docs/ex2_counterfactual/e2_prior_vs_rejection.md`](docs/ex2_counterfactual/e2_prior_vs_rejection.md)): only 26.4% of those
+  items follow the passage even when ordered to, and the model's own plausibility penalty
+  does not predict which refuse (AUC 0.496). Genuine prior-dependence is bracketed at
+  **46.0%–62.5%**, against the encoder ensemble's 22.3%.
+  [`RUN_QWEN2.5.md`](RUN_QWEN2.5.md) covers scaling
+  to `Qwen2.5-7B-Instruct` on Colab / Kaggle, which would give the first non-degenerate
+  |M| = 2 LLM ensemble and a second reading of that κ.
 
 ### 6.6. Known caveats
 
@@ -750,9 +809,15 @@ validate downstream:
   answer-string substitution. 24/884 SciQ questions (2.7%) have no lexical match and are
   excluded from every Setting C metric; 16 samples retain a "glued" residual mention of the
   gold answer. Restrict to `--min-substitution-tier exact` for the cleanest subset.
-* **`unstable_other` is not free signal.** Between 1.7% and 15.3% of `both_correct` samples
-  move to a third option under Setting C — the perturbation disturbed the solver without
-  steering it. These are counted separately and credited to neither class.
+* **`unstable_other` is scored as a failure, and that is a judgement call.** Between 1.7%
+  and 15.3% of `both_correct` samples move to a third option under Setting C — the
+  perturbation disturbed the solver without steering it. All four estimators now credit
+  these to neither class (the **strict** convention). At the (model, question) pair level
+  the exposure is larger than those figures suggest — 19.7% on SciQ, 34.5% on OBQA `exact` —
+  and it is reported with every run as `unstable_other_exposure`. The convention cannot
+  separate "the solver broke" from "the perturbation was incoherent", so on OBQA these
+  numbers are depressed by perturbation quality as well as by solver behaviour. Rationale
+  and alternatives: [`docs/ex2_counterfactual/unstable_other_convention.md`](docs/ex2_counterfactual/unstable_other_convention.md).
 * **Dataset dependence.** SciQ's extractive passages make Setting C a comparatively easy
   intervention. OpenBookQA's one-clause deductive facts do not support the same lexical
   rewrite at scale; extending the intervention there is open work.

@@ -1,0 +1,283 @@
+{
+  "_provenance": {
+    "generator": "code/ex2_counterfactual/unstable_other_conventions.py",
+    "what": "Adjusted-KDA headlines recomputed under three conventions for `unstable_other`, from the per-sample records of the committed Setting-C runs. No model was run; no input was modified.",
+    "conventions": {
+      "strict": "unstable earns no credit (positive evidence required)",
+      "lenient": "credit anything that is not prior_dependent",
+      "abstain": "no verdict; drop from numerator and denominator"
+    }
+  },
+  "runs": [
+    {
+      "results_file": "results/ex2_counterfactual/results_counterfactual_sciq_test_full.json",
+      "dataset": "allenai/sciq",
+      "min_substitution_tier": "partial",
+      "models": [
+        "google/t5-small-ssm-nq",
+        "Riiid/kda-albert-xlarge-v2-race",
+        "Riiid/kda-mpnet-base-race",
+        "Riiid/kda-scibert-uncased-race"
+      ],
+      "exposure": {
+        "n_eligible_questions": 860,
+        "n_model_question_pairs": 3440,
+        "n_unstable_pairs": 677,
+        "unstable_pair_rate": 0.19680232558139535,
+        "n_unstable_ensemble": 76,
+        "unstable_ensemble_rate": 0.08837209302325581
+      },
+      "conventions": {
+        "strict": {
+          "n_questions_scored": 860,
+          "n_questions_no_verdict": 0,
+          "kda_cont_mean": 0.4766818871818648,
+          "hard_mean": 0.33572649233570956,
+          "soft_mean": 0.2640509261652858,
+          "hard_retention": 0.70429882352048,
+          "soft_retention": 0.5539353041634335,
+          "sample_exclusion": {
+            "mean_over_retained": 0.47929924281419334,
+            "mean_over_eligible_zero_filled": 0.4269107209252001,
+            "n_population": 860,
+            "n_kept": 766,
+            "n_dropped": 94,
+            "n_removed_no_verdict": 0
+          },
+          "context_verified_accuracy": {
+            "context_verified_accuracy": 0.7848837209302325,
+            "numerator": 675,
+            "denominator": 860,
+            "n_unstable_both_correct": 9
+          }
+        },
+        "lenient": {
+          "n_questions_scored": 860,
+          "n_questions_no_verdict": 0,
+          "kda_cont_mean": 0.4766818871818648,
+          "hard_mean": 0.396429096191348,
+          "soft_mean": 0.3800390523806908,
+          "hard_retention": 0.831642877255165,
+          "soft_retention": 0.7972592678682952,
+          "sample_exclusion": {
+            "mean_over_retained": 0.4780699340199669,
+            "mean_over_eligible_zero_filled": 0.43081883589008646,
+            "n_population": 860,
+            "n_kept": 775,
+            "n_dropped": 85,
+            "n_removed_no_verdict": 0
+          },
+          "context_verified_accuracy": {
+            "context_verified_accuracy": 0.7953488372093023,
+            "numerator": 684,
+            "denominator": 860,
+            "n_unstable_both_correct": 9
+          }
+        },
+        "abstain": {
+          "n_questions_scored": 856,
+          "n_questions_no_verdict": 4,
+          "kda_cont_mean": 0.5410979859615883,
+          "hard_mean": 0.43847903561231294,
+          "soft_mean": 0.33092156699372843,
+          "hard_retention": 0.8103505224346554,
+          "soft_retention": 0.6115741983508696,
+          "sample_exclusion": {
+            "mean_over_retained": 0.47929924281419334,
+            "mean_over_eligible_zero_filled": 0.43142564041794607,
+            "n_population": 851,
+            "n_kept": 766,
+            "n_dropped": 85,
+            "n_removed_no_verdict": 9
+          },
+          "context_verified_accuracy": {
+            "context_verified_accuracy": 0.7931844888366627,
+            "numerator": 675,
+            "denominator": 851,
+            "n_unstable_both_correct": 9
+          }
+        }
+      }
+    },
+    {
+      "results_file": "results/ex2_counterfactual/results_counterfactual_obqa_test_full.json",
+      "dataset": "allenai/openbookqa",
+      "min_substitution_tier": "partial",
+      "models": [
+        "google/t5-small-ssm-nq",
+        "Riiid/kda-albert-xlarge-v2-race",
+        "Riiid/kda-mpnet-base-race",
+        "Riiid/kda-scibert-uncased-race"
+      ],
+      "exposure": {
+        "n_eligible_questions": 145,
+        "n_model_question_pairs": 580,
+        "n_unstable_pairs": 196,
+        "unstable_pair_rate": 0.33793103448275863,
+        "n_unstable_ensemble": 23,
+        "unstable_ensemble_rate": 0.15862068965517243
+      },
+      "conventions": {
+        "strict": {
+          "n_questions_scored": 145,
+          "n_questions_no_verdict": 0,
+          "kda_cont_mean": 0.3047406718559608,
+          "hard_mean": 0.12752792400940358,
+          "soft_mean": 0.11448716241513311,
+          "hard_retention": 0.41848015636613517,
+          "soft_retention": 0.3756871759777664,
+          "sample_exclusion": {
+            "mean_over_retained": 0.29688478719117817,
+            "mean_over_eligible_zero_filled": 0.25798264266267895,
+            "n_population": 145,
+            "n_kept": 126,
+            "n_dropped": 19,
+            "n_removed_no_verdict": 0
+          },
+          "context_verified_accuracy": {
+            "context_verified_accuracy": 0.3793103448275862,
+            "numerator": 55,
+            "denominator": 145,
+            "n_unstable_both_correct": 2
+          }
+        },
+        "lenient": {
+          "n_questions_scored": 145,
+          "n_questions_no_verdict": 0,
+          "kda_cont_mean": 0.3047406718559608,
+          "hard_mean": 0.2163537367715326,
+          "soft_mean": 0.22590811000036434,
+          "hard_retention": 0.7099601620416283,
+          "soft_retention": 0.7413126335402398,
+          "sample_exclusion": {
+            "mean_over_retained": 0.296423300645421,
+            "mean_over_eligible_zero_filled": 0.2616702240180268,
+            "n_population": 145,
+            "n_kept": 128,
+            "n_dropped": 17,
+            "n_removed_no_verdict": 0
+          },
+          "context_verified_accuracy": {
+            "context_verified_accuracy": 0.3931034482758621,
+            "numerator": 57,
+            "denominator": 145,
+            "n_unstable_both_correct": 2
+          }
+        },
+        "abstain": {
+          "n_questions_scored": 144,
+          "n_questions_no_verdict": 1,
+          "kda_cont_mean": 0.34477100064854715,
+          "hard_mean": 0.2101410600581369,
+          "soft_mean": 0.15985590165795846,
+          "hard_retention": 0.6095090934644779,
+          "soft_retention": 0.4636582002466978,
+          "sample_exclusion": {
+            "mean_over_retained": 0.29688478719117817,
+            "mean_over_eligible_zero_filled": 0.26159079151110803,
+            "n_population": 143,
+            "n_kept": 126,
+            "n_dropped": 17,
+            "n_removed_no_verdict": 2
+          },
+          "context_verified_accuracy": {
+            "context_verified_accuracy": 0.38461538461538464,
+            "numerator": 55,
+            "denominator": 143,
+            "n_unstable_both_correct": 2
+          }
+        }
+      }
+    },
+    {
+      "results_file": "results/ex2_counterfactual/results_counterfactual_obqa_test_exact_tier.json",
+      "dataset": "allenai/openbookqa",
+      "min_substitution_tier": "exact",
+      "models": [
+        "google/t5-small-ssm-nq",
+        "Riiid/kda-albert-xlarge-v2-race",
+        "Riiid/kda-mpnet-base-race",
+        "Riiid/kda-scibert-uncased-race"
+      ],
+      "exposure": {
+        "n_eligible_questions": 42,
+        "n_model_question_pairs": 168,
+        "n_unstable_pairs": 58,
+        "unstable_pair_rate": 0.34523809523809523,
+        "n_unstable_ensemble": 8,
+        "unstable_ensemble_rate": 0.19047619047619047
+      },
+      "conventions": {
+        "strict": {
+          "n_questions_scored": 42,
+          "n_questions_no_verdict": 0,
+          "kda_cont_mean": 0.3811585677920134,
+          "hard_mean": 0.19022485107417741,
+          "soft_mean": 0.1734420146170009,
+          "hard_retention": 0.4990701171329233,
+          "soft_retention": 0.45503900285311943,
+          "sample_exclusion": {
+            "mean_over_retained": 0.38906658420922163,
+            "mean_over_eligible_zero_filled": 0.30569517330724555,
+            "n_population": 42,
+            "n_kept": 33,
+            "n_dropped": 9,
+            "n_removed_no_verdict": 0
+          },
+          "context_verified_accuracy": {
+            "context_verified_accuracy": 0.5,
+            "numerator": 21,
+            "denominator": 42,
+            "n_unstable_both_correct": 1
+          }
+        },
+        "lenient": {
+          "n_questions_scored": 42,
+          "n_questions_no_verdict": 0,
+          "kda_cont_mean": 0.3811585677920134,
+          "hard_mean": 0.298713295592474,
+          "soft_mean": 0.2990806368473379,
+          "hard_retention": 0.7836982317434689,
+          "soft_retention": 0.784661980917446,
+          "sample_exclusion": {
+            "mean_over_retained": 0.38311157524078693,
+            "mean_over_eligible_zero_filled": 0.31013794186158944,
+            "n_population": 42,
+            "n_kept": 34,
+            "n_dropped": 8,
+            "n_removed_no_verdict": 0
+          },
+          "context_verified_accuracy": {
+            "context_verified_accuracy": 0.5238095238095238,
+            "numerator": 22,
+            "denominator": 42,
+            "n_unstable_both_correct": 1
+          }
+        },
+        "abstain": {
+          "n_questions_scored": 42,
+          "n_questions_no_verdict": 0,
+          "kda_cont_mean": 0.4421174873959212,
+          "hard_mean": 0.3128153909314786,
+          "soft_mean": 0.24219485410822866,
+          "hard_retention": 0.7075390588460231,
+          "soft_retention": 0.5478065469311337,
+          "sample_exclusion": {
+            "mean_over_retained": 0.38906658420922163,
+            "mean_over_eligible_zero_filled": 0.31315115314400765,
+            "n_population": 41,
+            "n_kept": 33,
+            "n_dropped": 8,
+            "n_removed_no_verdict": 1
+          },
+          "context_verified_accuracy": {
+            "context_verified_accuracy": 0.5121951219512195,
+            "numerator": 21,
+            "denominator": 41,
+            "n_unstable_both_correct": 1
+          }
+        }
+      }
+    }
+  ]
+}

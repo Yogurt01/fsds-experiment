@@ -1,0 +1,878 @@
+{
+  "_provenance": {
+    "generator": "code/ex2_counterfactual/recompute_adjusted_kda.py",
+    "what": "Adjusted-KDA blocks re-derived from the committed Setting-C result files, reporting BOTH readings of the sample-exclusion estimator plus a Q_ctx definition sweep. No model was run; every quantity here is a deterministic function of the per-sample records in the source files.",
+    "why": "README section 2.4 defines KDA_adj^excl as a mean over the retained set; the original implementation reported a mean over the eligible set with dropped items zero-filled. The two differ by the keep rate.",
+    "source_files": [
+      "results/ex2_counterfactual/results_counterfactual_sciq_test_full.json",
+      "results/ex2_counterfactual/results_counterfactual_obqa_test_full.json",
+      "results/ex2_counterfactual/results_counterfactual_obqa_test_exact_tier.json"
+    ],
+    "inputs_unmodified": true
+  },
+  "runs": [
+    {
+      "results_file": "results/ex2_counterfactual/results_counterfactual_sciq_test_full.json",
+      "dataset": "allenai/sciq",
+      "min_substitution_tier": "partial",
+      "models": [
+        "google/t5-small-ssm-nq",
+        "Riiid/kda-albert-xlarge-v2-race",
+        "Riiid/kda-mpnet-base-race",
+        "Riiid/kda-scibert-uncased-race"
+      ],
+      "verification": {
+        "passed": true,
+        "failures": [],
+        "identity_check_max_abs_error": 5.551115123125783e-17
+      },
+      "kda_cont_eligible_mean": 0.4766818871818648,
+      "kda_adjusted_hard_mean": 0.33572649233570956,
+      "kda_adjusted_soft_mean": 0.2640509261652858,
+      "kda_adjusted_sample_exclusion": {
+        "mean": 0.4269107209252001,
+        "mean_over_retained": 0.47929924281419334,
+        "mean_over_eligible_zero_filled": 0.4269107209252001,
+        "retention_over_retained": 1.0054907805450763,
+        "retention_over_eligible_zero_filled": 0.8955882998808471,
+        "n_eligible": 860,
+        "n_kept": 766,
+        "n_dropped": 94,
+        "n_dropped_prior_dependent": 94,
+        "n_dropped_by_class": {
+          "context_dependent": 0,
+          "prior_dependent": 85,
+          "unstable_other": 9
+        },
+        "keep_rate": 0.8906976744186047,
+        "mean_kda_of_kept": 0.47929924281419334,
+        "mean_kda_of_dropped": 0.4553532231992731,
+        "discrimination_auc_kept_vs_dropped": 0.552969279484473,
+        "dropped_ids": [
+          1,
+          8,
+          11,
+          14,
+          24,
+          42,
+          49,
+          63,
+          73,
+          77,
+          86,
+          92,
+          101,
+          102,
+          107,
+          114,
+          159,
+          171,
+          172,
+          180,
+          193,
+          205,
+          217,
+          231,
+          241,
+          242,
+          274,
+          282,
+          284,
+          291,
+          293,
+          300,
+          301,
+          302,
+          309,
+          316,
+          342,
+          369,
+          373,
+          380,
+          383,
+          401,
+          404,
+          407,
+          418,
+          422,
+          461,
+          468,
+          482,
+          494,
+          515,
+          522,
+          532,
+          542,
+          549,
+          582,
+          584,
+          585,
+          587,
+          591,
+          619,
+          620,
+          631,
+          635,
+          645,
+          647,
+          663,
+          669,
+          682,
+          707,
+          709,
+          712,
+          715,
+          716,
+          725,
+          774,
+          775,
+          776,
+          777,
+          784,
+          803,
+          810,
+          811,
+          812,
+          822,
+          824,
+          829,
+          837,
+          838,
+          840,
+          845,
+          849,
+          861,
+          872
+        ]
+      },
+      "unstable_other_exposure": {
+        "convention": "strict",
+        "n_model_question_pairs": 3440,
+        "n_unstable_pairs": 677,
+        "unstable_pair_rate": 0.19680232558139535,
+        "n_unstable_ensemble": 76,
+        "unstable_ensemble_rate": 0.08837209302325581
+      },
+      "retention": {
+        "hard": 0.70429882352048,
+        "soft": 0.5539353041634335,
+        "sample_exclusion_over_retained": 1.0054907805450763,
+        "sample_exclusion_zero_filled": 0.8955882998808471
+      },
+      "q_ctx_sensitivity": {
+        "ensemble_both_correct": {
+          "mean_over_retained": 0.47929924281419334,
+          "mean_over_eligible_zero_filled": 0.4269107209252001,
+          "retention_over_retained": 1.0054907805450763,
+          "retention_over_eligible_zero_filled": 0.8955882998808471,
+          "n_eligible": 860,
+          "n_kept": 766,
+          "n_dropped": 94,
+          "n_dropped_prior_dependent": 94,
+          "n_dropped_by_class": {
+            "context_dependent": 0,
+            "prior_dependent": 85,
+            "unstable_other": 9
+          },
+          "keep_rate": 0.8906976744186047,
+          "mean_kda_of_kept": 0.47929924281419334,
+          "mean_kda_of_dropped": 0.4553532231992731,
+          "discrimination_auc_kept_vs_dropped": 0.552969279484473
+        },
+        "ensemble_any_bucket": {
+          "mean_over_retained": 0.49426993456021007,
+          "mean_over_eligible_zero_filled": 0.38449603048927966,
+          "retention_over_retained": 1.0368968233350033,
+          "retention_over_eligible_zero_filled": 0.8066092730361827,
+          "n_eligible": 860,
+          "n_kept": 669,
+          "n_dropped": 191,
+          "n_dropped_prior_dependent": 191,
+          "n_dropped_by_class": {
+            "context_dependent": 0,
+            "prior_dependent": 115,
+            "unstable_other": 76
+          },
+          "keep_rate": 0.7779069767441861,
+          "mean_kda_of_kept": 0.49426993456021007,
+          "mean_kda_of_dropped": 0.41507767934881296,
+          "discrimination_auc_kept_vs_dropped": 0.6558432919337294
+        },
+        "ensemble_both_correct_prior_only": {
+          "mean_over_retained": 0.4780699340199669,
+          "mean_over_eligible_zero_filled": 0.43081883589008646,
+          "retention_over_retained": 1.0029118933935337,
+          "retention_over_eligible_zero_filled": 0.9037868806744054,
+          "n_eligible": 860,
+          "n_kept": 775,
+          "n_dropped": 85,
+          "n_dropped_prior_dependent": 85,
+          "n_dropped_by_class": {
+            "context_dependent": 0,
+            "prior_dependent": 85,
+            "unstable_other": 0
+          },
+          "keep_rate": 0.9011627906976745,
+          "mean_kda_of_kept": 0.4780699340199669,
+          "mean_kda_of_dropped": 0.46402616601093505,
+          "discrimination_auc_kept_vs_dropped": 0.5355597722960151
+        },
+        "any_model_both_correct": {
+          "mean_over_retained": 0.47047061870110685,
+          "mean_over_eligible_zero_filled": 0.2861117832333475,
+          "retention_over_retained": 0.9869697828934116,
+          "retention_over_eligible_zero_filled": 0.6002153447130864,
+          "n_eligible": 860,
+          "n_kept": 523,
+          "n_dropped": 337,
+          "n_dropped_prior_dependent": 337,
+          "n_dropped_by_class": {
+            "context_dependent": 219,
+            "prior_dependent": 96,
+            "unstable_other": 22
+          },
+          "keep_rate": 0.608139534883721,
+          "mean_kda_of_kept": 0.47047061870110685,
+          "mean_kda_of_dropped": 0.48632133351847157,
+          "discrimination_auc_kept_vs_dropped": 0.4686214546300447
+        },
+        "majority_model_both_correct": {
+          "mean_over_retained": 0.4744708886340993,
+          "mean_over_eligible_zero_filled": 0.44412682017494176,
+          "retention_over_retained": 0.9953616896147724,
+          "retention_over_eligible_zero_filled": 0.9317048373719672,
+          "n_eligible": 860,
+          "n_kept": 805,
+          "n_dropped": 55,
+          "n_dropped_prior_dependent": 55,
+          "n_dropped_by_class": {
+            "context_dependent": 17,
+            "prior_dependent": 32,
+            "unstable_other": 6
+          },
+          "keep_rate": 0.936046511627907,
+          "mean_kda_of_kept": 0.4744708886340993,
+          "mean_kda_of_dropped": 0.5090428659264343,
+          "discrimination_auc_kept_vs_dropped": 0.4331338226990401
+        },
+        "all_models_both_correct": {
+          "mean_over_retained": 0.4766818871818648,
+          "mean_over_eligible_zero_filled": 0.4766818871818648,
+          "retention_over_retained": 1.0,
+          "retention_over_eligible_zero_filled": 1.0,
+          "n_eligible": 860,
+          "n_kept": 860,
+          "n_dropped": 0,
+          "n_dropped_prior_dependent": 0,
+          "n_dropped_by_class": {
+            "context_dependent": 0,
+            "prior_dependent": 0,
+            "unstable_other": 0
+          },
+          "keep_rate": 1.0,
+          "mean_kda_of_kept": 0.4766818871818648,
+          "mean_kda_of_dropped": null,
+          "discrimination_auc_kept_vs_dropped": null
+        },
+        "model:google/t5-small-ssm-nq": {
+          "mean_over_retained": 0.4689362902889579,
+          "mean_over_eligible_zero_filled": 0.3544285914974682,
+          "retention_over_retained": 0.9837510148776603,
+          "retention_over_eligible_zero_filled": 0.7435327438028828,
+          "n_eligible": 860,
+          "n_kept": 650,
+          "n_dropped": 210,
+          "n_dropped_prior_dependent": 210,
+          "n_dropped_by_class": {
+            "context_dependent": 123,
+            "prior_dependent": 82,
+            "unstable_other": 5
+          },
+          "keep_rate": 0.7558139534883721,
+          "mean_kda_of_kept": 0.4689362902889579,
+          "mean_kda_of_dropped": 0.5006563537551483,
+          "discrimination_auc_kept_vs_dropped": 0.43325274725274726
+        },
+        "model:Riiid/kda-albert-xlarge-v2-race": {
+          "mean_over_retained": 0.4770756853032776,
+          "mean_over_eligible_zero_filled": 0.4443460743347969,
+          "retention_over_retained": 1.000826123525987,
+          "retention_over_eligible_zero_filled": 0.9321647964468784,
+          "n_eligible": 860,
+          "n_kept": 801,
+          "n_dropped": 59,
+          "n_dropped_prior_dependent": 59,
+          "n_dropped_by_class": {
+            "context_dependent": 47,
+            "prior_dependent": 5,
+            "unstable_other": 7
+          },
+          "keep_rate": 0.9313953488372093,
+          "mean_kda_of_kept": 0.4770756853032776,
+          "mean_kda_of_dropped": 0.47133557709285456,
+          "discrimination_auc_kept_vs_dropped": 0.5176156922490954
+        },
+        "model:Riiid/kda-mpnet-base-race": {
+          "mean_over_retained": 0.4792239235333792,
+          "mean_over_eligible_zero_filled": 0.45637720159748557,
+          "retention_over_retained": 1.0053327731132031,
+          "retention_over_eligible_zero_filled": 0.9574041176508296,
+          "n_eligible": 860,
+          "n_kept": 819,
+          "n_dropped": 41,
+          "n_dropped_prior_dependent": 41,
+          "n_dropped_by_class": {
+            "context_dependent": 14,
+            "prior_dependent": 19,
+            "unstable_other": 8
+          },
+          "keep_rate": 0.9523255813953488,
+          "mean_kda_of_kept": 0.4792239235333792,
+          "mean_kda_of_dropped": 0.4259031610382011,
+          "discrimination_auc_kept_vs_dropped": 0.6173203490276661
+        },
+        "model:Riiid/kda-scibert-uncased-race": {
+          "mean_over_retained": 0.4737072861578989,
+          "mean_over_eligible_zero_filled": 0.425234912690579,
+          "retention_over_retained": 0.9937597775288848,
+          "retention_over_eligible_zero_filled": 0.8920727305259291,
+          "n_eligible": 860,
+          "n_kept": 772,
+          "n_dropped": 88,
+          "n_dropped_prior_dependent": 88,
+          "n_dropped_by_class": {
+            "context_dependent": 52,
+            "prior_dependent": 27,
+            "unstable_other": 9
+          },
+          "keep_rate": 0.8976744186046511,
+          "mean_kda_of_kept": 0.4737072861578989,
+          "mean_kda_of_dropped": 0.5027772507102936,
+          "discrimination_auc_kept_vs_dropped": 0.44279910504003767
+        }
+      }
+    },
+    {
+      "results_file": "results/ex2_counterfactual/results_counterfactual_obqa_test_full.json",
+      "dataset": "allenai/openbookqa",
+      "min_substitution_tier": "partial",
+      "models": [
+        "google/t5-small-ssm-nq",
+        "Riiid/kda-albert-xlarge-v2-race",
+        "Riiid/kda-mpnet-base-race",
+        "Riiid/kda-scibert-uncased-race"
+      ],
+      "verification": {
+        "passed": true,
+        "failures": [],
+        "identity_check_max_abs_error": 2.7755575615628914e-17
+      },
+      "kda_cont_eligible_mean": 0.3047406718559608,
+      "kda_adjusted_hard_mean": 0.12752792400940358,
+      "kda_adjusted_soft_mean": 0.11448716241513311,
+      "kda_adjusted_sample_exclusion": {
+        "mean": 0.25798264266267895,
+        "mean_over_retained": 0.29688478719117817,
+        "mean_over_eligible_zero_filled": 0.25798264266267895,
+        "retention_over_retained": 0.9742210824143098,
+        "retention_over_eligible_zero_filled": 0.8465645267876072,
+        "n_eligible": 145,
+        "n_kept": 126,
+        "n_dropped": 19,
+        "n_dropped_prior_dependent": 19,
+        "n_dropped_by_class": {
+          "context_dependent": 0,
+          "prior_dependent": 17,
+          "unstable_other": 2
+        },
+        "keep_rate": 0.8689655172413793,
+        "mean_kda_of_kept": 0.29688478719117817,
+        "mean_kda_of_dropped": 0.35683759121188785,
+        "discrimination_auc_kept_vs_dropped": 0.3462823725981621,
+        "dropped_ids": [
+          49,
+          59,
+          118,
+          153,
+          171,
+          189,
+          198,
+          226,
+          253,
+          389,
+          394,
+          399,
+          403,
+          422,
+          426,
+          442,
+          447,
+          477,
+          483
+        ]
+      },
+      "unstable_other_exposure": {
+        "convention": "strict",
+        "n_model_question_pairs": 580,
+        "n_unstable_pairs": 196,
+        "unstable_pair_rate": 0.33793103448275863,
+        "n_unstable_ensemble": 23,
+        "unstable_ensemble_rate": 0.15862068965517243
+      },
+      "retention": {
+        "hard": 0.41848015636613517,
+        "soft": 0.3756871759777664,
+        "sample_exclusion_over_retained": 0.9742210824143098,
+        "sample_exclusion_zero_filled": 0.8465645267876072
+      },
+      "q_ctx_sensitivity": {
+        "ensemble_both_correct": {
+          "mean_over_retained": 0.29688478719117817,
+          "mean_over_eligible_zero_filled": 0.25798264266267895,
+          "retention_over_retained": 0.9742210824143098,
+          "retention_over_eligible_zero_filled": 0.8465645267876072,
+          "n_eligible": 145,
+          "n_kept": 126,
+          "n_dropped": 19,
+          "n_dropped_prior_dependent": 19,
+          "n_dropped_by_class": {
+            "context_dependent": 0,
+            "prior_dependent": 17,
+            "unstable_other": 2
+          },
+          "keep_rate": 0.8689655172413793,
+          "mean_kda_of_kept": 0.29688478719117817,
+          "mean_kda_of_dropped": 0.35683759121188785,
+          "discrimination_auc_kept_vs_dropped": 0.3462823725981621
+        },
+        "ensemble_any_bucket": {
+          "mean_over_retained": 0.30043617465285927,
+          "mean_over_eligible_zero_filled": 0.19890946735637577,
+          "retention_over_retained": 0.9858748844488466,
+          "retention_over_eligible_zero_filled": 0.6527171648764777,
+          "n_eligible": 145,
+          "n_kept": 96,
+          "n_dropped": 49,
+          "n_dropped_prior_dependent": 49,
+          "n_dropped_by_class": {
+            "context_dependent": 0,
+            "prior_dependent": 26,
+            "unstable_other": 23
+          },
+          "keep_rate": 0.6620689655172414,
+          "mean_kda_of_kept": 0.30043617465285927,
+          "mean_kda_of_dropped": 0.313173972498772,
+          "discrimination_auc_kept_vs_dropped": 0.45875850340136054
+        },
+        "ensemble_both_correct_prior_only": {
+          "mean_over_retained": 0.296423300645421,
+          "mean_over_eligible_zero_filled": 0.2616702240180268,
+          "retention_over_retained": 0.9727067241799903,
+          "retention_over_eligible_zero_filled": 0.858665246172681,
+          "n_eligible": 145,
+          "n_kept": 128,
+          "n_dropped": 17,
+          "n_dropped_prior_dependent": 17,
+          "n_dropped_by_class": {
+            "context_dependent": 0,
+            "prior_dependent": 17,
+            "unstable_other": 0
+          },
+          "keep_rate": 0.8827586206896552,
+          "mean_kda_of_kept": 0.296423300645421,
+          "mean_kda_of_dropped": 0.36736558450002516,
+          "discrimination_auc_kept_vs_dropped": 0.3226102941176471
+        },
+        "any_model_both_correct": {
+          "mean_over_retained": 0.30120368205072956,
+          "mean_over_eligible_zero_filled": 0.143331407320692,
+          "retention_over_retained": 0.9883934435673126,
+          "retention_over_eligible_zero_filled": 0.4703389490078936,
+          "n_eligible": 145,
+          "n_kept": 69,
+          "n_dropped": 76,
+          "n_dropped_prior_dependent": 76,
+          "n_dropped_by_class": {
+            "context_dependent": 46,
+            "prior_dependent": 21,
+            "unstable_other": 9
+          },
+          "keep_rate": 0.47586206896551725,
+          "mean_kda_of_kept": 0.30120368205072956,
+          "mean_kda_of_dropped": 0.3079518862843944,
+          "discrimination_auc_kept_vs_dropped": 0.4691075514874142
+        },
+        "majority_model_both_correct": {
+          "mean_over_retained": 0.2993527665007212,
+          "mean_over_eligible_zero_filled": 0.260127231579937,
+          "retention_over_retained": 0.9823197037585246,
+          "retention_over_eligible_zero_filled": 0.8536019494729247,
+          "n_eligible": 145,
+          "n_kept": 126,
+          "n_dropped": 19,
+          "n_dropped_prior_dependent": 19,
+          "n_dropped_by_class": {
+            "context_dependent": 4,
+            "prior_dependent": 11,
+            "unstable_other": 4
+          },
+          "keep_rate": 0.8689655172413793,
+          "mean_kda_of_kept": 0.2993527665007212,
+          "mean_kda_of_dropped": 0.3404709915801816,
+          "discrimination_auc_kept_vs_dropped": 0.4068504594820384
+        },
+        "all_models_both_correct": {
+          "mean_over_retained": 0.3047406718559608,
+          "mean_over_eligible_zero_filled": 0.3047406718559608,
+          "retention_over_retained": 1.0,
+          "retention_over_eligible_zero_filled": 1.0,
+          "n_eligible": 145,
+          "n_kept": 145,
+          "n_dropped": 0,
+          "n_dropped_prior_dependent": 0,
+          "n_dropped_by_class": {
+            "context_dependent": 0,
+            "prior_dependent": 0,
+            "unstable_other": 0
+          },
+          "keep_rate": 1.0,
+          "mean_kda_of_kept": 0.3047406718559608,
+          "mean_kda_of_dropped": null,
+          "discrimination_auc_kept_vs_dropped": null
+        },
+        "model:google/t5-small-ssm-nq": {
+          "mean_over_retained": 0.29889792200895515,
+          "mean_over_eligible_zero_filled": 0.27416154225648987,
+          "retention_over_retained": 0.9808271412823841,
+          "retention_over_eligible_zero_filled": 0.8996552399348764,
+          "n_eligible": 145,
+          "n_kept": 133,
+          "n_dropped": 12,
+          "n_dropped_prior_dependent": 12,
+          "n_dropped_by_class": {
+            "context_dependent": 1,
+            "prior_dependent": 11,
+            "unstable_other": 0
+          },
+          "keep_rate": 0.9172413793103448,
+          "mean_kda_of_kept": 0.29889792200895515,
+          "mean_kda_of_dropped": 0.3694978159936067,
+          "discrimination_auc_kept_vs_dropped": 0.31140350877192985
+        },
+        "model:Riiid/kda-albert-xlarge-v2-race": {
+          "mean_over_retained": 0.30862056922416203,
+          "mean_over_eligible_zero_filled": 0.25753854397326625,
+          "retention_over_retained": 1.0127318002699524,
+          "retention_over_eligible_zero_filled": 0.8451072264321672,
+          "n_eligible": 145,
+          "n_kept": 121,
+          "n_dropped": 24,
+          "n_dropped_prior_dependent": 24,
+          "n_dropped_by_class": {
+            "context_dependent": 14,
+            "prior_dependent": 6,
+            "unstable_other": 4
+          },
+          "keep_rate": 0.8344827586206897,
+          "mean_kda_of_kept": 0.30862056922416203,
+          "mean_kda_of_dropped": 0.28517952262461277,
+          "discrimination_auc_kept_vs_dropped": 0.5306473829201102
+        },
+        "model:Riiid/kda-mpnet-base-race": {
+          "mean_over_retained": 0.3081535316085044,
+          "mean_over_eligible_zero_filled": 0.23802203820794823,
+          "retention_over_retained": 1.0111992263184242,
+          "retention_over_eligible_zero_filled": 0.7810642299838864,
+          "n_eligible": 145,
+          "n_kept": 112,
+          "n_dropped": 33,
+          "n_dropped_prior_dependent": 33,
+          "n_dropped_by_class": {
+            "context_dependent": 19,
+            "prior_dependent": 8,
+            "unstable_other": 6
+          },
+          "keep_rate": 0.7724137931034483,
+          "mean_kda_of_kept": 0.3081535316085044,
+          "mean_kda_of_dropped": 0.2931576326958128,
+          "discrimination_auc_kept_vs_dropped": 0.5159632034632035
+        },
+        "model:Riiid/kda-scibert-uncased-race": {
+          "mean_over_retained": 0.29529396135091096,
+          "mean_over_eligible_zero_filled": 0.24030818923729305,
+          "retention_over_retained": 0.9690008214278829,
+          "retention_over_eligible_zero_filled": 0.7885661857137254,
+          "n_eligible": 145,
+          "n_kept": 118,
+          "n_dropped": 27,
+          "n_dropped_prior_dependent": 27,
+          "n_dropped_by_class": {
+            "context_dependent": 16,
+            "prior_dependent": 8,
+            "unstable_other": 3
+          },
+          "keep_rate": 0.8137931034482758,
+          "mean_kda_of_kept": 0.29529396135091096,
+          "mean_kda_of_dropped": 0.34602629554469716,
+          "discrimination_auc_kept_vs_dropped": 0.41494036409290647
+        }
+      }
+    },
+    {
+      "results_file": "results/ex2_counterfactual/results_counterfactual_obqa_test_exact_tier.json",
+      "dataset": "allenai/openbookqa",
+      "min_substitution_tier": "exact",
+      "models": [
+        "google/t5-small-ssm-nq",
+        "Riiid/kda-albert-xlarge-v2-race",
+        "Riiid/kda-mpnet-base-race",
+        "Riiid/kda-scibert-uncased-race"
+      ],
+      "verification": {
+        "passed": true,
+        "failures": [],
+        "identity_check_max_abs_error": 5.551115123125783e-17
+      },
+      "kda_cont_eligible_mean": 0.3811585677920134,
+      "kda_adjusted_hard_mean": 0.19022485107417741,
+      "kda_adjusted_soft_mean": 0.1734420146170009,
+      "kda_adjusted_sample_exclusion": {
+        "mean": 0.30569517330724555,
+        "mean_over_retained": 0.38906658420922163,
+        "mean_over_eligible_zero_filled": 0.30569517330724555,
+        "retention_over_retained": 1.0207473138096252,
+        "retention_over_eligible_zero_filled": 0.8020157465647055,
+        "n_eligible": 42,
+        "n_kept": 33,
+        "n_dropped": 9,
+        "n_dropped_prior_dependent": 9,
+        "n_dropped_by_class": {
+          "context_dependent": 0,
+          "prior_dependent": 8,
+          "unstable_other": 1
+        },
+        "keep_rate": 0.7857142857142857,
+        "mean_kda_of_kept": 0.38906658420922163,
+        "mean_kda_of_dropped": 0.3521625075955834,
+        "discrimination_auc_kept_vs_dropped": 0.5656565656565656,
+        "dropped_ids": [
+          49,
+          171,
+          189,
+          253,
+          389,
+          394,
+          422,
+          442,
+          483
+        ]
+      },
+      "unstable_other_exposure": {
+        "convention": "strict",
+        "n_model_question_pairs": 168,
+        "n_unstable_pairs": 58,
+        "unstable_pair_rate": 0.34523809523809523,
+        "n_unstable_ensemble": 8,
+        "unstable_ensemble_rate": 0.19047619047619047
+      },
+      "retention": {
+        "hard": 0.4990701171329233,
+        "soft": 0.45503900285311943,
+        "sample_exclusion_over_retained": 1.0207473138096252,
+        "sample_exclusion_zero_filled": 0.8020157465647055
+      },
+      "q_ctx_sensitivity": {
+        "ensemble_both_correct": {
+          "mean_over_retained": 0.38906658420922163,
+          "mean_over_eligible_zero_filled": 0.30569517330724555,
+          "retention_over_retained": 1.0207473138096252,
+          "retention_over_eligible_zero_filled": 0.8020157465647055,
+          "n_eligible": 42,
+          "n_kept": 33,
+          "n_dropped": 9,
+          "n_dropped_prior_dependent": 9,
+          "n_dropped_by_class": {
+            "context_dependent": 0,
+            "prior_dependent": 8,
+            "unstable_other": 1
+          },
+          "keep_rate": 0.7857142857142857,
+          "mean_kda_of_kept": 0.38906658420922163,
+          "mean_kda_of_dropped": 0.3521625075955834,
+          "discrimination_auc_kept_vs_dropped": 0.5656565656565656
+        },
+        "ensemble_any_bucket": {
+          "mean_over_retained": 0.42210285876111303,
+          "mean_over_eligible_zero_filled": 0.24120163357777885,
+          "retention_over_retained": 1.107420623406901,
+          "retention_over_eligible_zero_filled": 0.6328117848039434,
+          "n_eligible": 42,
+          "n_kept": 24,
+          "n_dropped": 18,
+          "n_dropped_prior_dependent": 18,
+          "n_dropped_by_class": {
+            "context_dependent": 0,
+            "prior_dependent": 10,
+            "unstable_other": 8
+          },
+          "keep_rate": 0.5714285714285714,
+          "mean_kda_of_kept": 0.42210285876111303,
+          "mean_kda_of_dropped": 0.3265661798332139,
+          "discrimination_auc_kept_vs_dropped": 0.6898148148148148
+        },
+        "ensemble_both_correct_prior_only": {
+          "mean_over_retained": 0.38311157524078693,
+          "mean_over_eligible_zero_filled": 0.31013794186158944,
+          "retention_over_retained": 1.0051238713065982,
+          "retention_over_eligible_zero_filled": 0.8136717053434366,
+          "n_eligible": 42,
+          "n_kept": 34,
+          "n_dropped": 8,
+          "n_dropped_prior_dependent": 8,
+          "n_dropped_by_class": {
+            "context_dependent": 0,
+            "prior_dependent": 8,
+            "unstable_other": 0
+          },
+          "keep_rate": 0.8095238095238095,
+          "mean_kda_of_kept": 0.38311157524078693,
+          "mean_kda_of_dropped": 0.3728582861347259,
+          "discrimination_auc_kept_vs_dropped": 0.5036764705882353
+        },
+        "any_model_both_correct": {
+          "mean_over_retained": 0.3797453616850525,
+          "mean_over_eligible_zero_filled": 0.19891423707312275,
+          "retention_over_retained": 0.9962923407044282,
+          "retention_over_eligible_zero_filled": 0.5218674165594624,
+          "n_eligible": 42,
+          "n_kept": 22,
+          "n_dropped": 20,
+          "n_dropped_prior_dependent": 20,
+          "n_dropped_by_class": {
+            "context_dependent": 10,
+            "prior_dependent": 8,
+            "unstable_other": 2
+          },
+          "keep_rate": 0.5238095238095238,
+          "mean_kda_of_kept": 0.3797453616850525,
+          "mean_kda_of_dropped": 0.38271309450967045,
+          "discrimination_auc_kept_vs_dropped": 0.5045454545454545
+        },
+        "majority_model_both_correct": {
+          "mean_over_retained": 0.37911837794068104,
+          "mean_over_eligible_zero_filled": 0.2978787255248208,
+          "retention_over_retained": 0.9946473986846187,
+          "retention_over_eligible_zero_filled": 0.7815086703950576,
+          "n_eligible": 42,
+          "n_kept": 33,
+          "n_dropped": 9,
+          "n_dropped_prior_dependent": 9,
+          "n_dropped_by_class": {
+            "context_dependent": 2,
+            "prior_dependent": 6,
+            "unstable_other": 1
+          },
+          "keep_rate": 0.7857142857142857,
+          "mean_kda_of_kept": 0.37911837794068104,
+          "mean_kda_of_dropped": 0.3886392639135654,
+          "discrimination_auc_kept_vs_dropped": 0.47474747474747475
+        },
+        "all_models_both_correct": {
+          "mean_over_retained": 0.3811585677920134,
+          "mean_over_eligible_zero_filled": 0.3811585677920134,
+          "retention_over_retained": 1.0,
+          "retention_over_eligible_zero_filled": 1.0,
+          "n_eligible": 42,
+          "n_kept": 42,
+          "n_dropped": 0,
+          "n_dropped_prior_dependent": 0,
+          "n_dropped_by_class": {
+            "context_dependent": 0,
+            "prior_dependent": 0,
+            "unstable_other": 0
+          },
+          "keep_rate": 1.0,
+          "mean_kda_of_kept": 0.3811585677920134,
+          "mean_kda_of_dropped": null,
+          "discrimination_auc_kept_vs_dropped": null
+        },
+        "model:google/t5-small-ssm-nq": {
+          "mean_over_retained": 0.3852166541903367,
+          "mean_over_eligible_zero_filled": 0.3118420533921773,
+          "retention_over_retained": 1.0106467143630828,
+          "retention_over_eligible_zero_filled": 0.8181425782939241,
+          "n_eligible": 42,
+          "n_kept": 34,
+          "n_dropped": 8,
+          "n_dropped_prior_dependent": 8,
+          "n_dropped_by_class": {
+            "context_dependent": 1,
+            "prior_dependent": 7,
+            "unstable_other": 0
+          },
+          "keep_rate": 0.8095238095238095,
+          "mean_kda_of_kept": 0.3852166541903367,
+          "mean_kda_of_dropped": 0.36391170059913963,
+          "discrimination_auc_kept_vs_dropped": 0.5257352941176471
+        },
+        "model:Riiid/kda-albert-xlarge-v2-race": {
+          "mean_over_retained": 0.38324071033022156,
+          "mean_over_eligible_zero_filled": 0.31024247979113173,
+          "retention_over_retained": 1.0054626675461336,
+          "retention_over_eligible_zero_filled": 0.8139459689659175,
+          "n_eligible": 42,
+          "n_kept": 34,
+          "n_dropped": 8,
+          "n_dropped_prior_dependent": 8,
+          "n_dropped_by_class": {
+            "context_dependent": 5,
+            "prior_dependent": 3,
+            "unstable_other": 0
+          },
+          "keep_rate": 0.8095238095238095,
+          "mean_kda_of_kept": 0.38324071033022156,
+          "mean_kda_of_dropped": 0.3723094620046286,
+          "discrimination_auc_kept_vs_dropped": 0.5110294117647058
+        },
+        "model:Riiid/kda-mpnet-base-race": {
+          "mean_over_retained": 0.38792511509336175,
+          "mean_over_eligible_zero_filled": 0.3417435537727235,
+          "retention_over_retained": 1.0177525782525256,
+          "retention_over_eligible_zero_filled": 0.896591557031987,
+          "n_eligible": 42,
+          "n_kept": 37,
+          "n_dropped": 5,
+          "n_dropped_prior_dependent": 5,
+          "n_dropped_by_class": {
+            "context_dependent": 2,
+            "prior_dependent": 1,
+            "unstable_other": 2
+          },
+          "keep_rate": 0.8809523809523809,
+          "mean_kda_of_kept": 0.38792511509336175,
+          "mean_kda_of_dropped": 0.3310861177620355,
+          "discrimination_auc_kept_vs_dropped": 0.6324324324324324
+        },
+        "model:Riiid/kda-scibert-uncased-race": {
+          "mean_over_retained": 0.3630285598649752,
+          "mean_over_eligible_zero_filled": 0.2852367256081948,
+          "retention_over_retained": 0.9524344735786414,
+          "retention_over_eligible_zero_filled": 0.748341372097504,
+          "n_eligible": 42,
+          "n_kept": 33,
+          "n_dropped": 9,
+          "n_dropped_prior_dependent": 9,
+          "n_dropped_by_class": {
+            "context_dependent": 4,
+            "prior_dependent": 4,
+            "unstable_other": 1
+          },
+          "keep_rate": 0.7857142857142857,
+          "mean_kda_of_kept": 0.3630285598649752,
+          "mean_kda_of_dropped": 0.4476352635244868,
+          "discrimination_auc_kept_vs_dropped": 0.3501683501683502
+        }
+      }
+    }
+  ]
+}

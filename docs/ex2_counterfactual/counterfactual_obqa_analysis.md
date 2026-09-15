@@ -166,20 +166,30 @@ context sensitivity.
 | `KDA_cont`, CF-eligible | 0.4767 | 0.3047 | 0.3812 |
 | **`KDA_adj^hard`** | 0.3357 | **0.1275** | 0.1902 |
 | **`KDA_adj^soft`** | 0.2641 | **0.1145** | 0.1734 |
-| **`KDA_adj^excl`** | 0.4308 | **0.2617** | 0.3101 |
+| **`KDA_adj^excl`**, zero-filled | 0.4269 | **0.2580** | 0.3057 |
+| **`KDA_adj^excl`**, retained mean (README §2.4 form) | **0.4793** | **0.2969** | **0.3891** |
 | retention, hard | 70.4% | **41.8%** | 49.9% |
 | retention, soft | 55.4% | **37.6%** | 45.5% |
-| retention, sample-exclusion | 90.4% | 85.9% | 81.4% |
-| dropped as prior-dependent | 85 / 860 | 17 / 145 | 8 / 42 |
+| retention, sample-exclusion (zero-filled) | 89.6% | 84.7% | 80.2% |
+| retention, sample-exclusion (retained mean) | **100.5%** | **97.4%** | **102.1%** |
+| dropped (prior-dependent + unstable) | 94 / 860 | 19 / 145 | 9 / 42 |
+| mean `KDA_cont` of the dropped items | 0.4554 | 0.3568 | 0.3522 |
+| AUC, `KDA_cont` separating kept from dropped | 0.553 | **0.346** | 0.566 |
 
 Gate-based adjustment removes **58% of OpenBookQA's KDA mass** against 30% of SciQ's. That gap is
 mostly an artifact rather than a finding: `KDA_adj^hard` requires the model to *follow* the
 counterfactual, and on OBQA the counterfactual is frequently something no sensible reader would
 follow. The gate cannot distinguish "ignored the context" from "declined to follow word salad".
 
-`KDA_adj^excl` is the more trustworthy of the three on this dataset (85.9% retention), because it
-only drops items where the model demonstrably *kept* the gold answer under perturbation — a
-condition that does not depend on the counterfactual being well-formed.
+`KDA_adj^excl` is the more trustworthy of the three on this dataset, because it only drops items
+where the model demonstrably *kept* the gold answer under perturbation — a condition that does not
+depend on the counterfactual being well-formed. But read as README §2.4 defines it, a mean over the
+*retained* set, it barely moves the score on any of the three runs (97.4%–102.1% retention): the
+dropped items are not low-`KDA_cont` items. On OBQA `partial` they score *higher* than the items
+kept (0.3568 vs 0.2969), so the AUC is inverted at 0.346 — a higher `KDA_cont` there mildly predicts
+a failed context check. The 84.7% figure is the zero-filled form and is dominated by the keep rate
+(126/145 = 86.9%). See [`adjusted_kda_corrected.json`](../../results/ex2_counterfactual/adjusted_kda_corrected.json)
+for both readings and the $\mathcal{Q}_{ctx}$ sensitivity sweep.
 
 ---
 
@@ -290,9 +300,19 @@ the current design cannot separate the two mechanisms.
    only; no interval on it would be meaningful.
 4. **`prior_dependent` conflates two behaviours on OBQA** — genuinely ignoring context, and
    sensibly declining to follow an incoherent string. Not separable under the current design.
+   The same objection applies with more force to `unstable_other`, which is **33.8% of OBQA
+   `partial` (model, question) pairs and 34.5% of `exact` pairs** — far above SciQ's 19.7%.
+   Since 2026-09-09 all four estimators score these as failures (the strict convention,
+   [`unstable_other_convention.md`](unstable_other_convention.md)), so every OBQA figure in
+   this document is depressed by perturbation quality as well as by solver behaviour. The
+   alternative — crediting them — would have raised OBQA's hard retention from 41.8% to
+   71.0% and erased most of the SciQ-vs-OBQA gap this report documents, which is why it was
+   rejected.
 5. **`KDA_adj^hard` / `KDA_adj^soft` are not comparable across the two datasets**, because the gate
-   presupposes a well-formed counterfactual and OBQA frequently lacks one. Only `KDA_adj^excl`
-   supports a cautious cross-dataset reading.
+   presupposes a well-formed counterfactual and OBQA frequently lacks one. `KDA_adj^excl` is the
+   only variant that supports a cautious cross-dataset reading — but note §2.3: in its retained-mean
+   form it is close to inert on both datasets, so what it supports is a comparison of *how many*
+   items each dataset sheds, not of how much their scores change.
 6. **The SciQ side of every comparison is the pre-existing run, unchanged.**
 
 ### Script changes required to run at all
@@ -341,6 +361,6 @@ itself — that remains out of scope.
 
 ## Related
 
-- `docs/rq1_test_split_failure_analysis.md` — RQ1 diagnostic on both test splits, including the
+- `docs/ex5_failure_audit/rq1_test_split_failure_analysis.md` — RQ1 diagnostic on both test splits, including the
   SciQ `prior_dependent` cohort used above.
-- `docs/kda_reproduction_summary.md` — the Setting A / B baselines quoted in §2.1.
+- `docs/ex1_reproduce_KDA/kda_reproduction_summary.md` — the Setting A / B baselines quoted in §2.1.

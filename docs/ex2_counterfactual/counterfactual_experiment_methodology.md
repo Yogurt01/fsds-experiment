@@ -2,13 +2,13 @@
 
 **Audience:** a reviewer who did not write the code and needs to verify how counterfactual
 passages were generated, scored, and classified.
-**Companions:** [`docs/counterfactual_obqa_analysis.md`](counterfactual_obqa_analysis.md) ·
-[`docs/rq1_test_split_failure_analysis.md`](rq1_test_split_failure_analysis.md)
+**Companions:** [`docs/ex2_counterfactual/counterfactual_obqa_analysis.md`](counterfactual_obqa_analysis.md) ·
+[`docs/ex5_failure_audit/rq1_test_split_failure_analysis.md`](../ex5_failure_audit/rq1_test_split_failure_analysis.md)
 
 | | |
 |---|---|
-| Generator | [`code/ex2_counterfactual/counterfactual_passage.py`](../code/ex2_counterfactual/counterfactual_passage.py) (256 lines, no ML) |
-| Runner | [`code/ex2_counterfactual/run_counterfactual_experiment.py`](../code/ex2_counterfactual/run_counterfactual_experiment.py) |
+| Generator | [`code/ex2_counterfactual/counterfactual_passage.py`](../../code/ex2_counterfactual/counterfactual_passage.py) (256 lines, no ML) |
+| Runner | [`code/ex2_counterfactual/run_counterfactual_experiment.py`](../../code/ex2_counterfactual/run_counterfactual_experiment.py) |
 | Students | `KDA_small` (\|M\|=4): `google/t5-small-ssm-nq`, `Riiid/kda-albert-xlarge-v2-race`, `Riiid/kda-mpnet-base-race`, `Riiid/kda-scibert-uncased-race` |
 | Primary model | `Riiid/kda-mpnet-base-race` |
 | Results | `results/ex2_counterfactual/results_counterfactual_sciq_test_full.json` (SciQ, 884) · `results_counterfactual_obqa_test_full.json` (OBQA, 500) · `results_counterfactual_obqa_test_exact_tier.json` (sensitivity) |
@@ -178,6 +178,14 @@ In words:
 | `context_dependent` | argmax(C) == counterfactual target | "the model follows the context, its B-correctness is earned" |
 | `prior_dependent` | argmax(C) == gold answer | "the model overrides the context with a parametric prior or an option-surface shortcut; its B-correctness is NOT evidence of knowledge dependence" |
 | `unstable_other` | argmax(C) is a third option | "the perturbation broke the model without steering it" |
+
+> **Scoring convention (2026-09-09).** All four adjusted estimators now score
+> `unstable_other` as a **failure** — no credit. Until that date the sample-exclusion
+> variant alone retained these items at full `KDA_cont` while hard, soft and
+> context-verified accuracy rejected them. Exposure is 19.7% of SciQ and 33.8–34.5% of OBQA
+> (model, question) pairs, and the choice moves hard retention by up to 29 pp, so it is
+> reported with every run as `unstable_other_exposure`. Rationale and the two rejected
+> alternatives: [`unstable_other_convention.md`](unstable_other_convention.md).
 
 Three properties a reviewer should note:
 
@@ -389,7 +397,8 @@ From `summary.formulas` in the results files, verbatim:
 kda_cont                      = Σ_m (1 − P_m^A) · P_m^B / Σ_m (1 − P_m^A)
 kda_adjusted_hard             = Σ_m (1 − P_m^A) · P_m^B · 1[argmax P_m^C == cf_target] / Σ_m (1 − P_m^A)
 kda_adjusted_soft             = Σ_m (1 − P_m^A) · P_m^B · P_m^C(cf_target)            / Σ_m (1 − P_m^A)
-kda_adjusted_sample_exclusion = mean over CF-eligible q of KDA_cont(q) · 1[q is not ensemble prior-dependent]
+kda_adjusted_sample_exclusion.mean_over_retained             = mean over q in Q_ctx of KDA_cont(q)
+kda_adjusted_sample_exclusion.mean_over_eligible_zero_filled = mean over CF-eligible q of KDA_cont(q) · 1[q is not ensemble prior-dependent]
 context_verified_accuracy_with_fact = (wrong_to_correct + context-dependent both_correct) / n_eligible
 ```
 
@@ -401,7 +410,19 @@ Three variants, all implemented in `compute_adjusted_kda()`
 2. **soft-gated** — the indicator is replaced by the probability mass the model moves onto the
    target;
 3. **sample-level exclusion** — drops questions the *ensemble* classifies `prior_dependent`
-   (`n_dropped_prior_dependent`, line 579).
+   (`n_dropped_prior_dependent`). **Reported in two forms**, because README §2.4's
+   $\mathbb{E}_{q \in \mathcal{Q}_{ctx}}$ is a mean over the *retained* set while the original
+   implementation took a mean over the *eligible* set with dropped items zero-filled. They are
+   related exactly by `zero_filled = retained × (n_kept / n_eligible)`, asserted every run as
+   `identity_check_max_abs_error`. The zero-filled form is a mass-retention statistic and is the
+   one that shares a denominator with variants 1–2; the retained mean is the filtered score.
+   Under the retained reading the estimator is **inert** (SciQ 0.4793 vs a 0.4767 baseline),
+   because `KDA_cont` barely separates items that pass the context check from those that fail it
+   — AUC 0.553 on SciQ, 0.566 on OBQA `exact`, 0.346 (inverted) on OBQA `partial`. Corrected figures and a nine-way
+   $\mathcal{Q}_{ctx}$ sensitivity sweep:
+   [`results/ex2_counterfactual/adjusted_kda_corrected.json`](../../results/ex2_counterfactual/adjusted_kda_corrected.json),
+   regenerable with
+   [`code/ex2_counterfactual/recompute_adjusted_kda.py`](../../code/ex2_counterfactual/recompute_adjusted_kda.py).
 
 Variants 1–2 gate **per model**; variant 3 gates **per question on the ensemble**. Any citation of
 "adjusted KDA" must say which. Example: SciQ id = 1 above is `context_dependent` for the primary
