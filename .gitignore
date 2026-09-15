@@ -9,3 +9,9 @@ datasets/
 
 # merge backups
 *.bak
+
+# third-party reference implementation: cloned and patched per README step 1,
+# not vendored (git clone https://github.com/riiid/question-score.git)
+
+# local working notes
+slide_script_progress_report.md
