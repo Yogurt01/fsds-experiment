@@ -1,0 +1,9 @@
+{
+ "what": "SHA-256 of the annotator-2 analysis plan, recorded before annotator 2 returned any rating, plus the blank sheets it applies to. A local hash can be regenerated along with the file; committing both before the sheets come back is the stronger timing evidence.",
+ "fixed": "2026-09-22",
+ "recorded_at_utc": "2026-09-21T17:29:46+00:00",
+ "analysis_plan_annotator2.md": "75d5bbb088920adc9f4ec702cc604211517e28ff8d7fda0863e63373d7e25dc0",
+ "q1_answerability_sheet.annotator2.csv (blank as issued)": "a2e9a4069c40f51aa3cbdfb83372d99227ca3d69ca671495e0986723941a5004",
+ "q2_context_following_sheet.annotator2.csv (blank as issued)": "9110144f4029117d22062340461862ab6dcc0079796140589120bf6d7e2a9e1a",
+ "annotator2_labels_present_at_lock_time": false
+}

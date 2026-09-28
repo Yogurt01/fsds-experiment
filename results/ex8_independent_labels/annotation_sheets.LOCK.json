@@ -1,0 +1,7 @@
+{
+ "what": "SHA-256 of the sheets as issued. Re-verify before scoring so a filled sheet can be proved to descend from this issue.",
+ "built": "2026-09-16",
+ "q1_answerability_sheet.csv": "a2e9a4069c40f51aa3cbdfb83372d99227ca3d69ca671495e0986723941a5004",
+ "q2_context_following_sheet.csv": "9110144f4029117d22062340461862ab6dcc0079796140589120bf6d7e2a9e1a",
+ "annotation_manifest.json": "acd72aa402d22f9094d6561347b5fa42da28db7d2ade56ecee852b6d3f83ae6d"
+}

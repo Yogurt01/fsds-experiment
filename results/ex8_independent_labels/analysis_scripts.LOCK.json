@@ -1,0 +1,20 @@
+{
+ "what": "SHA-256 of the scripts that will score annotator 2, frozen after synthetic verification and before annotator 2 returned any rating. Completes the two prerequisites named in analysis_plan_annotator2.md sections 4 and 5.2.",
+ "fixed": "2026-09-22",
+ "recorded_at_utc": "2026-09-21T17:40:26+00:00",
+ "analysis_plan_hash_verified_unchanged": true,
+ "scripts": {
+  "code/ex8_independent_labels/kappa_independent_labels.py": "e9f286462c27a88387e6c1acbfbca2aacaf6c408f146b030c94a9bd5dda02447",
+  "code/ex8_independent_labels/q2_crosstab.py": "11a62067c238c5e90a45d9a0877d580482dc7a95673c22d3fcd61ef838090bbe",
+  "code/ex8_independent_labels/compare_metrics.py": "60f42870dbd044c9ef74313d63f42b8c871f24b3389ad6346cbedbc6e113de37"
+ },
+ "verification": {
+  "kappa_default_call_regression": "every field of the pre-edit output reproduced; only `role` and `n_unusable_in_subset` added",
+  "compare_metrics_regression": "real annotator-1 comparison byte-identical at the JSON level to the committed metric_comparison.json",
+  "kappa_full_sample": "independent Cohen's kappa recompute matches to 1e-12 on 3 synthetic pairs; both disagreement directions flagged; unusable dropped from both raters and counted per subset",
+  "q2_verify_published": "reproduces 40/200, 17/57, 5 of 16, 50 CF / 5 gold, 44/55 and all three AUC point estimates on annotator 1's sheet",
+  "q2_edge_cases": "all-CF, all-gold, all-none, blank/invalid rows, out-of-stratum id refused",
+  "q2_compare_branches": "consistent, not consistent and undefined verdicts each exercised; 6-item flip recovered exactly"
+ },
+ "annotator2_labels_present_at_lock_time": false
+}

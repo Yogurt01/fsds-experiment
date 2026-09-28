@@ -474,9 +474,10 @@ Derived from the repo as it stands. Not recommendations — just what is genuine
    generalises or is a property of extractive support text.
 
 10. **RQ3 has no code at all.** README §6.5 specifies three arms (No Filtering / KDA Filtering / Our
-    Disentangled Filtering) with QG-SMS-based validation. No package exists. On the build-order
-    convention it would be **`ex7_`** — `ex6_` was taken by the P/S/F/D prototype on 2026-09-14
-    (`docs/ex6_psfd_score/psfd_formulation.md`).
+    Disentangled Filtering) with QG-SMS-based validation. No package exists, and **no ordinal is
+    reserved for it** — it takes the next free experiment number when it starts. The reservation
+    drifted from `ex6_` to `ex7_` to `ex8_` as those ordinals were each claimed by work that got
+    built first, so pre-assigning one has been abandoned.
 
 ### 3.4 Fastest way to re-derive any number above
 
@@ -641,6 +642,33 @@ are queued but explicitly **not blocking**.
 
 `docs/ex4_free_response/plan_option_free_response_experiment.md` states this directly: *"Do not launch the full run
 until both clear."*
+
+### 4.6 Update — Entry 3 completed 2026-09-24
+
+`RUN_QWEN2.5.md` Entry 3 (§4.4 above) has now been run: Qwen2.5-7B judged the same 74 residual
+items from the Qwen3-4B bidirectional pilot, in both directions. Full detail and the 2×2 cross-tab:
+[`docs/ex4_free_response/plan_option_free_response_experiment.md`](ex4_free_response/plan_option_free_response_experiment.md)
+§10.1.
+
+| | |
+|---|---|
+| Raw agreement (Qwen2.5-7B vs Qwen3-4B, forward verdicts) | 77.0% |
+| Cohen's κ, forward-only | 0.541 |
+| Cohen's κ, both-directions-agree | 0.545 |
+| `best_kappa` / gate (`KAPPA_GATE = 0.70`) | **0.545 / gate NOT passed** |
+
+This is a *different* comparison from the one that cleared in §4.0 above: §4.0 measured
+human-vs-Qwen3-4B-judge agreement (passed, κ = 0.754); this measures Qwen2.5-7B-vs-Qwen3-4B-judge
+agreement (not passed, κ = 0.545). Both apply the same pre-registered `compute_kappa.py` gate to
+their own comparison; one clearing does not imply the other would, and it did not here. Entry 3 is
+no longer *outstanding* (§4.5 step 3, §5's table below), but the full Qwen3-4B-generated run it
+gates remains blocked on the same rule as before — the gate itself was not cleared, only the item
+of running it was.
+
+A separate, full-scale (884+500), self-judged Qwen2.5-7B free-response run also exists (Entry 4, run
+beyond its specified n=25 pilot) — see
+[`plan_option_free_response_experiment.md`](ex4_free_response/plan_option_free_response_experiment.md)
+§10.2. It is graded by its own generator and does not depend on Entry 3's gate.
 
 ---
 
