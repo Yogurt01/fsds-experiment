@@ -1,0 +1,100 @@
+{
+ "WHAT_THIS_IS_NOT": "SUPPLEMENTARY ONLY. This is LLM-human agreement, not inter-annotator kappa, and it does not discharge the pre-registered gate. Task A in this project measured an unvalidated Qwen3-4B judge over-crediting 13:1 against a stricter human check, so a high number here is weak evidence at best.",
+ "model": "Qwen3-4B-Instruct-2507, 4-bit NF4, greedy, one stateless call per item",
+ "n_llm_unparsed_q1": 0,
+ "n_llm_unparsed_q2": 0,
+ "q1_full_sample": {
+  "scope": "all rated items",
+  "n": 100,
+  "exact_match": 0.47,
+  "within_1_point": 0.9,
+  "collapsed_binary_match": 0.75,
+  "quadratic_weighted_agreement": 0.46601941747572817,
+  "mean_human": 3.18,
+  "mean_llm": 3.2,
+  "llm_minus_human_mean": 0.02,
+  "confusion_human_x_llm": {
+   "h1_l1": 0,
+   "h1_l2": 5,
+   "h1_l3": 4,
+   "h1_l4": 1,
+   "h2_l1": 0,
+   "h2_l2": 5,
+   "h2_l3": 11,
+   "h2_l4": 1,
+   "h3_l1": 1,
+   "h3_l2": 4,
+   "h3_l3": 9,
+   "h3_l4": 4,
+   "h4_l1": 0,
+   "h4_l2": 3,
+   "h4_l3": 19,
+   "h4_l4": 33
+  }
+ },
+ "q1_double_block": {
+  "scope": "the 30-item block",
+  "n": 30,
+  "exact_match": 0.43333333333333335,
+  "within_1_point": 0.9,
+  "collapsed_binary_match": 0.7666666666666667,
+  "quadratic_weighted_agreement": 0.3111111111111111,
+  "mean_human": 3.3666666666666667,
+  "mean_llm": 3.0,
+  "llm_minus_human_mean": -0.36666666666666664,
+  "confusion_human_x_llm": {
+   "h1_l1": 0,
+   "h1_l2": 1,
+   "h1_l3": 0,
+   "h1_l4": 1,
+   "h2_l1": 0,
+   "h2_l2": 2,
+   "h2_l3": 1,
+   "h2_l4": 0,
+   "h3_l1": 0,
+   "h3_l2": 3,
+   "h3_l3": 4,
+   "h3_l4": 0,
+   "h4_l1": 0,
+   "h4_l2": 2,
+   "h4_l3": 9,
+   "h4_l4": 7
+  }
+ },
+ "q2_full_sample": {
+  "scope": "all 55 items",
+  "n": 55,
+  "option_match_rate": 0.4727272727272727,
+  "human_distribution": {
+   "d": 5,
+   "c": 4,
+   "a": 35,
+   "b": 11
+  },
+  "llm_distribution": {
+   "d": 11,
+   "c": 15,
+   "a": 13,
+   "b": 15,
+   "none": 1
+  }
+ },
+ "q2_double_block": {
+  "scope": "the 16-item block",
+  "n": 16,
+  "option_match_rate": 0.4375,
+  "human_distribution": {
+   "d": 1,
+   "b": 3,
+   "a": 11,
+   "c": 1
+  },
+  "llm_distribution": {
+   "d": 3,
+   "b": 4,
+   "c": 6,
+   "a": 2,
+   "none": 1
+  }
+ }
+}

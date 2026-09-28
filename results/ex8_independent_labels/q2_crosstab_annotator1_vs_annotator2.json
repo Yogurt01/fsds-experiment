@@ -1,0 +1,392 @@
+{
+ "what": "Human Q2 reading vs solver Setting-C behaviour, per analysis_plan_annotator2.md 5.2",
+ "annotator1": {
+  "sheet": "results/ex8_independent_labels/q2_context_following_sheet.annotator1.csv",
+  "n_items": 55,
+  "n_answered": 55,
+  "invalid_or_blank": [],
+  "reading_counts": {
+   "reads CF target": 50,
+   "reads gold": 5,
+   "reads third option": 0,
+   "none": 0
+  },
+  "pairs_by_reading": {
+   "reads CF target": {
+    "context_dependent": 130,
+    "prior_dependent": 40,
+    "unstable_other": 30
+   },
+   "reads gold": {
+    "context_dependent": 3,
+    "prior_dependent": 17,
+    "unstable_other": 0
+   },
+   "reads third option": {
+    "context_dependent": 0,
+    "prior_dependent": 0,
+    "unstable_other": 0
+   },
+   "none": {
+    "context_dependent": 0,
+    "prior_dependent": 0,
+    "unstable_other": 0
+   }
+  },
+  "ensemble_by_reading": {
+   "reads CF target": {
+    "context_dependent": 39,
+    "prior_dependent": 11,
+    "unstable_other": 0
+   },
+   "reads gold": {
+    "context_dependent": 0,
+    "prior_dependent": 5,
+    "unstable_other": 0
+   },
+   "reads third option": {
+    "context_dependent": 0,
+    "prior_dependent": 0,
+    "unstable_other": 0
+   },
+   "none": {
+    "context_dependent": 0,
+    "prior_dependent": 0,
+    "unstable_other": 0
+   }
+  },
+  "prior_override": {
+   "k": 40,
+   "n": 200,
+   "rate": 0.2,
+   "ci95": [
+    0.15045120743928825,
+    0.26085639611170436
+   ]
+  },
+  "prior_override_per_solver": {
+   "Riiid/kda-albert-xlarge-v2-race": {
+    "k": 10,
+    "n": 50,
+    "rate": 0.2,
+    "ci95": [
+     0.11243629945973886,
+     0.3303737210448524
+    ]
+   },
+   "Riiid/kda-mpnet-base-race": {
+    "k": 2,
+    "n": 50,
+    "rate": 0.04,
+    "ci95": [
+     0.011038652660826577,
+     0.13460337877954667
+    ]
+   },
+   "Riiid/kda-scibert-uncased-race": {
+    "k": 8,
+    "n": 50,
+    "rate": 0.16,
+    "ci95": [
+     0.08337321362087696,
+     0.2851448096176598
+    ]
+   },
+   "google/t5-small-ssm-nq": {
+    "k": 20,
+    "n": 50,
+    "rate": 0.4,
+    "ci95": [
+     0.2760818978624575,
+     0.5381881089724063
+    ]
+   }
+  },
+  "artifact_share_pairs": {
+   "k": 17,
+   "n": 57,
+   "rate": 0.2982456140350877,
+   "ci95": [
+    0.1953239240924326,
+    0.42664525489036853
+   ]
+  },
+  "artifact_ensemble": {
+   "k": 5,
+   "n": 16,
+   "items": [
+    0,
+    25,
+    222,
+    716,
+    805
+   ],
+   "note": "reported alongside, no consistency verdict (plan 5.2)"
+  },
+  "views_coincide": {
+   "k": 44,
+   "n": 55,
+   "note": "descriptive: CF-read & context_dependent, or gold-read & prior_dependent, at ensemble level"
+  },
+  "q2_auc_cf_vs_gold": {
+   "F": {
+    "auc": 0.964,
+    "ci95": [
+     0.908,
+     1.0
+    ],
+    "n_pos": 50,
+    "n_neg": 5
+   },
+   "D": {
+    "auc": 0.868,
+    "ci95": [
+     0.736,
+     0.964
+    ],
+    "n_pos": 50,
+    "n_neg": 5
+   },
+   "KDA_cont": {
+    "auc": 0.072,
+    "ci95": [
+     0.0,
+     0.196
+    ],
+    "n_pos": 50,
+    "n_neg": 5
+   }
+  },
+  "q2_auc_note": "NOT a replication test -- the gold-read class is tiny and moves arbitrarily."
+ },
+ "verify_published": {
+  "passed": true,
+  "failures": []
+ },
+ "annotator2": {
+  "sheet": "results/ex8_independent_labels/q2_context_following_sheet.annotator2.csv",
+  "n_items": 55,
+  "n_answered": 55,
+  "invalid_or_blank": [],
+  "reading_counts": {
+   "reads CF target": 50,
+   "reads gold": 4,
+   "reads third option": 0,
+   "none": 1
+  },
+  "pairs_by_reading": {
+   "reads CF target": {
+    "context_dependent": 130,
+    "prior_dependent": 40,
+    "unstable_other": 30
+   },
+   "reads gold": {
+    "context_dependent": 2,
+    "prior_dependent": 14,
+    "unstable_other": 0
+   },
+   "reads third option": {
+    "context_dependent": 0,
+    "prior_dependent": 0,
+    "unstable_other": 0
+   },
+   "none": {
+    "context_dependent": 1,
+    "prior_dependent": 3,
+    "unstable_other": 0
+   }
+  },
+  "ensemble_by_reading": {
+   "reads CF target": {
+    "context_dependent": 39,
+    "prior_dependent": 11,
+    "unstable_other": 0
+   },
+   "reads gold": {
+    "context_dependent": 0,
+    "prior_dependent": 4,
+    "unstable_other": 0
+   },
+   "reads third option": {
+    "context_dependent": 0,
+    "prior_dependent": 0,
+    "unstable_other": 0
+   },
+   "none": {
+    "context_dependent": 0,
+    "prior_dependent": 1,
+    "unstable_other": 0
+   }
+  },
+  "prior_override": {
+   "k": 40,
+   "n": 200,
+   "rate": 0.2,
+   "ci95": [
+    0.15045120743928825,
+    0.26085639611170436
+   ]
+  },
+  "prior_override_per_solver": {
+   "Riiid/kda-albert-xlarge-v2-race": {
+    "k": 10,
+    "n": 50,
+    "rate": 0.2,
+    "ci95": [
+     0.11243629945973886,
+     0.3303737210448524
+    ]
+   },
+   "Riiid/kda-mpnet-base-race": {
+    "k": 2,
+    "n": 50,
+    "rate": 0.04,
+    "ci95": [
+     0.011038652660826577,
+     0.13460337877954667
+    ]
+   },
+   "Riiid/kda-scibert-uncased-race": {
+    "k": 8,
+    "n": 50,
+    "rate": 0.16,
+    "ci95": [
+     0.08337321362087696,
+     0.2851448096176598
+    ]
+   },
+   "google/t5-small-ssm-nq": {
+    "k": 20,
+    "n": 50,
+    "rate": 0.4,
+    "ci95": [
+     0.2760818978624575,
+     0.5381881089724063
+    ]
+   }
+  },
+  "artifact_share_pairs": {
+   "k": 17,
+   "n": 57,
+   "rate": 0.2982456140350877,
+   "ci95": [
+    0.1953239240924326,
+    0.42664525489036853
+   ]
+  },
+  "artifact_ensemble": {
+   "k": 5,
+   "n": 16,
+   "items": [
+    0,
+    25,
+    222,
+    716,
+    805
+   ],
+   "note": "reported alongside, no consistency verdict (plan 5.2)"
+  },
+  "views_coincide": {
+   "k": 43,
+   "n": 55,
+   "note": "descriptive: CF-read & context_dependent, or gold-read & prior_dependent, at ensemble level"
+  },
+  "q2_auc_cf_vs_gold": {
+   "F": {
+    "auc": 0.96,
+    "ci95": [
+     0.895,
+     1.0
+    ],
+    "n_pos": 50,
+    "n_neg": 4
+   },
+   "D": {
+    "auc": 0.885,
+    "ci95": [
+     0.745,
+     1.0
+    ],
+    "n_pos": 50,
+    "n_neg": 4
+   },
+   "KDA_cont": {
+    "auc": 0.02,
+    "ci95": [
+     0.0,
+     0.065
+    ],
+    "n_pos": 50,
+    "n_neg": 4
+   }
+  },
+  "q2_auc_note": "NOT a replication test -- the gold-read class is tiny and moves arbitrarily."
+ },
+ "comparison": {
+  "n_items_both_answered": 55,
+  "item_agreement_four_way": 0.9818181818181818,
+  "items_that_differ": [
+   {
+    "item_id": 222,
+    "annotator1": "reads gold",
+    "annotator2": "none"
+   }
+  ],
+  "consistency": {
+   "prior_override": {
+    "annotator1": {
+     "k": 40,
+     "n": 200,
+     "rate": 0.2,
+     "ci95": [
+      0.15045120743928825,
+      0.26085639611170436
+     ]
+    },
+    "annotator2": {
+     "k": 40,
+     "n": 200,
+     "rate": 0.2,
+     "ci95": [
+      0.15045120743928825,
+      0.26085639611170436
+     ]
+    },
+    "consistent": true
+   },
+   "artifact_share_pairs": {
+    "annotator1": {
+     "k": 17,
+     "n": 57,
+     "rate": 0.2982456140350877,
+     "ci95": [
+      0.1953239240924326,
+      0.42664525489036853
+     ]
+    },
+    "annotator2": {
+     "k": 17,
+     "n": 57,
+     "rate": 0.2982456140350877,
+     "ci95": [
+      0.1953239240924326,
+      0.42664525489036853
+     ]
+    },
+    "consistent": true
+   }
+  },
+  "rule": "consistent = the two raters' 95% CIs overlap; counts are never pooled",
+  "artifact_ensemble_side_by_side": {
+   "annotator1": [
+    5,
+    16
+   ],
+   "annotator2": [
+    5,
+    16
+   ],
+   "note": "no verdict (plan 5.2)"
+  }
+ }
+}

@@ -1,0 +1,209 @@
+{
+ "what": "Pre-registered comparison of KDA_cont, F, D and D' against the independent human label set. No metric is computed or re-fit here.",
+ "n_rated": 100,
+ "n_unusable": 0,
+ "unusable_ids": [],
+ "n_by_stratum": {
+  "A": 55,
+  "B": 25,
+  "C": 20
+ },
+ "kappa_gate": null,
+ "primary_sign_test_A_and_B": {
+  "comparison": "F closer to human than KDA_cont",
+  "n": 80,
+  "m": 80,
+  "w": 40,
+  "proportion_favouring_b": 0.5,
+  "ci95": [
+   0.38604788336490914,
+   0.6139521166350907
+  ],
+  "p_value": 1.0,
+  "significant": false,
+  "winner": null,
+  "n_exact_ties_dropped": 0
+ },
+ "sensitivity_sign_test_A_only": {
+  "comparison": "F closer to human than KDA_cont",
+  "n": 55,
+  "m": 55,
+  "w": 23,
+  "proportion_favouring_b": 0.41818181818181815,
+  "ci95": [
+   0.28654524524899927,
+   0.5589415894230065
+  ],
+  "p_value": 0.2806097176983542,
+  "significant": false,
+  "winner": null,
+  "n_exact_ties_dropped": 0
+ },
+ "sign_test_D_vs_KDA": {
+  "comparison": "D closer to human than KDA_cont",
+  "n": 80,
+  "m": 78,
+  "w": 45,
+  "proportion_favouring_b": 0.5769230769230769,
+  "ci95": [
+   0.4597584242245333,
+   0.6880672369569638
+  ],
+  "p_value": 0.21268281985080573,
+  "significant": false,
+  "winner": null,
+  "n_exact_ties_dropped": 2
+ },
+ "sign_test_D_vs_F": {
+  "comparison": "D closer to human than F",
+  "n": 80,
+  "m": 79,
+  "w": 47,
+  "proportion_favouring_b": 0.5949367088607594,
+  "ci95": [
+   0.47852484940622164,
+   0.7040105359015922
+  ],
+  "p_value": 0.11466035574580125,
+  "significant": false,
+  "winner": null,
+  "n_exact_ties_dropped": 1
+ },
+ "auc_vs_binarised_human": {
+  "KDA_cont": {
+   "unweighted": 0.5684523809523809,
+   "unweighted_ci_lo": 0.42038690476190477,
+   "unweighted_ci_hi": 0.7180059523809523,
+   "ipw_by_stratum": 0.3870117123261919,
+   "n_positive": 16,
+   "n_negative": 84
+  },
+  "F": {
+   "unweighted": 0.43154761904761907,
+   "unweighted_ci_lo": 0.28794642857142855,
+   "unweighted_ci_hi": 0.5788690476190477,
+   "ipw_by_stratum": 0.4333189480736304,
+   "n_positive": 16,
+   "n_negative": 84
+  },
+  "D": {
+   "unweighted": 0.6324404761904762,
+   "unweighted_ci_lo": 0.49032738095238093,
+   "unweighted_ci_hi": 0.7589285714285714,
+   "ipw_by_stratum": 0.5832683249957578,
+   "n_positive": 16,
+   "n_negative": 84
+  },
+  "D_prime": {
+   "unweighted": 0.38764880952380953,
+   "unweighted_ci_lo": 0.2507440476190476,
+   "unweighted_ci_hi": 0.5267857142857143,
+   "ipw_by_stratum": 0.37345094088338926,
+   "n_positive": 16,
+   "n_negative": 84
+  }
+ },
+ "auc_note": "positive class = rating 1-2 (DEPENDENT). Unweighted is the stratified sample; ipw_by_stratum reweights to the 860-item population.",
+ "spearman_vs_rating": {
+  "KDA_cont": {
+   "rho": 0.15734789436468577,
+   "ci_lo": -0.0375369215099468,
+   "ci_hi": 0.3357066673628029,
+   "n_boot": 2000
+  },
+  "F": {
+   "rho": -0.09128675458776611,
+   "ci_lo": -0.2790643985448454,
+   "ci_hi": 0.09742172617225553,
+   "n_boot": 2000
+  },
+  "D": {
+   "rho": 0.23165106670356517,
+   "ci_lo": 0.0480539219415017,
+   "ci_hi": 0.41060526801934266,
+   "n_boot": 2000
+  },
+  "D_prime": {
+   "rho": -0.1413321265454231,
+   "ci_lo": -0.320347398117763,
+   "ci_hi": 0.03826440059976115,
+   "n_boot": 2000
+  }
+ },
+ "q2_context_following": {
+  "n": 55,
+  "counts": {
+   "target": 50,
+   "gold": 4,
+   "other_option": 0,
+   "none": 1
+  },
+  "rate_reads_as_counterfactual_target": 0.9090909090909091,
+  "rate_still_reads_as_gold": 0.07272727272727272,
+  "rate_no_clear_answer": 0.01818181818181818,
+  "per_item": {
+   "712": "target",
+   "771": "target",
+   "274": "target",
+   "211": "target",
+   "825": "target",
+   "116": "target",
+   "119": "target",
+   "380": "target",
+   "595": "target",
+   "454": "target",
+   "805": "gold",
+   "830": "target",
+   "238": "target",
+   "780": "target",
+   "31": "target",
+   "0": "gold",
+   "869": "target",
+   "753": "target",
+   "362": "target",
+   "329": "target",
+   "222": "none",
+   "63": "target",
+   "692": "target",
+   "774": "target",
+   "235": "target",
+   "314": "target",
+   "262": "target",
+   "396": "target",
+   "61": "target",
+   "363": "target",
+   "571": "target",
+   "146": "target",
+   "661": "target",
+   "159": "target",
+   "228": "target",
+   "365": "target",
+   "128": "target",
+   "282": "target",
+   "336": "target",
+   "513": "target",
+   "553": "target",
+   "716": "gold",
+   "277": "target",
+   "25": "gold",
+   "516": "target",
+   "770": "target",
+   "684": "target",
+   "155": "target",
+   "167": "target",
+   "38": "target",
+   "392": "target",
+   "30": "target",
+   "497": "target",
+   "641": "target",
+   "250": "target"
+  },
+  "interpretation": "`target` means the perturbed passage licenses the counterfactual answer to a human reader, so a solver that follows it is genuinely following the context. `gold` or `none` means the construction failed for that item, independently of any model."
+ },
+ "decision": {
+  "outcome": "KAPPA GATE NOT EVALUATED -- no second annotator. Results below are exploratory, single-rater evidence and do not discharge the pre-registered adoption condition. INCONCLUSIVE at this sample size -- neither metric is closer to the human ordering often enough to reject chance. Do not adopt either. D clears the 0.02 AUC bar over F (delta +0.201), so the product form is preferred.",
+  "prefer_D_over_F": true,
+  "kappa_gate_passed": null,
+  "kappa_gate_status": "not_evaluated"
+ }
+}
