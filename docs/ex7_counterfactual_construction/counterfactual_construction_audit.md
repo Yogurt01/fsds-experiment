@@ -580,6 +580,51 @@ Setting-C stability.**
 5. **Cross-dataset comparability (§6).** Already accepted; restated here because it is a permanent
    cost of the recommended path and your mentor should weigh it alongside decision 4.
 
+---
+
+## 11. Close-out: OpenBookQA is retained as a stress test, not pursued
+
+**Decision, 2026-09-16.** The counterfactual intervention does not transfer to OpenBookQA. After
+the root-cause audit above, it is closed as a documented limitation rather than engineered around.
+No target-anchored rewriter, no distractor-plausibility filter, no further construction work.
+
+**The mechanism fails on contact.** Answer-span substitution assumes the reference material
+*states* the answer. OBQA's `fact1` is a one-clause deductive rule of which the gold option is an
+instance, so **71.0% of the split has no span to substitute** — 145/500 eligible at the `partial`
+tier, 42/500 (8.4%) at `exact`. Two thirds of what survives is substituted badly: of 97 `partial`
+items, 5 reach full coverage of the gold answer and 79 splice in a target differing from the matched
+span by more than one token, producing text like *"wind carries **sand is always moving** from one
+place to another place."*
+
+**The rewrite manufactures a surface cue.** A model-free lexical-overlap probe picks the gold from
+the Setting-B passage for 55.5% of `partial` items but picks the counterfactual target from Setting C
+for **98.5%** — a **+43.0 pp** asymmetry, against −3.4 pp on SciQ's `exact` tier. Those items skew
+toward `unstable_other` (21.4% vs 12.4%), so they *depress* the measured signal rather than inflating
+it: excluding them raises OBQA's Tier-1 AUC for `D` from 0.655 to 0.741.
+
+**Better construction would not rescue it.** The clean 42-item `exact` subset — one-word swaps, no
+fidelity defects — still shows **34.5% pair-level `unstable_other`** against SciQ `exact`'s 19.5%.
+Four candidate causes were tested and ruled out: passage length (a within-SciQ control tops out at
+23.4%), substitution fidelity (these swaps are clean), fact-insufficiency (16/16 items read have a
+determining fact), and counterfactual-target incoherence (φ = 0.253; fixing every incoherent target
+buys ≈ 4 pp of the 34.5%). **Roughly 30 pp remains unexplained.**
+
+**The obvious repairs were costed and declined.** Antonym/scalar rule inversion raises eligibility to
+47–56% but only **4.7%** of reachable items have an option that becomes correct under the inverted
+rule, so there is no counterfactual target to detect. Target-anchored rewriting — choosing the
+distractor first and rewriting the fact to entail it — would satisfy that condition by construction
+and could lift eligibility toward a **~82% ceiling**, but it requires LLM generation with a human
+validation gate, it leaves the unexplained 30 pp untouched, and it would put OBQA's Setting C on a
+different scale from SciQ's, forfeiting cross-dataset comparability (§6). Given a fixed deadline and
+a sound SciQ instrument, that is not a good trade.
+
+**What OBQA is now.** A stress test that establishes the boundary of the method: **the counterfactual
+intervention requires extractive reference material that states the answer.** SciQ satisfies this
+(92.0% `exact`); OBQA's rule-to-instance facts do not. That is a real and reportable finding about
+scope — not a failed experiment — and it is why every OBQA Setting-C figure in this repository
+carries a caveat rather than a conclusion. The ex7 audit tooling is committed and re-runnable, so
+the finding is auditable by anyone who wants to revisit it.
+
 ## Related
 
 - [`README.md`](../../README.md) §2.4, §3.2, §6.6 — Setting C, ClashEval lineage, known caveats
