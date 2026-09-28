@@ -15,3 +15,5 @@ datasets/
 
 # local working notes
 slide_script_progress_report.md
+kaggle-cli/
+.kaggle-qwen25/
