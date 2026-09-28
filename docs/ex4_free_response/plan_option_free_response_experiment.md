@@ -611,3 +611,113 @@ with the judge 85% of the time: it returned κ = 0.645 and correctly reported GA
 The full-scale run stays unlaunched until both clear. Machine time for the full run is ~1.5 h; the
 reason to wait is not cost but that a headline number produced now would rest on a grader whose
 reliability is unmeasured, and OBQA's band would be 36 points wide.
+
+---
+
+## 10. Qwen2.5-7B — cross-judge gate (Entry 3) and full-scale self-judged run (added 2026-09-24)
+
+Two independent pieces of Qwen2.5-7B evidence now exist for this experiment. Both are reported
+here without altering §1–§9's design, pilot results, or open items above.
+
+### 10.1 Entry 3 — the cross-judge gate, run
+
+[`RUN_QWEN2.5.md`](../../RUN_QWEN2.5.md) §4 (Entry 3) has been run:
+`results/ex4_free_response/judge_qwen2.5_7b_free_response_pilot.json` has Qwen2.5-7B judging, in
+both directions, the same 74 residual (judge-tier) items from the Qwen3-4B bidirectional pilot
+(§9.2) that Qwen3-4B judged. Per §4's own specified analysis, this reuses
+[`compute_kappa.py`](../../code/ex4_free_response/compute_kappa.py) — writing Qwen2.5-7B's forward
+verdict into the `human_verdict` column and Qwen3-4B's forward/reverse verdicts into
+`judge_forward`/`judge_reverse` of a constructed sheet — so the same pre-registered `KAPPA_GATE =
+0.70` machinery scores inter-judge agreement exactly as it would score human-vs-judge agreement.
+
+**Inter-judge agreement, forward verdicts** (n = 74):
+
+| | Qwen3-4B CORRECT | Qwen3-4B INCORRECT |
+|---|---:|---:|
+| **Qwen2.5-7B CORRECT** | 28 | 7 |
+| **Qwen2.5-7B INCORRECT** | 10 | 29 |
+
+| Metric | Forward-only | Both-directions-agree |
+|---|---:|---:|
+| Raw agreement | 77.0% | 77.0% |
+| Cohen's κ | 0.541 | 0.545 |
+| **`best_kappa`** | | **0.545** |
+
+**The pre-registered gate is not cleared:** `best_kappa = 0.545 < KAPPA_GATE = 0.70` →
+**GATE NOT PASSED.** Applying `compute_kappa.py`'s own decision rule (§9.3 / §4.3 above) to this
+cross-model comparison the same way it applies to a human-vs-judge comparison: `acc_normalised`
+(the deterministic floor) is what the gate rule would license as headline-worthy, not
+`acc_band_low`/`acc_band_high`, for a run graded solely by either model against the other.
+
+By stratum (forward-only κ): `obqa/A_prime` 0.335 (n=25), `obqa/B_prime` 0.569 (n=23),
+`sciq/A_prime` 0.548 (n=19), `sciq/B_prime` 0.000 (n=7, all-INCORRECT-vs-mostly-CORRECT — a
+degenerate small-n stratum). No stratum reaches 0.70 either.
+
+**Per-model order-instability, for comparison** (flip rate under forward/reverse swap, same 74
+items each model judged):
+
+| | SciQ | OBQA | Overall |
+|---|---:|---:|---:|
+| Qwen3-4B (original judge, §8.4/§9.2) | 15.8% | 24.0–39.1%* | 24.3% |
+| Qwen2.5-7B (this entry) | 11.5% | 25.0% | 20.3% |
+
+\* Qwen3-4B's OBQA flip rate splits by cell in §9.2 (A′ 24.0%, B′ 39.1%); the 74-item pilot pool
+mixes both. Qwen2.5-7B is somewhat more self-consistent overall (20.3% vs 24.3%) but is not
+dramatically more stable, and the two models agree with each other (κ=0.545) distinctly less than
+either model agrees with itself under a swap (i.e. both models are individually more self-
+consistent than they are mutually consistent) — the instability §8.4 found is not simply "fixed" by
+switching judges.
+
+### 10.2 Full-scale Qwen2.5-7B generation + self-judge run
+
+`RUN_QWEN2.5.md` Entry 4 was also run, but at **full scale** (884 + 500 items, not the 25-item
+pilot Entry 4 itself specifies) and **self-judged** by Qwen2.5-7B — i.e. this is a model-swapped
+repeat of the full free-response experiment §9 was built for, using Qwen2.5-7B as both generator
+and judge, mirroring the original Qwen3-4B self-judged design. It is **not** the cross-judge check
+in §10.1, and it does not depend on §10.1's gate outcome: it is graded by its own generator, exactly
+as the Qwen3-4B pilot in §9.2 was.
+
+```bash
+# already run; see results/ex4_free_response/results_free_response_{sciq,obqa}_qwen2.5_7b.json
+```
+
+| Dataset | Cell | n | `acc_strict` | `acc_normalised` | **BAND [low, high]** | width | → judge | flip rate |
+|---|---|---:|---:|---:|---|---:|---:|---:|
+| SciQ | A′ | 884 | 0.512 | 0.535 | **[0.722, 0.804]** | 0.082 | 411 | 0.178 |
+| SciQ | B′ | 884 | 0.805 | 0.825 | **[0.965, 0.984]** | 0.019 | 155 | 0.110 |
+| OBQA | A′ | 500 | 0.036 | 0.036 | **[0.246, 0.440]** | 0.194 | 482 | 0.201 |
+| OBQA | B′ | 500 | 0.108 | 0.110 | **[0.448, 0.660]** | 0.212 | 445 | 0.238 |
+
+Against §9.2's Qwen3-4B **pilot** bands (n=25 each, reproduced here for reference):
+
+| Dataset | Cell | Qwen3-4B pilot BAND (n=25) | Qwen2.5-7B full-scale BAND (n=884/500) |
+|---|---|---|---|
+| SciQ | A′ | [0.680, 0.800] | [0.722, 0.804] |
+| SciQ | B′ | [1.000, 1.000] | [0.965, 0.984] |
+| OBQA | A′ | [0.080, 0.320] | [0.246, 0.440] |
+| OBQA | B′ | [0.280, 0.640] | [0.448, 0.660] |
+
+Qwen2.5-7B's full-scale bands land close to, and on OBQA somewhat above, the Qwen3-4B pilot's
+25-item bands — consistent given the pilot's wide intervals, but not a like-for-like comparison
+(different n, different model as both generator and self-judge). **A′-relative-to-B′-ceiling**
+(§6/§8.5 convention, `acc_band_low(A′) / acc_band_low(B′)`): SciQ **0.722 / 0.965 = 0.748**, OBQA
+**0.246 / 0.448 = 0.549**. SciQ's ceiling is again near 1.0 (0.965), so its A′/ceiling ratio is
+interpretable roughly as knowledge; OBQA's ceiling (0.448) is again well short of 1.0, so per §6's
+own interpretive guardrail, OBQA's Δ against MCQ accuracy should not be read as a knowledge gap here
+either — the same phrasing-ceiling problem §8.5 documented for Qwen3-4B persists for Qwen2.5-7B at
+full scale.
+
+**Runtime / memory:** SciQ 980.68 s (16.3 min, 1.048 s/item), OBQA 1703.99 s (28.4 min, 1.447
+s/item); peak reserved VRAM 5.822 GB on the Kaggle 2×T4 setup for both runs.
+
+### 10.3 Status note
+
+Per the project's own pre-registered decision rule (§9.3, `KAPPA_GATE = 0.70` in
+`compute_kappa.py`), the cross-judge check in §10.1 does not clear the gate (best κ = 0.545). The
+human validation gate (§4.0 of `docs/NEXT_PHASE_HANDOFF.md`) separately passed at κ = 0.754 on the
+both-directions-agree verdict, judging Qwen3-4B against a human. These are two different
+comparisons — human-vs-Qwen3-4B-judge, and Qwen2.5-7B-vs-Qwen3-4B-judge — and the gate rule applies
+independently to each; one passing does not imply the other would. Reproduction/artefacts for this
+section: `results/ex4_free_response/judge_qwen2.5_7b_free_response_pilot.{json,log}`,
+`results/ex4_free_response/results_free_response_{sciq,obqa}_qwen2.5_7b.json`,
+`results/ex4_free_response/free_response_qwen2.5_7b.log`.

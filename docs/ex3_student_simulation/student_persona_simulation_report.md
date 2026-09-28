@@ -293,3 +293,173 @@ uv run --active python code/ex3_student_simulation/summarize_simulation.py
 
 Runtime: SciQ 26.4 min (1.79 s/question), OBQA 13.8 min (1.65 s/question), order control
 17.7 min. Peak VRAM 3.41 GB of 3.68 GB.
+
+---
+
+## 7. Qwen2.5-7B replication (added 2026-09-24)
+
+**Experiment**: `RUN_QWEN2.5.md` Entry 2. **Model**: `Qwen2.5-7B-Instruct`, 4-bit NF4, Kaggle 2×T4.
+Same design, personas, prompts, and letter-logit scoring as §1–§2 above; the only change is the
+solver. Tables regenerated with the project's own
+[`summarize_simulation.py`](../../code/ex3_student_simulation/summarize_simulation.py)
+(`--tag qwen2.5_7b` and `--tag qwen2.5_7b_order_desc`), so the statistics (Wilson CIs, exact
+McNemar, χ² positional collapse, Jaccard nesting) use the same validated code as §3. The persona-
+free zero-context baseline for this model (from
+[`kda_qwen2.5_7b_evaluation_report.md`](../ex1_reproduce_KDA/kda_qwen2.5_7b_evaluation_report.md))
+is **SciQ 0.9502, OBQA 0.8520** — the script's own generated caption defaults to the Qwen3-4B
+figures (0.954 / 0.826) and has been corrected here to the right model.
+
+### 7.1 Accuracy stratification
+
+**SciQ (n = 884), persona-free $Acc_{wof}$ = 0.9502**
+
+| Paradigm | Beginner | Intermediate | Advanced | Gap (A−B) | Monotone |
+|---|---|---|---|---|---|
+| Joint (Beg→Int→Adv) | 0.383 [0.352, 0.416] | 0.932 [0.914, 0.947] | 0.926 [0.907, 0.942] | +0.543 | **no** |
+| Isolated | 0.893 [0.870, 0.911] | 0.920 [0.900, 0.936] | 0.925 [0.906, 0.941] | +0.033 | yes |
+
+**OpenBookQA (n = 500), persona-free $Acc_{wof}$ = 0.8520**
+
+| Paradigm | Beginner | Intermediate | Advanced | Gap (A−B) | Monotone |
+|---|---|---|---|---|---|
+| Joint (Beg→Int→Adv) | 0.512 [0.468, 0.556] | 0.792 [0.754, 0.825] | 0.758 [0.719, 0.793] | +0.246 | **no** |
+| Isolated | 0.792 [0.754, 0.825] | 0.810 [0.773, 0.842] | 0.820 [0.784, 0.851] | +0.028 | yes |
+
+Both of §3.1's Qwen3-4B-derived observations replicate directionally at 7B: **the isolated advanced
+persona is again close to a no-op** (SciQ 0.925 vs a persona-free 0.9502, −2.5 pp; OBQA 0.820 vs
+0.8520, −3.2 pp — slightly larger no-op gaps than Qwen3-4B's, but still small), and **neither
+paradigm is monotone** — isolated is technically monotone with a similarly narrow spread (0.033
+SciQ vs Qwen3-4B's 0.036), and joint again fails monotonicity because Intermediate slightly exceeds
+Advanced on both datasets (SciQ 0.932 vs 0.926; OBQA 0.792 vs 0.758) — a milder version of the same
+non-monotonicity Qwen3-4B showed, not the severe 22.8-point OBQA inversion.
+
+### 7.2 Paradigm comparison
+
+| Dataset | Gap (joint) | Gap (isolated) | Joint − isolated |
+|---|---|---|---|
+| SciQ | +0.543 | +0.033 | +0.510 |
+| OBQA | +0.246 | +0.028 | +0.218 |
+
+Same direction as §3.2's Qwen3-4B result (joint ≫ isolated on both datasets) but **without OBQA's
+sign flip**: Qwen3-4B's joint gap on OBQA was *negative* (−0.228, inverted vs isolated's +0.108);
+Qwen2.5-7B's joint gap on OBQA is *positive* on both paradigms (+0.246 joint, +0.028 isolated). The
+paradigm-1 contrastive-reasoning hypothesis is not supported here either — see §7.3 — but at 7B it
+does not manufacture an inverted ability ladder on OBQA the way it did at 4B.
+
+### 7.3 The order ablation — the mechanism replicates, its consequence for the gap does not
+
+| Dataset | Order | Last tier | Breaks a consensus | Those breaks that are wrong | Breaks away from a *correct* consensus |
+|---|---|---|---|---|---|
+| SciQ | Beg→Int→Adv | advanced | 4.4% (n=341) | 66.7% | 66.7% |
+| SciQ | Adv→Int→Beg | beginner | **44.0%** (n=880) | 94.8% | 90.2% |
+| OBQA | Beg→Int→Adv | advanced | 12.3% (n=253) | 71.0% | 58.1% |
+| OBQA | Adv→Int→Beg | beginner | **52.4%** (n=477) | 81.6% | 71.6% |
+
+The qualitative mechanism §3.3 found in Qwen3-4B **replicates**: whichever tier is emitted *last*
+breaks an established consensus far more often (SciQ 4.4% → 44.0%; OBQA 12.3% → 52.4%), and when it
+does break, it is usually wrong (66.7–94.8%) and usually breaking away from a *correct* answer
+(58.1–90.2%) — the same signature of positional pressure rather than independent per-tier reasoning.
+
+**But the consequence for the reported ability gap is different at this scale:**
+
+| Dataset | Order | Beginner | Intermediate | Advanced | Gap | Monotone |
+|---|---|---|---|---|---|---|
+| SciQ | Beg→Int→Adv | 0.383 | 0.932 | 0.926 | +0.543 | no |
+| SciQ | Adv→Int→Beg | **0.552** | 0.925 | 0.921 | **+0.369** | no |
+| OBQA | Beg→Int→Adv | 0.512 | 0.792 | 0.758 | +0.246 | no |
+| OBQA | Adv→Int→Beg | **0.512** | 0.784 | 0.780 | **+0.268** | no |
+
+Reversing the order **shrinks** SciQ's gap (+0.543 → +0.369, the opposite direction from Qwen3-4B's
++0.342 → +0.639 growth) and leaves OBQA's beginner accuracy **exactly unchanged** (0.512 → 0.512)
+rather than flipping its gap's sign the way Qwen3-4B's did (−0.228 → +0.408). Neither order becomes
+monotone at 7B — both retain the small Intermediate-over-Advanced inversion from §7.1. The
+last-tier-absorbs-disagreement mechanism is present in both models, but at 7B the beginner tier's
+accuracy is high enough in both positions (0.383–0.552) that the positional perturbation moves it
+by tens of points rather than by the ~30–60 points that pushed Qwen3-4B's suppressed tier down near
+(SciQ) or below (would-be OBQA) the chance floor. **The joint paradigm's gap is not a stable
+property to read as "ability" for either model, but the specific numbers it produces — and even the
+direction reversal moves it in — are model- and scale-dependent.**
+
+### 7.4 Error-pattern analysis
+
+**Trap-hit rate, beginner tier** (random-distractor baseline 1/3; two-sided exact binomial test
+against $p_0 = 1/3$, computed the same way §3.4 reports it):
+
+| Dataset | Paradigm | Longest option | Lookalike to gold |
+|---|---|---|---|
+| SciQ | joint | 0.315 (n=314, p=0.511) | 0.326 (n=429, p=0.798) |
+| SciQ | isolated | **0.192** (n=52, p=**0.038**, *below* chance) | 0.416 (n=77, p=0.146) |
+| OBQA | joint | 0.398 (n=133, p=0.118) | 0.303 (n=188, p=0.396) |
+| OBQA | isolated | 0.372 (n=43, p=0.628) | 0.342 (n=79, p=0.905) |
+
+As in §3.4, **no beginner trap rate significantly exceeds chance** — the one significant deviation
+(SciQ isolated, longest-option, p=0.038) is *below* chance, the same direction as Qwen3-4B's one
+significant deviation (OBQA isolated lookalike, p=0.02, also below chance). The designed traps do
+not reliably capture Qwen2.5-7B's beginner-persona errors either.
+
+**Positional collapse.** The joint beginner tier again piles onto one letter far more than the gold
+distribution would predict: SciQ ascending-beginner answers **58% "A"** (χ²=486.9, p<0.001, vs the
+gold spread's 27% A); SciQ descending-beginner (now the *last*-emitted tier) answers **43% "A"**
+(χ²=215.9, p<0.001); OBQA ascending-beginner is milder (39% "A", χ²=50.5, p<0.001) than OBQA
+descending-beginner (29% "B", χ²=68.2, p<0.001). Every joint-beginner condition shows significant
+letter fixation, matching §3.4's Qwen3-4B finding (up to χ²=346.1) — the direction and magnitude of
+the fixated letter differ by run, but the phenomenon itself (collapse onto a letter rather than
+into a misconception) replicates at 7B.
+
+**Nesting.** Error-set containment is again far stronger under isolated roleplay than joint
+prompting: SciQ isolated Jaccard(I∩A) = 0.489, 66.7% of advanced errors also missed by beginner;
+SciQ joint Jaccard(I∩A) = 0.437, 67.7% — closer together than Qwen3-4B's joint/isolated split
+(34.8% vs 76.9%), i.e. **the joint-vs-isolated nesting gap that favoured isolated roleplay in §3.4
+is much smaller at 7B.** OBQA shows the same pattern: joint 58.7% vs isolated 67.8% (Qwen3-4B: 21.6%
+vs 72.7%). The isolated paradigm still nests somewhat better, but the joint paradigm's tiers are not
+nearly as disjoint from each other as they were at 4B.
+
+### 7.5 Scoped conclusions for this replication
+
+1. **The core null result replicates: neither paradigm yields calibrated ability curves under zero
+   context at 7B either.** Isolated roleplay stays monotone with a similarly narrow spread (0.033
+   SciQ); joint prompting stays non-monotone on both datasets.
+2. **The emission-order *mechanism* replicates (last tier absorbs disagreement pressure and is
+   usually wrong when it dissents), but its *consequence for the reported gap* does not.** At 4B,
+   reversing the order could flip a gap's sign (OBQA) or roughly double it (SciQ). At 7B, reversing
+   the order shrinks the SciQ gap and leaves the OBQA beginner tier's accuracy unchanged. A larger,
+   more capable solver is not simply "the same artifact, bigger" — the artifact's *direction of
+   effect on the headline gap* is itself model-dependent, which is new evidence the original §3.3
+   analysis (single model) could not have surfaced.
+3. **Trap-rate null result and letter-fixation both replicate.** No beginner trap rate exceeds
+   chance (one is significantly *below* chance, as at 4B); every joint-beginner condition shows
+   significant positional collapse (χ² up to 486.9).
+4. **The joint/isolated nesting gap narrows at 7B.** Isolated still nests better, but far less
+   dramatically than at 4B (e.g. OBQA 58.7% vs 67.8% joint/isolated overlap here, against 21.6% vs
+   72.7% at 4B) — the joint paradigm's tiers are less disjoint from each other at the larger scale.
+5. **Implication for KDA, unchanged.** As in §4 item 4 of the original report, persona-conditioned
+   zero-context simulation — under either paradigm, at either model scale tested so far — is not a
+   usable substitute for the missing ability spread on a saturated model.
+
+### 7.6 Reproduction
+
+```bash
+uv run --active python code/ex3_student_simulation/summarize_simulation.py --tag qwen2.5_7b
+uv run --active python code/ex3_student_simulation/summarize_simulation.py --tag qwen2.5_7b_order_desc
+```
+
+| Artifact | Path |
+|---|---|
+| SciQ results | `results/ex3_student_simulation/results_persona_simulation_sciq_qwen2.5_7b.json` |
+| OBQA results | `results/ex3_student_simulation/results_persona_simulation_obqa_qwen2.5_7b.json` |
+| Order-control results | `results/ex3_student_simulation/results_persona_simulation_{sciq,obqa}_qwen2.5_7b_order_desc.json` |
+| Logs | `results/ex3_student_simulation/{student_simulation_qwen2.5_7b,order_desc_qwen2.5_7b}.log` |
+
+Runtime: SciQ 43.0 min (2.92 s/question), OBQA 22.8 min (2.74 s/question), order control (SciQ +
+OBQA combined) 27.9 min. Peak VRAM 6.289 GB — well inside Kaggle's 2×T4 (16 GB each), unlike the
+local Qwen3-4B run's 3.41/3.68 GB margin.
+
+### 7.7 Limitations specific to this replication
+
+- Same limitations as §5 apply (one quantisation per model, greedy argmax commitment, lexical trap
+  proxies, only two emission orders).
+- The order-control run covers the joint paradigm only (per `RUN_QWEN2.5.md` Entry 2's command),
+  matching the original order-ablation design in §3.3–§3.5.
+- Dataset construction for this cloud run was not verified bit-identical to the committed
+  `datasets/` files (see the same caveat in
+  [`kda_qwen2.5_7b_evaluation_report.md`](../ex1_reproduce_KDA/kda_qwen2.5_7b_evaluation_report.md) §1).

@@ -629,6 +629,16 @@ Raw material, drawn only from what is in the repository. Not recommendations.
    4): the KDA saturation evaluation, the persona simulation, and free-response generation. All
    three are marked "not blocking."
 
+> **Update, 2026-09-24 — items 1–2 above are now stale.** All four `RUN_QWEN2.5.md` entries have
+> been run. Entry 3 (b above) is no longer *outstanding*, but its own gate did not clear: the
+> Qwen2.5-7B-vs-Qwen3-4B cross-judge κ is **0.545**, below `KAPPA_GATE = 0.70`
+> (`docs/ex4_free_response/plan_option_free_response_experiment.md` §10.1). Entries 1, 2, and a
+> full-scale (not pilot) run of entry 4 are written up at
+> `docs/ex1_reproduce_KDA/kda_qwen2.5_7b_evaluation_report.md`,
+> `docs/ex3_student_simulation/student_persona_simulation_report.md` §7, and
+> `docs/ex4_free_response/plan_option_free_response_experiment.md` §10.2 respectively. See
+> `RUN_QWEN2.5.md` §0 and `docs/NEXT_PHASE_HANDOFF.md` §4.6 for the full current status.
+
 ### 6.2 Produced but not integrated into the main narrative
 
 3. **`docs/synthesis/rq1_research_synthesis.md` synthesises five reports.** Three later documents —
@@ -664,10 +674,11 @@ Raw material, drawn only from what is in the repository. Not recommendations.
     `ex2_counterfactual/`) and says to "replace or delete it once real artefacts land here."
 13. **RQ3 / the downstream filtering study has no code.** README §6.5 specifies three arms
     (No Filtering / KDA Filtering / Our Disentangled Filtering) and QG-SMS-based validation. No
-    package exists; on the build-order convention it would be **`ex7_`**. *(Updated 2026-09-14:
-    this reservation was `ex6_` until the P/S/F/D prototype claimed that ordinal — `ex6_psfd_score`
-    was built first, so on a build-order convention it takes `ex6`. See
-    `docs/ex6_psfd_score/psfd_formulation.md`.)*
+    package exists. **No ordinal is reserved for it.** On the build-order convention it takes the
+    next free experiment number at the time it starts, whatever that is. *(The reservation drifted
+    three times — `ex6_` to `ex7_` to `ex8_` — as `ex6_psfd_score`, `ex7_counterfactual_construction`
+    and `ex8_independent_labels` were each built first. Pre-assigning an ordinal to unbuilt work
+    does not survive contact with a build-order convention, so it is no longer done.)*
 14. ~~**Experiment 2's Setting C has never been run with an LLM solver.**~~ **Closed 2026-09-09**
     by E1 (`docs/ex2_counterfactual/e1_counterfactual_llm_scale.md`): it does still separate them — 62.5%
     `prior_dependent` on an 819-item target set, prior inflation +59.9 pp. Two new open items

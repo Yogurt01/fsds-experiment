@@ -43,20 +43,30 @@ so it can be run with no repository access at all.
 
 | # | Task | Qwen3-4B status | Qwen2.5-7B status | Blocking? |
 |---|---|---|---|---|
-| 1 | KDA saturation evaluation | ✅ done — `docs/ex1_reproduce_KDA/kda_qwen3_4b_evaluation_report.md` | ⬜ **not run** | no |
-| 2 | Persona simulation (SciQ + OBQA) | ✅ done — `docs/ex3_student_simulation/student_persona_simulation_report.md` | ⬜ **not run** | no |
-| 3 | Free-response **second judge** | ✅ Qwen3-4B is judge — pilot done | ⬜ **not run** | **YES — blocks the full free-response run** |
-| 4 | Free-response **generation** (cells A′/B′) | ✅ pilot done (n=25) | ⬜ not run (optional) | no |
+| 1 | KDA saturation evaluation | ✅ done — `docs/ex1_reproduce_KDA/kda_qwen3_4b_evaluation_report.md` | ✅ **done 2026-09-24** — [`docs/ex1_reproduce_KDA/kda_qwen2.5_7b_evaluation_report.md`](docs/ex1_reproduce_KDA/kda_qwen2.5_7b_evaluation_report.md) | no |
+| 2 | Persona simulation (SciQ + OBQA) | ✅ done — `docs/ex3_student_simulation/student_persona_simulation_report.md` | ✅ **done 2026-09-24** — same doc, §7 | no |
+| 3 | Free-response **second judge** | ✅ Qwen3-4B is judge — pilot done | ✅ **done 2026-09-24** — `docs/ex4_free_response/plan_option_free_response_experiment.md` §10.1; **best κ = 0.545, gate NOT passed** | no longer blocking — cleared by running it, see below |
+| 4 | Free-response **generation** (cells A′/B′) | ✅ pilot done (n=25) | ✅ **done 2026-09-24**, full scale (n=884/500), self-judged — `docs/ex4_free_response/plan_option_free_response_experiment.md` §10.2 | no |
 
-**Only entry 3 is on the critical path.** The full free-response run is blocked on
-(a) the human validation gate (κ ≥ 0.70, see `code/ex4_free_response/compute_kappa.py`) and
-(b) entry 3 below.
+**All four entries have now been run.** The full Qwen3-4B-generated free-response run referenced
+throughout §4/§9 remains blocked on the same two conditions as before — (a) the human validation
+gate and (b) entry 3 — because running entry 3 resolved the *blocking status* (nothing is
+outstanding any more) without resolving the *gate* it was checking: entry 3's own cross-judge
+kappa (0.545) does not clear `KAPPA_GATE = 0.70`. See
+`docs/ex4_free_response/plan_option_free_response_experiment.md` §10.3 for how the two gates
+(human-vs-Qwen3-4B-judge, passed at κ=0.754; Qwen2.5-7B-vs-Qwen3-4B-judge, not passed at κ=0.545)
+relate. A separate, full-scale, **self-judged** Qwen2.5-7B run (entry 4 at full scale rather than
+its specified n=25 pilot) was also produced — see entry 4's row above — which does not depend on
+entry 3's gate since it is graded by its own generator.
 
 > **Gate (a) cleared 2026-09-08.** All 74 rows of `validation_sheet_pilot_bidir.csv` were
 > hand-labelled and scored: κ = **0.754** on the both-directions-agree verdict (0.614 forward-only),
 > so `gate_passed = true`. Report: `results/ex4_free_response/kappa_report.json`; detail and caveats
-> in `docs/NEXT_PHASE_HANDOFF.md` §4.0. **Entry 3 remains outstanding and is independently
-> required** — clearing (a) does not release the full run.
+> in `docs/NEXT_PHASE_HANDOFF.md` §4.0.
+>
+> **Entry 3 run 2026-09-24 — gate (b) NOT cleared.** Cross-judge κ (Qwen2.5-7B vs Qwen3-4B) is
+> **0.545**, below `KAPPA_GATE = 0.70`. Full detail:
+> `docs/ex4_free_response/plan_option_free_response_experiment.md` §10.1.
 
 ### 0.1 Exhaustiveness audit
 
@@ -747,6 +757,7 @@ position is where the option-letter logits are read.
 
 | Round | Added |
 |---|---|
+| 2026-09-24 | All four entries run on Kaggle (2×T4, 4-bit NF4). Entry 1: `docs/ex1_reproduce_KDA/kda_qwen2.5_7b_evaluation_report.md`. Entry 2: `docs/ex3_student_simulation/student_persona_simulation_report.md` §7. Entry 3: `docs/ex4_free_response/plan_option_free_response_experiment.md` §10.1 — cross-judge κ = 0.545, **gate NOT passed**. Entry 4: run at full scale (884+500, self-judged) rather than the specified n=25 pilot — §10.2 of the same doc. |
 | 2026-09-08 | Gate (a), the human validation gate, cleared: κ = 0.754, `gate_passed = true`. Entry 3 still not run; the full free-response run stays blocked on it. |
 | 2026-09-04 | File created. Entries 1–4 populated from an exhaustive audit of every LLM-invoking script (§0.1). Entry 3 flagged as the critical path blocking the full free-response run. |
 

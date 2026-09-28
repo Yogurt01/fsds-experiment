@@ -1,0 +1,1422 @@
+{
+  "judge_model": "Qwen/Qwen2.5-7B-Instruct",
+  "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "quantization": {
+    "load_in_4bit": true,
+    "bnb_4bit_quant_type": "nf4",
+    "bnb_4bit_compute_dtype": "float16",
+    "bnb_4bit_use_double_quant": false
+  },
+  "results": {
+    "sciq": [
+      {
+        "id": 0,
+        "cell": "A_prime",
+        "question": "Compounds that are capable of accepting electrons, such as o 2 or f2, are called what?",
+        "gold_answer": "oxidants",
+        "prediction": "oxidizing agents",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9969722032546997
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999737739562988
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 2,
+        "cell": "A_prime",
+        "question": "Vertebrata are characterized by the presence of what?",
+        "gold_answer": "backbone",
+        "prediction": "Vertebrae",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.999783456325531
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.999930739402771
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 4,
+        "cell": "A_prime",
+        "question": "Ice cores, varves and what else indicate the environmental conditions at the time of their creation?",
+        "gold_answer": "tree rings",
+        "prediction": "fossil records",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 3.393145107111195e-06
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 4.356879799161106e-06
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": false
+      },
+      {
+        "id": 5,
+        "cell": "A_prime",
+        "question": "What chemical signals in plants control different processes?",
+        "gold_answer": "plant hormones",
+        "prediction": "Pheromones",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 1.8058517525787465e-05
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0007321813027374446
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 6,
+        "cell": "A_prime",
+        "question": "Meiosis is part of the process of gametogenesis, which is the production of what?",
+        "gold_answer": "sperm and eggs",
+        "prediction": "gametes",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9923043847084045
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.5467381477355957
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 7,
+        "cell": "A_prime",
+        "question": "Which type of tree is dominant in temperate forests?",
+        "gold_answer": "deciduous",
+        "prediction": "Oak",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9820137619972229
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.00018522574100643396
+        },
+        "qwen25_agree": false,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 8,
+        "cell": "A_prime",
+        "question": "What kind of viscosity is found in long-chain hydrocarbons?",
+        "gold_answer": "highly viscous",
+        "prediction": "High viscosity",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.999993085861206
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999920129776001
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 9,
+        "cell": "A_prime",
+        "question": "Ionic compounds have strong electrostatic attractions between oppositely charged ions in this?",
+        "gold_answer": "regular array",
+        "prediction": "lattice structure",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.997065007686615
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.8872045874595642
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 10,
+        "cell": "A_prime",
+        "question": "About how tall can mid-ocean ridges be?",
+        "gold_answer": "about 2 km",
+        "prediction": "A few kilometers",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999701976776123
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999961853027344
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": false
+      },
+      {
+        "id": 11,
+        "cell": "A_prime",
+        "question": "What are by far the most common type of invertebrate?",
+        "gold_answer": "insects",
+        "prediction": "arthropods",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0002234163403045386
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.002082970691844821
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 13,
+        "cell": "A_prime",
+        "question": "Penis, testes, and epididymis are organs in what system?",
+        "gold_answer": "male reproductive system",
+        "prediction": "reproductive system",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 2.7969301299890503e-05
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9998176693916321
+        },
+        "qwen25_agree": false,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 15,
+        "cell": "A_prime",
+        "question": "How does a neon light produce visible light?",
+        "gold_answer": "electroluminescence",
+        "prediction": "Gas discharge",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.00015598026220686734
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.011508150026202202
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": false
+      },
+      {
+        "id": 16,
+        "cell": "A_prime",
+        "question": "The bird ancestor that lived in trees developed what feature commonly associated with birds?",
+        "gold_answer": "wings",
+        "prediction": "feathers",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.00013135180051904172
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 1.6964428141363896e-05
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 17,
+        "cell": "A_prime",
+        "question": "What do most living things use to make atp from glucose?",
+        "gold_answer": "oxygen",
+        "prediction": "cellular respiration",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.001098731067031622
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 1.6187581422855146e-05
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 18,
+        "cell": "A_prime",
+        "question": "What are the two most common silicates?",
+        "gold_answer": "feldspar and quartz",
+        "prediction": "quartz, feldspar",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999982118606567
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999994039535522
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 21,
+        "cell": "A_prime",
+        "question": "Presence of a cell wall, large central vacuole, and organelles called plastids distinguish what type of cell?",
+        "gold_answer": "plant",
+        "prediction": "plant cell",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.999997615814209
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9974491000175476
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 22,
+        "cell": "A_prime",
+        "question": "What happens when mammals raise their hair with tiny muscles in the skin?",
+        "gold_answer": "goosebumps",
+        "prediction": "Piloerection",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999711513519287
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9998840093612671
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 23,
+        "cell": "A_prime",
+        "question": "What are people with osteoporosis at increased risk of?",
+        "gold_answer": "bone fractures",
+        "prediction": "Fractures",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999973773956299
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999802112579346
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 24,
+        "cell": "A_prime",
+        "question": "Where is energy stored in a chemical substance?",
+        "gold_answer": "between atoms",
+        "prediction": "Chemical bonds",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9991832375526428
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.982557475566864
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 7,
+        "cell": "B_prime",
+        "question": "Which type of tree is dominant in temperate forests?",
+        "gold_answer": "deciduous",
+        "prediction": "Deciduous trees",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.999997615814209
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999973773956299
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 8,
+        "cell": "B_prime",
+        "question": "What kind of viscosity is found in long-chain hydrocarbons?",
+        "gold_answer": "highly viscous",
+        "prediction": "high viscosity",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999573230743408
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999942779541016
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 10,
+        "cell": "B_prime",
+        "question": "About how tall can mid-ocean ridges be?",
+        "gold_answer": "about 2 km",
+        "prediction": "2 km",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999985694885254
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999972581863403
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 13,
+        "cell": "B_prime",
+        "question": "Penis, testes, and epididymis are organs in what system?",
+        "gold_answer": "male reproductive system",
+        "prediction": "reproductive system",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 2.7969301299890503e-05
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9998176693916321
+        },
+        "qwen25_agree": false,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 21,
+        "cell": "B_prime",
+        "question": "Presence of a cell wall, large central vacuole, and organelles called plastids distinguish what type of cell?",
+        "gold_answer": "plant",
+        "prediction": "plant cells",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999972581863403
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9981897473335266
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 23,
+        "cell": "B_prime",
+        "question": "What are people with osteoporosis at increased risk of?",
+        "gold_answer": "bone fractures",
+        "prediction": "fractures",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999969005584717
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999873638153076
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 24,
+        "cell": "B_prime",
+        "question": "Where is energy stored in a chemical substance?",
+        "gold_answer": "between atoms",
+        "prediction": "in atomic bonds",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999227523803711
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9950946569442749
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      }
+    ],
+    "obqa": [
+      {
+        "id": 0,
+        "cell": "A_prime",
+        "question": "A person wants to start saving money so that they can afford a nice vacation at the end of the year. After looking over their budget and expenses, they decide the best way to save money is to",
+        "gold_answer": "quit eating lunch out",
+        "prediction": "cut back on expenses",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9046505093574524
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9968763589859009
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 1,
+        "cell": "A_prime",
+        "question": "There is most likely going to be fog around:",
+        "gold_answer": "a marsh",
+        "prediction": "dew point",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 2.5466402803431265e-05
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 2.9773113055853173e-05
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 2,
+        "cell": "A_prime",
+        "question": "Predators eat",
+        "gold_answer": "bunnies",
+        "prediction": "prey",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9099069833755493
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.42250463366508484
+        },
+        "qwen25_agree": false,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 3,
+        "cell": "A_prime",
+        "question": "Oak tree seeds are planted and a sidewalk is paved right next to that spot, until eventually, the tree is tall and the roots must extend past the sidewalk, which means",
+        "gold_answer": "parts may break the concrete",
+        "prediction": "root pressure",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0006462032906711102
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0018386653391644359
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 4,
+        "cell": "A_prime",
+        "question": "An electric car runs on electricity via",
+        "gold_answer": "electrical conductors",
+        "prediction": "electric batteries",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 1.5936620911816135e-05
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 3.120191104244441e-05
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 5,
+        "cell": "A_prime",
+        "question": "As the rain forest is deforested the atmosphere will increase with",
+        "gold_answer": "carbon",
+        "prediction": "carbon dioxide",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9926542043685913
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.8244618773460388
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": false
+      },
+      {
+        "id": 6,
+        "cell": "A_prime",
+        "question": "an electric car contains a motor that runs on",
+        "gold_answer": "ions",
+        "prediction": "electricity",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9702399373054504
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 2.014569145103451e-05
+        },
+        "qwen25_agree": false,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 7,
+        "cell": "A_prime",
+        "question": "The middle of the day usually involves the bright star nearest to the earth to be straight overhead why?",
+        "gold_answer": "human planet rotation",
+        "prediction": "noon",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.00013552079326473176
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 3.373722211108543e-05
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 8,
+        "cell": "A_prime",
+        "question": "The summer solstice in the northern hemisphere is four months before",
+        "gold_answer": "October",
+        "prediction": "winter solstice",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0045384312979876995
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.01912403665482998
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 9,
+        "cell": "A_prime",
+        "question": "The main component in dirt is",
+        "gold_answer": "broken stones",
+        "prediction": "silt",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 1.750292540236842e-05
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 1.6028110394472606e-06
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 10,
+        "cell": "A_prime",
+        "question": "It's easier for human's to survive in:",
+        "gold_answer": "a town",
+        "prediction": "oxygen-rich environments",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 3.426849434617907e-05
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.00012533750850707293
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 11,
+        "cell": "A_prime",
+        "question": "A cactus stem is used to store",
+        "gold_answer": "liquid",
+        "prediction": "water",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999716281890869
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9915544390678406
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": false
+      },
+      {
+        "id": 12,
+        "cell": "A_prime",
+        "question": "A red-tailed hawk is searching for prey. It is most likely to swoop down on",
+        "gold_answer": "a gecko",
+        "prediction": "small mammals",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 1.2805474398192018e-05
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.008711383678019047
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": false
+      },
+      {
+        "id": 13,
+        "cell": "A_prime",
+        "question": "The chance of wildfires is increased by",
+        "gold_answer": "parched foliage",
+        "prediction": "climate change",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 2.1112482500029728e-05
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 1.6442494597868063e-05
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 14,
+        "cell": "A_prime",
+        "question": "A positive effect of burning biofuel is",
+        "gold_answer": "powering the lights in a home",
+        "prediction": "reduces net greenhouse gas emissions",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0003150386910419911
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 1.4064044080441818e-05
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 15,
+        "cell": "A_prime",
+        "question": "As gasoline costs rise, alternative fuels are being used, which means that",
+        "gold_answer": "gasoline will be needed less",
+        "prediction": "demand for gasoline increases",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.00021654403826687485
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0019877743907272816
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 16,
+        "cell": "A_prime",
+        "question": "A person wants to be able to have more natural power in their home. They choose to cease using a traditional electric company to source this electricity, and so decide to install",
+        "gold_answer": "panels collecting sunlight",
+        "prediction": "solar panels",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999978542327881
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9998726844787598
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 17,
+        "cell": "A_prime",
+        "question": "A Mola Mola might live where?",
+        "gold_answer": "Bay of Bengal",
+        "prediction": "Warm, shallow oceans",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 6.302758993115276e-05
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0005112579092383385
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 18,
+        "cell": "A_prime",
+        "question": "Which requires energy to move?",
+        "gold_answer": "weasel",
+        "prediction": "Active transport",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.01342825498431921
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 4.86044837089139e-06
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": false
+      },
+      {
+        "id": 19,
+        "cell": "A_prime",
+        "question": "An animal that only eats plants is a",
+        "gold_answer": "moth",
+        "prediction": "herbivore",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9559813141822815
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.00015356240328401327
+        },
+        "qwen25_agree": false,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": false
+      },
+      {
+        "id": 20,
+        "cell": "A_prime",
+        "question": "There was a lot more water vapor in the air when we went on a trip to",
+        "gold_answer": "Hanoi",
+        "prediction": "the coast",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.00019411317771300673
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 1.130080818256829e-05
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 21,
+        "cell": "A_prime",
+        "question": "An example of conservation is avoiding the use of",
+        "gold_answer": "gasoline",
+        "prediction": "plastics",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 3.0241957574617118e-05
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 6.402006692951545e-05
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 22,
+        "cell": "A_prime",
+        "question": "What can feathers on Spheniscidae be used for?",
+        "gold_answer": "keeping warm",
+        "prediction": "Insulation and waterproofing",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 8.220189192797989e-05
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9511421918869019
+        },
+        "qwen25_agree": false,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": false
+      },
+      {
+        "id": 23,
+        "cell": "A_prime",
+        "question": "Overpopulation can cause",
+        "gold_answer": "Lower Life Expectancy in Countries",
+        "prediction": "resource depletion",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.00011412239837227389
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 1.130080818256829e-05
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 24,
+        "cell": "A_prime",
+        "question": "Shining a light through a diamond can",
+        "gold_answer": "summon a brilliant wave of color",
+        "prediction": "refract and reflect light",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.6893056035041809
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 7.602479308843613e-05
+        },
+        "qwen25_agree": false,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 0,
+        "cell": "B_prime",
+        "question": "A person wants to start saving money so that they can afford a nice vacation at the end of the year. After looking over their budget and expenses, they decide the best way to save money is to",
+        "gold_answer": "quit eating lunch out",
+        "prediction": "use fewer resources",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 3.535625000949949e-05
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.8175744414329529
+        },
+        "qwen25_agree": false,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": false
+      },
+      {
+        "id": 1,
+        "cell": "B_prime",
+        "question": "There is most likely going to be fog around:",
+        "gold_answer": "a marsh",
+        "prediction": "dew point",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 2.5466402803431265e-05
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 2.9773113055853173e-05
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 2,
+        "cell": "B_prime",
+        "question": "Predators eat",
+        "gold_answer": "bunnies",
+        "prediction": "prey",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9099069833755493
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.42250463366508484
+        },
+        "qwen25_agree": false,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 3,
+        "cell": "B_prime",
+        "question": "Oak tree seeds are planted and a sidewalk is paved right next to that spot, until eventually, the tree is tall and the roots must extend past the sidewalk, which means",
+        "gold_answer": "parts may break the concrete",
+        "prediction": "sidewalk cracks",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9969245791435242
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9978843331336975
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 5,
+        "cell": "B_prime",
+        "question": "As the rain forest is deforested the atmosphere will increase with",
+        "gold_answer": "carbon",
+        "prediction": "carbon dioxide",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9926542043685913
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.8244618773460388
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": false
+      },
+      {
+        "id": 6,
+        "cell": "B_prime",
+        "question": "an electric car contains a motor that runs on",
+        "gold_answer": "ions",
+        "prediction": "electricity",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9702399373054504
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 2.014569145103451e-05
+        },
+        "qwen25_agree": false,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 7,
+        "cell": "B_prime",
+        "question": "The middle of the day usually involves the bright star nearest to the earth to be straight overhead why?",
+        "gold_answer": "human planet rotation",
+        "prediction": "Sun is directly overhead at noon due to Earth's axial tilt and rotation",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0024343819823116064
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 2.8409745937096886e-05
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": false
+      },
+      {
+        "id": 8,
+        "cell": "B_prime",
+        "question": "The summer solstice in the northern hemisphere is four months before",
+        "gold_answer": "October",
+        "prediction": "December 21st",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.00024923254386521876
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.7431679368019104
+        },
+        "qwen25_agree": false,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 9,
+        "cell": "B_prime",
+        "question": "The main component in dirt is",
+        "gold_answer": "broken stones",
+        "prediction": "rocks",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.8840392827987671
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9985674619674683
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 10,
+        "cell": "B_prime",
+        "question": "It's easier for human's to survive in:",
+        "gold_answer": "a town",
+        "prediction": "large groups",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0031236486975103617
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9904406070709229
+        },
+        "qwen25_agree": false,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 11,
+        "cell": "B_prime",
+        "question": "A cactus stem is used to store",
+        "gold_answer": "liquid",
+        "prediction": "water",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999716281890869
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9915544390678406
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": false
+      },
+      {
+        "id": 12,
+        "cell": "B_prime",
+        "question": "A red-tailed hawk is searching for prey. It is most likely to swoop down on",
+        "gold_answer": "a gecko",
+        "prediction": "a lizard",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9905874133110046
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9974090456962585
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 13,
+        "cell": "B_prime",
+        "question": "The chance of wildfires is increased by",
+        "gold_answer": "parched foliage",
+        "prediction": "drought",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9961755275726318
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9702399373054504
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": false
+      },
+      {
+        "id": 14,
+        "cell": "B_prime",
+        "question": "A positive effect of burning biofuel is",
+        "gold_answer": "powering the lights in a home",
+        "prediction": "renewable energy",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 7.602479308843613e-05
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 8.888084994396195e-05
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 15,
+        "cell": "B_prime",
+        "question": "As gasoline costs rise, alternative fuels are being used, which means that",
+        "gold_answer": "gasoline will be needed less",
+        "prediction": "gasoline use will decrease",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999711513519287
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9986749291419983
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 16,
+        "cell": "B_prime",
+        "question": "A person wants to be able to have more natural power in their home. They choose to cease using a traditional electric company to source this electricity, and so decide to install",
+        "gold_answer": "panels collecting sunlight",
+        "prediction": "solar panels",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9999978542327881
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9998726844787598
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 17,
+        "cell": "B_prime",
+        "question": "A Mola Mola might live where?",
+        "gold_answer": "Bay of Bengal",
+        "prediction": "ocean",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.43782350420951843
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0003301527176517993
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": false
+      },
+      {
+        "id": 18,
+        "cell": "B_prime",
+        "question": "Which requires energy to move?",
+        "gold_answer": "weasel",
+        "prediction": "an animal",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.0005357805639505386
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9998464584350586
+        },
+        "qwen25_agree": false,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": false
+      },
+      {
+        "id": 19,
+        "cell": "B_prime",
+        "question": "An animal that only eats plants is a",
+        "gold_answer": "moth",
+        "prediction": "herbivore",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9559813141822815
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.00015356240328401327
+        },
+        "qwen25_agree": false,
+        "qwen3_forward": "CORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": false
+      },
+      {
+        "id": 20,
+        "cell": "B_prime",
+        "question": "There was a lot more water vapor in the air when we went on a trip to",
+        "gold_answer": "Hanoi",
+        "prediction": "humidity",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.020964238792657852
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 8.530319973942824e-06
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 21,
+        "cell": "B_prime",
+        "question": "An example of conservation is avoiding the use of",
+        "gold_answer": "gasoline",
+        "prediction": "fossil fuels",
+        "qwen25_forward": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9986114501953125
+        },
+        "qwen25_reverse": {
+          "verdict": "CORRECT",
+          "p_correct": 0.9902915358543396
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "CORRECT",
+        "qwen3_agree": false
+      },
+      {
+        "id": 23,
+        "cell": "B_prime",
+        "question": "Overpopulation can cause",
+        "gold_answer": "Lower Life Expectancy in Countries",
+        "prediction": "ecosystem imbalance",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 1.1659530173346866e-05
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 9.080476047529373e-06
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      },
+      {
+        "id": 24,
+        "cell": "B_prime",
+        "question": "Shining a light through a diamond can",
+        "gold_answer": "summon a brilliant wave of color",
+        "prediction": "refract light",
+        "qwen25_forward": {
+          "verdict": "INCORRECT",
+          "p_correct": 0.05921025201678276
+        },
+        "qwen25_reverse": {
+          "verdict": "INCORRECT",
+          "p_correct": 6.605214002775028e-05
+        },
+        "qwen25_agree": true,
+        "qwen3_forward": "INCORRECT",
+        "qwen3_reverse": "INCORRECT",
+        "qwen3_agree": true
+      }
+    ]
+  }
+}

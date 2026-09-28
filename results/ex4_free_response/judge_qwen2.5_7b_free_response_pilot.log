@@ -1,0 +1,54 @@
+2026-09-20 08:45:13 | INFO     | Resolved mounted inputs at /kaggle/input/datasets/bnnguynhu/qwen25-eval-inputs
+2026-09-20 08:45:13 | INFO     | Python: 3.12.13
+2026-09-20 08:45:13 | INFO     | torch: 2.10.0+cu128; CUDA devices: ['Tesla T4', 'Tesla T4']
+2026-09-20 08:45:14 | INFO     | HTTP Request: GET https://huggingface.co/api/agent-harnesses "HTTP/1.1 200 OK"
+2026-09-20 08:45:14 | INFO     | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-20 08:45:14 | INFO     | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/config.json?%2FQwen%2FQwen2.5-7B-Instruct%2Fresolve%2Fmain%2Fconfig.json=&etag=%220178295f88afc3c7f279ed284f961f8c1be00654%22 "HTTP/1.1 200 OK"
+2026-09-20 08:45:14 | INFO     | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/config.json?%2FQwen%2FQwen2.5-7B-Instruct%2Fresolve%2Fmain%2Fconfig.json=&etag=%220178295f88afc3c7f279ed284f961f8c1be00654%22 "HTTP/1.1 200 OK"
+2026-09-20 08:45:14 | INFO     | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-20 08:45:14 | WARNING  | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-09-20 08:45:14 | INFO     | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/tokenizer_config.json?%2FQwen%2FQwen2.5-7B-Instruct%2Fresolve%2Fmain%2Ftokenizer_config.json=&etag=%2207bfe0640cb5a0037f9322287fbfc682806cf672%22 "HTTP/1.1 200 OK"
+2026-09-20 08:45:14 | INFO     | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/tokenizer_config.json?%2FQwen%2FQwen2.5-7B-Instruct%2Fresolve%2Fmain%2Ftokenizer_config.json=&etag=%2207bfe0640cb5a0037f9322287fbfc682806cf672%22 "HTTP/1.1 200 OK"
+2026-09-20 08:45:14 | INFO     | HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen2.5-7B-Instruct/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-09-20 08:45:14 | INFO     | HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen2.5-7B-Instruct/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-09-20 08:45:14 | INFO     | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/resolve/main/vocab.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-20 08:45:14 | INFO     | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/vocab.json?%2FQwen%2FQwen2.5-7B-Instruct%2Fresolve%2Fmain%2Fvocab.json=&etag=%224783fe10ac3adce15ac8f358ef5462739852c569%22 "HTTP/1.1 200 OK"
+2026-09-20 08:45:14 | INFO     | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/vocab.json?%2FQwen%2FQwen2.5-7B-Instruct%2Fresolve%2Fmain%2Fvocab.json=&etag=%224783fe10ac3adce15ac8f358ef5462739852c569%22 "HTTP/1.1 200 OK"
+2026-09-20 08:45:14 | INFO     | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/resolve/main/merges.txt "HTTP/1.1 307 Temporary Redirect"
+2026-09-20 08:45:14 | INFO     | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/merges.txt?%2FQwen%2FQwen2.5-7B-Instruct%2Fresolve%2Fmain%2Fmerges.txt=&etag=%2220024bfe7c83998e9aeaf98a0cd6a2ce6306c2f0%22 "HTTP/1.1 200 OK"
+2026-09-20 08:45:14 | INFO     | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/merges.txt?%2FQwen%2FQwen2.5-7B-Instruct%2Fresolve%2Fmain%2Fmerges.txt=&etag=%2220024bfe7c83998e9aeaf98a0cd6a2ce6306c2f0%22 "HTTP/1.1 200 OK"
+2026-09-20 08:45:14 | INFO     | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/resolve/main/tokenizer.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-20 08:45:14 | INFO     | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/tokenizer.json?%2FQwen%2FQwen2.5-7B-Instruct%2Fresolve%2Fmain%2Ftokenizer.json=&etag=%22443909a61d429dff23010e5bddd28ff530edda00%22 "HTTP/1.1 200 OK"
+2026-09-20 08:45:14 | INFO     | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/tokenizer.json?%2FQwen%2FQwen2.5-7B-Instruct%2Fresolve%2Fmain%2Ftokenizer.json=&etag=%22443909a61d429dff23010e5bddd28ff530edda00%22 "HTTP/1.1 200 OK"
+2026-09-20 08:45:14 | INFO     | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
+2026-09-20 08:45:14 | INFO     | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/resolve/main/special_tokens_map.json "HTTP/1.1 404 Not Found"
+2026-09-20 08:45:14 | INFO     | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-09-20 08:45:15 | INFO     | HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen2.5-7B-Instruct "HTTP/1.1 200 OK"
+2026-09-20 08:45:15 | INFO     | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-20 08:45:15 | INFO     | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/config.json?%2FQwen%2FQwen2.5-7B-Instruct%2Fresolve%2Fmain%2Fconfig.json=&etag=%220178295f88afc3c7f279ed284f961f8c1be00654%22 "HTTP/1.1 200 OK"
+2026-09-20 08:45:15 | INFO     | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+2026-09-20 08:45:16 | INFO     | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-20 08:45:16 | INFO     | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/config.json?%2FQwen%2FQwen2.5-7B-Instruct%2Fresolve%2Fmain%2Fconfig.json=&etag=%220178295f88afc3c7f279ed284f961f8c1be00654%22 "HTTP/1.1 200 OK"
+2026-09-20 08:45:19 | INFO     | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-09-20 08:45:19 | INFO     | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/resolve/main/model.safetensors.index.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-20 08:45:19 | INFO     | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/model.safetensors.index.json?%2FQwen%2FQwen2.5-7B-Instruct%2Fresolve%2Fmain%2Fmodel.safetensors.index.json=&etag=%2214d037fdda5a1311dcc0275003a7a370d84114e6%22 "HTTP/1.1 200 OK"
+2026-09-20 08:45:19 | INFO     | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/model.safetensors.index.json?%2FQwen%2FQwen2.5-7B-Instruct%2Fresolve%2Fmain%2Fmodel.safetensors.index.json=&etag=%2214d037fdda5a1311dcc0275003a7a370d84114e6%22 "HTTP/1.1 200 OK"
+2026-09-20 08:45:19 | INFO     | HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen2.5-7B-Instruct/revision/main "HTTP/1.1 200 OK"
+2026-09-20 08:45:19 | INFO     | HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen2.5-7B-Instruct/tree/a09a35458c702b33eeacc393d103063234e8bc28?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-09-20 08:45:19 | INFO     | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/resolve/a09a35458c702b33eeacc393d103063234e8bc28/model-00002-of-00004.safetensors "HTTP/1.1 302 Found"
+2026-09-20 08:45:19 | INFO     | HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen2.5-7B-Instruct/xet-read-token/a09a35458c702b33eeacc393d103063234e8bc28 "HTTP/1.1 200 OK"
+2026-09-20 08:46:51 | INFO     | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-09-20 08:46:51 | INFO     | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/generation_config.json?%2FQwen%2FQwen2.5-7B-Instruct%2Fresolve%2Fmain%2Fgeneration_config.json=&etag=%220eb3c536657dcd12626e09eca4b6198c0cbcde1e%22 "HTTP/1.1 200 OK"
+2026-09-20 08:46:51 | INFO     | HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/generation_config.json?%2FQwen%2FQwen2.5-7B-Instruct%2Fresolve%2Fmain%2Fgeneration_config.json=&etag=%220eb3c536657dcd12626e09eca4b6198c0cbcde1e%22 "HTTP/1.1 200 OK"
+2026-09-20 08:46:51 | INFO     | Loaded Qwen/Qwen2.5-7B-Instruct in 97.7s; 5.451 GiB allocated
+2026-09-20 08:46:56 | INFO     | sciq: judged 10 residual rows
+2026-09-20 08:47:00 | INFO     | sciq: judged 20 residual rows
+2026-09-20 08:47:03 | INFO     | sciq: 26 items judged
+2026-09-20 08:47:07 | INFO     | obqa: judged 10 residual rows
+2026-09-20 08:47:11 | INFO     | obqa: judged 20 residual rows
+2026-09-20 08:47:15 | INFO     | obqa: judged 30 residual rows
+2026-09-20 08:47:20 | INFO     | obqa: judged 40 residual rows
+2026-09-20 08:47:23 | INFO     | obqa: 48 items judged
+2026-09-20 08:47:23 | INFO     | Wrote /kaggle/working/judge_qwen2.5_7b_free_response_pilot.json (44230 bytes)
+2026-09-20 08:47:23 | INFO     | Peak allocated VRAM: 5.609 GiB
+2026-09-20 08:47:23 | INFO     | Runtime: 129.6s

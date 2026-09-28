@@ -1,0 +1,76 @@
+2026-09-20 08:49:28 | INFO     | ================================================================================================
+2026-09-20 08:49:28 | INFO     | KDA EVALUATION -- Qwen/Qwen2.5-7B-Instruct
+2026-09-20 08:49:28 | INFO     | ================================================================================================
+2026-09-20 08:49:28 | INFO     | Python   : 3.12.13
+2026-09-20 08:49:28 | INFO     | Platform : Linux-6.12.90+-x86_64-with-glibc2.35
+2026-09-20 08:49:28 | INFO     | torch    : 2.10.0+cu128 (cuda True)
+2026-09-20 08:49:28 | INFO     | GPU 0    : Tesla T4 (14.6 GB)
+2026-09-20 08:49:28 | INFO     | GPU 1    : Tesla T4 (14.6 GB)
+2026-09-20 08:49:28 | INFO     | HF token : none (public model)
+2026-09-20 08:49:28 | INFO     | Output   : /kaggle/working
+2026-09-20 08:49:28 | INFO     | 
+2026-09-20 08:49:28 | INFO     | Preparing datasets ...
+2026-09-20 08:49:28 | INFO     |   loaded 500 samples from /kaggle/input/datasets/bnnguynhu/qwen25-eval-inputs/obqa_test_full.json
+2026-09-20 08:49:28 | INFO     |   loaded 884 samples from /kaggle/input/datasets/bnnguynhu/qwen25-eval-inputs/sciq_test_full.json
+2026-09-20 08:49:47 | INFO     | NumExpr defaulting to 4 threads.
+2026-09-20 08:49:48 | INFO     | Loading Qwen/Qwen2.5-7B-Instruct at precision '4bit'
+2026-09-20 08:49:49 | WARNING  | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-09-20 08:51:40 | INFO     |   loaded in 110.4s | 1.35 GB allocated
+2026-09-20 08:51:40 | INFO     |   option-letter token ids: {'A': [32, 362], 'B': [33, 425], 'C': [34, 356], 'D': [35, 422]}
+2026-09-20 08:51:40 | INFO     | 
+2026-09-20 08:51:40 | INFO     | ================================================================================================
+2026-09-20 08:51:40 | INFO     | DATASET OBQA -- 500 samples, batch size 16
+2026-09-20 08:51:40 | INFO     | ================================================================================================
+2026-09-20 08:51:55 | INFO     |   phase1 (no fact)     160/  500 (32.0%) | 0.091s/sample | ETA 0.5 min
+2026-09-20 08:52:08 | INFO     |   phase1 (no fact)     320/  500 (64.0%) | 0.087s/sample | ETA 0.3 min
+2026-09-20 08:52:22 | INFO     |   phase1 (no fact)     480/  500 (96.0%) | 0.088s/sample | ETA 0.0 min
+2026-09-20 08:52:25 | INFO     |   phase1 (no fact)     500/  500 (100.0%) | 0.089s/sample | ETA 0.0 min
+2026-09-20 08:52:42 | INFO     |   phase2 (with fact)   160/  500 (32.0%) | 0.107s/sample | ETA 0.6 min
+2026-09-20 08:52:59 | INFO     |   phase2 (with fact)   320/  500 (64.0%) | 0.107s/sample | ETA 0.3 min
+2026-09-20 08:53:16 | INFO     |   phase2 (with fact)   480/  500 (96.0%) | 0.108s/sample | ETA 0.0 min
+2026-09-20 08:53:19 | INFO     |   phase2 (with fact)   500/  500 (100.0%) | 0.108s/sample | ETA 0.0 min
+2026-09-20 08:53:19 | INFO     | 
+2026-09-20 08:53:19 | INFO     |   KDA_disc        : 0.6081
+2026-09-20 08:53:19 | INFO     |   KDA_cont        : 0.6121
+2026-09-20 08:53:19 | INFO     |   Acc without fact: 0.8520
+2026-09-20 08:53:19 | INFO     |   Acc with fact   : 0.9240 (delta +0.0720)
+2026-09-20 08:53:19 | INFO     |   Memorized (r^q=1): 85.20%
+2026-09-20 08:53:19 | INFO     |   buckets         : {'both_correct': 417, 'wrong_to_correct': 45, 'both_wrong': 29, 'correct_to_wrong': 9}
+2026-09-20 08:53:19 | INFO     |   latency         : 0.197s/sample
+2026-09-20 08:53:19 | INFO     | 
+2026-09-20 08:53:19 | INFO     | ================================================================================================
+2026-09-20 08:53:19 | INFO     | DATASET SCIQ -- 884 samples, batch size 16
+2026-09-20 08:53:19 | INFO     | ================================================================================================
+2026-09-20 08:53:34 | INFO     |   phase1 (no fact)     160/  884 (18.1%) | 0.092s/sample | ETA 1.1 min
+2026-09-20 08:53:48 | INFO     |   phase1 (no fact)     320/  884 (36.2%) | 0.092s/sample | ETA 0.9 min
+2026-09-20 08:54:03 | INFO     |   phase1 (no fact)     480/  884 (54.3%) | 0.091s/sample | ETA 0.6 min
+2026-09-20 08:54:17 | INFO     |   phase1 (no fact)     640/  884 (72.4%) | 0.090s/sample | ETA 0.4 min
+2026-09-20 08:54:31 | INFO     |   phase1 (no fact)     800/  884 (90.5%) | 0.090s/sample | ETA 0.1 min
+2026-09-20 08:54:39 | INFO     |   phase1 (no fact)     884/  884 (100.0%) | 0.090s/sample | ETA 0.0 min
+2026-09-20 08:55:39 | INFO     |   phase2 (with fact)   160/  884 (18.1%) | 0.375s/sample | ETA 4.5 min
+2026-09-20 08:56:37 | INFO     |   phase2 (with fact)   320/  884 (36.2%) | 0.371s/sample | ETA 3.5 min
+2026-09-20 08:57:30 | INFO     |   phase2 (with fact)   480/  884 (54.3%) | 0.357s/sample | ETA 2.4 min
+2026-09-20 08:58:19 | INFO     |   phase2 (with fact)   640/  884 (72.4%) | 0.344s/sample | ETA 1.4 min
+2026-09-20 08:59:09 | INFO     |   phase2 (with fact)   800/  884 (90.5%) | 0.338s/sample | ETA 0.5 min
+2026-09-20 08:59:34 | INFO     |   phase2 (with fact)   884/  884 (100.0%) | 0.335s/sample | ETA 0.0 min
+2026-09-20 08:59:34 | INFO     | 
+2026-09-20 08:59:34 | INFO     |   KDA_disc        : 0.9773
+2026-09-20 08:59:34 | INFO     |   KDA_cont        : 0.9655
+2026-09-20 08:59:34 | INFO     |   Acc without fact: 0.9502
+2026-09-20 08:59:34 | INFO     |   Acc with fact   : 0.9977 (delta +0.0475)
+2026-09-20 08:59:34 | INFO     |   Memorized (r^q=1): 95.02%
+2026-09-20 08:59:34 | INFO     |   buckets         : {'both_correct': 839, 'wrong_to_correct': 43, 'both_wrong': 1, 'correct_to_wrong': 1}
+2026-09-20 08:59:34 | INFO     |   latency         : 0.425s/sample
+2026-09-20 08:59:35 | INFO     | CSV records : /kaggle/working/kda_qwen2.5_7b_records.csv
+2026-09-20 08:59:35 | INFO     | CSV summary : /kaggle/working/kda_qwen2.5_7b_summary.csv
+2026-09-20 08:59:35 | INFO     | 
+2026-09-20 08:59:35 | INFO     | ================================================================================================
+2026-09-20 08:59:35 | INFO     | SUMMARY
+2026-09-20 08:59:35 | INFO     | ================================================================================================
+2026-09-20 08:59:35 | INFO     |   dataset    KDA_disc   KDA_cont    Acc_wof     Acc_wf    memorized
+2026-09-20 08:59:35 | INFO     |   obqa         0.6081     0.6121     0.8520     0.9240       85.20%
+2026-09-20 08:59:35 | INFO     |   sciq         0.9773     0.9655     0.9502     0.9977       95.02%
+2026-09-20 08:59:35 | INFO     | 
+2026-09-20 08:59:35 | INFO     | JSON     : /kaggle/working/kda_qwen2.5_7b_results.json
+2026-09-20 08:59:35 | INFO     | Runtime  : 10.1 min
+2026-09-20 08:59:35 | INFO     | Done.

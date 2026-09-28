@@ -436,6 +436,10 @@ If VRAM is tighter than 3.68 GiB, add `--double-quant`.
 * [`RUN_QWEN2.5.md`](../../RUN_QWEN2.5.md) — running the same
   evaluation with `Qwen2.5-7B-Instruct` on Colab / Kaggle, to test whether the support
   collapse deepens with scale.
+* [`kda_qwen2.5_7b_evaluation_report.md`](kda_qwen2.5_7b_evaluation_report.md) — **added
+  2026-09-24**, the completed Qwen2.5-7B run this entry anticipated: a mixed, not uniformly
+  worsening, scale effect (SciQ support essentially flat, OBQA support more collapsed at 7B
+  than at 4B).
 * [`kda_reproduction_summary.md`](kda_reproduction_summary.md) — the `KDA_small` encoder
   baseline compared against in §7.
 * [`KDA_Paper_Documentation.md`](../papers/KDA_Paper_Documentation.md) — the metric definition and

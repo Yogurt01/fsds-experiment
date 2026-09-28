@@ -1,0 +1,3 @@
+dataset,n_samples,kda_disc,kda_cont,accuracy_without_fact,accuracy_with_fact,accuracy_gain,memorization_rate,mean_p_correct_without_fact,mean_p_correct_with_fact,both_correct,wrong_to_correct,both_wrong,correct_to_wrong,seconds_per_sample
+obqa,500,0.608108,0.612123,0.852000,0.924000,0.072000,0.852000,0.847471,0.920210,417,45,29,9,0.1973
+sciq,884,0.977273,0.965532,0.950226,0.997738,0.047511,0.950226,0.949128,0.996851,839,43,1,1,0.4248

@@ -770,6 +770,23 @@ stops being a refinement and becomes the only available signal.
 > §6.2's aggregate over *models* per question. The two are different quantities and are
 > never compared numerically — only the accuracies above are directly comparable.
 
+**Update — Qwen2.5-7B counterpart, added 2026-09-24.** `Qwen2.5-7B-Instruct` (4-bit NF4, same
+precision policy) was run on the identical two splits to test whether the collapse above is
+specific to `Qwen3-4B-Instruct-2507` or general to modern instruct models. Full write-up:
+[`docs/ex1_reproduce_KDA/kda_qwen2.5_7b_evaluation_report.md`](docs/ex1_reproduce_KDA/kda_qwen2.5_7b_evaluation_report.md).
+
+| Dataset | $n$ | $KDA_{disc}$ | $KDA_{cont}$ | $Acc_{wof}$ | $Acc_{wf}$ | Memorisation |
+|---|---:|---:|---:|---:|---:|---:|
+| OpenBookQA | 500 | 0.6081 | 0.6121 | 85.20% | 92.40% | 85.20% |
+| SciQ | 884 | 0.9773 | 0.9655 | 95.02% | 99.77% | 95.02% |
+
+**It generalises, but the scale effect is mixed rather than uniform.** SciQ's usable
+$KDA_{disc}$ support is essentially flat between the two models (41/884 → 44/884), while
+OpenBookQA's support **collapses further** at 7B than at 4B (87/500 → 74/500 denominator, i.e.
+*fewer* usable items) as its zero-context accuracy rises (82.60% → 85.20%). A larger, more
+capable model does not saturate more on both datasets at once — it saturates about the same on
+SciQ and noticeably more on OBQA specifically.
+
 ### 6.5. Experiment 3 — planned
 
 Apply the Section 2.4 estimators as a filter and reranker over generated quiz banks and
@@ -818,9 +835,17 @@ validate downstream:
   separate "the solver broke" from "the perturbation was incoherent", so on OBQA these
   numbers are depressed by perturbation quality as well as by solver behaviour. Rationale
   and alternatives: [`docs/ex2_counterfactual/unstable_other_convention.md`](docs/ex2_counterfactual/unstable_other_convention.md).
-* **Dataset dependence.** SciQ's extractive passages make Setting C a comparatively easy
-  intervention. OpenBookQA's one-clause deductive facts do not support the same lexical
-  rewrite at scale; extending the intervention there is open work.
+* **Dataset dependence — OpenBookQA is closed as a stress test, not open work.** SciQ's
+  extractive passages make Setting C a comparatively easy intervention (92.0% clean `exact`
+  substitutions). OpenBookQA's one-clause deductive facts do not: **71.0% of the split has no
+  answer span to substitute**, two thirds of what survives is degraded, and the rewrite
+  manufactures a surface cue on the `partial` tier (**+43.0 pp** on a lexical-overlap probe,
+  against −3.4 pp for SciQ `exact`). Even the clean 42-item `exact` subset shows 34.5%
+  pair-level `unstable_other` against SciQ's 19.5%, with four candidate causes ruled out and
+  ~30 pp unexplained. Repair strategies were costed and declined. **The boundary condition this
+  establishes — the intervention requires reference material that *states* the answer — is
+  reported as a finding about scope.** Full audit and close-out:
+  [`docs/ex7_counterfactual_construction/counterfactual_construction_audit.md`](docs/ex7_counterfactual_construction/counterfactual_construction_audit.md) §11.
 * **Cross-dataset $KDA$ values are not on a common scale.** Any comparison of absolute KDA
   across datasets must control for target-fact style.
 * **Naming caveat.** The `KDA_small` suite is published under the HuggingFace org `Riiid`
